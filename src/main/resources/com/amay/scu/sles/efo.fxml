@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<Button fx:id="efo" layoutX="100.0" layoutY="100.0" prefHeight="80" prefWidth="80" styleClass="tom" stylesheets="@../css/sles.css"
+        xmlns="http://javafx.com/javafx"
+        xmlns:fx="http://javafx.com/fxml"
+        fx:controller="com.amay.scu.controller.EFOController"
+>
+    <graphic>
+        <VBox alignment="CENTER">
+            <ImageView fitHeight="50" fitWidth="50">
+                <image>
+                    <Image url="@../images/efo.png"/>
+                </image>
+            </ImageView>
+            <Label fx:id="name" text="EFO" stylesheets="@../css/sle-name.css" />
+        </VBox>
+    </graphic>
+
+</Button>
+
