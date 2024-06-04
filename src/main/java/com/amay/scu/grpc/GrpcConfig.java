@@ -9,9 +9,9 @@ import org.network.monitorandcontrol.ag.*;
 public class GrpcConfig {
     static ManagedChannel channel;
 
-    static{
+    static {
 
-        channel = ManagedChannelBuilder.forAddress("localhost", 6565)
+        channel = ManagedChannelBuilder.forAddress("localhost", 8000)
                 .usePlaintext()  // No TLS for local development
                 .build();
     }
@@ -28,18 +28,18 @@ public class GrpcConfig {
         return MonitorAndControlGrpc.newFutureStub(channel);
     }
 
+    public static boolean reconnect() {
+    	try {
+            channel = ManagedChannelBuilder.forAddress("localhost", 8000)
+                    .usePlaintext()  // No TLS for local development
+                    .build();
+    		return true;
+    	} catch (Exception e) {
+    		return false;
+    	}
+    }
 
-//    public static FtpServiceGrpc.FtpServiceBlockingStub getFileBlockingStub(){
-//        return FtpServiceGrpc.newBlockingStub(channel);
-//    }
-//
-//    public static FtpServiceGrpc.FtpServiceStub getFileAsyncStub(){
-//        return FtpServiceGrpc.newStub(channel);
-//    }
-//
-//    public static FtpServiceGrpc.FtpServiceFutureStub getFileFutureStub(){
-//        return FtpServiceGrpc.newFutureStub(channel);
-//    }
+
 
     public static void shutdown(){
         channel.shutdown();

@@ -93,6 +93,38 @@ public final class MonitorAndControlGrpc {
      return getTOMStreamMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<org.network.monitorandcontrol.scu_console.ConsoleStream,
+      org.network.monitorandcontrol.scu_console.PushUpdates> getSCStreamMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "SCStream",
+      requestType = org.network.monitorandcontrol.scu_console.ConsoleStream.class,
+      responseType = org.network.monitorandcontrol.scu_console.PushUpdates.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+  public static io.grpc.MethodDescriptor<org.network.monitorandcontrol.scu_console.ConsoleStream,
+      org.network.monitorandcontrol.scu_console.PushUpdates> getSCStreamMethod() {
+    io.grpc.MethodDescriptor<org.network.monitorandcontrol.scu_console.ConsoleStream, org.network.monitorandcontrol.scu_console.PushUpdates> getSCStreamMethod;
+    if ((getSCStreamMethod = MonitorAndControlGrpc.getSCStreamMethod) == null) {
+      synchronized (MonitorAndControlGrpc.class) {
+        if ((getSCStreamMethod = MonitorAndControlGrpc.getSCStreamMethod) == null) {
+          MonitorAndControlGrpc.getSCStreamMethod = getSCStreamMethod = 
+              io.grpc.MethodDescriptor.<org.network.monitorandcontrol.scu_console.ConsoleStream, org.network.monitorandcontrol.scu_console.PushUpdates>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+              .setFullMethodName(generateFullMethodName(
+                  "org.monitoring.proto.MonitorAndControl", "SCStream"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  org.network.monitorandcontrol.scu_console.ConsoleStream.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  org.network.monitorandcontrol.scu_console.PushUpdates.getDefaultInstance()))
+                  .setSchemaDescriptor(new MonitorAndControlMethodDescriptorSupplier("SCStream"))
+                  .build();
+          }
+        }
+     }
+     return getSCStreamMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -134,6 +166,13 @@ public final class MonitorAndControlGrpc {
       return asyncUnimplementedStreamingCall(getTOMStreamMethod(), responseObserver);
     }
 
+    /**
+     */
+    public io.grpc.stub.StreamObserver<org.network.monitorandcontrol.scu_console.ConsoleStream> sCStream(
+        io.grpc.stub.StreamObserver<org.network.monitorandcontrol.scu_console.PushUpdates> responseObserver) {
+      return asyncUnimplementedStreamingCall(getSCStreamMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -150,6 +189,13 @@ public final class MonitorAndControlGrpc {
                 org.network.monitorandcontrol.tom.TOMRequest,
                 org.network.monitorandcontrol.tom.TOMResponse>(
                   this, METHODID_TOMSTREAM)))
+          .addMethod(
+            getSCStreamMethod(),
+            asyncBidiStreamingCall(
+              new MethodHandlers<
+                org.network.monitorandcontrol.scu_console.ConsoleStream,
+                org.network.monitorandcontrol.scu_console.PushUpdates>(
+                  this, METHODID_SCSTREAM)))
           .build();
     }
   }
@@ -186,6 +232,14 @@ public final class MonitorAndControlGrpc {
         io.grpc.stub.StreamObserver<org.network.monitorandcontrol.tom.TOMResponse> responseObserver) {
       return asyncBidiStreamingCall(
           getChannel().newCall(getTOMStreamMethod(), getCallOptions()), responseObserver);
+    }
+
+    /**
+     */
+    public io.grpc.stub.StreamObserver<org.network.monitorandcontrol.scu_console.ConsoleStream> sCStream(
+        io.grpc.stub.StreamObserver<org.network.monitorandcontrol.scu_console.PushUpdates> responseObserver) {
+      return asyncBidiStreamingCall(
+          getChannel().newCall(getSCStreamMethod(), getCallOptions()), responseObserver);
     }
   }
 
@@ -229,6 +283,7 @@ public final class MonitorAndControlGrpc {
 
   private static final int METHODID_AGSTREAM = 0;
   private static final int METHODID_TOMSTREAM = 1;
+  private static final int METHODID_SCSTREAM = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -263,6 +318,9 @@ public final class MonitorAndControlGrpc {
         case METHODID_TOMSTREAM:
           return (io.grpc.stub.StreamObserver<Req>) serviceImpl.tOMStream(
               (io.grpc.stub.StreamObserver<org.network.monitorandcontrol.tom.TOMResponse>) responseObserver);
+        case METHODID_SCSTREAM:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.sCStream(
+              (io.grpc.stub.StreamObserver<org.network.monitorandcontrol.scu_console.PushUpdates>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -316,6 +374,7 @@ public final class MonitorAndControlGrpc {
               .setSchemaDescriptor(new MonitorAndControlFileDescriptorSupplier())
               .addMethod(getAGStreamMethod())
               .addMethod(getTOMStreamMethod())
+              .addMethod(getSCStreamMethod())
               .build();
         }
       }

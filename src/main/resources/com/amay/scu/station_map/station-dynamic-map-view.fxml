@@ -36,6 +36,6 @@
 <!--    <Button fx:id="draggableButton2" text="AG" prefHeight="60" prefWidth="50" layoutX="150.0" layoutY="150.0" styleClass="AG"/>-->
 <!--    <Button fx:id="draggableButton3" text="EFO" prefHeight="80" prefWidth="80" layoutX="80.0" layoutY="80.0" styleClass="EFO"/>-->
 <!--    <Button fx:id="draggableButton4" text="Reader" prefHeight="50" prefWidth="60" layoutX="40.0" layoutY="350.0" styleClass="Reader"/>-->
-    <fx:include source="../sles/tvm.fxml"></fx:include>
+<!--    <fx:include source="../sles/tvm.fxml"></fx:include>-->
 
 </AnchorPane>

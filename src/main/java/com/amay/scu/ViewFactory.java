@@ -31,4 +31,11 @@ public class ViewFactory {
                 (Path.TVM_VIEW));
         return fxmlLoader;
     }
+
+    public static FXMLLoader getAGView() {
+        FXMLLoader fxmlLoader = new FXMLLoader(ViewFactory.class.getResource
+                (Path.AG_VIEW));
+        return fxmlLoader;
+    }
+
 }

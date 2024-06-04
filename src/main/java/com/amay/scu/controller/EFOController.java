@@ -88,4 +88,14 @@ public class EFOController  implements SLE {
         });
 
     }
+
+    @Override
+    public Object getId() {
+        return null;
+    }
+
+    @Override
+    public void updateStatus(SLEStatus status) {
+
+    }
 }

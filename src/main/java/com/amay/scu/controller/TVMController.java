@@ -90,4 +90,14 @@ public class TVMController implements SLE {
         });
 
     }
+
+    @Override
+    public Object getId() {
+        return null;
+    }
+
+    @Override
+    public void updateStatus(SLEStatus status) {
+
+    }
 }

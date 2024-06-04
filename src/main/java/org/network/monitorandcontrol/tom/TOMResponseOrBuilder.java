@@ -26,17 +26,23 @@ public interface TOMResponseOrBuilder extends
       getErrorMsgBytes();
 
   /**
-   * <code>.google.protobuf.Any request_data = 3;</code>
+   * <code>int32 request_type = 3;</code>
+   * @return The requestType.
+   */
+  int getRequestType();
+
+  /**
+   * <code>.google.protobuf.Any request_data = 4;</code>
    * @return Whether the requestData field is set.
    */
   boolean hasRequestData();
   /**
-   * <code>.google.protobuf.Any request_data = 3;</code>
+   * <code>.google.protobuf.Any request_data = 4;</code>
    * @return The requestData.
    */
   com.google.protobuf.Any getRequestData();
   /**
-   * <code>.google.protobuf.Any request_data = 3;</code>
+   * <code>.google.protobuf.Any request_data = 4;</code>
    */
   com.google.protobuf.AnyOrBuilder getRequestDataOrBuilder();
 }

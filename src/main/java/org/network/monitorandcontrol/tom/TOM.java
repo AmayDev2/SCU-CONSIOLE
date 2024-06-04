@@ -52,24 +52,24 @@ public final class TOM {
       "e/protobuf/any.proto\"g\n\nTOMRequest\022\n\n\002ip" +
       "\030\001 \001(\t\022\013\n\003uid\030\002 \001(\005\022\024\n\014request_type\030\003 \001(" +
       "\005\022*\n\014request_data\030\004 \001(\0132\024.google.protobu" +
-      "f.Any\"a\n\013TOMResponse\022\023\n\013status_code\030\001 \001(" +
-      "\005\022\021\n\terror_msg\030\002 \001(\t\022*\n\014request_data\030\003 \001" +
-      "(\0132\024.google.protobuf.Any\"\217\001\n\017TOMVersionC" +
-      "heck\022\022\n\nfare_table\030\001 \001(\t\022\r\n\005users\030\002 \001(\t\022" +
-      "\024\n\014tom_software\030\003 \001(\t\022\021\n\tblacklist\030\004 \001(\t" +
-      "\022\020\n\010calander\030\005 \001(\t\022\016\n\006qr_key\030\006 \001(\t\022\016\n\006ti" +
-      "cket\030\007 \001(\t\"\203\002\n\023TOMPeripheralStatus\022\025\n\rsc" +
-      "u_connected\030\001 \001(\010\022\025\n\rccu_connected\030\002 \001(\010" +
-      "\022\030\n\020reader_connected\030\003 \001(\010\022\031\n\021scanner_co" +
-      "nnected\030\004 \001(\010\022 \n\030ticket_printer_connecte" +
-      "d\030\005 \001(\010\022!\n\031receipt_printer_connected\030\006 \001" +
-      "(\010\022\025\n\rpdu_connected\030\007 \001(\010\022\035\n\025cash_drawer" +
-      "_connected\030\010 \001(\010\022\016\n\006alarms\030\t \003(\t\"{\n\rTOMD" +
-      "eviceInfo\022\022\n\nequip_name\030\001 \001(\t\022\020\n\010equip_i" +
-      "d\030\002 \001(\t\022\031\n\021scu_last_txn_sync\030\003 \001(\t\022\031\n\021cc" +
-      "u_last_txn_sync\030\004 \001(\t\022\016\n\006tom_ip\030\005 \001(\tB%\n" +
-      "!org.network.monitorandcontrol.tomP\001b\006pr" +
-      "oto3"
+      "f.Any\"w\n\013TOMResponse\022\023\n\013status_code\030\001 \001(" +
+      "\005\022\021\n\terror_msg\030\002 \001(\t\022\024\n\014request_type\030\003 \001" +
+      "(\005\022*\n\014request_data\030\004 \001(\0132\024.google.protob" +
+      "uf.Any\"\217\001\n\017TOMVersionCheck\022\022\n\nfare_table" +
+      "\030\001 \001(\t\022\r\n\005users\030\002 \001(\t\022\024\n\014tom_software\030\003 " +
+      "\001(\t\022\021\n\tblacklist\030\004 \001(\t\022\020\n\010calander\030\005 \001(\t" +
+      "\022\016\n\006qr_key\030\006 \001(\t\022\016\n\006ticket\030\007 \001(\t\"\203\002\n\023TOM" +
+      "PeripheralStatus\022\025\n\rscu_connected\030\001 \001(\010\022" +
+      "\025\n\rccu_connected\030\002 \001(\010\022\030\n\020reader_connect" +
+      "ed\030\003 \001(\010\022\031\n\021scanner_connected\030\004 \001(\010\022 \n\030t" +
+      "icket_printer_connected\030\005 \001(\010\022!\n\031receipt" +
+      "_printer_connected\030\006 \001(\010\022\025\n\rpdu_connecte" +
+      "d\030\007 \001(\010\022\035\n\025cash_drawer_connected\030\010 \001(\010\022\016" +
+      "\n\006alarms\030\t \003(\t\"{\n\rTOMDeviceInfo\022\022\n\nequip" +
+      "_name\030\001 \001(\t\022\020\n\010equip_id\030\002 \001(\t\022\031\n\021scu_las" +
+      "t_txn_sync\030\003 \001(\t\022\031\n\021ccu_last_txn_sync\030\004 " +
+      "\001(\t\022\016\n\006tom_ip\030\005 \001(\tB%\n!org.network.monit" +
+      "orandcontrol.tomP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -87,7 +87,7 @@ public final class TOM {
     internal_static_org_monitoring_proto_TOMResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_monitoring_proto_TOMResponse_descriptor,
-        new java.lang.String[] { "StatusCode", "ErrorMsg", "RequestData", });
+        new java.lang.String[] { "StatusCode", "ErrorMsg", "RequestType", "RequestData", });
     internal_static_org_monitoring_proto_TOMVersionCheck_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_org_monitoring_proto_TOMVersionCheck_fieldAccessorTable = new

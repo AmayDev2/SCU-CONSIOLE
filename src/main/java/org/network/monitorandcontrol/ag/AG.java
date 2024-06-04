@@ -52,23 +52,23 @@ public final class AG {
       "/protobuf/any.proto\"f\n\tAGRequest\022\n\n\002ip\030\001" +
       " \001(\t\022\013\n\003uid\030\002 \001(\005\022\024\n\014request_type\030\003 \001(\005\022" +
       "*\n\014request_data\030\004 \001(\0132\024.google.protobuf." +
-      "Any\"`\n\nAGResponse\022\023\n\013status_code\030\001 \001(\005\022\021" +
-      "\n\terror_msg\030\002 \001(\t\022*\n\014request_data\030\003 \001(\0132" +
-      "\024.google.protobuf.Any\"\356\001\n\022AGPeripheralSt" +
-      "atus\022\025\n\rscu_connected\030\001 \001(\010\022\025\n\rccu_conne" +
-      "cted\030\002 \001(\010\022\025\n\rgcu_connected\030\003 \001(\010\022\031\n\021rea" +
-      "der1_connected\030\004 \001(\010\022\031\n\021reader2_connecte" +
-      "d\030\005 \001(\010\022\032\n\022scanner1_connected\030\006 \001(\010\022\032\n\022s" +
-      "canner2_connected\030\007 \001(\010\022\025\n\rups_connected" +
-      "\030\010 \001(\010\022\016\n\006alarms\030\t \003(\t\"{\n\014AGDeviceInfo\022\022" +
-      "\n\nequip_name\030\001 \001(\t\022\020\n\010equip_id\030\002 \001(\t\022\031\n\021" +
-      "scu_last_txn_sync\030\003 \001(\t\022\031\n\021ccu_last_txn_" +
-      "sync\030\004 \001(\t\022\017\n\007gate_ip\030\005 \001(\t\"\215\001\n\016AGVersio" +
-      "nCheck\022\022\n\nfare_table\030\001 \001(\t\022\r\n\005users\030\002 \001(" +
-      "\t\022\023\n\013ag_software\030\003 \001(\t\022\021\n\tblacklist\030\004 \001(" +
-      "\t\022\020\n\010calander\030\005 \001(\t\022\016\n\006qr_key\030\006 \001(\t\022\016\n\006t" +
-      "icket\030\007 \001(\tB$\n org.network.monitorandcon" +
-      "trol.agP\001b\006proto3"
+      "Any\"v\n\nAGResponse\022\023\n\013status_code\030\001 \001(\005\022\021" +
+      "\n\terror_msg\030\002 \001(\t\022\024\n\014request_type\030\003 \001(\005\022" +
+      "*\n\014request_data\030\004 \001(\0132\024.google.protobuf." +
+      "Any\"\356\001\n\022AGPeripheralStatus\022\025\n\rscu_connec" +
+      "ted\030\001 \001(\010\022\025\n\rccu_connected\030\002 \001(\010\022\025\n\rgcu_" +
+      "connected\030\003 \001(\010\022\031\n\021reader1_connected\030\004 \001" +
+      "(\010\022\031\n\021reader2_connected\030\005 \001(\010\022\032\n\022scanner" +
+      "1_connected\030\006 \001(\010\022\032\n\022scanner2_connected\030" +
+      "\007 \001(\010\022\025\n\rups_connected\030\010 \001(\010\022\016\n\006alarms\030\t" +
+      " \003(\t\"{\n\014AGDeviceInfo\022\022\n\nequip_name\030\001 \001(\t" +
+      "\022\020\n\010equip_id\030\002 \001(\t\022\031\n\021scu_last_txn_sync\030" +
+      "\003 \001(\t\022\031\n\021ccu_last_txn_sync\030\004 \001(\t\022\017\n\007gate" +
+      "_ip\030\005 \001(\t\"\215\001\n\016AGVersionCheck\022\022\n\nfare_tab" +
+      "le\030\001 \001(\t\022\r\n\005users\030\002 \001(\t\022\023\n\013ag_software\030\003" +
+      " \001(\t\022\021\n\tblacklist\030\004 \001(\t\022\020\n\010calander\030\005 \001(" +
+      "\t\022\016\n\006qr_key\030\006 \001(\t\022\016\n\006ticket\030\007 \001(\tB$\n org" +
+      ".network.monitorandcontrol.agP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -86,7 +86,7 @@ public final class AG {
     internal_static_org_monitoring_proto_AGResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_monitoring_proto_AGResponse_descriptor,
-        new java.lang.String[] { "StatusCode", "ErrorMsg", "RequestData", });
+        new java.lang.String[] { "StatusCode", "ErrorMsg", "RequestType", "RequestData", });
     internal_static_org_monitoring_proto_AGPeripheralStatus_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_org_monitoring_proto_AGPeripheralStatus_fieldAccessorTable = new

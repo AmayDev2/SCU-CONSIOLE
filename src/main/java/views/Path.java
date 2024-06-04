@@ -6,4 +6,5 @@ public interface Path {
      String TOM_VIEW="sles/tom.fxml";
      String EFO_VIEW="sles/efo.fxml";
      String TVM_VIEW = "sles/tvm.fxml";
+    String AG_VIEW = "sles/ag.fxml";
 }

@@ -60,7 +60,12 @@ private static final long serialVersionUID = 0L;
             errorMsg_ = s;
             break;
           }
-          case 26: {
+          case 24: {
+
+            requestType_ = input.readInt32();
+            break;
+          }
+          case 34: {
             com.google.protobuf.Any.Builder subBuilder = null;
             if (requestData_ != null) {
               subBuilder = requestData_.toBuilder();
@@ -151,24 +156,34 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int REQUEST_DATA_FIELD_NUMBER = 3;
+  public static final int REQUEST_TYPE_FIELD_NUMBER = 3;
+  private int requestType_;
+  /**
+   * <code>int32 request_type = 3;</code>
+   * @return The requestType.
+   */
+  public int getRequestType() {
+    return requestType_;
+  }
+
+  public static final int REQUEST_DATA_FIELD_NUMBER = 4;
   private com.google.protobuf.Any requestData_;
   /**
-   * <code>.google.protobuf.Any request_data = 3;</code>
+   * <code>.google.protobuf.Any request_data = 4;</code>
    * @return Whether the requestData field is set.
    */
   public boolean hasRequestData() {
     return requestData_ != null;
   }
   /**
-   * <code>.google.protobuf.Any request_data = 3;</code>
+   * <code>.google.protobuf.Any request_data = 4;</code>
    * @return The requestData.
    */
   public com.google.protobuf.Any getRequestData() {
     return requestData_ == null ? com.google.protobuf.Any.getDefaultInstance() : requestData_;
   }
   /**
-   * <code>.google.protobuf.Any request_data = 3;</code>
+   * <code>.google.protobuf.Any request_data = 4;</code>
    */
   public com.google.protobuf.AnyOrBuilder getRequestDataOrBuilder() {
     return getRequestData();
@@ -194,8 +209,11 @@ private static final long serialVersionUID = 0L;
     if (!getErrorMsgBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, errorMsg_);
     }
+    if (requestType_ != 0) {
+      output.writeInt32(3, requestType_);
+    }
     if (requestData_ != null) {
-      output.writeMessage(3, getRequestData());
+      output.writeMessage(4, getRequestData());
     }
     unknownFields.writeTo(output);
   }
@@ -213,9 +231,13 @@ private static final long serialVersionUID = 0L;
     if (!getErrorMsgBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, errorMsg_);
     }
+    if (requestType_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(3, requestType_);
+    }
     if (requestData_ != null) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(3, getRequestData());
+        .computeMessageSize(4, getRequestData());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -236,6 +258,8 @@ private static final long serialVersionUID = 0L;
         != other.getStatusCode()) return false;
     if (!getErrorMsg()
         .equals(other.getErrorMsg())) return false;
+    if (getRequestType()
+        != other.getRequestType()) return false;
     if (hasRequestData() != other.hasRequestData()) return false;
     if (hasRequestData()) {
       if (!getRequestData()
@@ -256,6 +280,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getStatusCode();
     hash = (37 * hash) + ERROR_MSG_FIELD_NUMBER;
     hash = (53 * hash) + getErrorMsg().hashCode();
+    hash = (37 * hash) + REQUEST_TYPE_FIELD_NUMBER;
+    hash = (53 * hash) + getRequestType();
     if (hasRequestData()) {
       hash = (37 * hash) + REQUEST_DATA_FIELD_NUMBER;
       hash = (53 * hash) + getRequestData().hashCode();
@@ -397,6 +423,8 @@ private static final long serialVersionUID = 0L;
 
       errorMsg_ = "";
 
+      requestType_ = 0;
+
       if (requestDataBuilder_ == null) {
         requestData_ = null;
       } else {
@@ -431,6 +459,7 @@ private static final long serialVersionUID = 0L;
       org.network.monitorandcontrol.ag.AGResponse result = new org.network.monitorandcontrol.ag.AGResponse(this);
       result.statusCode_ = statusCode_;
       result.errorMsg_ = errorMsg_;
+      result.requestType_ = requestType_;
       if (requestDataBuilder_ == null) {
         result.requestData_ = requestData_;
       } else {
@@ -490,6 +519,9 @@ private static final long serialVersionUID = 0L;
       if (!other.getErrorMsg().isEmpty()) {
         errorMsg_ = other.errorMsg_;
         onChanged();
+      }
+      if (other.getRequestType() != 0) {
+        setRequestType(other.getRequestType());
       }
       if (other.hasRequestData()) {
         mergeRequestData(other.getRequestData());
@@ -629,18 +661,48 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private int requestType_ ;
+    /**
+     * <code>int32 request_type = 3;</code>
+     * @return The requestType.
+     */
+    public int getRequestType() {
+      return requestType_;
+    }
+    /**
+     * <code>int32 request_type = 3;</code>
+     * @param value The requestType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRequestType(int value) {
+      
+      requestType_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 request_type = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearRequestType() {
+      
+      requestType_ = 0;
+      onChanged();
+      return this;
+    }
+
     private com.google.protobuf.Any requestData_;
     private com.google.protobuf.SingleFieldBuilderV3<
         com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> requestDataBuilder_;
     /**
-     * <code>.google.protobuf.Any request_data = 3;</code>
+     * <code>.google.protobuf.Any request_data = 4;</code>
      * @return Whether the requestData field is set.
      */
     public boolean hasRequestData() {
       return requestDataBuilder_ != null || requestData_ != null;
     }
     /**
-     * <code>.google.protobuf.Any request_data = 3;</code>
+     * <code>.google.protobuf.Any request_data = 4;</code>
      * @return The requestData.
      */
     public com.google.protobuf.Any getRequestData() {
@@ -651,7 +713,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.google.protobuf.Any request_data = 3;</code>
+     * <code>.google.protobuf.Any request_data = 4;</code>
      */
     public Builder setRequestData(com.google.protobuf.Any value) {
       if (requestDataBuilder_ == null) {
@@ -667,7 +729,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.google.protobuf.Any request_data = 3;</code>
+     * <code>.google.protobuf.Any request_data = 4;</code>
      */
     public Builder setRequestData(
         com.google.protobuf.Any.Builder builderForValue) {
@@ -681,7 +743,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.google.protobuf.Any request_data = 3;</code>
+     * <code>.google.protobuf.Any request_data = 4;</code>
      */
     public Builder mergeRequestData(com.google.protobuf.Any value) {
       if (requestDataBuilder_ == null) {
@@ -699,7 +761,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.google.protobuf.Any request_data = 3;</code>
+     * <code>.google.protobuf.Any request_data = 4;</code>
      */
     public Builder clearRequestData() {
       if (requestDataBuilder_ == null) {
@@ -713,7 +775,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.google.protobuf.Any request_data = 3;</code>
+     * <code>.google.protobuf.Any request_data = 4;</code>
      */
     public com.google.protobuf.Any.Builder getRequestDataBuilder() {
       
@@ -721,7 +783,7 @@ private static final long serialVersionUID = 0L;
       return getRequestDataFieldBuilder().getBuilder();
     }
     /**
-     * <code>.google.protobuf.Any request_data = 3;</code>
+     * <code>.google.protobuf.Any request_data = 4;</code>
      */
     public com.google.protobuf.AnyOrBuilder getRequestDataOrBuilder() {
       if (requestDataBuilder_ != null) {
@@ -732,7 +794,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.google.protobuf.Any request_data = 3;</code>
+     * <code>.google.protobuf.Any request_data = 4;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> 

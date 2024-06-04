@@ -1,0 +1,19 @@
+syntax = "proto3";
+package org.monitoring.proto;
+
+option java_package = "org.network.monitorandcontrol.scu_console";
+option java_multiple_files = true;
+
+message PushUpdates{
+    string ip = 1;
+    string device_id = 2;
+    string device_name = 3;
+    bool isconnected = 4;
+}
+
+message ConsoleStream{
+    string ip = 1;
+    string console_id = 2;
+    int32 status_code = 3;
+    string error_msg = 4;
+}

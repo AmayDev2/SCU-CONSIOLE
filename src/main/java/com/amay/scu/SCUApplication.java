@@ -1,6 +1,8 @@
 package com.amay.scu;
 //import com.amay.scu.sles.TOMAbstract;
 import com.amay.scu.controller.TOMController;
+import com.amay.scu.grpc.GrpcConfig;
+import com.amay.scu.service.GrpcService;
 import com.amay.scu.sles.SLEFactory;
 import com.amay.scu.sles.TOMAbstractFactory;
 import javafx.application.Application;
@@ -26,8 +28,17 @@ public class SCUApplication  extends Application {
     private TextArea messageArea;
 
     @Override
+    public void init() {
+      logger.debug("SCUApplication init method called");
+    }
+
+    @Override
     public void start(Stage primaryStage) {
 try {
+
+    GrpcService grpcService = new GrpcService(GrpcConfig.getAsyncStub());
+    grpcService.scStream();
+
 
 //     new TOMAbstractFactory().createTOM();
 //
@@ -48,7 +59,9 @@ try {
     primaryStage.setScene(scene);
     primaryStage.setTitle("Redis Subscriber");
 
-    primaryStage.setOnCloseRequest(e -> System.exit(0)); // Exit the application when the window is closed
+    primaryStage.setOnCloseRequest(e -> {
+        grpcService.shutdown();
+        System.exit(0);}); // Exit the application when the window is closed
 
     primaryStage.show();
 }catch (Exception e){
@@ -87,5 +100,9 @@ try {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    private void  clientCall(){
+        System.out.println("Client call");
     }
 }

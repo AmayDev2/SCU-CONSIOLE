@@ -15,4 +15,8 @@ public interface SLE {
     public void setName(String id);
 
     public void setMovingProperties(Button button, AnchorPane anchorPane);
+
+    Object getId();
+
+    public void updateStatus(SLEStatus status);
 }

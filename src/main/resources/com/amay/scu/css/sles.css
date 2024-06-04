@@ -11,3 +11,17 @@
     -fx-pref-height: 80;
     -fx-pref-width: 80;
 }
+
+.ag{
+    -fx-background-color: #f3f3b2;
+    -fx-border-color: #000000;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 5;
+    -fx-spacing: 5;
+    -fx-min-width: 80;
+    -fx-min-height: 20;
+    -fx-pref-height: 20;
+    -fx-pref-width: 80;
+}

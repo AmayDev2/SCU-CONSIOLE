@@ -5,21 +5,20 @@ import com.amay.scu.sles.components.SLE;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.nio.Buffer;
-
-public class TOMController implements SLE  {
+public class AGController  implements SLE {
+    Logger logger = LoggerFactory.getLogger(getClass());
+    @FXML
+    private Button ag;
 
     @FXML
     private Label name;
 
-    Logger logger = LoggerFactory.getLogger(TOMController.class);
-
-    @FXML
-    private Button tom;
 
     // Initial mouse cursor position
     private double initialX;
@@ -30,16 +29,16 @@ public class TOMController implements SLE  {
 
     @FXML
     void initialize() {
+        ag.setOnMouseClicked(this::handleMouseClick);
 
 
     }
     @Override
     public boolean setScale(float x, float y, float z) {
         logger.debug("Setting scale of EFO to x:{} y:{} z:{}",x,y,z);
-        tom.setLayoutX(x);
-        tom.setLayoutX(y);
-//        tom.setScaleZ(z);
-
+        ag.setScaleX(x);
+        ag.setScaleY(y);
+        ag.setScaleZ(z);
         return false;
     }
 
@@ -50,8 +49,8 @@ public class TOMController implements SLE  {
 
     @Override
     public boolean setStatus(SLEStatus status) {
-        logger.debug("Setting status of TOM to {}",status.getStatus());
-        tom.setStyle(status.getStatus());
+        logger.debug("Setting status of EFO to {}",status.getStatus());
+        ag.setStyle(status.getStatus());
 
         return false;
     }
@@ -88,19 +87,29 @@ public class TOMController implements SLE  {
             if (newLayoutY >= 0 && newLayoutY + button.getHeight() <= anchorPane.getHeight()) {
                 button.setLayoutY(newLayoutY);
             }
+
+            logger.debug("Moving button {} to x:{} y:{}",ag.getId(),newLayoutX,newLayoutY);
         });
 
     }
 
     @Override
     public Object getId() {
-        return name.getText();
+        return null;
     }
 
     @Override
     public void updateStatus(SLEStatus status) {
-        setStatus(status);
+
     }
 
-
+    private void handleMouseClick(MouseEvent event) {
+        if (event.getButton() == MouseButton.PRIMARY) {
+            // Handle left click
+            logger.debug("Left click detected on button");
+        } else if (event.getButton() == MouseButton.SECONDARY) {
+            // Handle right click
+            logger.debug("Right click detected on button");
+        }
+    }
 }

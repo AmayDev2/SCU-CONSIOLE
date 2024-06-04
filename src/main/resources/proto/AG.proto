@@ -16,7 +16,8 @@ message AGRequest{
 message AGResponse{
     int32 status_code = 1;
     string error_msg = 2;
-    google.protobuf.Any request_data = 3;
+    int32 request_type = 3;
+    google.protobuf.Any request_data = 4;
 }
 
 message AGPeripheralStatus{
