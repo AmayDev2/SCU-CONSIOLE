@@ -49,7 +49,7 @@ public class AGController  implements SLE {
 
     @Override
     public boolean setStatus(SLEStatus status) {
-        logger.debug("Setting status of EFO to {}",status.getStatus());
+        logger.debug("Setting status of AG to {}",status.getStatus());
         ag.setStyle(status.getStatus());
 
         return false;
@@ -95,11 +95,12 @@ public class AGController  implements SLE {
 
     @Override
     public Object getId() {
-        return null;
+        return ag.getId();
     }
 
     @Override
     public void updateStatus(SLEStatus status) {
+        setStatus(status);
 
     }
 

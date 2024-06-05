@@ -1,0 +1,51 @@
+syntax = "proto3";
+package org.monitoring.proto;
+
+import "google/protobuf/any.proto";
+
+option java_package = "org.network.monitorandcontrol.ag";
+option java_multiple_files = true;
+
+message AGRequest{
+    string ip = 1;
+    int32 uid = 2;
+    int32 request_type = 3;
+    google.protobuf.Any request_data = 4;
+}
+
+message AGResponse{
+    int32 status_code = 1;
+    string error_msg = 2;
+    int32 request_type = 3;
+    google.protobuf.Any request_data = 4;
+}
+
+message AGPeripheralStatus{
+    bool scu_connected = 1;
+    bool ccu_connected = 2;
+    bool gcu_connected = 3;
+    bool reader1_connected = 4;
+    bool reader2_connected = 5;
+    bool scanner1_connected = 6;
+    bool scanner2_connected = 7;
+    bool ups_connected = 8;
+    repeated string alarms = 9;
+}
+
+message AGDeviceInfo{
+    string equip_name = 1; 
+    string equip_id = 2; 
+    string scu_last_txn_sync = 3; //colon seperated last_txn:last_sync
+    string ccu_last_txn_sync = 4; //colon seperated last_txn:last_sync
+    string gate_ip = 5;
+}
+
+message AGVersionCheck{
+    string fare_table = 1;
+    string users = 2;
+    string ag_software = 3;
+    string blacklist = 4;
+    string calander = 5;
+    string qr_key = 6;
+    string ticket = 7;
+}

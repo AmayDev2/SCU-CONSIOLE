@@ -1,28 +1,28 @@
 package com.amay.scu.listenner;
 
-import com.amay.scu.controller.StationDynamicMapView;
+import com.amay.scu.controller.StationDynamicMapController;
 import com.amay.scu.enums.SLEStatus;
 
 public class StationDynamicMapViewListener {
 
     private static StationDynamicMapViewListener Instance ;
 
-    private StationDynamicMapView stationDynamicMapView;
+    private StationDynamicMapController stationDynamicMapController;
 
     private StationDynamicMapViewListener() {
         throw new IllegalStateException("Utility class");
     }
-    private StationDynamicMapViewListener(StationDynamicMapView stationDynamicMapView) {
-        this.stationDynamicMapView = stationDynamicMapView;
+    private StationDynamicMapViewListener(StationDynamicMapController stationDynamicMapController) {
+        this.stationDynamicMapController = stationDynamicMapController;
     }
 
 
 
-    public static StationDynamicMapViewListener initialize(StationDynamicMapView stationDynamicMapView) {
+    public static StationDynamicMapViewListener initialize(StationDynamicMapController stationDynamicMapController) {
         if (Instance == null) {
-            Instance = new StationDynamicMapViewListener(stationDynamicMapView);
+            Instance = new StationDynamicMapViewListener(stationDynamicMapController);
         }
-        Instance.stationDynamicMapView = stationDynamicMapView;
+        Instance.stationDynamicMapController = stationDynamicMapController;
         return Instance;
     }
 
@@ -32,7 +32,7 @@ public class StationDynamicMapViewListener {
 
     public void updateSLEStatus(String sleId, boolean status) {
 
-        stationDynamicMapView.updateSLEStatus(sleId, status? SLEStatus.ONLINE : SLEStatus.OFFLINE);
+        stationDynamicMapController.updateSLEStatus(sleId, status? SLEStatus.ONLINE : SLEStatus.OFFLINE);
     }
 
 

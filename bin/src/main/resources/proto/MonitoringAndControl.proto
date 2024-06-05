@@ -1,0 +1,16 @@
+syntax = "proto3";
+package org.monitoring.proto;
+
+import "TOM.proto";
+import "AG.proto";
+
+import "SC.proto";
+
+option java_package = "org.network.monitorandcontrol";
+option java_multiple_files = true;
+
+service MonitorAndControl {
+    rpc AGStream(stream AGRequest) returns (stream AGResponse) {}
+    rpc TOMStream(stream TOMRequest) returns (stream TOMResponse){} 
+    rpc SCStream(stream ConsoleStream) returns (stream PushUpdates){}
+}

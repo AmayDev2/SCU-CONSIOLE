@@ -20,10 +20,12 @@ module com.amay.scu {
     requires io.grpc.stub;
     requires io.grpc.protobuf;
     requires protobuf.java;
+    requires java.sql;
+    requires static lombok;
 
     opens com.amay.scu to javafx.fxml;
     exports com.amay.scu;
-    exports com.amay.scu.controller.station_map;
+
     exports com.amay.scu.controller;
     opens com.amay.scu.controller to javafx.fxml;
 }

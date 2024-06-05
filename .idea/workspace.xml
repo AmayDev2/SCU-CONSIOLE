@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="315d97bc-7335-4bbd-a14f-28c409037fec" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/SCUApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/SCUApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/ViewFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/AGController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/AGController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/StationDynamicMapView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/station_map/StationMapController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/enums/SLEStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/enums/SLEStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/listenner/StationDynamicMapViewListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/listenner/StationDynamicMapViewListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/MonitorAndControlGrpc.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/MonitoringAndControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AG.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AGDeviceInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AGDeviceInfoOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AGPeripheralStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AGPeripheralStatusOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AGRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AGRequestOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AGResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AGResponseOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AGVersionCheck.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AGVersionCheckOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/scu_console/ConsoleStream.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/scu_console/ConsoleStreamOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/scu_console/PushUpdates.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/scu_console/PushUpdatesOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/scu_console/SC.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMDeviceInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMDeviceInfoOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMPeripheralStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMPeripheralStatusOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMRequestOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMResponseOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMVersionCheck.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMVersionCheckOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/Path.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views2/Path.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/station_map/station-dynamic-map-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/station_map/station-dynamic-map-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/station_map/station-map-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/amay/scu/sles/SLEFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/amay/scu/sles/SLEFactoryTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="Record" />
+        <option value="Interface" />
+        <option value="package-info" />
+        <option value="FxmlFile" />
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-websocket/5.3.15/spring-websocket-5.3.15-sources.jar!/org/springframework/web/socket/client/standard/StandardWebSocketClient.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2eUO7yj52etfMQeWrAypQz65tHi" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.SCUApplication.executor": "Run",
+    "JUnit.SLEFactoryTest.createSLE.executor": "Run",
+    "JUnit.StationDevicesRepositoryTest.testGetAllAGDevices.executor": "Run",
+    "JUnit.StationDevicesRepositoryTest.testGetAllStationDevices.executor": "Run",
+    "JUnit.StationDevicesRepositoryTest.testGetAllTOMDevices.executor": "Run",
+    "Maven.scu [clean].executor": "Run",
+    "Maven.scu [compile].executor": "Run",
+    "Maven.scu [install].executor": "Run",
+    "Maven.scu [test].executor": "Run",
+    "Maven.scu [validate].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers": "true",
+    "git-widget-placeholder": "db-connection",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/Amay Technosystems/SCU/src/main/resources/proto",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.28735632",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Amay Technosystems\SCU\src\main\resources\proto" />
+      <recent name="E:\Amay Technosystems\SCU\src\main\resources" />
+      <recent name="E:\Amay Technosystems\SCU\src\main\java" />
+      <recent name="E:\Amay Technosystems\SCU\src\main\resources\com\amay\scu\sles" />
+      <recent name="E:\Amay Technosystems\SCU\src\main\resources\com\amay\scu\images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Amay Technosystems\SCU\src\main\resources\proto" />
+      <recent name="E:\Amay Technosystems\SCU\src\main\resources\com\amay\scu\station_map" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.amay.scu" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.amay.scu.repository" />
+      <recent name="com.amay.scu.sles" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.amay.scu.repository" />
+      <recent name="com.amay.scu.database" />
+      <recent name="com.amay.scu.sles" />
+      <recent name="com.amay.scu.grpc" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.SCUApplication">
+    <configuration name="SCUApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.amay.scu.SCUApplication" />
+      <module name="scu" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.amay.scu.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SLEFactoryTest.createSLE" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="scu" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.amay.scu.sles.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.amay.scu.sles" />
+      <option name="MAIN_CLASS_NAME" value="com.amay.scu.sles.SLEFactoryTest" />
+      <option name="METHOD_NAME" value="createSLE" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StationDevicesRepositoryTest.testGetAllAGDevices" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="scu" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.amay.scu.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.amay.scu.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.amay.scu.repository.StationDevicesRepositoryTest" />
+      <option name="METHOD_NAME" value="testGetAllAGDevices" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StationDevicesRepositoryTest.testGetAllStationDevices" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="scu" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.amay.scu.dto.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.amay.scu.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.amay.scu.repository.StationDevicesRepositoryTest" />
+      <option name="METHOD_NAME" value="testGetAllStationDevices" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StationDevicesRepositoryTest.testGetAllTOMDevices" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="scu" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.amay.scu.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.amay.scu.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.amay.scu.repository.StationDevicesRepositoryTest" />
+      <option name="METHOD_NAME" value="testGetAllTOMDevices" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="SCU" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="SCU" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.SCUApplication" />
+        <item itemvalue="JUnit.StationDevicesRepositoryTest.testGetAllStationDevices" />
+        <item itemvalue="JUnit.StationDevicesRepositoryTest.testGetAllTOMDevices" />
+        <item itemvalue="JUnit.StationDevicesRepositoryTest.testGetAllAGDevices" />
+        <item itemvalue="JUnit.SLEFactoryTest.createSLE" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="315d97bc-7335-4bbd-a14f-28c409037fec" name="Changes" comment="" />
+      <created>1711955529725</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1711955529725</updated>
+      <workItem from="1711955530803" duration="12413000" />
+      <workItem from="1712084139894" duration="2590000" />
+      <workItem from="1712120827061" duration="4527000" />
+      <workItem from="1712133958333" duration="3371000" />
+      <workItem from="1712204835402" duration="1259000" />
+      <workItem from="1712227633921" duration="644000" />
+      <workItem from="1712234480560" duration="1869000" />
+      <workItem from="1712298658760" duration="2431000" />
+      <workItem from="1712433793326" duration="8640000" />
+      <workItem from="1712687692360" duration="284000" />
+      <workItem from="1712899208654" duration="579000" />
+      <workItem from="1715659209379" duration="1850000" />
+      <workItem from="1715677430930" duration="578000" />
+      <workItem from="1715698625681" duration="596000" />
+      <workItem from="1715746567290" duration="499000" />
+      <workItem from="1715839684974" duration="592000" />
+      <workItem from="1716277426498" duration="1305000" />
+      <workItem from="1716308606627" duration="321000" />
+      <workItem from="1716351667760" duration="596000" />
+      <workItem from="1716370439526" duration="183000" />
+      <workItem from="1716635075208" duration="20594000" />
+      <workItem from="1716795083191" duration="8342000" />
+      <workItem from="1716871407606" duration="14204000" />
+      <workItem from="1716978062408" duration="18000" />
+      <workItem from="1716980784792" duration="1893000" />
+      <workItem from="1717065044868" duration="10021000" />
+      <workItem from="1717174642850" duration="1677000" />
+      <workItem from="1717445409839" duration="2527000" />
+      <workItem from="1717492933811" duration="54000" />
+      <workItem from="1717493006730" duration="6400000" />
+      <workItem from="1717566668591" duration="867000" />
+      <workItem from="1717576768331" duration="2043000" />
+      <workItem from="1717578902287" duration="2766000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/controller/EFOController.java</url>
+          <line>100</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/controller/AGController.java</url>
+          <line>102</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
