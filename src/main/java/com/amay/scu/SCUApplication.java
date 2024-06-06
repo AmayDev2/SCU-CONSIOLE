@@ -4,6 +4,7 @@ package com.amay.scu;
 //import com.amay.scu.service.GrpcService;
 
 import com.amay.scu.grpc.GrpcConfig;
+//import com.amay.scu.service.GrpcService;
 import com.amay.scu.service.GrpcService;
 import javafx.application.Application;
         import javafx.fxml.FXMLLoader;
@@ -15,7 +16,7 @@ import org.slf4j.LoggerFactory;
 
 public class SCUApplication  extends Application {
 
-     private static Logger logger = LoggerFactory.getLogger(SCUApplication.class);
+     private static final Logger logger = LoggerFactory.getLogger(SCUApplication.class);
 
 
     @Override
@@ -28,7 +29,10 @@ public class SCUApplication  extends Application {
 try {
 
     GrpcService grpcService = new GrpcService(GrpcConfig.getAsyncStub());
-    grpcService.scStream();
+    grpcService.initialConnectionRequest(null);
+    grpcService.initialConnectionRequest(null);
+    grpcService.initialConnectionRequest(null);
+
 
     FXMLLoader loader = new FXMLLoader(getClass().getResource(Path.SCU_DYNAMIC_VIEW));
     Scene scene=new Scene(loader.load(), 1000, 500);
@@ -38,7 +42,7 @@ try {
 //    primaryStage.setTitle("Redis Subscriber");
 
     primaryStage.setOnCloseRequest(e -> {
-//        grpcService.shutdown();
+        grpcService.shutdown();
         System.exit(0);}); // Exit the application when the window is closed
 
     primaryStage.show();

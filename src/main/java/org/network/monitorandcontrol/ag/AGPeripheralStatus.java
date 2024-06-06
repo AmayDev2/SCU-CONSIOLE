@@ -4,6 +4,12 @@
 package org.network.monitorandcontrol.ag;
 
 /**
+ * <pre>
+ *Monitoring Protocols
+ *AGPeripheralStatus give information about the peripherals connection or disconnection
+ *request_type  - 2
+ * </pre>
+ *
  * Protobuf type {@code org.monitoring.proto.AGPeripheralStatus}
  */
 public  final class AGPeripheralStatus extends
@@ -16,7 +22,6 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private AGPeripheralStatus() {
-    alarms_ = com.google.protobuf.LazyStringArrayList.EMPTY;
   }
 
   @java.lang.Override
@@ -39,7 +44,6 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
-    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -90,15 +94,6 @@ private static final long serialVersionUID = 0L;
             upsConnected_ = input.readBool();
             break;
           }
-          case 74: {
-            java.lang.String s = input.readStringRequireUtf8();
-            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-              alarms_ = new com.google.protobuf.LazyStringArrayList();
-              mutable_bitField0_ |= 0x00000001;
-            }
-            alarms_.add(s);
-            break;
-          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -114,9 +109,6 @@ private static final long serialVersionUID = 0L;
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e).setUnfinishedMessage(this);
     } finally {
-      if (((mutable_bitField0_ & 0x00000001) != 0)) {
-        alarms_ = alarms_.getUnmodifiableView();
-      }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
@@ -214,41 +206,6 @@ private static final long serialVersionUID = 0L;
     return upsConnected_;
   }
 
-  public static final int ALARMS_FIELD_NUMBER = 9;
-  private com.google.protobuf.LazyStringList alarms_;
-  /**
-   * <code>repeated string alarms = 9;</code>
-   * @return A list containing the alarms.
-   */
-  public com.google.protobuf.ProtocolStringList
-      getAlarmsList() {
-    return alarms_;
-  }
-  /**
-   * <code>repeated string alarms = 9;</code>
-   * @return The count of alarms.
-   */
-  public int getAlarmsCount() {
-    return alarms_.size();
-  }
-  /**
-   * <code>repeated string alarms = 9;</code>
-   * @param index The index of the element to return.
-   * @return The alarms at the given index.
-   */
-  public java.lang.String getAlarms(int index) {
-    return alarms_.get(index);
-  }
-  /**
-   * <code>repeated string alarms = 9;</code>
-   * @param index The index of the value to return.
-   * @return The bytes of the alarms at the given index.
-   */
-  public com.google.protobuf.ByteString
-      getAlarmsBytes(int index) {
-    return alarms_.getByteString(index);
-  }
-
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -286,9 +243,6 @@ private static final long serialVersionUID = 0L;
     }
     if (upsConnected_ != false) {
       output.writeBool(8, upsConnected_);
-    }
-    for (int i = 0; i < alarms_.size(); i++) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 9, alarms_.getRaw(i));
     }
     unknownFields.writeTo(output);
   }
@@ -331,14 +285,6 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(8, upsConnected_);
     }
-    {
-      int dataSize = 0;
-      for (int i = 0; i < alarms_.size(); i++) {
-        dataSize += computeStringSizeNoTag(alarms_.getRaw(i));
-      }
-      size += dataSize;
-      size += 1 * getAlarmsList().size();
-    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -370,8 +316,6 @@ private static final long serialVersionUID = 0L;
         != other.getScanner2Connected()) return false;
     if (getUpsConnected()
         != other.getUpsConnected()) return false;
-    if (!getAlarmsList()
-        .equals(other.getAlarmsList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -407,10 +351,6 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + UPS_CONNECTED_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getUpsConnected());
-    if (getAlarmsCount() > 0) {
-      hash = (37 * hash) + ALARMS_FIELD_NUMBER;
-      hash = (53 * hash) + getAlarmsList().hashCode();
-    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -507,6 +447,12 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   *Monitoring Protocols
+   *AGPeripheralStatus give information about the peripherals connection or disconnection
+   *request_type  - 2
+   * </pre>
+   *
    * Protobuf type {@code org.monitoring.proto.AGPeripheralStatus}
    */
   public static final class Builder extends
@@ -560,8 +506,6 @@ private static final long serialVersionUID = 0L;
 
       upsConnected_ = false;
 
-      alarms_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      bitField0_ = (bitField0_ & ~0x00000001);
       return this;
     }
 
@@ -588,7 +532,6 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public org.network.monitorandcontrol.ag.AGPeripheralStatus buildPartial() {
       org.network.monitorandcontrol.ag.AGPeripheralStatus result = new org.network.monitorandcontrol.ag.AGPeripheralStatus(this);
-      int from_bitField0_ = bitField0_;
       result.scuConnected_ = scuConnected_;
       result.ccuConnected_ = ccuConnected_;
       result.gcuConnected_ = gcuConnected_;
@@ -597,11 +540,6 @@ private static final long serialVersionUID = 0L;
       result.scanner1Connected_ = scanner1Connected_;
       result.scanner2Connected_ = scanner2Connected_;
       result.upsConnected_ = upsConnected_;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        alarms_ = alarms_.getUnmodifiableView();
-        bitField0_ = (bitField0_ & ~0x00000001);
-      }
-      result.alarms_ = alarms_;
       onBuilt();
       return result;
     }
@@ -674,16 +612,6 @@ private static final long serialVersionUID = 0L;
       if (other.getUpsConnected() != false) {
         setUpsConnected(other.getUpsConnected());
       }
-      if (!other.alarms_.isEmpty()) {
-        if (alarms_.isEmpty()) {
-          alarms_ = other.alarms_;
-          bitField0_ = (bitField0_ & ~0x00000001);
-        } else {
-          ensureAlarmsIsMutable();
-          alarms_.addAll(other.alarms_);
-        }
-        onChanged();
-      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -712,7 +640,6 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    private int bitField0_;
 
     private boolean scuConnected_ ;
     /**
@@ -950,116 +877,6 @@ private static final long serialVersionUID = 0L;
     public Builder clearUpsConnected() {
       
       upsConnected_ = false;
-      onChanged();
-      return this;
-    }
-
-    private com.google.protobuf.LazyStringList alarms_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-    private void ensureAlarmsIsMutable() {
-      if (!((bitField0_ & 0x00000001) != 0)) {
-        alarms_ = new com.google.protobuf.LazyStringArrayList(alarms_);
-        bitField0_ |= 0x00000001;
-       }
-    }
-    /**
-     * <code>repeated string alarms = 9;</code>
-     * @return A list containing the alarms.
-     */
-    public com.google.protobuf.ProtocolStringList
-        getAlarmsList() {
-      return alarms_.getUnmodifiableView();
-    }
-    /**
-     * <code>repeated string alarms = 9;</code>
-     * @return The count of alarms.
-     */
-    public int getAlarmsCount() {
-      return alarms_.size();
-    }
-    /**
-     * <code>repeated string alarms = 9;</code>
-     * @param index The index of the element to return.
-     * @return The alarms at the given index.
-     */
-    public java.lang.String getAlarms(int index) {
-      return alarms_.get(index);
-    }
-    /**
-     * <code>repeated string alarms = 9;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the alarms at the given index.
-     */
-    public com.google.protobuf.ByteString
-        getAlarmsBytes(int index) {
-      return alarms_.getByteString(index);
-    }
-    /**
-     * <code>repeated string alarms = 9;</code>
-     * @param index The index to set the value at.
-     * @param value The alarms to set.
-     * @return This builder for chaining.
-     */
-    public Builder setAlarms(
-        int index, java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureAlarmsIsMutable();
-      alarms_.set(index, value);
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>repeated string alarms = 9;</code>
-     * @param value The alarms to add.
-     * @return This builder for chaining.
-     */
-    public Builder addAlarms(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureAlarmsIsMutable();
-      alarms_.add(value);
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>repeated string alarms = 9;</code>
-     * @param values The alarms to add.
-     * @return This builder for chaining.
-     */
-    public Builder addAllAlarms(
-        java.lang.Iterable<java.lang.String> values) {
-      ensureAlarmsIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(
-          values, alarms_);
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>repeated string alarms = 9;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearAlarms() {
-      alarms_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      bitField0_ = (bitField0_ & ~0x00000001);
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>repeated string alarms = 9;</code>
-     * @param value The bytes of the alarms to add.
-     * @return This builder for chaining.
-     */
-    public Builder addAlarmsBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      ensureAlarmsIsMutable();
-      alarms_.add(value);
       onChanged();
       return this;
     }

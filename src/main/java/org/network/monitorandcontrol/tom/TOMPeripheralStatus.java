@@ -16,7 +16,6 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private TOMPeripheralStatus() {
-    alarms_ = com.google.protobuf.LazyStringArrayList.EMPTY;
   }
 
   @java.lang.Override
@@ -39,7 +38,6 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
-    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -72,31 +70,22 @@ private static final long serialVersionUID = 0L;
           }
           case 40: {
 
-            ticketPrinterConnected_ = input.readBool();
+            printerConnected_ = input.readBool();
             break;
           }
           case 48: {
 
-            receiptPrinterConnected_ = input.readBool();
+            pduConnected_ = input.readBool();
             break;
           }
           case 56: {
 
-            pduConnected_ = input.readBool();
+            cashDrawerConnected_ = input.readBool();
             break;
           }
           case 64: {
 
-            cashDrawerConnected_ = input.readBool();
-            break;
-          }
-          case 74: {
-            java.lang.String s = input.readStringRequireUtf8();
-            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-              alarms_ = new com.google.protobuf.LazyStringArrayList();
-              mutable_bitField0_ |= 0x00000001;
-            }
-            alarms_.add(s);
+            upsConnected_ = input.readBool();
             break;
           }
           default: {
@@ -114,9 +103,6 @@ private static final long serialVersionUID = 0L;
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e).setUnfinishedMessage(this);
     } finally {
-      if (((mutable_bitField0_ & 0x00000001) != 0)) {
-        alarms_ = alarms_.getUnmodifiableView();
-      }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
@@ -174,79 +160,44 @@ private static final long serialVersionUID = 0L;
     return scannerConnected_;
   }
 
-  public static final int TICKET_PRINTER_CONNECTED_FIELD_NUMBER = 5;
-  private boolean ticketPrinterConnected_;
+  public static final int PRINTER_CONNECTED_FIELD_NUMBER = 5;
+  private boolean printerConnected_;
   /**
-   * <code>bool ticket_printer_connected = 5;</code>
-   * @return The ticketPrinterConnected.
+   * <code>bool printer_connected = 5;</code>
+   * @return The printerConnected.
    */
-  public boolean getTicketPrinterConnected() {
-    return ticketPrinterConnected_;
+  public boolean getPrinterConnected() {
+    return printerConnected_;
   }
 
-  public static final int RECEIPT_PRINTER_CONNECTED_FIELD_NUMBER = 6;
-  private boolean receiptPrinterConnected_;
-  /**
-   * <code>bool receipt_printer_connected = 6;</code>
-   * @return The receiptPrinterConnected.
-   */
-  public boolean getReceiptPrinterConnected() {
-    return receiptPrinterConnected_;
-  }
-
-  public static final int PDU_CONNECTED_FIELD_NUMBER = 7;
+  public static final int PDU_CONNECTED_FIELD_NUMBER = 6;
   private boolean pduConnected_;
   /**
-   * <code>bool pdu_connected = 7;</code>
+   * <code>bool pdu_connected = 6;</code>
    * @return The pduConnected.
    */
   public boolean getPduConnected() {
     return pduConnected_;
   }
 
-  public static final int CASH_DRAWER_CONNECTED_FIELD_NUMBER = 8;
+  public static final int CASH_DRAWER_CONNECTED_FIELD_NUMBER = 7;
   private boolean cashDrawerConnected_;
   /**
-   * <code>bool cash_drawer_connected = 8;</code>
+   * <code>bool cash_drawer_connected = 7;</code>
    * @return The cashDrawerConnected.
    */
   public boolean getCashDrawerConnected() {
     return cashDrawerConnected_;
   }
 
-  public static final int ALARMS_FIELD_NUMBER = 9;
-  private com.google.protobuf.LazyStringList alarms_;
+  public static final int UPS_CONNECTED_FIELD_NUMBER = 8;
+  private boolean upsConnected_;
   /**
-   * <code>repeated string alarms = 9;</code>
-   * @return A list containing the alarms.
+   * <code>bool ups_connected = 8;</code>
+   * @return The upsConnected.
    */
-  public com.google.protobuf.ProtocolStringList
-      getAlarmsList() {
-    return alarms_;
-  }
-  /**
-   * <code>repeated string alarms = 9;</code>
-   * @return The count of alarms.
-   */
-  public int getAlarmsCount() {
-    return alarms_.size();
-  }
-  /**
-   * <code>repeated string alarms = 9;</code>
-   * @param index The index of the element to return.
-   * @return The alarms at the given index.
-   */
-  public java.lang.String getAlarms(int index) {
-    return alarms_.get(index);
-  }
-  /**
-   * <code>repeated string alarms = 9;</code>
-   * @param index The index of the value to return.
-   * @return The bytes of the alarms at the given index.
-   */
-  public com.google.protobuf.ByteString
-      getAlarmsBytes(int index) {
-    return alarms_.getByteString(index);
+  public boolean getUpsConnected() {
+    return upsConnected_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -275,20 +226,17 @@ private static final long serialVersionUID = 0L;
     if (scannerConnected_ != false) {
       output.writeBool(4, scannerConnected_);
     }
-    if (ticketPrinterConnected_ != false) {
-      output.writeBool(5, ticketPrinterConnected_);
-    }
-    if (receiptPrinterConnected_ != false) {
-      output.writeBool(6, receiptPrinterConnected_);
+    if (printerConnected_ != false) {
+      output.writeBool(5, printerConnected_);
     }
     if (pduConnected_ != false) {
-      output.writeBool(7, pduConnected_);
+      output.writeBool(6, pduConnected_);
     }
     if (cashDrawerConnected_ != false) {
-      output.writeBool(8, cashDrawerConnected_);
+      output.writeBool(7, cashDrawerConnected_);
     }
-    for (int i = 0; i < alarms_.size(); i++) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 9, alarms_.getRaw(i));
+    if (upsConnected_ != false) {
+      output.writeBool(8, upsConnected_);
     }
     unknownFields.writeTo(output);
   }
@@ -315,29 +263,21 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(4, scannerConnected_);
     }
-    if (ticketPrinterConnected_ != false) {
+    if (printerConnected_ != false) {
       size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(5, ticketPrinterConnected_);
-    }
-    if (receiptPrinterConnected_ != false) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(6, receiptPrinterConnected_);
+        .computeBoolSize(5, printerConnected_);
     }
     if (pduConnected_ != false) {
       size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(7, pduConnected_);
+        .computeBoolSize(6, pduConnected_);
     }
     if (cashDrawerConnected_ != false) {
       size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(8, cashDrawerConnected_);
+        .computeBoolSize(7, cashDrawerConnected_);
     }
-    {
-      int dataSize = 0;
-      for (int i = 0; i < alarms_.size(); i++) {
-        dataSize += computeStringSizeNoTag(alarms_.getRaw(i));
-      }
-      size += dataSize;
-      size += 1 * getAlarmsList().size();
+    if (upsConnected_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(8, upsConnected_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -362,16 +302,14 @@ private static final long serialVersionUID = 0L;
         != other.getReaderConnected()) return false;
     if (getScannerConnected()
         != other.getScannerConnected()) return false;
-    if (getTicketPrinterConnected()
-        != other.getTicketPrinterConnected()) return false;
-    if (getReceiptPrinterConnected()
-        != other.getReceiptPrinterConnected()) return false;
+    if (getPrinterConnected()
+        != other.getPrinterConnected()) return false;
     if (getPduConnected()
         != other.getPduConnected()) return false;
     if (getCashDrawerConnected()
         != other.getCashDrawerConnected()) return false;
-    if (!getAlarmsList()
-        .equals(other.getAlarmsList())) return false;
+    if (getUpsConnected()
+        != other.getUpsConnected()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -395,22 +333,18 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + SCANNER_CONNECTED_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getScannerConnected());
-    hash = (37 * hash) + TICKET_PRINTER_CONNECTED_FIELD_NUMBER;
+    hash = (37 * hash) + PRINTER_CONNECTED_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-        getTicketPrinterConnected());
-    hash = (37 * hash) + RECEIPT_PRINTER_CONNECTED_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-        getReceiptPrinterConnected());
+        getPrinterConnected());
     hash = (37 * hash) + PDU_CONNECTED_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getPduConnected());
     hash = (37 * hash) + CASH_DRAWER_CONNECTED_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getCashDrawerConnected());
-    if (getAlarmsCount() > 0) {
-      hash = (37 * hash) + ALARMS_FIELD_NUMBER;
-      hash = (53 * hash) + getAlarmsList().hashCode();
-    }
+    hash = (37 * hash) + UPS_CONNECTED_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getUpsConnected());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -552,16 +486,14 @@ private static final long serialVersionUID = 0L;
 
       scannerConnected_ = false;
 
-      ticketPrinterConnected_ = false;
-
-      receiptPrinterConnected_ = false;
+      printerConnected_ = false;
 
       pduConnected_ = false;
 
       cashDrawerConnected_ = false;
 
-      alarms_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      bitField0_ = (bitField0_ & ~0x00000001);
+      upsConnected_ = false;
+
       return this;
     }
 
@@ -588,20 +520,14 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public org.network.monitorandcontrol.tom.TOMPeripheralStatus buildPartial() {
       org.network.monitorandcontrol.tom.TOMPeripheralStatus result = new org.network.monitorandcontrol.tom.TOMPeripheralStatus(this);
-      int from_bitField0_ = bitField0_;
       result.scuConnected_ = scuConnected_;
       result.ccuConnected_ = ccuConnected_;
       result.readerConnected_ = readerConnected_;
       result.scannerConnected_ = scannerConnected_;
-      result.ticketPrinterConnected_ = ticketPrinterConnected_;
-      result.receiptPrinterConnected_ = receiptPrinterConnected_;
+      result.printerConnected_ = printerConnected_;
       result.pduConnected_ = pduConnected_;
       result.cashDrawerConnected_ = cashDrawerConnected_;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        alarms_ = alarms_.getUnmodifiableView();
-        bitField0_ = (bitField0_ & ~0x00000001);
-      }
-      result.alarms_ = alarms_;
+      result.upsConnected_ = upsConnected_;
       onBuilt();
       return result;
     }
@@ -662,11 +588,8 @@ private static final long serialVersionUID = 0L;
       if (other.getScannerConnected() != false) {
         setScannerConnected(other.getScannerConnected());
       }
-      if (other.getTicketPrinterConnected() != false) {
-        setTicketPrinterConnected(other.getTicketPrinterConnected());
-      }
-      if (other.getReceiptPrinterConnected() != false) {
-        setReceiptPrinterConnected(other.getReceiptPrinterConnected());
+      if (other.getPrinterConnected() != false) {
+        setPrinterConnected(other.getPrinterConnected());
       }
       if (other.getPduConnected() != false) {
         setPduConnected(other.getPduConnected());
@@ -674,15 +597,8 @@ private static final long serialVersionUID = 0L;
       if (other.getCashDrawerConnected() != false) {
         setCashDrawerConnected(other.getCashDrawerConnected());
       }
-      if (!other.alarms_.isEmpty()) {
-        if (alarms_.isEmpty()) {
-          alarms_ = other.alarms_;
-          bitField0_ = (bitField0_ & ~0x00000001);
-        } else {
-          ensureAlarmsIsMutable();
-          alarms_.addAll(other.alarms_);
-        }
-        onChanged();
+      if (other.getUpsConnected() != false) {
+        setUpsConnected(other.getUpsConnected());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -712,7 +628,6 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    private int bitField0_;
 
     private boolean scuConnected_ ;
     /**
@@ -834,76 +749,46 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private boolean ticketPrinterConnected_ ;
+    private boolean printerConnected_ ;
     /**
-     * <code>bool ticket_printer_connected = 5;</code>
-     * @return The ticketPrinterConnected.
+     * <code>bool printer_connected = 5;</code>
+     * @return The printerConnected.
      */
-    public boolean getTicketPrinterConnected() {
-      return ticketPrinterConnected_;
+    public boolean getPrinterConnected() {
+      return printerConnected_;
     }
     /**
-     * <code>bool ticket_printer_connected = 5;</code>
-     * @param value The ticketPrinterConnected to set.
+     * <code>bool printer_connected = 5;</code>
+     * @param value The printerConnected to set.
      * @return This builder for chaining.
      */
-    public Builder setTicketPrinterConnected(boolean value) {
+    public Builder setPrinterConnected(boolean value) {
       
-      ticketPrinterConnected_ = value;
+      printerConnected_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>bool ticket_printer_connected = 5;</code>
+     * <code>bool printer_connected = 5;</code>
      * @return This builder for chaining.
      */
-    public Builder clearTicketPrinterConnected() {
+    public Builder clearPrinterConnected() {
       
-      ticketPrinterConnected_ = false;
-      onChanged();
-      return this;
-    }
-
-    private boolean receiptPrinterConnected_ ;
-    /**
-     * <code>bool receipt_printer_connected = 6;</code>
-     * @return The receiptPrinterConnected.
-     */
-    public boolean getReceiptPrinterConnected() {
-      return receiptPrinterConnected_;
-    }
-    /**
-     * <code>bool receipt_printer_connected = 6;</code>
-     * @param value The receiptPrinterConnected to set.
-     * @return This builder for chaining.
-     */
-    public Builder setReceiptPrinterConnected(boolean value) {
-      
-      receiptPrinterConnected_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>bool receipt_printer_connected = 6;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearReceiptPrinterConnected() {
-      
-      receiptPrinterConnected_ = false;
+      printerConnected_ = false;
       onChanged();
       return this;
     }
 
     private boolean pduConnected_ ;
     /**
-     * <code>bool pdu_connected = 7;</code>
+     * <code>bool pdu_connected = 6;</code>
      * @return The pduConnected.
      */
     public boolean getPduConnected() {
       return pduConnected_;
     }
     /**
-     * <code>bool pdu_connected = 7;</code>
+     * <code>bool pdu_connected = 6;</code>
      * @param value The pduConnected to set.
      * @return This builder for chaining.
      */
@@ -914,7 +799,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>bool pdu_connected = 7;</code>
+     * <code>bool pdu_connected = 6;</code>
      * @return This builder for chaining.
      */
     public Builder clearPduConnected() {
@@ -926,14 +811,14 @@ private static final long serialVersionUID = 0L;
 
     private boolean cashDrawerConnected_ ;
     /**
-     * <code>bool cash_drawer_connected = 8;</code>
+     * <code>bool cash_drawer_connected = 7;</code>
      * @return The cashDrawerConnected.
      */
     public boolean getCashDrawerConnected() {
       return cashDrawerConnected_;
     }
     /**
-     * <code>bool cash_drawer_connected = 8;</code>
+     * <code>bool cash_drawer_connected = 7;</code>
      * @param value The cashDrawerConnected to set.
      * @return This builder for chaining.
      */
@@ -944,7 +829,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>bool cash_drawer_connected = 8;</code>
+     * <code>bool cash_drawer_connected = 7;</code>
      * @return This builder for chaining.
      */
     public Builder clearCashDrawerConnected() {
@@ -954,112 +839,32 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.google.protobuf.LazyStringList alarms_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-    private void ensureAlarmsIsMutable() {
-      if (!((bitField0_ & 0x00000001) != 0)) {
-        alarms_ = new com.google.protobuf.LazyStringArrayList(alarms_);
-        bitField0_ |= 0x00000001;
-       }
-    }
+    private boolean upsConnected_ ;
     /**
-     * <code>repeated string alarms = 9;</code>
-     * @return A list containing the alarms.
+     * <code>bool ups_connected = 8;</code>
+     * @return The upsConnected.
      */
-    public com.google.protobuf.ProtocolStringList
-        getAlarmsList() {
-      return alarms_.getUnmodifiableView();
+    public boolean getUpsConnected() {
+      return upsConnected_;
     }
     /**
-     * <code>repeated string alarms = 9;</code>
-     * @return The count of alarms.
-     */
-    public int getAlarmsCount() {
-      return alarms_.size();
-    }
-    /**
-     * <code>repeated string alarms = 9;</code>
-     * @param index The index of the element to return.
-     * @return The alarms at the given index.
-     */
-    public java.lang.String getAlarms(int index) {
-      return alarms_.get(index);
-    }
-    /**
-     * <code>repeated string alarms = 9;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the alarms at the given index.
-     */
-    public com.google.protobuf.ByteString
-        getAlarmsBytes(int index) {
-      return alarms_.getByteString(index);
-    }
-    /**
-     * <code>repeated string alarms = 9;</code>
-     * @param index The index to set the value at.
-     * @param value The alarms to set.
+     * <code>bool ups_connected = 8;</code>
+     * @param value The upsConnected to set.
      * @return This builder for chaining.
      */
-    public Builder setAlarms(
-        int index, java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureAlarmsIsMutable();
-      alarms_.set(index, value);
+    public Builder setUpsConnected(boolean value) {
+      
+      upsConnected_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>repeated string alarms = 9;</code>
-     * @param value The alarms to add.
+     * <code>bool ups_connected = 8;</code>
      * @return This builder for chaining.
      */
-    public Builder addAlarms(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureAlarmsIsMutable();
-      alarms_.add(value);
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>repeated string alarms = 9;</code>
-     * @param values The alarms to add.
-     * @return This builder for chaining.
-     */
-    public Builder addAllAlarms(
-        java.lang.Iterable<java.lang.String> values) {
-      ensureAlarmsIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(
-          values, alarms_);
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>repeated string alarms = 9;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearAlarms() {
-      alarms_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      bitField0_ = (bitField0_ & ~0x00000001);
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>repeated string alarms = 9;</code>
-     * @param value The bytes of the alarms to add.
-     * @return This builder for chaining.
-     */
-    public Builder addAlarmsBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      ensureAlarmsIsMutable();
-      alarms_.add(value);
+    public Builder clearUpsConnected() {
+      
+      upsConnected_ = false;
       onChanged();
       return this;
     }

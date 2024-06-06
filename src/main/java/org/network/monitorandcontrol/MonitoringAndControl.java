@@ -14,6 +14,16 @@ public final class MonitoringAndControl {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_monitoring_proto_Alarms_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_org_monitoring_proto_Alarms_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_monitoring_proto_Alarms_AlarmsEntry_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_org_monitoring_proto_Alarms_AlarmsEntry_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -25,15 +35,18 @@ public final class MonitoringAndControl {
     java.lang.String[] descriptorData = {
       "\n\032MonitoringAndControl.proto\022\024org.monito" +
       "ring.proto\032\tTOM.proto\032\010AG.proto\032\010SC.prot" +
-      "o2\232\002\n\021MonitorAndControl\022S\n\010AGStream\022\037.or" +
-      "g.monitoring.proto.AGRequest\032 .org.monit" +
-      "oring.proto.AGResponse\"\000(\0010\001\022V\n\tTOMStrea" +
-      "m\022 .org.monitoring.proto.TOMRequest\032!.or" +
-      "g.monitoring.proto.TOMResponse\"\000(\0010\001\022X\n\010" +
-      "SCStream\022#.org.monitoring.proto.ConsoleS" +
-      "tream\032!.org.monitoring.proto.PushUpdates" +
-      "\"\000(\0010\001B!\n\035org.network.monitorandcontrolP" +
-      "\001b\006proto3"
+      "o\"q\n\006Alarms\0228\n\006alarms\030\001 \003(\0132(.org.monito" +
+      "ring.proto.Alarms.AlarmsEntry\032-\n\013AlarmsE" +
+      "ntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\t:\0028\0012\242\002\n" +
+      "\021MonitorAndControl\022T\n\010agStream\022 .org.mon" +
+      "itoring.proto.AGProtocol\032 .org.monitorin" +
+      "g.proto.AGProtocol\"\000(\0010\001\022W\n\ttomStream\022!." +
+      "org.monitoring.proto.TOMProtocol\032!.org.m" +
+      "onitoring.proto.TOMProtocol\"\000(\0010\001\022^\n\010scS" +
+      "tream\022%.org.monitoring.proto.ConsoleProt" +
+      "ocol\032%.org.monitoring.proto.ConsoleProto" +
+      "col\"\000(\0010\001B!\n\035org.network.monitorandcontr" +
+      "olP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -42,6 +55,18 @@ public final class MonitoringAndControl {
           org.network.monitorandcontrol.ag.AG.getDescriptor(),
           org.network.monitorandcontrol.scu_console.SC.getDescriptor(),
         });
+    internal_static_org_monitoring_proto_Alarms_descriptor =
+      getDescriptor().getMessageTypes().get(0);
+    internal_static_org_monitoring_proto_Alarms_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_org_monitoring_proto_Alarms_descriptor,
+        new java.lang.String[] { "Alarms", });
+    internal_static_org_monitoring_proto_Alarms_AlarmsEntry_descriptor =
+      internal_static_org_monitoring_proto_Alarms_descriptor.getNestedTypes().get(0);
+    internal_static_org_monitoring_proto_Alarms_AlarmsEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_org_monitoring_proto_Alarms_AlarmsEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
     org.network.monitorandcontrol.tom.TOM.getDescriptor();
     org.network.monitorandcontrol.ag.AG.getDescriptor();
     org.network.monitorandcontrol.scu_console.SC.getDescriptor();

@@ -4,14 +4,14 @@ package com.amay.scu.grpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import org.network.monitorandcontrol.MonitorAndControlGrpc;
-import org.network.monitorandcontrol.ag.*;
+
 
 public class GrpcConfig {
     static ManagedChannel channel;
 
     static {
 
-        channel = ManagedChannelBuilder.forAddress("localhost", 8000)
+        channel = ManagedChannelBuilder.forAddress("192.168.137.100", 8000)
                 .usePlaintext()  // No TLS for local development
                 .build();
     }
@@ -38,7 +38,6 @@ public class GrpcConfig {
     		return false;
     	}
     }
-
 
 
     public static void shutdown(){

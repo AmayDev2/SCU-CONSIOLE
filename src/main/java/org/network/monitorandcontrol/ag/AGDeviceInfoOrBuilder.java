@@ -32,54 +32,41 @@ public interface AGDeviceInfoOrBuilder extends
       getEquipIdBytes();
 
   /**
-   * <pre>
-   *colon seperated last_txn:last_sync
-   * </pre>
-   *
-   * <code>string scu_last_txn_sync = 3;</code>
-   * @return The scuLastTxnSync.
-   */
-  java.lang.String getScuLastTxnSync();
-  /**
-   * <pre>
-   *colon seperated last_txn:last_sync
-   * </pre>
-   *
-   * <code>string scu_last_txn_sync = 3;</code>
-   * @return The bytes for scuLastTxnSync.
-   */
-  com.google.protobuf.ByteString
-      getScuLastTxnSyncBytes();
-
-  /**
-   * <pre>
-   *colon seperated last_txn:last_sync
-   * </pre>
-   *
-   * <code>string ccu_last_txn_sync = 4;</code>
-   * @return The ccuLastTxnSync.
-   */
-  java.lang.String getCcuLastTxnSync();
-  /**
-   * <pre>
-   *colon seperated last_txn:last_sync
-   * </pre>
-   *
-   * <code>string ccu_last_txn_sync = 4;</code>
-   * @return The bytes for ccuLastTxnSync.
-   */
-  com.google.protobuf.ByteString
-      getCcuLastTxnSyncBytes();
-
-  /**
-   * <code>string gate_ip = 5;</code>
+   * <code>string gate_ip = 3;</code>
    * @return The gateIp.
    */
   java.lang.String getGateIp();
   /**
-   * <code>string gate_ip = 5;</code>
+   * <code>string gate_ip = 3;</code>
    * @return The bytes for gateIp.
    */
   com.google.protobuf.ByteString
       getGateIpBytes();
+
+  /**
+   * <code>string gate_type = 4;</code>
+   * @return The gateType.
+   */
+  java.lang.String getGateType();
+  /**
+   * <code>string gate_type = 4;</code>
+   * @return The bytes for gateType.
+   */
+  com.google.protobuf.ByteString
+      getGateTypeBytes();
+
+  /**
+   * <code>.org.monitoring.proto.GateInfo gate_info = 5;</code>
+   * @return Whether the gateInfo field is set.
+   */
+  boolean hasGateInfo();
+  /**
+   * <code>.org.monitoring.proto.GateInfo gate_info = 5;</code>
+   * @return The gateInfo.
+   */
+  org.network.monitorandcontrol.ag.GateInfo getGateInfo();
+  /**
+   * <code>.org.monitoring.proto.GateInfo gate_info = 5;</code>
+   */
+  org.network.monitorandcontrol.ag.GateInfoOrBuilder getGateInfoOrBuilder();
 }

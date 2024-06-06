@@ -4,26 +4,28 @@
 package org.network.monitorandcontrol.tom;
 
 /**
- * Protobuf type {@code org.monitoring.proto.TOMResponse}
+ * Protobuf type {@code org.monitoring.proto.TOMProtocol}
  */
-public  final class TOMResponse extends
+public  final class TOMProtocol extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:org.monitoring.proto.TOMResponse)
-    TOMResponseOrBuilder {
+    // @@protoc_insertion_point(message_implements:org.monitoring.proto.TOMProtocol)
+    TOMProtocolOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use TOMResponse.newBuilder() to construct.
-  private TOMResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use TOMProtocol.newBuilder() to construct.
+  private TOMProtocol(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private TOMResponse() {
+  private TOMProtocol() {
     errorMsg_ = "";
+    requestType_ = 0;
+    commandType_ = 0;
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new TOMResponse();
+    return new TOMProtocol();
   }
 
   @java.lang.Override
@@ -31,7 +33,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private TOMResponse(
+  private TOMProtocol(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -61,11 +63,18 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 24: {
+            int rawValue = input.readEnum();
 
-            requestType_ = input.readInt32();
+            requestType_ = rawValue;
             break;
           }
-          case 34: {
+          case 32: {
+            int rawValue = input.readEnum();
+
+            commandType_ = rawValue;
+            break;
+          }
+          case 42: {
             com.google.protobuf.Any.Builder subBuilder = null;
             if (requestData_ != null) {
               subBuilder = requestData_.toBuilder();
@@ -99,20 +108,24 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return org.network.monitorandcontrol.tom.TOM.internal_static_org_monitoring_proto_TOMResponse_descriptor;
+    return org.network.monitorandcontrol.tom.TOM.internal_static_org_monitoring_proto_TOMProtocol_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return org.network.monitorandcontrol.tom.TOM.internal_static_org_monitoring_proto_TOMResponse_fieldAccessorTable
+    return org.network.monitorandcontrol.tom.TOM.internal_static_org_monitoring_proto_TOMProtocol_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            org.network.monitorandcontrol.tom.TOMResponse.class, org.network.monitorandcontrol.tom.TOMResponse.Builder.class);
+            org.network.monitorandcontrol.tom.TOMProtocol.class, org.network.monitorandcontrol.tom.TOMProtocol.Builder.class);
   }
 
   public static final int STATUS_CODE_FIELD_NUMBER = 1;
   private int statusCode_;
   /**
+   * <pre>
+   *status code of the operation
+   * </pre>
+   *
    * <code>int32 status_code = 1;</code>
    * @return The statusCode.
    */
@@ -123,6 +136,10 @@ private static final long serialVersionUID = 0L;
   public static final int ERROR_MSG_FIELD_NUMBER = 2;
   private volatile java.lang.Object errorMsg_;
   /**
+   * <pre>
+   *error code for the operation
+   * </pre>
+   *
    * <code>string error_msg = 2;</code>
    * @return The errorMsg.
    */
@@ -139,6 +156,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *error code for the operation
+   * </pre>
+   *
    * <code>string error_msg = 2;</code>
    * @return The bytes for errorMsg.
    */
@@ -159,31 +180,87 @@ private static final long serialVersionUID = 0L;
   public static final int REQUEST_TYPE_FIELD_NUMBER = 3;
   private int requestType_;
   /**
-   * <code>int32 request_type = 3;</code>
-   * @return The requestType.
+   * <pre>
+   *send by the client for the server to identify the request type
+   * </pre>
+   *
+   * <code>.org.monitoring.proto.RequestType request_type = 3;</code>
+   * @return The enum numeric value on the wire for requestType.
    */
-  public int getRequestType() {
+  public int getRequestTypeValue() {
     return requestType_;
   }
+  /**
+   * <pre>
+   *send by the client for the server to identify the request type
+   * </pre>
+   *
+   * <code>.org.monitoring.proto.RequestType request_type = 3;</code>
+   * @return The requestType.
+   */
+  public org.network.monitorandcontrol.RequestType getRequestType() {
+    @SuppressWarnings("deprecation")
+    org.network.monitorandcontrol.RequestType result = org.network.monitorandcontrol.RequestType.valueOf(requestType_);
+    return result == null ? org.network.monitorandcontrol.RequestType.UNRECOGNIZED : result;
+  }
 
-  public static final int REQUEST_DATA_FIELD_NUMBER = 4;
+  public static final int COMMAND_TYPE_FIELD_NUMBER = 4;
+  private int commandType_;
+  /**
+   * <pre>
+   *send by the server to the client to perform changes in the euipment
+   * </pre>
+   *
+   * <code>.org.monitoring.proto.CommandType command_type = 4;</code>
+   * @return The enum numeric value on the wire for commandType.
+   */
+  public int getCommandTypeValue() {
+    return commandType_;
+  }
+  /**
+   * <pre>
+   *send by the server to the client to perform changes in the euipment
+   * </pre>
+   *
+   * <code>.org.monitoring.proto.CommandType command_type = 4;</code>
+   * @return The commandType.
+   */
+  public org.network.monitorandcontrol.CommandType getCommandType() {
+    @SuppressWarnings("deprecation")
+    org.network.monitorandcontrol.CommandType result = org.network.monitorandcontrol.CommandType.valueOf(commandType_);
+    return result == null ? org.network.monitorandcontrol.CommandType.UNRECOGNIZED : result;
+  }
+
+  public static final int REQUEST_DATA_FIELD_NUMBER = 5;
   private com.google.protobuf.Any requestData_;
   /**
-   * <code>.google.protobuf.Any request_data = 4;</code>
+   * <pre>
+   *data associated with the operation
+   * </pre>
+   *
+   * <code>.google.protobuf.Any request_data = 5;</code>
    * @return Whether the requestData field is set.
    */
   public boolean hasRequestData() {
     return requestData_ != null;
   }
   /**
-   * <code>.google.protobuf.Any request_data = 4;</code>
+   * <pre>
+   *data associated with the operation
+   * </pre>
+   *
+   * <code>.google.protobuf.Any request_data = 5;</code>
    * @return The requestData.
    */
   public com.google.protobuf.Any getRequestData() {
     return requestData_ == null ? com.google.protobuf.Any.getDefaultInstance() : requestData_;
   }
   /**
-   * <code>.google.protobuf.Any request_data = 4;</code>
+   * <pre>
+   *data associated with the operation
+   * </pre>
+   *
+   * <code>.google.protobuf.Any request_data = 5;</code>
    */
   public com.google.protobuf.AnyOrBuilder getRequestDataOrBuilder() {
     return getRequestData();
@@ -209,11 +286,14 @@ private static final long serialVersionUID = 0L;
     if (!getErrorMsgBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, errorMsg_);
     }
-    if (requestType_ != 0) {
-      output.writeInt32(3, requestType_);
+    if (requestType_ != org.network.monitorandcontrol.RequestType.DIVICE_DISCONNECT.getNumber()) {
+      output.writeEnum(3, requestType_);
+    }
+    if (commandType_ != org.network.monitorandcontrol.CommandType.UNKNOWN_COMMAND.getNumber()) {
+      output.writeEnum(4, commandType_);
     }
     if (requestData_ != null) {
-      output.writeMessage(4, getRequestData());
+      output.writeMessage(5, getRequestData());
     }
     unknownFields.writeTo(output);
   }
@@ -231,13 +311,17 @@ private static final long serialVersionUID = 0L;
     if (!getErrorMsgBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, errorMsg_);
     }
-    if (requestType_ != 0) {
+    if (requestType_ != org.network.monitorandcontrol.RequestType.DIVICE_DISCONNECT.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(3, requestType_);
+        .computeEnumSize(3, requestType_);
+    }
+    if (commandType_ != org.network.monitorandcontrol.CommandType.UNKNOWN_COMMAND.getNumber()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(4, commandType_);
     }
     if (requestData_ != null) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(4, getRequestData());
+        .computeMessageSize(5, getRequestData());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -249,17 +333,17 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof org.network.monitorandcontrol.tom.TOMResponse)) {
+    if (!(obj instanceof org.network.monitorandcontrol.tom.TOMProtocol)) {
       return super.equals(obj);
     }
-    org.network.monitorandcontrol.tom.TOMResponse other = (org.network.monitorandcontrol.tom.TOMResponse) obj;
+    org.network.monitorandcontrol.tom.TOMProtocol other = (org.network.monitorandcontrol.tom.TOMProtocol) obj;
 
     if (getStatusCode()
         != other.getStatusCode()) return false;
     if (!getErrorMsg()
         .equals(other.getErrorMsg())) return false;
-    if (getRequestType()
-        != other.getRequestType()) return false;
+    if (requestType_ != other.requestType_) return false;
+    if (commandType_ != other.commandType_) return false;
     if (hasRequestData() != other.hasRequestData()) return false;
     if (hasRequestData()) {
       if (!getRequestData()
@@ -281,7 +365,9 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + ERROR_MSG_FIELD_NUMBER;
     hash = (53 * hash) + getErrorMsg().hashCode();
     hash = (37 * hash) + REQUEST_TYPE_FIELD_NUMBER;
-    hash = (53 * hash) + getRequestType();
+    hash = (53 * hash) + requestType_;
+    hash = (37 * hash) + COMMAND_TYPE_FIELD_NUMBER;
+    hash = (53 * hash) + commandType_;
     if (hasRequestData()) {
       hash = (37 * hash) + REQUEST_DATA_FIELD_NUMBER;
       hash = (53 * hash) + getRequestData().hashCode();
@@ -291,69 +377,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static org.network.monitorandcontrol.tom.TOMResponse parseFrom(
+  public static org.network.monitorandcontrol.tom.TOMProtocol parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static org.network.monitorandcontrol.tom.TOMResponse parseFrom(
+  public static org.network.monitorandcontrol.tom.TOMProtocol parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static org.network.monitorandcontrol.tom.TOMResponse parseFrom(
+  public static org.network.monitorandcontrol.tom.TOMProtocol parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static org.network.monitorandcontrol.tom.TOMResponse parseFrom(
+  public static org.network.monitorandcontrol.tom.TOMProtocol parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static org.network.monitorandcontrol.tom.TOMResponse parseFrom(byte[] data)
+  public static org.network.monitorandcontrol.tom.TOMProtocol parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static org.network.monitorandcontrol.tom.TOMResponse parseFrom(
+  public static org.network.monitorandcontrol.tom.TOMProtocol parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static org.network.monitorandcontrol.tom.TOMResponse parseFrom(java.io.InputStream input)
+  public static org.network.monitorandcontrol.tom.TOMProtocol parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static org.network.monitorandcontrol.tom.TOMResponse parseFrom(
+  public static org.network.monitorandcontrol.tom.TOMProtocol parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static org.network.monitorandcontrol.tom.TOMResponse parseDelimitedFrom(java.io.InputStream input)
+  public static org.network.monitorandcontrol.tom.TOMProtocol parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static org.network.monitorandcontrol.tom.TOMResponse parseDelimitedFrom(
+  public static org.network.monitorandcontrol.tom.TOMProtocol parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static org.network.monitorandcontrol.tom.TOMResponse parseFrom(
+  public static org.network.monitorandcontrol.tom.TOMProtocol parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static org.network.monitorandcontrol.tom.TOMResponse parseFrom(
+  public static org.network.monitorandcontrol.tom.TOMProtocol parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -366,7 +452,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(org.network.monitorandcontrol.tom.TOMResponse prototype) {
+  public static Builder newBuilder(org.network.monitorandcontrol.tom.TOMProtocol prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -382,26 +468,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code org.monitoring.proto.TOMResponse}
+   * Protobuf type {@code org.monitoring.proto.TOMProtocol}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:org.monitoring.proto.TOMResponse)
-      org.network.monitorandcontrol.tom.TOMResponseOrBuilder {
+      // @@protoc_insertion_point(builder_implements:org.monitoring.proto.TOMProtocol)
+      org.network.monitorandcontrol.tom.TOMProtocolOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.network.monitorandcontrol.tom.TOM.internal_static_org_monitoring_proto_TOMResponse_descriptor;
+      return org.network.monitorandcontrol.tom.TOM.internal_static_org_monitoring_proto_TOMProtocol_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.network.monitorandcontrol.tom.TOM.internal_static_org_monitoring_proto_TOMResponse_fieldAccessorTable
+      return org.network.monitorandcontrol.tom.TOM.internal_static_org_monitoring_proto_TOMProtocol_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.network.monitorandcontrol.tom.TOMResponse.class, org.network.monitorandcontrol.tom.TOMResponse.Builder.class);
+              org.network.monitorandcontrol.tom.TOMProtocol.class, org.network.monitorandcontrol.tom.TOMProtocol.Builder.class);
     }
 
-    // Construct using org.network.monitorandcontrol.tom.TOMResponse.newBuilder()
+    // Construct using org.network.monitorandcontrol.tom.TOMProtocol.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -425,6 +511,8 @@ private static final long serialVersionUID = 0L;
 
       requestType_ = 0;
 
+      commandType_ = 0;
+
       if (requestDataBuilder_ == null) {
         requestData_ = null;
       } else {
@@ -437,17 +525,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return org.network.monitorandcontrol.tom.TOM.internal_static_org_monitoring_proto_TOMResponse_descriptor;
+      return org.network.monitorandcontrol.tom.TOM.internal_static_org_monitoring_proto_TOMProtocol_descriptor;
     }
 
     @java.lang.Override
-    public org.network.monitorandcontrol.tom.TOMResponse getDefaultInstanceForType() {
-      return org.network.monitorandcontrol.tom.TOMResponse.getDefaultInstance();
+    public org.network.monitorandcontrol.tom.TOMProtocol getDefaultInstanceForType() {
+      return org.network.monitorandcontrol.tom.TOMProtocol.getDefaultInstance();
     }
 
     @java.lang.Override
-    public org.network.monitorandcontrol.tom.TOMResponse build() {
-      org.network.monitorandcontrol.tom.TOMResponse result = buildPartial();
+    public org.network.monitorandcontrol.tom.TOMProtocol build() {
+      org.network.monitorandcontrol.tom.TOMProtocol result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -455,11 +543,12 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public org.network.monitorandcontrol.tom.TOMResponse buildPartial() {
-      org.network.monitorandcontrol.tom.TOMResponse result = new org.network.monitorandcontrol.tom.TOMResponse(this);
+    public org.network.monitorandcontrol.tom.TOMProtocol buildPartial() {
+      org.network.monitorandcontrol.tom.TOMProtocol result = new org.network.monitorandcontrol.tom.TOMProtocol(this);
       result.statusCode_ = statusCode_;
       result.errorMsg_ = errorMsg_;
       result.requestType_ = requestType_;
+      result.commandType_ = commandType_;
       if (requestDataBuilder_ == null) {
         result.requestData_ = requestData_;
       } else {
@@ -503,16 +592,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof org.network.monitorandcontrol.tom.TOMResponse) {
-        return mergeFrom((org.network.monitorandcontrol.tom.TOMResponse)other);
+      if (other instanceof org.network.monitorandcontrol.tom.TOMProtocol) {
+        return mergeFrom((org.network.monitorandcontrol.tom.TOMProtocol)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(org.network.monitorandcontrol.tom.TOMResponse other) {
-      if (other == org.network.monitorandcontrol.tom.TOMResponse.getDefaultInstance()) return this;
+    public Builder mergeFrom(org.network.monitorandcontrol.tom.TOMProtocol other) {
+      if (other == org.network.monitorandcontrol.tom.TOMProtocol.getDefaultInstance()) return this;
       if (other.getStatusCode() != 0) {
         setStatusCode(other.getStatusCode());
       }
@@ -520,8 +609,11 @@ private static final long serialVersionUID = 0L;
         errorMsg_ = other.errorMsg_;
         onChanged();
       }
-      if (other.getRequestType() != 0) {
-        setRequestType(other.getRequestType());
+      if (other.requestType_ != 0) {
+        setRequestTypeValue(other.getRequestTypeValue());
+      }
+      if (other.commandType_ != 0) {
+        setCommandTypeValue(other.getCommandTypeValue());
       }
       if (other.hasRequestData()) {
         mergeRequestData(other.getRequestData());
@@ -541,11 +633,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      org.network.monitorandcontrol.tom.TOMResponse parsedMessage = null;
+      org.network.monitorandcontrol.tom.TOMProtocol parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (org.network.monitorandcontrol.tom.TOMResponse) e.getUnfinishedMessage();
+        parsedMessage = (org.network.monitorandcontrol.tom.TOMProtocol) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -557,6 +649,10 @@ private static final long serialVersionUID = 0L;
 
     private int statusCode_ ;
     /**
+     * <pre>
+     *status code of the operation
+     * </pre>
+     *
      * <code>int32 status_code = 1;</code>
      * @return The statusCode.
      */
@@ -564,6 +660,10 @@ private static final long serialVersionUID = 0L;
       return statusCode_;
     }
     /**
+     * <pre>
+     *status code of the operation
+     * </pre>
+     *
      * <code>int32 status_code = 1;</code>
      * @param value The statusCode to set.
      * @return This builder for chaining.
@@ -575,6 +675,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *status code of the operation
+     * </pre>
+     *
      * <code>int32 status_code = 1;</code>
      * @return This builder for chaining.
      */
@@ -587,6 +691,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object errorMsg_ = "";
     /**
+     * <pre>
+     *error code for the operation
+     * </pre>
+     *
      * <code>string error_msg = 2;</code>
      * @return The errorMsg.
      */
@@ -603,6 +711,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *error code for the operation
+     * </pre>
+     *
      * <code>string error_msg = 2;</code>
      * @return The bytes for errorMsg.
      */
@@ -620,6 +732,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *error code for the operation
+     * </pre>
+     *
      * <code>string error_msg = 2;</code>
      * @param value The errorMsg to set.
      * @return This builder for chaining.
@@ -635,6 +751,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *error code for the operation
+     * </pre>
+     *
      * <code>string error_msg = 2;</code>
      * @return This builder for chaining.
      */
@@ -645,6 +765,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *error code for the operation
+     * </pre>
+     *
      * <code>string error_msg = 2;</code>
      * @param value The bytes for errorMsg to set.
      * @return This builder for chaining.
@@ -661,27 +785,69 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int requestType_ ;
+    private int requestType_ = 0;
     /**
-     * <code>int32 request_type = 3;</code>
-     * @return The requestType.
+     * <pre>
+     *send by the client for the server to identify the request type
+     * </pre>
+     *
+     * <code>.org.monitoring.proto.RequestType request_type = 3;</code>
+     * @return The enum numeric value on the wire for requestType.
      */
-    public int getRequestType() {
+    public int getRequestTypeValue() {
       return requestType_;
     }
     /**
-     * <code>int32 request_type = 3;</code>
-     * @param value The requestType to set.
+     * <pre>
+     *send by the client for the server to identify the request type
+     * </pre>
+     *
+     * <code>.org.monitoring.proto.RequestType request_type = 3;</code>
+     * @param value The enum numeric value on the wire for requestType to set.
      * @return This builder for chaining.
      */
-    public Builder setRequestType(int value) {
-      
+    public Builder setRequestTypeValue(int value) {
       requestType_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 request_type = 3;</code>
+     * <pre>
+     *send by the client for the server to identify the request type
+     * </pre>
+     *
+     * <code>.org.monitoring.proto.RequestType request_type = 3;</code>
+     * @return The requestType.
+     */
+    public org.network.monitorandcontrol.RequestType getRequestType() {
+      @SuppressWarnings("deprecation")
+      org.network.monitorandcontrol.RequestType result = org.network.monitorandcontrol.RequestType.valueOf(requestType_);
+      return result == null ? org.network.monitorandcontrol.RequestType.UNRECOGNIZED : result;
+    }
+    /**
+     * <pre>
+     *send by the client for the server to identify the request type
+     * </pre>
+     *
+     * <code>.org.monitoring.proto.RequestType request_type = 3;</code>
+     * @param value The requestType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRequestType(org.network.monitorandcontrol.RequestType value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      requestType_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *send by the client for the server to identify the request type
+     * </pre>
+     *
+     * <code>.org.monitoring.proto.RequestType request_type = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearRequestType() {
@@ -691,18 +857,98 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private int commandType_ = 0;
+    /**
+     * <pre>
+     *send by the server to the client to perform changes in the euipment
+     * </pre>
+     *
+     * <code>.org.monitoring.proto.CommandType command_type = 4;</code>
+     * @return The enum numeric value on the wire for commandType.
+     */
+    public int getCommandTypeValue() {
+      return commandType_;
+    }
+    /**
+     * <pre>
+     *send by the server to the client to perform changes in the euipment
+     * </pre>
+     *
+     * <code>.org.monitoring.proto.CommandType command_type = 4;</code>
+     * @param value The enum numeric value on the wire for commandType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCommandTypeValue(int value) {
+      commandType_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *send by the server to the client to perform changes in the euipment
+     * </pre>
+     *
+     * <code>.org.monitoring.proto.CommandType command_type = 4;</code>
+     * @return The commandType.
+     */
+    public org.network.monitorandcontrol.CommandType getCommandType() {
+      @SuppressWarnings("deprecation")
+      org.network.monitorandcontrol.CommandType result = org.network.monitorandcontrol.CommandType.valueOf(commandType_);
+      return result == null ? org.network.monitorandcontrol.CommandType.UNRECOGNIZED : result;
+    }
+    /**
+     * <pre>
+     *send by the server to the client to perform changes in the euipment
+     * </pre>
+     *
+     * <code>.org.monitoring.proto.CommandType command_type = 4;</code>
+     * @param value The commandType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCommandType(org.network.monitorandcontrol.CommandType value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      commandType_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *send by the server to the client to perform changes in the euipment
+     * </pre>
+     *
+     * <code>.org.monitoring.proto.CommandType command_type = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearCommandType() {
+      
+      commandType_ = 0;
+      onChanged();
+      return this;
+    }
+
     private com.google.protobuf.Any requestData_;
     private com.google.protobuf.SingleFieldBuilderV3<
         com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> requestDataBuilder_;
     /**
-     * <code>.google.protobuf.Any request_data = 4;</code>
+     * <pre>
+     *data associated with the operation
+     * </pre>
+     *
+     * <code>.google.protobuf.Any request_data = 5;</code>
      * @return Whether the requestData field is set.
      */
     public boolean hasRequestData() {
       return requestDataBuilder_ != null || requestData_ != null;
     }
     /**
-     * <code>.google.protobuf.Any request_data = 4;</code>
+     * <pre>
+     *data associated with the operation
+     * </pre>
+     *
+     * <code>.google.protobuf.Any request_data = 5;</code>
      * @return The requestData.
      */
     public com.google.protobuf.Any getRequestData() {
@@ -713,7 +959,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.google.protobuf.Any request_data = 4;</code>
+     * <pre>
+     *data associated with the operation
+     * </pre>
+     *
+     * <code>.google.protobuf.Any request_data = 5;</code>
      */
     public Builder setRequestData(com.google.protobuf.Any value) {
       if (requestDataBuilder_ == null) {
@@ -729,7 +979,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.google.protobuf.Any request_data = 4;</code>
+     * <pre>
+     *data associated with the operation
+     * </pre>
+     *
+     * <code>.google.protobuf.Any request_data = 5;</code>
      */
     public Builder setRequestData(
         com.google.protobuf.Any.Builder builderForValue) {
@@ -743,7 +997,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.google.protobuf.Any request_data = 4;</code>
+     * <pre>
+     *data associated with the operation
+     * </pre>
+     *
+     * <code>.google.protobuf.Any request_data = 5;</code>
      */
     public Builder mergeRequestData(com.google.protobuf.Any value) {
       if (requestDataBuilder_ == null) {
@@ -761,7 +1019,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.google.protobuf.Any request_data = 4;</code>
+     * <pre>
+     *data associated with the operation
+     * </pre>
+     *
+     * <code>.google.protobuf.Any request_data = 5;</code>
      */
     public Builder clearRequestData() {
       if (requestDataBuilder_ == null) {
@@ -775,7 +1037,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.google.protobuf.Any request_data = 4;</code>
+     * <pre>
+     *data associated with the operation
+     * </pre>
+     *
+     * <code>.google.protobuf.Any request_data = 5;</code>
      */
     public com.google.protobuf.Any.Builder getRequestDataBuilder() {
       
@@ -783,7 +1049,11 @@ private static final long serialVersionUID = 0L;
       return getRequestDataFieldBuilder().getBuilder();
     }
     /**
-     * <code>.google.protobuf.Any request_data = 4;</code>
+     * <pre>
+     *data associated with the operation
+     * </pre>
+     *
+     * <code>.google.protobuf.Any request_data = 5;</code>
      */
     public com.google.protobuf.AnyOrBuilder getRequestDataOrBuilder() {
       if (requestDataBuilder_ != null) {
@@ -794,7 +1064,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.google.protobuf.Any request_data = 4;</code>
+     * <pre>
+     *data associated with the operation
+     * </pre>
+     *
+     * <code>.google.protobuf.Any request_data = 5;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> 
@@ -822,41 +1096,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:org.monitoring.proto.TOMResponse)
+    // @@protoc_insertion_point(builder_scope:org.monitoring.proto.TOMProtocol)
   }
 
-  // @@protoc_insertion_point(class_scope:org.monitoring.proto.TOMResponse)
-  private static final org.network.monitorandcontrol.tom.TOMResponse DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:org.monitoring.proto.TOMProtocol)
+  private static final org.network.monitorandcontrol.tom.TOMProtocol DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new org.network.monitorandcontrol.tom.TOMResponse();
+    DEFAULT_INSTANCE = new org.network.monitorandcontrol.tom.TOMProtocol();
   }
 
-  public static org.network.monitorandcontrol.tom.TOMResponse getDefaultInstance() {
+  public static org.network.monitorandcontrol.tom.TOMProtocol getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<TOMResponse>
-      PARSER = new com.google.protobuf.AbstractParser<TOMResponse>() {
+  private static final com.google.protobuf.Parser<TOMProtocol>
+      PARSER = new com.google.protobuf.AbstractParser<TOMProtocol>() {
     @java.lang.Override
-    public TOMResponse parsePartialFrom(
+    public TOMProtocol parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new TOMResponse(input, extensionRegistry);
+      return new TOMProtocol(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<TOMResponse> parser() {
+  public static com.google.protobuf.Parser<TOMProtocol> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<TOMResponse> getParserForType() {
+  public com.google.protobuf.Parser<TOMProtocol> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public org.network.monitorandcontrol.tom.TOMResponse getDefaultInstanceForType() {
+  public org.network.monitorandcontrol.tom.TOMProtocol getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

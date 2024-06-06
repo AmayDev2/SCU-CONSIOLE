@@ -32,51 +32,26 @@ public interface TOMPeripheralStatusOrBuilder extends
   boolean getScannerConnected();
 
   /**
-   * <code>bool ticket_printer_connected = 5;</code>
-   * @return The ticketPrinterConnected.
+   * <code>bool printer_connected = 5;</code>
+   * @return The printerConnected.
    */
-  boolean getTicketPrinterConnected();
+  boolean getPrinterConnected();
 
   /**
-   * <code>bool receipt_printer_connected = 6;</code>
-   * @return The receiptPrinterConnected.
-   */
-  boolean getReceiptPrinterConnected();
-
-  /**
-   * <code>bool pdu_connected = 7;</code>
+   * <code>bool pdu_connected = 6;</code>
    * @return The pduConnected.
    */
   boolean getPduConnected();
 
   /**
-   * <code>bool cash_drawer_connected = 8;</code>
+   * <code>bool cash_drawer_connected = 7;</code>
    * @return The cashDrawerConnected.
    */
   boolean getCashDrawerConnected();
 
   /**
-   * <code>repeated string alarms = 9;</code>
-   * @return A list containing the alarms.
+   * <code>bool ups_connected = 8;</code>
+   * @return The upsConnected.
    */
-  java.util.List<java.lang.String>
-      getAlarmsList();
-  /**
-   * <code>repeated string alarms = 9;</code>
-   * @return The count of alarms.
-   */
-  int getAlarmsCount();
-  /**
-   * <code>repeated string alarms = 9;</code>
-   * @param index The index of the element to return.
-   * @return The alarms at the given index.
-   */
-  java.lang.String getAlarms(int index);
-  /**
-   * <code>repeated string alarms = 9;</code>
-   * @param index The index of the value to return.
-   * @return The bytes of the alarms at the given index.
-   */
-  com.google.protobuf.ByteString
-      getAlarmsBytes(int index);
+  boolean getUpsConnected();
 }

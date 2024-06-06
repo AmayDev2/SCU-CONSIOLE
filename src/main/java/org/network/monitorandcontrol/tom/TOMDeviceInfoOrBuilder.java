@@ -32,54 +32,26 @@ public interface TOMDeviceInfoOrBuilder extends
       getEquipIdBytes();
 
   /**
-   * <pre>
-   *colon seperated last_txn:last_sync
-   * </pre>
-   *
-   * <code>string scu_last_txn_sync = 3;</code>
-   * @return The scuLastTxnSync.
-   */
-  java.lang.String getScuLastTxnSync();
-  /**
-   * <pre>
-   *colon seperated last_txn:last_sync
-   * </pre>
-   *
-   * <code>string scu_last_txn_sync = 3;</code>
-   * @return The bytes for scuLastTxnSync.
-   */
-  com.google.protobuf.ByteString
-      getScuLastTxnSyncBytes();
-
-  /**
-   * <pre>
-   *colon seperated last_txn:last_sync
-   * </pre>
-   *
-   * <code>string ccu_last_txn_sync = 4;</code>
-   * @return The ccuLastTxnSync.
-   */
-  java.lang.String getCcuLastTxnSync();
-  /**
-   * <pre>
-   *colon seperated last_txn:last_sync
-   * </pre>
-   *
-   * <code>string ccu_last_txn_sync = 4;</code>
-   * @return The bytes for ccuLastTxnSync.
-   */
-  com.google.protobuf.ByteString
-      getCcuLastTxnSyncBytes();
-
-  /**
-   * <code>string tom_ip = 5;</code>
+   * <code>string tom_ip = 3;</code>
    * @return The tomIp.
    */
   java.lang.String getTomIp();
   /**
-   * <code>string tom_ip = 5;</code>
+   * <code>string tom_ip = 3;</code>
    * @return The bytes for tomIp.
    */
   com.google.protobuf.ByteString
       getTomIpBytes();
+
+  /**
+   * <code>string device_type = 4;</code>
+   * @return The deviceType.
+   */
+  java.lang.String getDeviceType();
+  /**
+   * <code>string device_type = 4;</code>
+   * @return The bytes for deviceType.
+   */
+  com.google.protobuf.ByteString
+      getDeviceTypeBytes();
 }

@@ -4,23 +4,23 @@
 package org.network.monitorandcontrol.ag;
 
 /**
- * Protobuf type {@code org.monitoring.proto.AGVersionCheck}
+ * Protobuf type {@code org.monitoring.proto.AGParameterVersion}
  */
-public  final class AGVersionCheck extends
+public  final class AGParameterVersion extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:org.monitoring.proto.AGVersionCheck)
-    AGVersionCheckOrBuilder {
+    // @@protoc_insertion_point(message_implements:org.monitoring.proto.AGParameterVersion)
+    AGParameterVersionOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use AGVersionCheck.newBuilder() to construct.
-  private AGVersionCheck(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use AGParameterVersion.newBuilder() to construct.
+  private AGParameterVersion(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private AGVersionCheck() {
+  private AGParameterVersion() {
     fareTable_ = "";
     users_ = "";
     agSoftware_ = "";
     blacklist_ = "";
-    calander_ = "";
+    calendar_ = "";
     qrKey_ = "";
     ticket_ = "";
   }
@@ -29,7 +29,7 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new AGVersionCheck();
+    return new AGParameterVersion();
   }
 
   @java.lang.Override
@@ -37,7 +37,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private AGVersionCheck(
+  private AGParameterVersion(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -82,7 +82,7 @@ private static final long serialVersionUID = 0L;
           case 42: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            calander_ = s;
+            calendar_ = s;
             break;
           }
           case 50: {
@@ -118,15 +118,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return org.network.monitorandcontrol.ag.AG.internal_static_org_monitoring_proto_AGVersionCheck_descriptor;
+    return org.network.monitorandcontrol.ag.AG.internal_static_org_monitoring_proto_AGParameterVersion_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return org.network.monitorandcontrol.ag.AG.internal_static_org_monitoring_proto_AGVersionCheck_fieldAccessorTable
+    return org.network.monitorandcontrol.ag.AG.internal_static_org_monitoring_proto_AGParameterVersion_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            org.network.monitorandcontrol.ag.AGVersionCheck.class, org.network.monitorandcontrol.ag.AGVersionCheck.Builder.class);
+            org.network.monitorandcontrol.ag.AGParameterVersion.class, org.network.monitorandcontrol.ag.AGParameterVersion.Builder.class);
   }
 
   public static final int FARE_TABLE_FIELD_NUMBER = 1;
@@ -273,36 +273,36 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int CALANDER_FIELD_NUMBER = 5;
-  private volatile java.lang.Object calander_;
+  public static final int CALENDAR_FIELD_NUMBER = 5;
+  private volatile java.lang.Object calendar_;
   /**
-   * <code>string calander = 5;</code>
-   * @return The calander.
+   * <code>string calendar = 5;</code>
+   * @return The calendar.
    */
-  public java.lang.String getCalander() {
-    java.lang.Object ref = calander_;
+  public java.lang.String getCalendar() {
+    java.lang.Object ref = calendar_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      calander_ = s;
+      calendar_ = s;
       return s;
     }
   }
   /**
-   * <code>string calander = 5;</code>
-   * @return The bytes for calander.
+   * <code>string calendar = 5;</code>
+   * @return The bytes for calendar.
    */
   public com.google.protobuf.ByteString
-      getCalanderBytes() {
-    java.lang.Object ref = calander_;
+      getCalendarBytes() {
+    java.lang.Object ref = calendar_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      calander_ = b;
+      calendar_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -407,8 +407,8 @@ private static final long serialVersionUID = 0L;
     if (!getBlacklistBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, blacklist_);
     }
-    if (!getCalanderBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, calander_);
+    if (!getCalendarBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, calendar_);
     }
     if (!getQrKeyBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 6, qrKey_);
@@ -437,8 +437,8 @@ private static final long serialVersionUID = 0L;
     if (!getBlacklistBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, blacklist_);
     }
-    if (!getCalanderBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, calander_);
+    if (!getCalendarBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, calendar_);
     }
     if (!getQrKeyBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, qrKey_);
@@ -456,10 +456,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof org.network.monitorandcontrol.ag.AGVersionCheck)) {
+    if (!(obj instanceof org.network.monitorandcontrol.ag.AGParameterVersion)) {
       return super.equals(obj);
     }
-    org.network.monitorandcontrol.ag.AGVersionCheck other = (org.network.monitorandcontrol.ag.AGVersionCheck) obj;
+    org.network.monitorandcontrol.ag.AGParameterVersion other = (org.network.monitorandcontrol.ag.AGParameterVersion) obj;
 
     if (!getFareTable()
         .equals(other.getFareTable())) return false;
@@ -469,8 +469,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getAgSoftware())) return false;
     if (!getBlacklist()
         .equals(other.getBlacklist())) return false;
-    if (!getCalander()
-        .equals(other.getCalander())) return false;
+    if (!getCalendar()
+        .equals(other.getCalendar())) return false;
     if (!getQrKey()
         .equals(other.getQrKey())) return false;
     if (!getTicket()
@@ -494,8 +494,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getAgSoftware().hashCode();
     hash = (37 * hash) + BLACKLIST_FIELD_NUMBER;
     hash = (53 * hash) + getBlacklist().hashCode();
-    hash = (37 * hash) + CALANDER_FIELD_NUMBER;
-    hash = (53 * hash) + getCalander().hashCode();
+    hash = (37 * hash) + CALENDAR_FIELD_NUMBER;
+    hash = (53 * hash) + getCalendar().hashCode();
     hash = (37 * hash) + QR_KEY_FIELD_NUMBER;
     hash = (53 * hash) + getQrKey().hashCode();
     hash = (37 * hash) + TICKET_FIELD_NUMBER;
@@ -505,69 +505,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static org.network.monitorandcontrol.ag.AGVersionCheck parseFrom(
+  public static org.network.monitorandcontrol.ag.AGParameterVersion parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static org.network.monitorandcontrol.ag.AGVersionCheck parseFrom(
+  public static org.network.monitorandcontrol.ag.AGParameterVersion parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static org.network.monitorandcontrol.ag.AGVersionCheck parseFrom(
+  public static org.network.monitorandcontrol.ag.AGParameterVersion parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static org.network.monitorandcontrol.ag.AGVersionCheck parseFrom(
+  public static org.network.monitorandcontrol.ag.AGParameterVersion parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static org.network.monitorandcontrol.ag.AGVersionCheck parseFrom(byte[] data)
+  public static org.network.monitorandcontrol.ag.AGParameterVersion parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static org.network.monitorandcontrol.ag.AGVersionCheck parseFrom(
+  public static org.network.monitorandcontrol.ag.AGParameterVersion parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static org.network.monitorandcontrol.ag.AGVersionCheck parseFrom(java.io.InputStream input)
+  public static org.network.monitorandcontrol.ag.AGParameterVersion parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static org.network.monitorandcontrol.ag.AGVersionCheck parseFrom(
+  public static org.network.monitorandcontrol.ag.AGParameterVersion parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static org.network.monitorandcontrol.ag.AGVersionCheck parseDelimitedFrom(java.io.InputStream input)
+  public static org.network.monitorandcontrol.ag.AGParameterVersion parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static org.network.monitorandcontrol.ag.AGVersionCheck parseDelimitedFrom(
+  public static org.network.monitorandcontrol.ag.AGParameterVersion parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static org.network.monitorandcontrol.ag.AGVersionCheck parseFrom(
+  public static org.network.monitorandcontrol.ag.AGParameterVersion parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static org.network.monitorandcontrol.ag.AGVersionCheck parseFrom(
+  public static org.network.monitorandcontrol.ag.AGParameterVersion parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -580,7 +580,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(org.network.monitorandcontrol.ag.AGVersionCheck prototype) {
+  public static Builder newBuilder(org.network.monitorandcontrol.ag.AGParameterVersion prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -596,26 +596,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code org.monitoring.proto.AGVersionCheck}
+   * Protobuf type {@code org.monitoring.proto.AGParameterVersion}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:org.monitoring.proto.AGVersionCheck)
-      org.network.monitorandcontrol.ag.AGVersionCheckOrBuilder {
+      // @@protoc_insertion_point(builder_implements:org.monitoring.proto.AGParameterVersion)
+      org.network.monitorandcontrol.ag.AGParameterVersionOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.network.monitorandcontrol.ag.AG.internal_static_org_monitoring_proto_AGVersionCheck_descriptor;
+      return org.network.monitorandcontrol.ag.AG.internal_static_org_monitoring_proto_AGParameterVersion_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.network.monitorandcontrol.ag.AG.internal_static_org_monitoring_proto_AGVersionCheck_fieldAccessorTable
+      return org.network.monitorandcontrol.ag.AG.internal_static_org_monitoring_proto_AGParameterVersion_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.network.monitorandcontrol.ag.AGVersionCheck.class, org.network.monitorandcontrol.ag.AGVersionCheck.Builder.class);
+              org.network.monitorandcontrol.ag.AGParameterVersion.class, org.network.monitorandcontrol.ag.AGParameterVersion.Builder.class);
     }
 
-    // Construct using org.network.monitorandcontrol.ag.AGVersionCheck.newBuilder()
+    // Construct using org.network.monitorandcontrol.ag.AGParameterVersion.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -641,7 +641,7 @@ private static final long serialVersionUID = 0L;
 
       blacklist_ = "";
 
-      calander_ = "";
+      calendar_ = "";
 
       qrKey_ = "";
 
@@ -653,17 +653,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return org.network.monitorandcontrol.ag.AG.internal_static_org_monitoring_proto_AGVersionCheck_descriptor;
+      return org.network.monitorandcontrol.ag.AG.internal_static_org_monitoring_proto_AGParameterVersion_descriptor;
     }
 
     @java.lang.Override
-    public org.network.monitorandcontrol.ag.AGVersionCheck getDefaultInstanceForType() {
-      return org.network.monitorandcontrol.ag.AGVersionCheck.getDefaultInstance();
+    public org.network.monitorandcontrol.ag.AGParameterVersion getDefaultInstanceForType() {
+      return org.network.monitorandcontrol.ag.AGParameterVersion.getDefaultInstance();
     }
 
     @java.lang.Override
-    public org.network.monitorandcontrol.ag.AGVersionCheck build() {
-      org.network.monitorandcontrol.ag.AGVersionCheck result = buildPartial();
+    public org.network.monitorandcontrol.ag.AGParameterVersion build() {
+      org.network.monitorandcontrol.ag.AGParameterVersion result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -671,13 +671,13 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public org.network.monitorandcontrol.ag.AGVersionCheck buildPartial() {
-      org.network.monitorandcontrol.ag.AGVersionCheck result = new org.network.monitorandcontrol.ag.AGVersionCheck(this);
+    public org.network.monitorandcontrol.ag.AGParameterVersion buildPartial() {
+      org.network.monitorandcontrol.ag.AGParameterVersion result = new org.network.monitorandcontrol.ag.AGParameterVersion(this);
       result.fareTable_ = fareTable_;
       result.users_ = users_;
       result.agSoftware_ = agSoftware_;
       result.blacklist_ = blacklist_;
-      result.calander_ = calander_;
+      result.calendar_ = calendar_;
       result.qrKey_ = qrKey_;
       result.ticket_ = ticket_;
       onBuilt();
@@ -718,16 +718,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof org.network.monitorandcontrol.ag.AGVersionCheck) {
-        return mergeFrom((org.network.monitorandcontrol.ag.AGVersionCheck)other);
+      if (other instanceof org.network.monitorandcontrol.ag.AGParameterVersion) {
+        return mergeFrom((org.network.monitorandcontrol.ag.AGParameterVersion)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(org.network.monitorandcontrol.ag.AGVersionCheck other) {
-      if (other == org.network.monitorandcontrol.ag.AGVersionCheck.getDefaultInstance()) return this;
+    public Builder mergeFrom(org.network.monitorandcontrol.ag.AGParameterVersion other) {
+      if (other == org.network.monitorandcontrol.ag.AGParameterVersion.getDefaultInstance()) return this;
       if (!other.getFareTable().isEmpty()) {
         fareTable_ = other.fareTable_;
         onChanged();
@@ -744,8 +744,8 @@ private static final long serialVersionUID = 0L;
         blacklist_ = other.blacklist_;
         onChanged();
       }
-      if (!other.getCalander().isEmpty()) {
-        calander_ = other.calander_;
+      if (!other.getCalendar().isEmpty()) {
+        calendar_ = other.calendar_;
         onChanged();
       }
       if (!other.getQrKey().isEmpty()) {
@@ -771,11 +771,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      org.network.monitorandcontrol.ag.AGVersionCheck parsedMessage = null;
+      org.network.monitorandcontrol.ag.AGParameterVersion parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (org.network.monitorandcontrol.ag.AGVersionCheck) e.getUnfinishedMessage();
+        parsedMessage = (org.network.monitorandcontrol.ag.AGParameterVersion) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -1089,78 +1089,78 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object calander_ = "";
+    private java.lang.Object calendar_ = "";
     /**
-     * <code>string calander = 5;</code>
-     * @return The calander.
+     * <code>string calendar = 5;</code>
+     * @return The calendar.
      */
-    public java.lang.String getCalander() {
-      java.lang.Object ref = calander_;
+    public java.lang.String getCalendar() {
+      java.lang.Object ref = calendar_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        calander_ = s;
+        calendar_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string calander = 5;</code>
-     * @return The bytes for calander.
+     * <code>string calendar = 5;</code>
+     * @return The bytes for calendar.
      */
     public com.google.protobuf.ByteString
-        getCalanderBytes() {
-      java.lang.Object ref = calander_;
+        getCalendarBytes() {
+      java.lang.Object ref = calendar_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        calander_ = b;
+        calendar_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string calander = 5;</code>
-     * @param value The calander to set.
+     * <code>string calendar = 5;</code>
+     * @param value The calendar to set.
      * @return This builder for chaining.
      */
-    public Builder setCalander(
+    public Builder setCalendar(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      calander_ = value;
+      calendar_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string calander = 5;</code>
+     * <code>string calendar = 5;</code>
      * @return This builder for chaining.
      */
-    public Builder clearCalander() {
+    public Builder clearCalendar() {
       
-      calander_ = getDefaultInstance().getCalander();
+      calendar_ = getDefaultInstance().getCalendar();
       onChanged();
       return this;
     }
     /**
-     * <code>string calander = 5;</code>
-     * @param value The bytes for calander to set.
+     * <code>string calendar = 5;</code>
+     * @param value The bytes for calendar to set.
      * @return This builder for chaining.
      */
-    public Builder setCalanderBytes(
+    public Builder setCalendarBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      calander_ = value;
+      calendar_ = value;
       onChanged();
       return this;
     }
@@ -1329,41 +1329,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:org.monitoring.proto.AGVersionCheck)
+    // @@protoc_insertion_point(builder_scope:org.monitoring.proto.AGParameterVersion)
   }
 
-  // @@protoc_insertion_point(class_scope:org.monitoring.proto.AGVersionCheck)
-  private static final org.network.monitorandcontrol.ag.AGVersionCheck DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:org.monitoring.proto.AGParameterVersion)
+  private static final org.network.monitorandcontrol.ag.AGParameterVersion DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new org.network.monitorandcontrol.ag.AGVersionCheck();
+    DEFAULT_INSTANCE = new org.network.monitorandcontrol.ag.AGParameterVersion();
   }
 
-  public static org.network.monitorandcontrol.ag.AGVersionCheck getDefaultInstance() {
+  public static org.network.monitorandcontrol.ag.AGParameterVersion getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<AGVersionCheck>
-      PARSER = new com.google.protobuf.AbstractParser<AGVersionCheck>() {
+  private static final com.google.protobuf.Parser<AGParameterVersion>
+      PARSER = new com.google.protobuf.AbstractParser<AGParameterVersion>() {
     @java.lang.Override
-    public AGVersionCheck parsePartialFrom(
+    public AGParameterVersion parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new AGVersionCheck(input, extensionRegistry);
+      return new AGParameterVersion(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<AGVersionCheck> parser() {
+  public static com.google.protobuf.Parser<AGParameterVersion> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<AGVersionCheck> getParserForType() {
+  public com.google.protobuf.Parser<AGParameterVersion> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public org.network.monitorandcontrol.ag.AGVersionCheck getDefaultInstanceForType() {
+  public org.network.monitorandcontrol.ag.AGParameterVersion getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

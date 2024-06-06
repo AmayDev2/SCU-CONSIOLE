@@ -5,20 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="315d97bc-7335-4bbd-a14f-28c409037fec" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/protoeditor.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/SCUApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/SCUApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/ViewFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/AGController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/AGController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/StationDynamicMapView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/station_map/StationMapController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/enums/SLEStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/enums/SLEStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/listenner/StationDynamicMapViewListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/listenner/StationDynamicMapViewListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/StationDynamicMapController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/StationDynamicMapController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/grpc/GrpcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/grpc/GrpcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/listenner/StationDynamicMapViewListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/listenner/impl/StationDynamicMapViewListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/service/GrpcService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/service/GrpcService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/sles/components/SLE.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/sles/components/SLE.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/MonitorAndControlGrpc.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/MonitoringAndControl.java" beforeDir="false" />
@@ -49,10 +45,10 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMResponseOrBuilder.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMVersionCheck.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMVersionCheckOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/views/Path.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views2/Path.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/station_map/station-dynamic-map-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/station_map/station-dynamic-map-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/station_map/station-map-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/amay/scu/sles/SLEFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/amay/scu/sles/SLEFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/proto/AG.proto" beforeDir="false" afterPath="$PROJECT_DIR$/rough/AG.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/proto/MonitoringAndControl.proto" beforeDir="false" afterPath="$PROJECT_DIR$/rough/MonitoringAndControl.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/proto/SC.proto" beforeDir="false" afterPath="$PROJECT_DIR$/rough/SC.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/proto/TOM.proto" beforeDir="false" afterPath="$PROJECT_DIR$/rough/TOM.proto" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,13 +103,14 @@
     "Maven.scu [validate].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers": "true",
     "git-widget-placeholder": "db-connection",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/Amay Technosystems/SCU/src/main/resources/proto",
+    "last_opened_file_path": "E:/Amay Technosystems/SCU/src/main/resources",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -132,14 +129,16 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Amay Technosystems\SCU\src\main\resources\proto" />
       <recent name="E:\Amay Technosystems\SCU\src\main\resources" />
+      <recent name="E:\Amay Technosystems\SCU\src\main\resources\proto" />
+      <recent name="E:\Amay Technosystems\SCU\src\main\resources\proto\cmon" />
       <recent name="E:\Amay Technosystems\SCU\src\main\java" />
       <recent name="E:\Amay Technosystems\SCU\src\main\resources\com\amay\scu\sles" />
-      <recent name="E:\Amay Technosystems\SCU\src\main\resources\com\amay\scu\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Amay Technosystems\SCU\src\main\java\com\amay\scu" />
       <recent name="E:\Amay Technosystems\SCU\src\main\resources\proto" />
+      <recent name="E:\Amay Technosystems\SCU\rough" />
       <recent name="E:\Amay Technosystems\SCU\src\main\resources\com\amay\scu\station_map" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -300,7 +299,7 @@
       <workItem from="1717493006730" duration="6400000" />
       <workItem from="1717566668591" duration="867000" />
       <workItem from="1717576768331" duration="2043000" />
-      <workItem from="1717578902287" duration="2766000" />
+      <workItem from="1717578902287" duration="14496000" />
     </task>
     <servers />
   </component>
@@ -317,7 +316,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/controller/AGController.java</url>
-          <line>102</line>
+          <line>101</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

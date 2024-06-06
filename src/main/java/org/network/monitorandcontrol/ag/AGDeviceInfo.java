@@ -18,9 +18,8 @@ private static final long serialVersionUID = 0L;
   private AGDeviceInfo() {
     equipName_ = "";
     equipId_ = "";
-    scuLastTxnSync_ = "";
-    ccuLastTxnSync_ = "";
     gateIp_ = "";
+    gateType_ = "";
   }
 
   @java.lang.Override
@@ -68,19 +67,26 @@ private static final long serialVersionUID = 0L;
           case 26: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            scuLastTxnSync_ = s;
+            gateIp_ = s;
             break;
           }
           case 34: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            ccuLastTxnSync_ = s;
+            gateType_ = s;
             break;
           }
           case 42: {
-            java.lang.String s = input.readStringRequireUtf8();
+            org.network.monitorandcontrol.ag.GateInfo.Builder subBuilder = null;
+            if (gateInfo_ != null) {
+              subBuilder = gateInfo_.toBuilder();
+            }
+            gateInfo_ = input.readMessage(org.network.monitorandcontrol.ag.GateInfo.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(gateInfo_);
+              gateInfo_ = subBuilder.buildPartial();
+            }
 
-            gateIp_ = s;
             break;
           }
           default: {
@@ -187,98 +193,10 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int SCU_LAST_TXN_SYNC_FIELD_NUMBER = 3;
-  private volatile java.lang.Object scuLastTxnSync_;
-  /**
-   * <pre>
-   *colon seperated last_txn:last_sync
-   * </pre>
-   *
-   * <code>string scu_last_txn_sync = 3;</code>
-   * @return The scuLastTxnSync.
-   */
-  public java.lang.String getScuLastTxnSync() {
-    java.lang.Object ref = scuLastTxnSync_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      scuLastTxnSync_ = s;
-      return s;
-    }
-  }
-  /**
-   * <pre>
-   *colon seperated last_txn:last_sync
-   * </pre>
-   *
-   * <code>string scu_last_txn_sync = 3;</code>
-   * @return The bytes for scuLastTxnSync.
-   */
-  public com.google.protobuf.ByteString
-      getScuLastTxnSyncBytes() {
-    java.lang.Object ref = scuLastTxnSync_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      scuLastTxnSync_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int CCU_LAST_TXN_SYNC_FIELD_NUMBER = 4;
-  private volatile java.lang.Object ccuLastTxnSync_;
-  /**
-   * <pre>
-   *colon seperated last_txn:last_sync
-   * </pre>
-   *
-   * <code>string ccu_last_txn_sync = 4;</code>
-   * @return The ccuLastTxnSync.
-   */
-  public java.lang.String getCcuLastTxnSync() {
-    java.lang.Object ref = ccuLastTxnSync_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      ccuLastTxnSync_ = s;
-      return s;
-    }
-  }
-  /**
-   * <pre>
-   *colon seperated last_txn:last_sync
-   * </pre>
-   *
-   * <code>string ccu_last_txn_sync = 4;</code>
-   * @return The bytes for ccuLastTxnSync.
-   */
-  public com.google.protobuf.ByteString
-      getCcuLastTxnSyncBytes() {
-    java.lang.Object ref = ccuLastTxnSync_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      ccuLastTxnSync_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int GATE_IP_FIELD_NUMBER = 5;
+  public static final int GATE_IP_FIELD_NUMBER = 3;
   private volatile java.lang.Object gateIp_;
   /**
-   * <code>string gate_ip = 5;</code>
+   * <code>string gate_ip = 3;</code>
    * @return The gateIp.
    */
   public java.lang.String getGateIp() {
@@ -294,7 +212,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string gate_ip = 5;</code>
+   * <code>string gate_ip = 3;</code>
    * @return The bytes for gateIp.
    */
   public com.google.protobuf.ByteString
@@ -309,6 +227,65 @@ private static final long serialVersionUID = 0L;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
+  }
+
+  public static final int GATE_TYPE_FIELD_NUMBER = 4;
+  private volatile java.lang.Object gateType_;
+  /**
+   * <code>string gate_type = 4;</code>
+   * @return The gateType.
+   */
+  public java.lang.String getGateType() {
+    java.lang.Object ref = gateType_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      gateType_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string gate_type = 4;</code>
+   * @return The bytes for gateType.
+   */
+  public com.google.protobuf.ByteString
+      getGateTypeBytes() {
+    java.lang.Object ref = gateType_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      gateType_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int GATE_INFO_FIELD_NUMBER = 5;
+  private org.network.monitorandcontrol.ag.GateInfo gateInfo_;
+  /**
+   * <code>.org.monitoring.proto.GateInfo gate_info = 5;</code>
+   * @return Whether the gateInfo field is set.
+   */
+  public boolean hasGateInfo() {
+    return gateInfo_ != null;
+  }
+  /**
+   * <code>.org.monitoring.proto.GateInfo gate_info = 5;</code>
+   * @return The gateInfo.
+   */
+  public org.network.monitorandcontrol.ag.GateInfo getGateInfo() {
+    return gateInfo_ == null ? org.network.monitorandcontrol.ag.GateInfo.getDefaultInstance() : gateInfo_;
+  }
+  /**
+   * <code>.org.monitoring.proto.GateInfo gate_info = 5;</code>
+   */
+  public org.network.monitorandcontrol.ag.GateInfoOrBuilder getGateInfoOrBuilder() {
+    return getGateInfo();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -331,14 +308,14 @@ private static final long serialVersionUID = 0L;
     if (!getEquipIdBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, equipId_);
     }
-    if (!getScuLastTxnSyncBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, scuLastTxnSync_);
-    }
-    if (!getCcuLastTxnSyncBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, ccuLastTxnSync_);
-    }
     if (!getGateIpBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, gateIp_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, gateIp_);
+    }
+    if (!getGateTypeBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, gateType_);
+    }
+    if (gateInfo_ != null) {
+      output.writeMessage(5, getGateInfo());
     }
     unknownFields.writeTo(output);
   }
@@ -355,14 +332,15 @@ private static final long serialVersionUID = 0L;
     if (!getEquipIdBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, equipId_);
     }
-    if (!getScuLastTxnSyncBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, scuLastTxnSync_);
-    }
-    if (!getCcuLastTxnSyncBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, ccuLastTxnSync_);
-    }
     if (!getGateIpBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, gateIp_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, gateIp_);
+    }
+    if (!getGateTypeBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, gateType_);
+    }
+    if (gateInfo_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(5, getGateInfo());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -383,12 +361,15 @@ private static final long serialVersionUID = 0L;
         .equals(other.getEquipName())) return false;
     if (!getEquipId()
         .equals(other.getEquipId())) return false;
-    if (!getScuLastTxnSync()
-        .equals(other.getScuLastTxnSync())) return false;
-    if (!getCcuLastTxnSync()
-        .equals(other.getCcuLastTxnSync())) return false;
     if (!getGateIp()
         .equals(other.getGateIp())) return false;
+    if (!getGateType()
+        .equals(other.getGateType())) return false;
+    if (hasGateInfo() != other.hasGateInfo()) return false;
+    if (hasGateInfo()) {
+      if (!getGateInfo()
+          .equals(other.getGateInfo())) return false;
+    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -404,12 +385,14 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getEquipName().hashCode();
     hash = (37 * hash) + EQUIP_ID_FIELD_NUMBER;
     hash = (53 * hash) + getEquipId().hashCode();
-    hash = (37 * hash) + SCU_LAST_TXN_SYNC_FIELD_NUMBER;
-    hash = (53 * hash) + getScuLastTxnSync().hashCode();
-    hash = (37 * hash) + CCU_LAST_TXN_SYNC_FIELD_NUMBER;
-    hash = (53 * hash) + getCcuLastTxnSync().hashCode();
     hash = (37 * hash) + GATE_IP_FIELD_NUMBER;
     hash = (53 * hash) + getGateIp().hashCode();
+    hash = (37 * hash) + GATE_TYPE_FIELD_NUMBER;
+    hash = (53 * hash) + getGateType().hashCode();
+    if (hasGateInfo()) {
+      hash = (37 * hash) + GATE_INFO_FIELD_NUMBER;
+      hash = (53 * hash) + getGateInfo().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -547,12 +530,16 @@ private static final long serialVersionUID = 0L;
 
       equipId_ = "";
 
-      scuLastTxnSync_ = "";
-
-      ccuLastTxnSync_ = "";
-
       gateIp_ = "";
 
+      gateType_ = "";
+
+      if (gateInfoBuilder_ == null) {
+        gateInfo_ = null;
+      } else {
+        gateInfo_ = null;
+        gateInfoBuilder_ = null;
+      }
       return this;
     }
 
@@ -581,9 +568,13 @@ private static final long serialVersionUID = 0L;
       org.network.monitorandcontrol.ag.AGDeviceInfo result = new org.network.monitorandcontrol.ag.AGDeviceInfo(this);
       result.equipName_ = equipName_;
       result.equipId_ = equipId_;
-      result.scuLastTxnSync_ = scuLastTxnSync_;
-      result.ccuLastTxnSync_ = ccuLastTxnSync_;
       result.gateIp_ = gateIp_;
+      result.gateType_ = gateType_;
+      if (gateInfoBuilder_ == null) {
+        result.gateInfo_ = gateInfo_;
+      } else {
+        result.gateInfo_ = gateInfoBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -640,17 +631,16 @@ private static final long serialVersionUID = 0L;
         equipId_ = other.equipId_;
         onChanged();
       }
-      if (!other.getScuLastTxnSync().isEmpty()) {
-        scuLastTxnSync_ = other.scuLastTxnSync_;
-        onChanged();
-      }
-      if (!other.getCcuLastTxnSync().isEmpty()) {
-        ccuLastTxnSync_ = other.ccuLastTxnSync_;
-        onChanged();
-      }
       if (!other.getGateIp().isEmpty()) {
         gateIp_ = other.gateIp_;
         onChanged();
+      }
+      if (!other.getGateType().isEmpty()) {
+        gateType_ = other.gateType_;
+        onChanged();
+      }
+      if (other.hasGateInfo()) {
+        mergeGateInfo(other.getGateInfo());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -833,201 +823,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object scuLastTxnSync_ = "";
-    /**
-     * <pre>
-     *colon seperated last_txn:last_sync
-     * </pre>
-     *
-     * <code>string scu_last_txn_sync = 3;</code>
-     * @return The scuLastTxnSync.
-     */
-    public java.lang.String getScuLastTxnSync() {
-      java.lang.Object ref = scuLastTxnSync_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        scuLastTxnSync_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <pre>
-     *colon seperated last_txn:last_sync
-     * </pre>
-     *
-     * <code>string scu_last_txn_sync = 3;</code>
-     * @return The bytes for scuLastTxnSync.
-     */
-    public com.google.protobuf.ByteString
-        getScuLastTxnSyncBytes() {
-      java.lang.Object ref = scuLastTxnSync_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        scuLastTxnSync_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <pre>
-     *colon seperated last_txn:last_sync
-     * </pre>
-     *
-     * <code>string scu_last_txn_sync = 3;</code>
-     * @param value The scuLastTxnSync to set.
-     * @return This builder for chaining.
-     */
-    public Builder setScuLastTxnSync(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      scuLastTxnSync_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *colon seperated last_txn:last_sync
-     * </pre>
-     *
-     * <code>string scu_last_txn_sync = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearScuLastTxnSync() {
-      
-      scuLastTxnSync_ = getDefaultInstance().getScuLastTxnSync();
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *colon seperated last_txn:last_sync
-     * </pre>
-     *
-     * <code>string scu_last_txn_sync = 3;</code>
-     * @param value The bytes for scuLastTxnSync to set.
-     * @return This builder for chaining.
-     */
-    public Builder setScuLastTxnSyncBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      scuLastTxnSync_ = value;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object ccuLastTxnSync_ = "";
-    /**
-     * <pre>
-     *colon seperated last_txn:last_sync
-     * </pre>
-     *
-     * <code>string ccu_last_txn_sync = 4;</code>
-     * @return The ccuLastTxnSync.
-     */
-    public java.lang.String getCcuLastTxnSync() {
-      java.lang.Object ref = ccuLastTxnSync_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        ccuLastTxnSync_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <pre>
-     *colon seperated last_txn:last_sync
-     * </pre>
-     *
-     * <code>string ccu_last_txn_sync = 4;</code>
-     * @return The bytes for ccuLastTxnSync.
-     */
-    public com.google.protobuf.ByteString
-        getCcuLastTxnSyncBytes() {
-      java.lang.Object ref = ccuLastTxnSync_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        ccuLastTxnSync_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <pre>
-     *colon seperated last_txn:last_sync
-     * </pre>
-     *
-     * <code>string ccu_last_txn_sync = 4;</code>
-     * @param value The ccuLastTxnSync to set.
-     * @return This builder for chaining.
-     */
-    public Builder setCcuLastTxnSync(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      ccuLastTxnSync_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *colon seperated last_txn:last_sync
-     * </pre>
-     *
-     * <code>string ccu_last_txn_sync = 4;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearCcuLastTxnSync() {
-      
-      ccuLastTxnSync_ = getDefaultInstance().getCcuLastTxnSync();
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *colon seperated last_txn:last_sync
-     * </pre>
-     *
-     * <code>string ccu_last_txn_sync = 4;</code>
-     * @param value The bytes for ccuLastTxnSync to set.
-     * @return This builder for chaining.
-     */
-    public Builder setCcuLastTxnSyncBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      ccuLastTxnSync_ = value;
-      onChanged();
-      return this;
-    }
-
     private java.lang.Object gateIp_ = "";
     /**
-     * <code>string gate_ip = 5;</code>
+     * <code>string gate_ip = 3;</code>
      * @return The gateIp.
      */
     public java.lang.String getGateIp() {
@@ -1043,7 +841,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string gate_ip = 5;</code>
+     * <code>string gate_ip = 3;</code>
      * @return The bytes for gateIp.
      */
     public com.google.protobuf.ByteString
@@ -1060,7 +858,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string gate_ip = 5;</code>
+     * <code>string gate_ip = 3;</code>
      * @param value The gateIp to set.
      * @return This builder for chaining.
      */
@@ -1075,7 +873,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string gate_ip = 5;</code>
+     * <code>string gate_ip = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearGateIp() {
@@ -1085,7 +883,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string gate_ip = 5;</code>
+     * <code>string gate_ip = 3;</code>
      * @param value The bytes for gateIp to set.
      * @return This builder for chaining.
      */
@@ -1099,6 +897,201 @@ private static final long serialVersionUID = 0L;
       gateIp_ = value;
       onChanged();
       return this;
+    }
+
+    private java.lang.Object gateType_ = "";
+    /**
+     * <code>string gate_type = 4;</code>
+     * @return The gateType.
+     */
+    public java.lang.String getGateType() {
+      java.lang.Object ref = gateType_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        gateType_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string gate_type = 4;</code>
+     * @return The bytes for gateType.
+     */
+    public com.google.protobuf.ByteString
+        getGateTypeBytes() {
+      java.lang.Object ref = gateType_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        gateType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string gate_type = 4;</code>
+     * @param value The gateType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setGateType(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      gateType_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string gate_type = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearGateType() {
+      
+      gateType_ = getDefaultInstance().getGateType();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string gate_type = 4;</code>
+     * @param value The bytes for gateType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setGateTypeBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      gateType_ = value;
+      onChanged();
+      return this;
+    }
+
+    private org.network.monitorandcontrol.ag.GateInfo gateInfo_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        org.network.monitorandcontrol.ag.GateInfo, org.network.monitorandcontrol.ag.GateInfo.Builder, org.network.monitorandcontrol.ag.GateInfoOrBuilder> gateInfoBuilder_;
+    /**
+     * <code>.org.monitoring.proto.GateInfo gate_info = 5;</code>
+     * @return Whether the gateInfo field is set.
+     */
+    public boolean hasGateInfo() {
+      return gateInfoBuilder_ != null || gateInfo_ != null;
+    }
+    /**
+     * <code>.org.monitoring.proto.GateInfo gate_info = 5;</code>
+     * @return The gateInfo.
+     */
+    public org.network.monitorandcontrol.ag.GateInfo getGateInfo() {
+      if (gateInfoBuilder_ == null) {
+        return gateInfo_ == null ? org.network.monitorandcontrol.ag.GateInfo.getDefaultInstance() : gateInfo_;
+      } else {
+        return gateInfoBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.org.monitoring.proto.GateInfo gate_info = 5;</code>
+     */
+    public Builder setGateInfo(org.network.monitorandcontrol.ag.GateInfo value) {
+      if (gateInfoBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        gateInfo_ = value;
+        onChanged();
+      } else {
+        gateInfoBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.org.monitoring.proto.GateInfo gate_info = 5;</code>
+     */
+    public Builder setGateInfo(
+        org.network.monitorandcontrol.ag.GateInfo.Builder builderForValue) {
+      if (gateInfoBuilder_ == null) {
+        gateInfo_ = builderForValue.build();
+        onChanged();
+      } else {
+        gateInfoBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.org.monitoring.proto.GateInfo gate_info = 5;</code>
+     */
+    public Builder mergeGateInfo(org.network.monitorandcontrol.ag.GateInfo value) {
+      if (gateInfoBuilder_ == null) {
+        if (gateInfo_ != null) {
+          gateInfo_ =
+            org.network.monitorandcontrol.ag.GateInfo.newBuilder(gateInfo_).mergeFrom(value).buildPartial();
+        } else {
+          gateInfo_ = value;
+        }
+        onChanged();
+      } else {
+        gateInfoBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.org.monitoring.proto.GateInfo gate_info = 5;</code>
+     */
+    public Builder clearGateInfo() {
+      if (gateInfoBuilder_ == null) {
+        gateInfo_ = null;
+        onChanged();
+      } else {
+        gateInfo_ = null;
+        gateInfoBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.org.monitoring.proto.GateInfo gate_info = 5;</code>
+     */
+    public org.network.monitorandcontrol.ag.GateInfo.Builder getGateInfoBuilder() {
+      
+      onChanged();
+      return getGateInfoFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.org.monitoring.proto.GateInfo gate_info = 5;</code>
+     */
+    public org.network.monitorandcontrol.ag.GateInfoOrBuilder getGateInfoOrBuilder() {
+      if (gateInfoBuilder_ != null) {
+        return gateInfoBuilder_.getMessageOrBuilder();
+      } else {
+        return gateInfo_ == null ?
+            org.network.monitorandcontrol.ag.GateInfo.getDefaultInstance() : gateInfo_;
+      }
+    }
+    /**
+     * <code>.org.monitoring.proto.GateInfo gate_info = 5;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        org.network.monitorandcontrol.ag.GateInfo, org.network.monitorandcontrol.ag.GateInfo.Builder, org.network.monitorandcontrol.ag.GateInfoOrBuilder> 
+        getGateInfoFieldBuilder() {
+      if (gateInfoBuilder_ == null) {
+        gateInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            org.network.monitorandcontrol.ag.GateInfo, org.network.monitorandcontrol.ag.GateInfo.Builder, org.network.monitorandcontrol.ag.GateInfoOrBuilder>(
+                getGateInfo(),
+                getParentForChildren(),
+                isClean());
+        gateInfo_ = null;
+      }
+      return gateInfoBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

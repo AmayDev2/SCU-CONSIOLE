@@ -54,29 +54,4 @@ public interface AGPeripheralStatusOrBuilder extends
    * @return The upsConnected.
    */
   boolean getUpsConnected();
-
-  /**
-   * <code>repeated string alarms = 9;</code>
-   * @return A list containing the alarms.
-   */
-  java.util.List<java.lang.String>
-      getAlarmsList();
-  /**
-   * <code>repeated string alarms = 9;</code>
-   * @return The count of alarms.
-   */
-  int getAlarmsCount();
-  /**
-   * <code>repeated string alarms = 9;</code>
-   * @param index The index of the element to return.
-   * @return The alarms at the given index.
-   */
-  java.lang.String getAlarms(int index);
-  /**
-   * <code>repeated string alarms = 9;</code>
-   * @param index The index of the value to return.
-   * @return The bytes of the alarms at the given index.
-   */
-  com.google.protobuf.ByteString
-      getAlarmsBytes(int index);
 }

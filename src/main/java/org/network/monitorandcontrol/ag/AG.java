@@ -15,30 +15,35 @@ public final class AG {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_org_monitoring_proto_AGRequest_descriptor;
+    internal_static_org_monitoring_proto_AGProtocol_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_org_monitoring_proto_AGRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_org_monitoring_proto_AGResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_org_monitoring_proto_AGResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_org_monitoring_proto_AGPeripheralStatus_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_org_monitoring_proto_AGPeripheralStatus_fieldAccessorTable;
+      internal_static_org_monitoring_proto_AGProtocol_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_monitoring_proto_AGDeviceInfo_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_monitoring_proto_AGDeviceInfo_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_org_monitoring_proto_AGVersionCheck_descriptor;
+    internal_static_org_monitoring_proto_AGPeripheralStatus_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_org_monitoring_proto_AGVersionCheck_fieldAccessorTable;
+      internal_static_org_monitoring_proto_AGPeripheralStatus_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_monitoring_proto_AGParameterVersion_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_org_monitoring_proto_AGParameterVersion_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_monitoring_proto_GateInfo_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_org_monitoring_proto_GateInfo_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_monitoring_proto_AGModeControl_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_org_monitoring_proto_AGModeControl_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -49,63 +54,83 @@ public final class AG {
   static {
     java.lang.String[] descriptorData = {
       "\n\010AG.proto\022\024org.monitoring.proto\032\031google" +
-      "/protobuf/any.proto\"f\n\tAGRequest\022\n\n\002ip\030\001" +
-      " \001(\t\022\013\n\003uid\030\002 \001(\005\022\024\n\014request_type\030\003 \001(\005\022" +
-      "*\n\014request_data\030\004 \001(\0132\024.google.protobuf." +
-      "Any\"v\n\nAGResponse\022\023\n\013status_code\030\001 \001(\005\022\021" +
-      "\n\terror_msg\030\002 \001(\t\022\024\n\014request_type\030\003 \001(\005\022" +
-      "*\n\014request_data\030\004 \001(\0132\024.google.protobuf." +
-      "Any\"\356\001\n\022AGPeripheralStatus\022\025\n\rscu_connec" +
+      "/protobuf/any.proto\032\016AG_enums.proto\032\013Enu" +
+      "ms.proto\"\322\001\n\nAGProtocol\022\023\n\013status_code\030\001" +
+      " \001(\005\022\021\n\terror_msg\030\002 \001(\t\0227\n\014request_type\030" +
+      "\003 \001(\0162!.org.monitoring.proto.RequestType" +
+      "\0227\n\014command_type\030\004 \001(\0162!.org.monitoring." +
+      "proto.CommandType\022*\n\014request_data\030\005 \001(\0132" +
+      "\024.google.protobuf.Any\"\213\001\n\014AGDeviceInfo\022\022" +
+      "\n\nequip_name\030\001 \001(\t\022\020\n\010equip_id\030\002 \001(\t\022\017\n\007" +
+      "gate_ip\030\003 \001(\t\022\021\n\tgate_type\030\004 \001(\t\0221\n\tgate" +
+      "_info\030\005 \001(\0132\036.org.monitoring.proto.GateI" +
+      "nfo\"\336\001\n\022AGPeripheralStatus\022\025\n\rscu_connec" +
       "ted\030\001 \001(\010\022\025\n\rccu_connected\030\002 \001(\010\022\025\n\rgcu_" +
       "connected\030\003 \001(\010\022\031\n\021reader1_connected\030\004 \001" +
       "(\010\022\031\n\021reader2_connected\030\005 \001(\010\022\032\n\022scanner" +
       "1_connected\030\006 \001(\010\022\032\n\022scanner2_connected\030" +
-      "\007 \001(\010\022\025\n\rups_connected\030\010 \001(\010\022\016\n\006alarms\030\t" +
-      " \003(\t\"{\n\014AGDeviceInfo\022\022\n\nequip_name\030\001 \001(\t" +
-      "\022\020\n\010equip_id\030\002 \001(\t\022\031\n\021scu_last_txn_sync\030" +
-      "\003 \001(\t\022\031\n\021ccu_last_txn_sync\030\004 \001(\t\022\017\n\007gate" +
-      "_ip\030\005 \001(\t\"\215\001\n\016AGVersionCheck\022\022\n\nfare_tab" +
-      "le\030\001 \001(\t\022\r\n\005users\030\002 \001(\t\022\023\n\013ag_software\030\003" +
-      " \001(\t\022\021\n\tblacklist\030\004 \001(\t\022\020\n\010calander\030\005 \001(" +
-      "\t\022\016\n\006qr_key\030\006 \001(\t\022\016\n\006ticket\030\007 \001(\tB$\n org" +
-      ".network.monitorandcontrol.agP\001b\006proto3"
+      "\007 \001(\010\022\025\n\rups_connected\030\010 \001(\010\"\221\001\n\022AGParam" +
+      "eterVersion\022\022\n\nfare_table\030\001 \001(\t\022\r\n\005users" +
+      "\030\002 \001(\t\022\023\n\013ag_software\030\003 \001(\t\022\021\n\tblacklist" +
+      "\030\004 \001(\t\022\020\n\010calendar\030\005 \001(\t\022\016\n\006qr_key\030\006 \001(\t" +
+      "\022\016\n\006ticket\030\007 \001(\t\"\177\n\010GateInfo\022\021\n\tgate_mod" +
+      "e\030\001 \001(\005\022\024\n\014passage_info\030\002 \001(\005\022\026\n\016emergen" +
+      "cy_mode\030\003 \001(\005\022\035\n\025maintenance_flap_info\030\004" +
+      " \001(\005\022\023\n\013gcu_version\030\005 \001(\t\"\355\001\n\rAGModeCont" +
+      "rol\022;\n\016operation_mode\030\001 \001(\0162#.org.monito" +
+      "ring.proto.OperationMode\0223\n\naisle_mode\030\002" +
+      " \001(\0162\037.org.monitoring.proto.AisleMode\0221\n" +
+      "\tflap_mode\030\003 \001(\0162\036.org.monitoring.proto." +
+      "FlapMode\0227\n\014special_mode\030\004 \001(\0162!.org.mon" +
+      "itoring.proto.SpecialModeB$\n org.network" +
+      ".monitorandcontrol.agP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.AnyProto.getDescriptor(),
+          org.network.monitorandcontrol.ag.AGEnums.getDescriptor(),
+          org.network.monitorandcontrol.Enums.getDescriptor(),
         });
-    internal_static_org_monitoring_proto_AGRequest_descriptor =
+    internal_static_org_monitoring_proto_AGProtocol_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_org_monitoring_proto_AGRequest_fieldAccessorTable = new
+    internal_static_org_monitoring_proto_AGProtocol_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_org_monitoring_proto_AGRequest_descriptor,
-        new java.lang.String[] { "Ip", "Uid", "RequestType", "RequestData", });
-    internal_static_org_monitoring_proto_AGResponse_descriptor =
+        internal_static_org_monitoring_proto_AGProtocol_descriptor,
+        new java.lang.String[] { "StatusCode", "ErrorMsg", "RequestType", "CommandType", "RequestData", });
+    internal_static_org_monitoring_proto_AGDeviceInfo_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_org_monitoring_proto_AGResponse_fieldAccessorTable = new
+    internal_static_org_monitoring_proto_AGDeviceInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_org_monitoring_proto_AGResponse_descriptor,
-        new java.lang.String[] { "StatusCode", "ErrorMsg", "RequestType", "RequestData", });
+        internal_static_org_monitoring_proto_AGDeviceInfo_descriptor,
+        new java.lang.String[] { "EquipName", "EquipId", "GateIp", "GateType", "GateInfo", });
     internal_static_org_monitoring_proto_AGPeripheralStatus_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_org_monitoring_proto_AGPeripheralStatus_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_monitoring_proto_AGPeripheralStatus_descriptor,
-        new java.lang.String[] { "ScuConnected", "CcuConnected", "GcuConnected", "Reader1Connected", "Reader2Connected", "Scanner1Connected", "Scanner2Connected", "UpsConnected", "Alarms", });
-    internal_static_org_monitoring_proto_AGDeviceInfo_descriptor =
+        new java.lang.String[] { "ScuConnected", "CcuConnected", "GcuConnected", "Reader1Connected", "Reader2Connected", "Scanner1Connected", "Scanner2Connected", "UpsConnected", });
+    internal_static_org_monitoring_proto_AGParameterVersion_descriptor =
       getDescriptor().getMessageTypes().get(3);
-    internal_static_org_monitoring_proto_AGDeviceInfo_fieldAccessorTable = new
+    internal_static_org_monitoring_proto_AGParameterVersion_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_org_monitoring_proto_AGDeviceInfo_descriptor,
-        new java.lang.String[] { "EquipName", "EquipId", "ScuLastTxnSync", "CcuLastTxnSync", "GateIp", });
-    internal_static_org_monitoring_proto_AGVersionCheck_descriptor =
+        internal_static_org_monitoring_proto_AGParameterVersion_descriptor,
+        new java.lang.String[] { "FareTable", "Users", "AgSoftware", "Blacklist", "Calendar", "QrKey", "Ticket", });
+    internal_static_org_monitoring_proto_GateInfo_descriptor =
       getDescriptor().getMessageTypes().get(4);
-    internal_static_org_monitoring_proto_AGVersionCheck_fieldAccessorTable = new
+    internal_static_org_monitoring_proto_GateInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_org_monitoring_proto_AGVersionCheck_descriptor,
-        new java.lang.String[] { "FareTable", "Users", "AgSoftware", "Blacklist", "Calander", "QrKey", "Ticket", });
+        internal_static_org_monitoring_proto_GateInfo_descriptor,
+        new java.lang.String[] { "GateMode", "PassageInfo", "EmergencyMode", "MaintenanceFlapInfo", "GcuVersion", });
+    internal_static_org_monitoring_proto_AGModeControl_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_org_monitoring_proto_AGModeControl_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_org_monitoring_proto_AGModeControl_descriptor,
+        new java.lang.String[] { "OperationMode", "AisleMode", "FlapMode", "SpecialMode", });
     com.google.protobuf.AnyProto.getDescriptor();
+    org.network.monitorandcontrol.ag.AGEnums.getDescriptor();
+    org.network.monitorandcontrol.Enums.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

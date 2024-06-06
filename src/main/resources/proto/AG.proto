@@ -2,24 +2,42 @@ syntax = "proto3";
 package org.monitoring.proto;
 
 import "google/protobuf/any.proto";
+import "AG_enums.proto";
+import "Enums.proto";
+
+
 
 option java_package = "org.network.monitorandcontrol.ag";
 option java_multiple_files = true;
 
-message AGRequest{
-    string ip = 1;
-    int32 uid = 2;
-    int32 request_type = 3;
-    google.protobuf.Any request_data = 4;
+message AGProtocol{
+    int32 status_code = 1; //status code of the operation
+    string error_msg = 2; //error code for the operation
+    RequestType request_type = 3; //send by the client for the server to identify the request type
+    CommandType command_type = 4; //send by the server to the client to perform changes in the euipment
+    google.protobuf.Any request_data = 5; //data associated with the operation
 }
 
-message AGResponse{
-    int32 status_code = 1;
-    string error_msg = 2;
-    int32 request_type = 3;
-    google.protobuf.Any request_data = 4;
+/*
+    AGDeviceInfo give information about the gate
+    request_type  - 1
+*/
+
+message AGDeviceInfo{
+    string equip_name = 1;
+    string equip_id = 2;
+    string gate_ip = 3;
+    string gate_type = 4;
+    GateInfo gate_info = 5;
 }
 
+
+/*
+    Monitoring Protocols
+
+    AGPeripheralStatus give information about the peripherals connection or disconnection
+    request_type  - 2
+*/
 message AGPeripheralStatus{
     bool scu_connected = 1;
     bool ccu_connected = 2;
@@ -29,23 +47,50 @@ message AGPeripheralStatus{
     bool scanner1_connected = 6;
     bool scanner2_connected = 7;
     bool ups_connected = 8;
-    repeated string alarms = 9;
 }
 
-message AGDeviceInfo{
-    string equip_name = 1; 
-    string equip_id = 2; 
-    string scu_last_txn_sync = 3; //colon seperated last_txn:last_sync
-    string ccu_last_txn_sync = 4; //colon seperated last_txn:last_sync
-    string gate_ip = 5;
-}
 
-message AGVersionCheck{
+/*
+    AGVersionCheck is the version information for parameter sync
+    request_type  - 3
+*/
+
+message AGParameterVersion{
     string fare_table = 1;
     string users = 2;
     string ag_software = 3;
     string blacklist = 4;
-    string calander = 5;
+    string calendar = 5;
     string qr_key = 6;
     string ticket = 7;
+}
+
+
+/*
+    GateInfo is information about modes set in the GCU
+*/
+message GateInfo{
+    int32 gate_mode = 1;
+    int32 passage_info = 2;
+    int32 emergency_mode = 3;
+    int32 maintenance_flap_info = 4;
+    string gcu_version = 5;
+}
+
+
+/*
+    Controlling Protocols
+
+    AGModeControl is to control gate from SCU / CCU
+
+    command_type - 5
+
+    please find the defination in AG_enums.proto file
+*/
+
+message AGModeControl {
+    OperationMode operation_mode = 1;
+    AisleMode aisle_mode = 2;
+    FlapMode flap_mode = 3;
+    SpecialMode special_mode = 4;
 }

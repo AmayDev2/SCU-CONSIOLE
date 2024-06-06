@@ -1,0 +1,52 @@
+syntax = "proto3";
+package org.monitoring.proto;
+
+import "google/protobuf/any.proto";
+
+option java_package = "org.network.monitorandcontrol.tom";
+option java_multiple_files = true;
+
+
+message TOMRequest{
+    string ip = 1;
+    int32 uid = 2;
+    int32 request_type = 3;
+    google.protobuf.Any request_data = 4;
+}
+
+message TOMResponse{
+    int32 status_code = 1;
+    string error_msg = 2;
+    int32 request_type = 3;
+    google.protobuf.Any request_data = 4;
+}
+
+message TOMVersionCheck{
+    string fare_table = 1;
+    string users = 2;
+    string tom_software = 3;
+    string blacklist = 4;
+    string calander = 5;
+    string qr_key = 6;
+    string ticket = 7;
+}
+
+message TOMPeripheralStatus{
+    bool scu_connected = 1;
+    bool ccu_connected = 2;
+    bool reader_connected = 3;
+    bool scanner_connected = 4;
+    bool ticket_printer_connected=5;
+    bool receipt_printer_connected=6;
+    bool pdu_connected=7;
+    bool cash_drawer_connected = 8;
+    repeated string alarms = 9;
+}
+
+message TOMDeviceInfo{
+    string equip_name = 1; 
+    string equip_id = 2; 
+    string scu_last_txn_sync = 3; //colon seperated last_txn:last_sync
+    string ccu_last_txn_sync = 4; //colon seperated last_txn:last_sync
+    string tom_ip = 5;
+}

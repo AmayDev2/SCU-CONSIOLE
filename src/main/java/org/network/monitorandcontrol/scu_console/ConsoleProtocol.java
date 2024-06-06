@@ -4,28 +4,28 @@
 package org.network.monitorandcontrol.scu_console;
 
 /**
- * Protobuf type {@code org.monitoring.proto.ConsoleStream}
+ * Protobuf type {@code org.monitoring.proto.ConsoleProtocol}
  */
-public  final class ConsoleStream extends
+public  final class ConsoleProtocol extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:org.monitoring.proto.ConsoleStream)
-    ConsoleStreamOrBuilder {
+    // @@protoc_insertion_point(message_implements:org.monitoring.proto.ConsoleProtocol)
+    ConsoleProtocolOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use ConsoleStream.newBuilder() to construct.
-  private ConsoleStream(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use ConsoleProtocol.newBuilder() to construct.
+  private ConsoleProtocol(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private ConsoleStream() {
-    ip_ = "";
+  private ConsoleProtocol() {
     consoleId_ = "";
     errorMsg_ = "";
+    deviceType_ = 0;
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new ConsoleStream();
+    return new ConsoleProtocol();
   }
 
   @java.lang.Override
@@ -33,7 +33,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private ConsoleStream(
+  private ConsoleProtocol(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -54,24 +54,37 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            ip_ = s;
-            break;
-          }
-          case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
-
             consoleId_ = s;
             break;
           }
-          case 24: {
+          case 16: {
 
             statusCode_ = input.readInt32();
             break;
           }
-          case 34: {
+          case 26: {
             java.lang.String s = input.readStringRequireUtf8();
 
             errorMsg_ = s;
+            break;
+          }
+          case 34: {
+            org.network.monitorandcontrol.scu_console.StreamData.Builder subBuilder = null;
+            if (streamData_ != null) {
+              subBuilder = streamData_.toBuilder();
+            }
+            streamData_ = input.readMessage(org.network.monitorandcontrol.scu_console.StreamData.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(streamData_);
+              streamData_ = subBuilder.buildPartial();
+            }
+
+            break;
+          }
+          case 40: {
+            int rawValue = input.readEnum();
+
+            deviceType_ = rawValue;
             break;
           }
           default: {
@@ -95,57 +108,21 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return org.network.monitorandcontrol.scu_console.SC.internal_static_org_monitoring_proto_ConsoleStream_descriptor;
+    return org.network.monitorandcontrol.scu_console.SC.internal_static_org_monitoring_proto_ConsoleProtocol_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return org.network.monitorandcontrol.scu_console.SC.internal_static_org_monitoring_proto_ConsoleStream_fieldAccessorTable
+    return org.network.monitorandcontrol.scu_console.SC.internal_static_org_monitoring_proto_ConsoleProtocol_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            org.network.monitorandcontrol.scu_console.ConsoleStream.class, org.network.monitorandcontrol.scu_console.ConsoleStream.Builder.class);
+            org.network.monitorandcontrol.scu_console.ConsoleProtocol.class, org.network.monitorandcontrol.scu_console.ConsoleProtocol.Builder.class);
   }
 
-  public static final int IP_FIELD_NUMBER = 1;
-  private volatile java.lang.Object ip_;
-  /**
-   * <code>string ip = 1;</code>
-   * @return The ip.
-   */
-  public java.lang.String getIp() {
-    java.lang.Object ref = ip_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      ip_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string ip = 1;</code>
-   * @return The bytes for ip.
-   */
-  public com.google.protobuf.ByteString
-      getIpBytes() {
-    java.lang.Object ref = ip_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      ip_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int CONSOLE_ID_FIELD_NUMBER = 2;
+  public static final int CONSOLE_ID_FIELD_NUMBER = 1;
   private volatile java.lang.Object consoleId_;
   /**
-   * <code>string console_id = 2;</code>
+   * <code>string console_id = 1;</code>
    * @return The consoleId.
    */
   public java.lang.String getConsoleId() {
@@ -161,7 +138,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string console_id = 2;</code>
+   * <code>string console_id = 1;</code>
    * @return The bytes for consoleId.
    */
   public com.google.protobuf.ByteString
@@ -178,20 +155,20 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int STATUS_CODE_FIELD_NUMBER = 3;
+  public static final int STATUS_CODE_FIELD_NUMBER = 2;
   private int statusCode_;
   /**
-   * <code>int32 status_code = 3;</code>
+   * <code>int32 status_code = 2;</code>
    * @return The statusCode.
    */
   public int getStatusCode() {
     return statusCode_;
   }
 
-  public static final int ERROR_MSG_FIELD_NUMBER = 4;
+  public static final int ERROR_MSG_FIELD_NUMBER = 3;
   private volatile java.lang.Object errorMsg_;
   /**
-   * <code>string error_msg = 4;</code>
+   * <code>string error_msg = 3;</code>
    * @return The errorMsg.
    */
   public java.lang.String getErrorMsg() {
@@ -207,7 +184,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string error_msg = 4;</code>
+   * <code>string error_msg = 3;</code>
    * @return The bytes for errorMsg.
    */
   public com.google.protobuf.ByteString
@@ -224,6 +201,48 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int STREAM_DATA_FIELD_NUMBER = 4;
+  private org.network.monitorandcontrol.scu_console.StreamData streamData_;
+  /**
+   * <code>.org.monitoring.proto.StreamData stream_data = 4;</code>
+   * @return Whether the streamData field is set.
+   */
+  public boolean hasStreamData() {
+    return streamData_ != null;
+  }
+  /**
+   * <code>.org.monitoring.proto.StreamData stream_data = 4;</code>
+   * @return The streamData.
+   */
+  public org.network.monitorandcontrol.scu_console.StreamData getStreamData() {
+    return streamData_ == null ? org.network.monitorandcontrol.scu_console.StreamData.getDefaultInstance() : streamData_;
+  }
+  /**
+   * <code>.org.monitoring.proto.StreamData stream_data = 4;</code>
+   */
+  public org.network.monitorandcontrol.scu_console.StreamDataOrBuilder getStreamDataOrBuilder() {
+    return getStreamData();
+  }
+
+  public static final int DEVICE_TYPE_FIELD_NUMBER = 5;
+  private int deviceType_;
+  /**
+   * <code>.org.monitoring.proto.DeviceType device_type = 5;</code>
+   * @return The enum numeric value on the wire for deviceType.
+   */
+  public int getDeviceTypeValue() {
+    return deviceType_;
+  }
+  /**
+   * <code>.org.monitoring.proto.DeviceType device_type = 5;</code>
+   * @return The deviceType.
+   */
+  public org.network.monitorandcontrol.DeviceType getDeviceType() {
+    @SuppressWarnings("deprecation")
+    org.network.monitorandcontrol.DeviceType result = org.network.monitorandcontrol.DeviceType.valueOf(deviceType_);
+    return result == null ? org.network.monitorandcontrol.DeviceType.UNRECOGNIZED : result;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -238,17 +257,20 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getIpBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, ip_);
-    }
     if (!getConsoleIdBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, consoleId_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, consoleId_);
     }
     if (statusCode_ != 0) {
-      output.writeInt32(3, statusCode_);
+      output.writeInt32(2, statusCode_);
     }
     if (!getErrorMsgBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, errorMsg_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, errorMsg_);
+    }
+    if (streamData_ != null) {
+      output.writeMessage(4, getStreamData());
+    }
+    if (deviceType_ != org.network.monitorandcontrol.DeviceType.TOM.getNumber()) {
+      output.writeEnum(5, deviceType_);
     }
     unknownFields.writeTo(output);
   }
@@ -259,18 +281,23 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getIpBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, ip_);
-    }
     if (!getConsoleIdBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, consoleId_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, consoleId_);
     }
     if (statusCode_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(3, statusCode_);
+        .computeInt32Size(2, statusCode_);
     }
     if (!getErrorMsgBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, errorMsg_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, errorMsg_);
+    }
+    if (streamData_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(4, getStreamData());
+    }
+    if (deviceType_ != org.network.monitorandcontrol.DeviceType.TOM.getNumber()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(5, deviceType_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -282,19 +309,23 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof org.network.monitorandcontrol.scu_console.ConsoleStream)) {
+    if (!(obj instanceof org.network.monitorandcontrol.scu_console.ConsoleProtocol)) {
       return super.equals(obj);
     }
-    org.network.monitorandcontrol.scu_console.ConsoleStream other = (org.network.monitorandcontrol.scu_console.ConsoleStream) obj;
+    org.network.monitorandcontrol.scu_console.ConsoleProtocol other = (org.network.monitorandcontrol.scu_console.ConsoleProtocol) obj;
 
-    if (!getIp()
-        .equals(other.getIp())) return false;
     if (!getConsoleId()
         .equals(other.getConsoleId())) return false;
     if (getStatusCode()
         != other.getStatusCode()) return false;
     if (!getErrorMsg()
         .equals(other.getErrorMsg())) return false;
+    if (hasStreamData() != other.hasStreamData()) return false;
+    if (hasStreamData()) {
+      if (!getStreamData()
+          .equals(other.getStreamData())) return false;
+    }
+    if (deviceType_ != other.deviceType_) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -306,82 +337,86 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + IP_FIELD_NUMBER;
-    hash = (53 * hash) + getIp().hashCode();
     hash = (37 * hash) + CONSOLE_ID_FIELD_NUMBER;
     hash = (53 * hash) + getConsoleId().hashCode();
     hash = (37 * hash) + STATUS_CODE_FIELD_NUMBER;
     hash = (53 * hash) + getStatusCode();
     hash = (37 * hash) + ERROR_MSG_FIELD_NUMBER;
     hash = (53 * hash) + getErrorMsg().hashCode();
+    if (hasStreamData()) {
+      hash = (37 * hash) + STREAM_DATA_FIELD_NUMBER;
+      hash = (53 * hash) + getStreamData().hashCode();
+    }
+    hash = (37 * hash) + DEVICE_TYPE_FIELD_NUMBER;
+    hash = (53 * hash) + deviceType_;
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static org.network.monitorandcontrol.scu_console.ConsoleStream parseFrom(
+  public static org.network.monitorandcontrol.scu_console.ConsoleProtocol parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static org.network.monitorandcontrol.scu_console.ConsoleStream parseFrom(
+  public static org.network.monitorandcontrol.scu_console.ConsoleProtocol parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static org.network.monitorandcontrol.scu_console.ConsoleStream parseFrom(
+  public static org.network.monitorandcontrol.scu_console.ConsoleProtocol parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static org.network.monitorandcontrol.scu_console.ConsoleStream parseFrom(
+  public static org.network.monitorandcontrol.scu_console.ConsoleProtocol parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static org.network.monitorandcontrol.scu_console.ConsoleStream parseFrom(byte[] data)
+  public static org.network.monitorandcontrol.scu_console.ConsoleProtocol parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static org.network.monitorandcontrol.scu_console.ConsoleStream parseFrom(
+  public static org.network.monitorandcontrol.scu_console.ConsoleProtocol parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static org.network.monitorandcontrol.scu_console.ConsoleStream parseFrom(java.io.InputStream input)
+  public static org.network.monitorandcontrol.scu_console.ConsoleProtocol parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static org.network.monitorandcontrol.scu_console.ConsoleStream parseFrom(
+  public static org.network.monitorandcontrol.scu_console.ConsoleProtocol parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static org.network.monitorandcontrol.scu_console.ConsoleStream parseDelimitedFrom(java.io.InputStream input)
+  public static org.network.monitorandcontrol.scu_console.ConsoleProtocol parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static org.network.monitorandcontrol.scu_console.ConsoleStream parseDelimitedFrom(
+  public static org.network.monitorandcontrol.scu_console.ConsoleProtocol parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static org.network.monitorandcontrol.scu_console.ConsoleStream parseFrom(
+  public static org.network.monitorandcontrol.scu_console.ConsoleProtocol parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static org.network.monitorandcontrol.scu_console.ConsoleStream parseFrom(
+  public static org.network.monitorandcontrol.scu_console.ConsoleProtocol parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -394,7 +429,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(org.network.monitorandcontrol.scu_console.ConsoleStream prototype) {
+  public static Builder newBuilder(org.network.monitorandcontrol.scu_console.ConsoleProtocol prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -410,26 +445,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code org.monitoring.proto.ConsoleStream}
+   * Protobuf type {@code org.monitoring.proto.ConsoleProtocol}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:org.monitoring.proto.ConsoleStream)
-      org.network.monitorandcontrol.scu_console.ConsoleStreamOrBuilder {
+      // @@protoc_insertion_point(builder_implements:org.monitoring.proto.ConsoleProtocol)
+      org.network.monitorandcontrol.scu_console.ConsoleProtocolOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.network.monitorandcontrol.scu_console.SC.internal_static_org_monitoring_proto_ConsoleStream_descriptor;
+      return org.network.monitorandcontrol.scu_console.SC.internal_static_org_monitoring_proto_ConsoleProtocol_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.network.monitorandcontrol.scu_console.SC.internal_static_org_monitoring_proto_ConsoleStream_fieldAccessorTable
+      return org.network.monitorandcontrol.scu_console.SC.internal_static_org_monitoring_proto_ConsoleProtocol_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.network.monitorandcontrol.scu_console.ConsoleStream.class, org.network.monitorandcontrol.scu_console.ConsoleStream.Builder.class);
+              org.network.monitorandcontrol.scu_console.ConsoleProtocol.class, org.network.monitorandcontrol.scu_console.ConsoleProtocol.Builder.class);
     }
 
-    // Construct using org.network.monitorandcontrol.scu_console.ConsoleStream.newBuilder()
+    // Construct using org.network.monitorandcontrol.scu_console.ConsoleProtocol.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -447,13 +482,19 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      ip_ = "";
-
       consoleId_ = "";
 
       statusCode_ = 0;
 
       errorMsg_ = "";
+
+      if (streamDataBuilder_ == null) {
+        streamData_ = null;
+      } else {
+        streamData_ = null;
+        streamDataBuilder_ = null;
+      }
+      deviceType_ = 0;
 
       return this;
     }
@@ -461,17 +502,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return org.network.monitorandcontrol.scu_console.SC.internal_static_org_monitoring_proto_ConsoleStream_descriptor;
+      return org.network.monitorandcontrol.scu_console.SC.internal_static_org_monitoring_proto_ConsoleProtocol_descriptor;
     }
 
     @java.lang.Override
-    public org.network.monitorandcontrol.scu_console.ConsoleStream getDefaultInstanceForType() {
-      return org.network.monitorandcontrol.scu_console.ConsoleStream.getDefaultInstance();
+    public org.network.monitorandcontrol.scu_console.ConsoleProtocol getDefaultInstanceForType() {
+      return org.network.monitorandcontrol.scu_console.ConsoleProtocol.getDefaultInstance();
     }
 
     @java.lang.Override
-    public org.network.monitorandcontrol.scu_console.ConsoleStream build() {
-      org.network.monitorandcontrol.scu_console.ConsoleStream result = buildPartial();
+    public org.network.monitorandcontrol.scu_console.ConsoleProtocol build() {
+      org.network.monitorandcontrol.scu_console.ConsoleProtocol result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -479,12 +520,17 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public org.network.monitorandcontrol.scu_console.ConsoleStream buildPartial() {
-      org.network.monitorandcontrol.scu_console.ConsoleStream result = new org.network.monitorandcontrol.scu_console.ConsoleStream(this);
-      result.ip_ = ip_;
+    public org.network.monitorandcontrol.scu_console.ConsoleProtocol buildPartial() {
+      org.network.monitorandcontrol.scu_console.ConsoleProtocol result = new org.network.monitorandcontrol.scu_console.ConsoleProtocol(this);
       result.consoleId_ = consoleId_;
       result.statusCode_ = statusCode_;
       result.errorMsg_ = errorMsg_;
+      if (streamDataBuilder_ == null) {
+        result.streamData_ = streamData_;
+      } else {
+        result.streamData_ = streamDataBuilder_.build();
+      }
+      result.deviceType_ = deviceType_;
       onBuilt();
       return result;
     }
@@ -523,20 +569,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof org.network.monitorandcontrol.scu_console.ConsoleStream) {
-        return mergeFrom((org.network.monitorandcontrol.scu_console.ConsoleStream)other);
+      if (other instanceof org.network.monitorandcontrol.scu_console.ConsoleProtocol) {
+        return mergeFrom((org.network.monitorandcontrol.scu_console.ConsoleProtocol)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(org.network.monitorandcontrol.scu_console.ConsoleStream other) {
-      if (other == org.network.monitorandcontrol.scu_console.ConsoleStream.getDefaultInstance()) return this;
-      if (!other.getIp().isEmpty()) {
-        ip_ = other.ip_;
-        onChanged();
-      }
+    public Builder mergeFrom(org.network.monitorandcontrol.scu_console.ConsoleProtocol other) {
+      if (other == org.network.monitorandcontrol.scu_console.ConsoleProtocol.getDefaultInstance()) return this;
       if (!other.getConsoleId().isEmpty()) {
         consoleId_ = other.consoleId_;
         onChanged();
@@ -547,6 +589,12 @@ private static final long serialVersionUID = 0L;
       if (!other.getErrorMsg().isEmpty()) {
         errorMsg_ = other.errorMsg_;
         onChanged();
+      }
+      if (other.hasStreamData()) {
+        mergeStreamData(other.getStreamData());
+      }
+      if (other.deviceType_ != 0) {
+        setDeviceTypeValue(other.getDeviceTypeValue());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -563,11 +611,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      org.network.monitorandcontrol.scu_console.ConsoleStream parsedMessage = null;
+      org.network.monitorandcontrol.scu_console.ConsoleProtocol parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (org.network.monitorandcontrol.scu_console.ConsoleStream) e.getUnfinishedMessage();
+        parsedMessage = (org.network.monitorandcontrol.scu_console.ConsoleProtocol) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -577,85 +625,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object ip_ = "";
-    /**
-     * <code>string ip = 1;</code>
-     * @return The ip.
-     */
-    public java.lang.String getIp() {
-      java.lang.Object ref = ip_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        ip_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string ip = 1;</code>
-     * @return The bytes for ip.
-     */
-    public com.google.protobuf.ByteString
-        getIpBytes() {
-      java.lang.Object ref = ip_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        ip_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string ip = 1;</code>
-     * @param value The ip to set.
-     * @return This builder for chaining.
-     */
-    public Builder setIp(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      ip_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string ip = 1;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearIp() {
-      
-      ip_ = getDefaultInstance().getIp();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string ip = 1;</code>
-     * @param value The bytes for ip to set.
-     * @return This builder for chaining.
-     */
-    public Builder setIpBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      ip_ = value;
-      onChanged();
-      return this;
-    }
-
     private java.lang.Object consoleId_ = "";
     /**
-     * <code>string console_id = 2;</code>
+     * <code>string console_id = 1;</code>
      * @return The consoleId.
      */
     public java.lang.String getConsoleId() {
@@ -671,7 +643,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string console_id = 2;</code>
+     * <code>string console_id = 1;</code>
      * @return The bytes for consoleId.
      */
     public com.google.protobuf.ByteString
@@ -688,7 +660,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string console_id = 2;</code>
+     * <code>string console_id = 1;</code>
      * @param value The consoleId to set.
      * @return This builder for chaining.
      */
@@ -703,7 +675,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string console_id = 2;</code>
+     * <code>string console_id = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearConsoleId() {
@@ -713,7 +685,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string console_id = 2;</code>
+     * <code>string console_id = 1;</code>
      * @param value The bytes for consoleId to set.
      * @return This builder for chaining.
      */
@@ -731,14 +703,14 @@ private static final long serialVersionUID = 0L;
 
     private int statusCode_ ;
     /**
-     * <code>int32 status_code = 3;</code>
+     * <code>int32 status_code = 2;</code>
      * @return The statusCode.
      */
     public int getStatusCode() {
       return statusCode_;
     }
     /**
-     * <code>int32 status_code = 3;</code>
+     * <code>int32 status_code = 2;</code>
      * @param value The statusCode to set.
      * @return This builder for chaining.
      */
@@ -749,7 +721,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>int32 status_code = 3;</code>
+     * <code>int32 status_code = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearStatusCode() {
@@ -761,7 +733,7 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object errorMsg_ = "";
     /**
-     * <code>string error_msg = 4;</code>
+     * <code>string error_msg = 3;</code>
      * @return The errorMsg.
      */
     public java.lang.String getErrorMsg() {
@@ -777,7 +749,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string error_msg = 4;</code>
+     * <code>string error_msg = 3;</code>
      * @return The bytes for errorMsg.
      */
     public com.google.protobuf.ByteString
@@ -794,7 +766,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string error_msg = 4;</code>
+     * <code>string error_msg = 3;</code>
      * @param value The errorMsg to set.
      * @return This builder for chaining.
      */
@@ -809,7 +781,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string error_msg = 4;</code>
+     * <code>string error_msg = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearErrorMsg() {
@@ -819,7 +791,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string error_msg = 4;</code>
+     * <code>string error_msg = 3;</code>
      * @param value The bytes for errorMsg to set.
      * @return This builder for chaining.
      */
@@ -831,6 +803,177 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       errorMsg_ = value;
+      onChanged();
+      return this;
+    }
+
+    private org.network.monitorandcontrol.scu_console.StreamData streamData_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        org.network.monitorandcontrol.scu_console.StreamData, org.network.monitorandcontrol.scu_console.StreamData.Builder, org.network.monitorandcontrol.scu_console.StreamDataOrBuilder> streamDataBuilder_;
+    /**
+     * <code>.org.monitoring.proto.StreamData stream_data = 4;</code>
+     * @return Whether the streamData field is set.
+     */
+    public boolean hasStreamData() {
+      return streamDataBuilder_ != null || streamData_ != null;
+    }
+    /**
+     * <code>.org.monitoring.proto.StreamData stream_data = 4;</code>
+     * @return The streamData.
+     */
+    public org.network.monitorandcontrol.scu_console.StreamData getStreamData() {
+      if (streamDataBuilder_ == null) {
+        return streamData_ == null ? org.network.monitorandcontrol.scu_console.StreamData.getDefaultInstance() : streamData_;
+      } else {
+        return streamDataBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.org.monitoring.proto.StreamData stream_data = 4;</code>
+     */
+    public Builder setStreamData(org.network.monitorandcontrol.scu_console.StreamData value) {
+      if (streamDataBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        streamData_ = value;
+        onChanged();
+      } else {
+        streamDataBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.org.monitoring.proto.StreamData stream_data = 4;</code>
+     */
+    public Builder setStreamData(
+        org.network.monitorandcontrol.scu_console.StreamData.Builder builderForValue) {
+      if (streamDataBuilder_ == null) {
+        streamData_ = builderForValue.build();
+        onChanged();
+      } else {
+        streamDataBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.org.monitoring.proto.StreamData stream_data = 4;</code>
+     */
+    public Builder mergeStreamData(org.network.monitorandcontrol.scu_console.StreamData value) {
+      if (streamDataBuilder_ == null) {
+        if (streamData_ != null) {
+          streamData_ =
+            org.network.monitorandcontrol.scu_console.StreamData.newBuilder(streamData_).mergeFrom(value).buildPartial();
+        } else {
+          streamData_ = value;
+        }
+        onChanged();
+      } else {
+        streamDataBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.org.monitoring.proto.StreamData stream_data = 4;</code>
+     */
+    public Builder clearStreamData() {
+      if (streamDataBuilder_ == null) {
+        streamData_ = null;
+        onChanged();
+      } else {
+        streamData_ = null;
+        streamDataBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.org.monitoring.proto.StreamData stream_data = 4;</code>
+     */
+    public org.network.monitorandcontrol.scu_console.StreamData.Builder getStreamDataBuilder() {
+      
+      onChanged();
+      return getStreamDataFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.org.monitoring.proto.StreamData stream_data = 4;</code>
+     */
+    public org.network.monitorandcontrol.scu_console.StreamDataOrBuilder getStreamDataOrBuilder() {
+      if (streamDataBuilder_ != null) {
+        return streamDataBuilder_.getMessageOrBuilder();
+      } else {
+        return streamData_ == null ?
+            org.network.monitorandcontrol.scu_console.StreamData.getDefaultInstance() : streamData_;
+      }
+    }
+    /**
+     * <code>.org.monitoring.proto.StreamData stream_data = 4;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        org.network.monitorandcontrol.scu_console.StreamData, org.network.monitorandcontrol.scu_console.StreamData.Builder, org.network.monitorandcontrol.scu_console.StreamDataOrBuilder> 
+        getStreamDataFieldBuilder() {
+      if (streamDataBuilder_ == null) {
+        streamDataBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            org.network.monitorandcontrol.scu_console.StreamData, org.network.monitorandcontrol.scu_console.StreamData.Builder, org.network.monitorandcontrol.scu_console.StreamDataOrBuilder>(
+                getStreamData(),
+                getParentForChildren(),
+                isClean());
+        streamData_ = null;
+      }
+      return streamDataBuilder_;
+    }
+
+    private int deviceType_ = 0;
+    /**
+     * <code>.org.monitoring.proto.DeviceType device_type = 5;</code>
+     * @return The enum numeric value on the wire for deviceType.
+     */
+    public int getDeviceTypeValue() {
+      return deviceType_;
+    }
+    /**
+     * <code>.org.monitoring.proto.DeviceType device_type = 5;</code>
+     * @param value The enum numeric value on the wire for deviceType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDeviceTypeValue(int value) {
+      deviceType_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.org.monitoring.proto.DeviceType device_type = 5;</code>
+     * @return The deviceType.
+     */
+    public org.network.monitorandcontrol.DeviceType getDeviceType() {
+      @SuppressWarnings("deprecation")
+      org.network.monitorandcontrol.DeviceType result = org.network.monitorandcontrol.DeviceType.valueOf(deviceType_);
+      return result == null ? org.network.monitorandcontrol.DeviceType.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.org.monitoring.proto.DeviceType device_type = 5;</code>
+     * @param value The deviceType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDeviceType(org.network.monitorandcontrol.DeviceType value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      deviceType_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.org.monitoring.proto.DeviceType device_type = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearDeviceType() {
+      
+      deviceType_ = 0;
       onChanged();
       return this;
     }
@@ -847,41 +990,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:org.monitoring.proto.ConsoleStream)
+    // @@protoc_insertion_point(builder_scope:org.monitoring.proto.ConsoleProtocol)
   }
 
-  // @@protoc_insertion_point(class_scope:org.monitoring.proto.ConsoleStream)
-  private static final org.network.monitorandcontrol.scu_console.ConsoleStream DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:org.monitoring.proto.ConsoleProtocol)
+  private static final org.network.monitorandcontrol.scu_console.ConsoleProtocol DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new org.network.monitorandcontrol.scu_console.ConsoleStream();
+    DEFAULT_INSTANCE = new org.network.monitorandcontrol.scu_console.ConsoleProtocol();
   }
 
-  public static org.network.monitorandcontrol.scu_console.ConsoleStream getDefaultInstance() {
+  public static org.network.monitorandcontrol.scu_console.ConsoleProtocol getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<ConsoleStream>
-      PARSER = new com.google.protobuf.AbstractParser<ConsoleStream>() {
+  private static final com.google.protobuf.Parser<ConsoleProtocol>
+      PARSER = new com.google.protobuf.AbstractParser<ConsoleProtocol>() {
     @java.lang.Override
-    public ConsoleStream parsePartialFrom(
+    public ConsoleProtocol parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new ConsoleStream(input, extensionRegistry);
+      return new ConsoleProtocol(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<ConsoleStream> parser() {
+  public static com.google.protobuf.Parser<ConsoleProtocol> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<ConsoleStream> getParserForType() {
+  public com.google.protobuf.Parser<ConsoleProtocol> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public org.network.monitorandcontrol.scu_console.ConsoleStream getDefaultInstanceForType() {
+  public org.network.monitorandcontrol.scu_console.ConsoleProtocol getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

@@ -29,8 +29,7 @@ public class AGController  implements SLE {
 
     @FXML
     void initialize() {
-        ag.setOnMouseClicked(this::handleMouseClick);
-
+        ag.setOnMouseClicked(this::handleMouseClick);           //handles the mouse click event
 
     }
     @Override

@@ -15,30 +15,30 @@ public final class TOM {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_org_monitoring_proto_TOMRequest_descriptor;
+    internal_static_org_monitoring_proto_TOMProtocol_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_org_monitoring_proto_TOMRequest_fieldAccessorTable;
+      internal_static_org_monitoring_proto_TOMProtocol_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_org_monitoring_proto_TOMResponse_descriptor;
+    internal_static_org_monitoring_proto_TOMDeviceInfo_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_org_monitoring_proto_TOMResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_org_monitoring_proto_TOMVersionCheck_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_org_monitoring_proto_TOMVersionCheck_fieldAccessorTable;
+      internal_static_org_monitoring_proto_TOMDeviceInfo_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_monitoring_proto_TOMPeripheralStatus_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_monitoring_proto_TOMPeripheralStatus_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_org_monitoring_proto_TOMDeviceInfo_descriptor;
+    internal_static_org_monitoring_proto_TOMParameterVersion_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_org_monitoring_proto_TOMDeviceInfo_fieldAccessorTable;
+      internal_static_org_monitoring_proto_TOMParameterVersion_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_monitoring_proto_TOMModeControl_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_org_monitoring_proto_TOMModeControl_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -49,64 +49,72 @@ public final class TOM {
   static {
     java.lang.String[] descriptorData = {
       "\n\tTOM.proto\022\024org.monitoring.proto\032\031googl" +
-      "e/protobuf/any.proto\"g\n\nTOMRequest\022\n\n\002ip" +
-      "\030\001 \001(\t\022\013\n\003uid\030\002 \001(\005\022\024\n\014request_type\030\003 \001(" +
-      "\005\022*\n\014request_data\030\004 \001(\0132\024.google.protobu" +
-      "f.Any\"w\n\013TOMResponse\022\023\n\013status_code\030\001 \001(" +
-      "\005\022\021\n\terror_msg\030\002 \001(\t\022\024\n\014request_type\030\003 \001" +
-      "(\005\022*\n\014request_data\030\004 \001(\0132\024.google.protob" +
-      "uf.Any\"\217\001\n\017TOMVersionCheck\022\022\n\nfare_table" +
-      "\030\001 \001(\t\022\r\n\005users\030\002 \001(\t\022\024\n\014tom_software\030\003 " +
-      "\001(\t\022\021\n\tblacklist\030\004 \001(\t\022\020\n\010calander\030\005 \001(\t" +
-      "\022\016\n\006qr_key\030\006 \001(\t\022\016\n\006ticket\030\007 \001(\t\"\203\002\n\023TOM" +
-      "PeripheralStatus\022\025\n\rscu_connected\030\001 \001(\010\022" +
-      "\025\n\rccu_connected\030\002 \001(\010\022\030\n\020reader_connect" +
-      "ed\030\003 \001(\010\022\031\n\021scanner_connected\030\004 \001(\010\022 \n\030t" +
-      "icket_printer_connected\030\005 \001(\010\022!\n\031receipt" +
-      "_printer_connected\030\006 \001(\010\022\025\n\rpdu_connecte" +
-      "d\030\007 \001(\010\022\035\n\025cash_drawer_connected\030\010 \001(\010\022\016" +
-      "\n\006alarms\030\t \003(\t\"{\n\rTOMDeviceInfo\022\022\n\nequip" +
-      "_name\030\001 \001(\t\022\020\n\010equip_id\030\002 \001(\t\022\031\n\021scu_las" +
-      "t_txn_sync\030\003 \001(\t\022\031\n\021ccu_last_txn_sync\030\004 " +
-      "\001(\t\022\016\n\006tom_ip\030\005 \001(\tB%\n!org.network.monit" +
-      "orandcontrol.tomP\001b\006proto3"
+      "e/protobuf/any.proto\032\017TOM_enums.proto\032\013E" +
+      "nums.proto\"\323\001\n\013TOMProtocol\022\023\n\013status_cod" +
+      "e\030\001 \001(\005\022\021\n\terror_msg\030\002 \001(\t\0227\n\014request_ty" +
+      "pe\030\003 \001(\0162!.org.monitoring.proto.RequestT" +
+      "ype\0227\n\014command_type\030\004 \001(\0162!.org.monitori" +
+      "ng.proto.CommandType\022*\n\014request_data\030\005 \001" +
+      "(\0132\024.google.protobuf.Any\"Z\n\rTOMDeviceInf" +
+      "o\022\022\n\nequip_name\030\001 \001(\t\022\020\n\010equip_id\030\002 \001(\t\022" +
+      "\016\n\006tom_ip\030\003 \001(\t\022\023\n\013device_type\030\004 \001(\t\"\340\001\n" +
+      "\023TOMPeripheralStatus\022\025\n\rscu_connected\030\001 " +
+      "\001(\010\022\025\n\rccu_connected\030\002 \001(\010\022\030\n\020reader_con" +
+      "nected\030\003 \001(\010\022\031\n\021scanner_connected\030\004 \001(\010\022" +
+      "\031\n\021printer_connected\030\005 \001(\010\022\025\n\rpdu_connec" +
+      "ted\030\006 \001(\010\022\035\n\025cash_drawer_connected\030\007 \001(\010" +
+      "\022\025\n\rups_connected\030\010 \001(\010\"\223\001\n\023TOMParameter" +
+      "Version\022\022\n\nfare_table\030\001 \001(\t\022\r\n\005users\030\002 \001" +
+      "(\t\022\024\n\014tom_software\030\003 \001(\t\022\021\n\tblacklist\030\004 " +
+      "\001(\t\022\020\n\010calendar\030\005 \001(\t\022\016\n\006qr_key\030\006 \001(\t\022\016\n" +
+      "\006ticket\030\007 \001(\t\"\267\001\n\016TOMModeControl\022;\n\016oper" +
+      "ation_mode\030\001 \001(\0162#.org.monitoring.proto." +
+      "OperationMode\022\031\n\021card_process_mode\030\002 \001(\010" +
+      "\022\024\n\014qr_sale_mode\030\003 \001(\010\0227\n\014special_mode\030\004" +
+      " \001(\0162!.org.monitoring.proto.SpecialModeB" +
+      "%\n!org.network.monitorandcontrol.tomP\001b\006" +
+      "proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.AnyProto.getDescriptor(),
+          org.network.monitorandcontrol.tom.TOMEnums.getDescriptor(),
+          org.network.monitorandcontrol.Enums.getDescriptor(),
         });
-    internal_static_org_monitoring_proto_TOMRequest_descriptor =
+    internal_static_org_monitoring_proto_TOMProtocol_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_org_monitoring_proto_TOMRequest_fieldAccessorTable = new
+    internal_static_org_monitoring_proto_TOMProtocol_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_org_monitoring_proto_TOMRequest_descriptor,
-        new java.lang.String[] { "Ip", "Uid", "RequestType", "RequestData", });
-    internal_static_org_monitoring_proto_TOMResponse_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_org_monitoring_proto_TOMResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_org_monitoring_proto_TOMResponse_descriptor,
-        new java.lang.String[] { "StatusCode", "ErrorMsg", "RequestType", "RequestData", });
-    internal_static_org_monitoring_proto_TOMVersionCheck_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_org_monitoring_proto_TOMVersionCheck_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_org_monitoring_proto_TOMVersionCheck_descriptor,
-        new java.lang.String[] { "FareTable", "Users", "TomSoftware", "Blacklist", "Calander", "QrKey", "Ticket", });
-    internal_static_org_monitoring_proto_TOMPeripheralStatus_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_org_monitoring_proto_TOMPeripheralStatus_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_org_monitoring_proto_TOMPeripheralStatus_descriptor,
-        new java.lang.String[] { "ScuConnected", "CcuConnected", "ReaderConnected", "ScannerConnected", "TicketPrinterConnected", "ReceiptPrinterConnected", "PduConnected", "CashDrawerConnected", "Alarms", });
+        internal_static_org_monitoring_proto_TOMProtocol_descriptor,
+        new java.lang.String[] { "StatusCode", "ErrorMsg", "RequestType", "CommandType", "RequestData", });
     internal_static_org_monitoring_proto_TOMDeviceInfo_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(1);
     internal_static_org_monitoring_proto_TOMDeviceInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_monitoring_proto_TOMDeviceInfo_descriptor,
-        new java.lang.String[] { "EquipName", "EquipId", "ScuLastTxnSync", "CcuLastTxnSync", "TomIp", });
+        new java.lang.String[] { "EquipName", "EquipId", "TomIp", "DeviceType", });
+    internal_static_org_monitoring_proto_TOMPeripheralStatus_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_org_monitoring_proto_TOMPeripheralStatus_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_org_monitoring_proto_TOMPeripheralStatus_descriptor,
+        new java.lang.String[] { "ScuConnected", "CcuConnected", "ReaderConnected", "ScannerConnected", "PrinterConnected", "PduConnected", "CashDrawerConnected", "UpsConnected", });
+    internal_static_org_monitoring_proto_TOMParameterVersion_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_org_monitoring_proto_TOMParameterVersion_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_org_monitoring_proto_TOMParameterVersion_descriptor,
+        new java.lang.String[] { "FareTable", "Users", "TomSoftware", "Blacklist", "Calendar", "QrKey", "Ticket", });
+    internal_static_org_monitoring_proto_TOMModeControl_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_org_monitoring_proto_TOMModeControl_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_org_monitoring_proto_TOMModeControl_descriptor,
+        new java.lang.String[] { "OperationMode", "CardProcessMode", "QrSaleMode", "SpecialMode", });
     com.google.protobuf.AnyProto.getDescriptor();
+    org.network.monitorandcontrol.tom.TOMEnums.getDescriptor();
+    org.network.monitorandcontrol.Enums.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

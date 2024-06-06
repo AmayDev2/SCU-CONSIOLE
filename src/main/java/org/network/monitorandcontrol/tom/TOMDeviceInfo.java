@@ -4,6 +4,10 @@
 package org.network.monitorandcontrol.tom;
 
 /**
+ * <pre>
+ *TOMDeviceInfo give information about the TOM
+ * </pre>
+ *
  * Protobuf type {@code org.monitoring.proto.TOMDeviceInfo}
  */
 public  final class TOMDeviceInfo extends
@@ -18,9 +22,8 @@ private static final long serialVersionUID = 0L;
   private TOMDeviceInfo() {
     equipName_ = "";
     equipId_ = "";
-    scuLastTxnSync_ = "";
-    ccuLastTxnSync_ = "";
     tomIp_ = "";
+    deviceType_ = "";
   }
 
   @java.lang.Override
@@ -68,19 +71,13 @@ private static final long serialVersionUID = 0L;
           case 26: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            scuLastTxnSync_ = s;
+            tomIp_ = s;
             break;
           }
           case 34: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            ccuLastTxnSync_ = s;
-            break;
-          }
-          case 42: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            tomIp_ = s;
+            deviceType_ = s;
             break;
           }
           default: {
@@ -187,98 +184,10 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int SCU_LAST_TXN_SYNC_FIELD_NUMBER = 3;
-  private volatile java.lang.Object scuLastTxnSync_;
-  /**
-   * <pre>
-   *colon seperated last_txn:last_sync
-   * </pre>
-   *
-   * <code>string scu_last_txn_sync = 3;</code>
-   * @return The scuLastTxnSync.
-   */
-  public java.lang.String getScuLastTxnSync() {
-    java.lang.Object ref = scuLastTxnSync_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      scuLastTxnSync_ = s;
-      return s;
-    }
-  }
-  /**
-   * <pre>
-   *colon seperated last_txn:last_sync
-   * </pre>
-   *
-   * <code>string scu_last_txn_sync = 3;</code>
-   * @return The bytes for scuLastTxnSync.
-   */
-  public com.google.protobuf.ByteString
-      getScuLastTxnSyncBytes() {
-    java.lang.Object ref = scuLastTxnSync_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      scuLastTxnSync_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int CCU_LAST_TXN_SYNC_FIELD_NUMBER = 4;
-  private volatile java.lang.Object ccuLastTxnSync_;
-  /**
-   * <pre>
-   *colon seperated last_txn:last_sync
-   * </pre>
-   *
-   * <code>string ccu_last_txn_sync = 4;</code>
-   * @return The ccuLastTxnSync.
-   */
-  public java.lang.String getCcuLastTxnSync() {
-    java.lang.Object ref = ccuLastTxnSync_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      ccuLastTxnSync_ = s;
-      return s;
-    }
-  }
-  /**
-   * <pre>
-   *colon seperated last_txn:last_sync
-   * </pre>
-   *
-   * <code>string ccu_last_txn_sync = 4;</code>
-   * @return The bytes for ccuLastTxnSync.
-   */
-  public com.google.protobuf.ByteString
-      getCcuLastTxnSyncBytes() {
-    java.lang.Object ref = ccuLastTxnSync_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      ccuLastTxnSync_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int TOM_IP_FIELD_NUMBER = 5;
+  public static final int TOM_IP_FIELD_NUMBER = 3;
   private volatile java.lang.Object tomIp_;
   /**
-   * <code>string tom_ip = 5;</code>
+   * <code>string tom_ip = 3;</code>
    * @return The tomIp.
    */
   public java.lang.String getTomIp() {
@@ -294,7 +203,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string tom_ip = 5;</code>
+   * <code>string tom_ip = 3;</code>
    * @return The bytes for tomIp.
    */
   public com.google.protobuf.ByteString
@@ -305,6 +214,42 @@ private static final long serialVersionUID = 0L;
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
       tomIp_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int DEVICE_TYPE_FIELD_NUMBER = 4;
+  private volatile java.lang.Object deviceType_;
+  /**
+   * <code>string device_type = 4;</code>
+   * @return The deviceType.
+   */
+  public java.lang.String getDeviceType() {
+    java.lang.Object ref = deviceType_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      deviceType_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string device_type = 4;</code>
+   * @return The bytes for deviceType.
+   */
+  public com.google.protobuf.ByteString
+      getDeviceTypeBytes() {
+    java.lang.Object ref = deviceType_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      deviceType_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -331,14 +276,11 @@ private static final long serialVersionUID = 0L;
     if (!getEquipIdBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, equipId_);
     }
-    if (!getScuLastTxnSyncBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, scuLastTxnSync_);
-    }
-    if (!getCcuLastTxnSyncBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, ccuLastTxnSync_);
-    }
     if (!getTomIpBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, tomIp_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, tomIp_);
+    }
+    if (!getDeviceTypeBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, deviceType_);
     }
     unknownFields.writeTo(output);
   }
@@ -355,14 +297,11 @@ private static final long serialVersionUID = 0L;
     if (!getEquipIdBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, equipId_);
     }
-    if (!getScuLastTxnSyncBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, scuLastTxnSync_);
-    }
-    if (!getCcuLastTxnSyncBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, ccuLastTxnSync_);
-    }
     if (!getTomIpBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, tomIp_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, tomIp_);
+    }
+    if (!getDeviceTypeBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, deviceType_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -383,12 +322,10 @@ private static final long serialVersionUID = 0L;
         .equals(other.getEquipName())) return false;
     if (!getEquipId()
         .equals(other.getEquipId())) return false;
-    if (!getScuLastTxnSync()
-        .equals(other.getScuLastTxnSync())) return false;
-    if (!getCcuLastTxnSync()
-        .equals(other.getCcuLastTxnSync())) return false;
     if (!getTomIp()
         .equals(other.getTomIp())) return false;
+    if (!getDeviceType()
+        .equals(other.getDeviceType())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -404,12 +341,10 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getEquipName().hashCode();
     hash = (37 * hash) + EQUIP_ID_FIELD_NUMBER;
     hash = (53 * hash) + getEquipId().hashCode();
-    hash = (37 * hash) + SCU_LAST_TXN_SYNC_FIELD_NUMBER;
-    hash = (53 * hash) + getScuLastTxnSync().hashCode();
-    hash = (37 * hash) + CCU_LAST_TXN_SYNC_FIELD_NUMBER;
-    hash = (53 * hash) + getCcuLastTxnSync().hashCode();
     hash = (37 * hash) + TOM_IP_FIELD_NUMBER;
     hash = (53 * hash) + getTomIp().hashCode();
+    hash = (37 * hash) + DEVICE_TYPE_FIELD_NUMBER;
+    hash = (53 * hash) + getDeviceType().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -506,6 +441,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   *TOMDeviceInfo give information about the TOM
+   * </pre>
+   *
    * Protobuf type {@code org.monitoring.proto.TOMDeviceInfo}
    */
   public static final class Builder extends
@@ -547,11 +486,9 @@ private static final long serialVersionUID = 0L;
 
       equipId_ = "";
 
-      scuLastTxnSync_ = "";
-
-      ccuLastTxnSync_ = "";
-
       tomIp_ = "";
+
+      deviceType_ = "";
 
       return this;
     }
@@ -581,9 +518,8 @@ private static final long serialVersionUID = 0L;
       org.network.monitorandcontrol.tom.TOMDeviceInfo result = new org.network.monitorandcontrol.tom.TOMDeviceInfo(this);
       result.equipName_ = equipName_;
       result.equipId_ = equipId_;
-      result.scuLastTxnSync_ = scuLastTxnSync_;
-      result.ccuLastTxnSync_ = ccuLastTxnSync_;
       result.tomIp_ = tomIp_;
+      result.deviceType_ = deviceType_;
       onBuilt();
       return result;
     }
@@ -640,16 +576,12 @@ private static final long serialVersionUID = 0L;
         equipId_ = other.equipId_;
         onChanged();
       }
-      if (!other.getScuLastTxnSync().isEmpty()) {
-        scuLastTxnSync_ = other.scuLastTxnSync_;
-        onChanged();
-      }
-      if (!other.getCcuLastTxnSync().isEmpty()) {
-        ccuLastTxnSync_ = other.ccuLastTxnSync_;
-        onChanged();
-      }
       if (!other.getTomIp().isEmpty()) {
         tomIp_ = other.tomIp_;
+        onChanged();
+      }
+      if (!other.getDeviceType().isEmpty()) {
+        deviceType_ = other.deviceType_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -833,201 +765,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object scuLastTxnSync_ = "";
-    /**
-     * <pre>
-     *colon seperated last_txn:last_sync
-     * </pre>
-     *
-     * <code>string scu_last_txn_sync = 3;</code>
-     * @return The scuLastTxnSync.
-     */
-    public java.lang.String getScuLastTxnSync() {
-      java.lang.Object ref = scuLastTxnSync_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        scuLastTxnSync_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <pre>
-     *colon seperated last_txn:last_sync
-     * </pre>
-     *
-     * <code>string scu_last_txn_sync = 3;</code>
-     * @return The bytes for scuLastTxnSync.
-     */
-    public com.google.protobuf.ByteString
-        getScuLastTxnSyncBytes() {
-      java.lang.Object ref = scuLastTxnSync_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        scuLastTxnSync_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <pre>
-     *colon seperated last_txn:last_sync
-     * </pre>
-     *
-     * <code>string scu_last_txn_sync = 3;</code>
-     * @param value The scuLastTxnSync to set.
-     * @return This builder for chaining.
-     */
-    public Builder setScuLastTxnSync(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      scuLastTxnSync_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *colon seperated last_txn:last_sync
-     * </pre>
-     *
-     * <code>string scu_last_txn_sync = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearScuLastTxnSync() {
-      
-      scuLastTxnSync_ = getDefaultInstance().getScuLastTxnSync();
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *colon seperated last_txn:last_sync
-     * </pre>
-     *
-     * <code>string scu_last_txn_sync = 3;</code>
-     * @param value The bytes for scuLastTxnSync to set.
-     * @return This builder for chaining.
-     */
-    public Builder setScuLastTxnSyncBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      scuLastTxnSync_ = value;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object ccuLastTxnSync_ = "";
-    /**
-     * <pre>
-     *colon seperated last_txn:last_sync
-     * </pre>
-     *
-     * <code>string ccu_last_txn_sync = 4;</code>
-     * @return The ccuLastTxnSync.
-     */
-    public java.lang.String getCcuLastTxnSync() {
-      java.lang.Object ref = ccuLastTxnSync_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        ccuLastTxnSync_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <pre>
-     *colon seperated last_txn:last_sync
-     * </pre>
-     *
-     * <code>string ccu_last_txn_sync = 4;</code>
-     * @return The bytes for ccuLastTxnSync.
-     */
-    public com.google.protobuf.ByteString
-        getCcuLastTxnSyncBytes() {
-      java.lang.Object ref = ccuLastTxnSync_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        ccuLastTxnSync_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <pre>
-     *colon seperated last_txn:last_sync
-     * </pre>
-     *
-     * <code>string ccu_last_txn_sync = 4;</code>
-     * @param value The ccuLastTxnSync to set.
-     * @return This builder for chaining.
-     */
-    public Builder setCcuLastTxnSync(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      ccuLastTxnSync_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *colon seperated last_txn:last_sync
-     * </pre>
-     *
-     * <code>string ccu_last_txn_sync = 4;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearCcuLastTxnSync() {
-      
-      ccuLastTxnSync_ = getDefaultInstance().getCcuLastTxnSync();
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *colon seperated last_txn:last_sync
-     * </pre>
-     *
-     * <code>string ccu_last_txn_sync = 4;</code>
-     * @param value The bytes for ccuLastTxnSync to set.
-     * @return This builder for chaining.
-     */
-    public Builder setCcuLastTxnSyncBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      ccuLastTxnSync_ = value;
-      onChanged();
-      return this;
-    }
-
     private java.lang.Object tomIp_ = "";
     /**
-     * <code>string tom_ip = 5;</code>
+     * <code>string tom_ip = 3;</code>
      * @return The tomIp.
      */
     public java.lang.String getTomIp() {
@@ -1043,7 +783,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string tom_ip = 5;</code>
+     * <code>string tom_ip = 3;</code>
      * @return The bytes for tomIp.
      */
     public com.google.protobuf.ByteString
@@ -1060,7 +800,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string tom_ip = 5;</code>
+     * <code>string tom_ip = 3;</code>
      * @param value The tomIp to set.
      * @return This builder for chaining.
      */
@@ -1075,7 +815,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string tom_ip = 5;</code>
+     * <code>string tom_ip = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearTomIp() {
@@ -1085,7 +825,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string tom_ip = 5;</code>
+     * <code>string tom_ip = 3;</code>
      * @param value The bytes for tomIp to set.
      * @return This builder for chaining.
      */
@@ -1097,6 +837,82 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       tomIp_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object deviceType_ = "";
+    /**
+     * <code>string device_type = 4;</code>
+     * @return The deviceType.
+     */
+    public java.lang.String getDeviceType() {
+      java.lang.Object ref = deviceType_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        deviceType_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string device_type = 4;</code>
+     * @return The bytes for deviceType.
+     */
+    public com.google.protobuf.ByteString
+        getDeviceTypeBytes() {
+      java.lang.Object ref = deviceType_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        deviceType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string device_type = 4;</code>
+     * @param value The deviceType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDeviceType(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      deviceType_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string device_type = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearDeviceType() {
+      
+      deviceType_ = getDefaultInstance().getDeviceType();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string device_type = 4;</code>
+     * @param value The bytes for deviceType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDeviceTypeBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      deviceType_ = value;
       onChanged();
       return this;
     }

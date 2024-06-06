@@ -3,8 +3,8 @@
 
 package org.network.monitorandcontrol.tom;
 
-public interface TOMVersionCheckOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:org.monitoring.proto.TOMVersionCheck)
+public interface TOMParameterVersionOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:org.monitoring.proto.TOMParameterVersion)
     com.google.protobuf.MessageOrBuilder {
 
   /**
@@ -56,16 +56,16 @@ public interface TOMVersionCheckOrBuilder extends
       getBlacklistBytes();
 
   /**
-   * <code>string calander = 5;</code>
-   * @return The calander.
+   * <code>string calendar = 5;</code>
+   * @return The calendar.
    */
-  java.lang.String getCalander();
+  java.lang.String getCalendar();
   /**
-   * <code>string calander = 5;</code>
-   * @return The bytes for calander.
+   * <code>string calendar = 5;</code>
+   * @return The bytes for calendar.
    */
   com.google.protobuf.ByteString
-      getCalanderBytes();
+      getCalendarBytes();
 
   /**
    * <code>string qr_key = 6;</code>

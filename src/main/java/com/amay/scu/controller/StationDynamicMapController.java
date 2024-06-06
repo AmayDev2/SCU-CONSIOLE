@@ -2,7 +2,8 @@ package com.amay.scu.controller;
 
 import com.amay.scu.dto.StationDevicesDTO;
 import com.amay.scu.enums.SLEStatus;
-import com.amay.scu.listenner.StationDynamicMapViewListener;
+import com.amay.scu.listenner.IStationDynamicMapViewListener;
+import com.amay.scu.listenner.impl.StationDynamicMapViewListener;
 import com.amay.scu.repository.StationDevicesRepository;
 import com.amay.scu.sles.*;
 import com.amay.scu.sles.components.SLE;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class StationDynamicMapController {
+public class StationDynamicMapController implements IStationDynamicMapViewListener {
 
     private int tomCount = 0;
     private int efoCount = 0;
@@ -31,18 +32,21 @@ public class StationDynamicMapController {
 
     @FXML
     private AnchorPane anchorPane;
+
     @FXML
     public void initialize() {
         sles = new ArrayList<>();
+
+        //initialize the listener
         StationDynamicMapViewListener.initialize(this);
 
         try {
-            StationDevicesRepository stationDevicesRepository =StationDevicesRepository.getInstance();
-            stationDevices=stationDevicesRepository.getStationDevices();
+            StationDevicesRepository stationDevicesRepository = StationDevicesRepository.getInstance();
+            stationDevices = stationDevicesRepository.getStationDevices();
             logger.info("Station Devices: {} ", stationDevices.size());
             logger.info("Station Devices: {} ", stationDevices.get(0));
-            for(StationDevicesDTO stationDevice:stationDevices){
-                switch (stationDevice.getEquipName()){
+            for (StationDevicesDTO stationDevice : stationDevices) {
+                switch (stationDevice.getEquipName()) {
                     case "TOM":
                         tomCount++;
                         break;
@@ -65,10 +69,10 @@ public class StationDynamicMapController {
             }
 
             //create the SLE objects based on the count of the devices
-            sles.addAll(Arrays.stream(SLEFactory.getSLEFactory(new AGAbstractFactory(), anchorPane,gateCount)).toList());
-            SLEFactory.getSLEFactory(new EFOAbstractFactory(), anchorPane,efoCount);
-            sles.addAll(Arrays.stream(SLEFactory.getSLEFactory(new TOMAbstractFactory(), anchorPane,tomCount)).toList());
-            SLEFactory.getSLEFactory(new TVMAbstractFactory(), anchorPane,tvmCount);
+            sles.addAll(Arrays.stream(SLEFactory.getSLEFactory(new AGAbstractFactory(), anchorPane, gateCount)).toList());
+            SLEFactory.getSLEFactory(new EFOAbstractFactory(), anchorPane, efoCount);
+            sles.addAll(Arrays.stream(SLEFactory.getSLEFactory(new TOMAbstractFactory(), anchorPane, tomCount)).toList());
+            SLEFactory.getSLEFactory(new TVMAbstractFactory(), anchorPane, tvmCount);
 
 
             //update the status of the devices to  TODO: add logic
@@ -77,7 +81,7 @@ public class StationDynamicMapController {
                 updateSLEStatus(stationDevice.getEquipId(), SLEStatus.OFFLINE);
             });
 
-        }catch (Exception e){
+        } catch (Exception e) {
             logger.error("Error in StationDynamicMapController initialize method: {}", e.getMessage());
         }
 
@@ -86,13 +90,14 @@ public class StationDynamicMapController {
     //pass the sle id and status to update the status of the sle
     public void updateSLEStatus(String sleId, SLEStatus status) {
         logger.debug("Updating SLE status: {} {}", sleId, status);
-        if(sleId == null || status == null) {
+        if (sleId == null || status == null) {
             logger.error("SLE ID or status is null");
             return;
         }
         sles.stream().filter(sle -> {
             logger.debug("loop SLE ID: {} {}", sle.getId(), sleId);
-            return sle.getId().equals(sleId);}).forEach(sle -> sle.updateStatus(status));
+            return sle.getId().equals(sleId);
+        }).forEach(sle -> sle.updateStatus(status));
     }
 
 }
