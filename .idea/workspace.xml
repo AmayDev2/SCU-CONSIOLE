@@ -5,50 +5,70 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="315d97bc-7335-4bbd-a14f-28c409037fec" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/protoeditor.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/protoeditor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/SCUApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/SCUApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/AGController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/AGController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/StationDynamicMapController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/StationDynamicMapController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/ViewFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/WebsocketClientEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/WebsocketClientEndpoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/grpc/GrpcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/grpc/GrpcConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/listenner/StationDynamicMapViewListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/listenner/impl/StationDynamicMapViewListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/service/GrpcService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/service/GrpcService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/sles/components/SLE.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/sles/components/SLE.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/Alarms.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/AlarmsOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/CommandType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/DeviceType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/Enums.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/MonitorAndControlGrpc.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/MonitoringAndControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/OperationMode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/RequestType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/SpecialMode.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AG.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AGDeviceInfo.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AGDeviceInfoOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AGEnums.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AGModeControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AGModeControlOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AGParameterVersion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AGParameterVersionOrBuilder.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AGPeripheralStatus.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AGPeripheralStatusOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AGRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AGRequestOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AGResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AGResponseOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AGVersionCheck.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AGVersionCheckOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/scu_console/ConsoleStream.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/scu_console/ConsoleStreamOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/scu_console/PushUpdates.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/scu_console/PushUpdatesOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AGProtocol.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AGProtocolOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/AisleMode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/FlapMode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/GateInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/ag/GateInfoOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/scu_console/ConsoleProtocol.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/scu_console/ConsoleProtocolOrBuilder.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/scu_console/SC.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/scu_console/StreamData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/scu_console/StreamDataOrBuilder.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOM.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMDeviceInfo.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMDeviceInfoOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMEnums.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMModeControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMModeControlOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMParameterVersion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMParameterVersionOrBuilder.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMPeripheralStatus.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMPeripheralStatusOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMRequestOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMResponseOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMVersionCheck.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMVersionCheckOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/proto/AG.proto" beforeDir="false" afterPath="$PROJECT_DIR$/rough/AG.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/proto/MonitoringAndControl.proto" beforeDir="false" afterPath="$PROJECT_DIR$/rough/MonitoringAndControl.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/proto/SC.proto" beforeDir="false" afterPath="$PROJECT_DIR$/rough/SC.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/proto/TOM.proto" beforeDir="false" afterPath="$PROJECT_DIR$/rough/TOM.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMProtocol.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/network/monitorandcontrol/tom/TOMProtocolOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views2/Path.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/Path.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/proto/AG.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/proto/AG_enums.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/proto/Enums.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/proto/MonitoringAndControl.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/proto/SC.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/proto/TOM.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/proto/TOM_enums.proto" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,8 +83,8 @@
         <option value="Interface" />
         <option value="package-info" />
         <option value="FxmlFile" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -89,48 +109,48 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.SCUApplication.executor": "Run",
-    "JUnit.SLEFactoryTest.createSLE.executor": "Run",
-    "JUnit.StationDevicesRepositoryTest.testGetAllAGDevices.executor": "Run",
-    "JUnit.StationDevicesRepositoryTest.testGetAllStationDevices.executor": "Run",
-    "JUnit.StationDevicesRepositoryTest.testGetAllTOMDevices.executor": "Run",
-    "Maven.scu [clean].executor": "Run",
-    "Maven.scu [compile].executor": "Run",
-    "Maven.scu [install].executor": "Run",
-    "Maven.scu [test].executor": "Run",
-    "Maven.scu [validate].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers": "true",
-    "git-widget-placeholder": "db-connection",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/Amay Technosystems/SCU/src/main/resources",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.28735632",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.SCUApplication.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GrpcServiceTest.sendCommandTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SLEFactoryTest.createSLE.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StationDevicesRepositoryTest.testGetAllAGDevices.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StationDevicesRepositoryTest.testGetAllStationDevices.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StationDevicesRepositoryTest.testGetAllTOMDevices.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.scu [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.scu [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.scu [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.scu [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.scu [validate].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;db-connection&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Amay Technosystems/SCU/src/main/resources/proto&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.28735632&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Amay Technosystems\SCU\src\main\resources" />
       <recent name="E:\Amay Technosystems\SCU\src\main\resources\proto" />
+      <recent name="E:\Amay Technosystems\SCU\src\main\resources" />
       <recent name="E:\Amay Technosystems\SCU\src\main\resources\proto\cmon" />
       <recent name="E:\Amay Technosystems\SCU\src\main\java" />
       <recent name="E:\Amay Technosystems\SCU\src\main\resources\com\amay\scu\sles" />
@@ -148,6 +168,7 @@
       <recent name="com.amay.scu" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.amay.scu.service" />
       <recent name="com.amay.scu.repository" />
       <recent name="com.amay.scu.sles" />
     </key>
@@ -158,7 +179,7 @@
       <recent name="com.amay.scu.grpc" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.SCUApplication">
+  <component name="RunManager" selected="JUnit.GrpcServiceTest.sendCommandTest">
     <configuration name="SCUApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.amay.scu.SCUApplication" />
       <module name="scu" />
@@ -172,17 +193,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SLEFactoryTest.createSLE" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GrpcServiceTest.sendCommandTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="scu" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.amay.scu.sles.*" />
+          <option name="PATTERN" value="com.amay.scu.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.amay.scu.sles" />
-      <option name="MAIN_CLASS_NAME" value="com.amay.scu.sles.SLEFactoryTest" />
-      <option name="METHOD_NAME" value="createSLE" />
+      <option name="PACKAGE_NAME" value="com.amay.scu.service" />
+      <option name="MAIN_CLASS_NAME" value="com.amay.scu.service.GrpcServiceTest" />
+      <option name="METHOD_NAME" value="sendCommandTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -251,11 +272,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.GrpcServiceTest.sendCommandTest" />
         <item itemvalue="Application.SCUApplication" />
         <item itemvalue="JUnit.StationDevicesRepositoryTest.testGetAllStationDevices" />
         <item itemvalue="JUnit.StationDevicesRepositoryTest.testGetAllTOMDevices" />
         <item itemvalue="JUnit.StationDevicesRepositoryTest.testGetAllAGDevices" />
-        <item itemvalue="JUnit.SLEFactoryTest.createSLE" />
       </list>
     </recent_temporary>
   </component>
@@ -300,6 +321,10 @@
       <workItem from="1717566668591" duration="867000" />
       <workItem from="1717576768331" duration="2043000" />
       <workItem from="1717578902287" duration="14496000" />
+      <workItem from="1717733332639" duration="7073000" />
+      <workItem from="1717741882514" duration="2880000" />
+      <workItem from="1717744844065" duration="88000" />
+      <workItem from="1717744948871" duration="5318000" />
     </task>
     <servers />
   </component>

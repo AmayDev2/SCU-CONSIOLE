@@ -5,6 +5,7 @@ package com.amay.scu;
 
 import com.amay.scu.grpc.GrpcConfig;
 //import com.amay.scu.service.GrpcService;
+//import com.amay.scu.service.GrpcService;
 import com.amay.scu.service.GrpcService;
 import javafx.application.Application;
         import javafx.fxml.FXMLLoader;
@@ -12,7 +13,7 @@ import javafx.scene.Scene;
         import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-        import views2.Path;
+        import views.Path;
 
 public class SCUApplication  extends Application {
 
@@ -27,11 +28,11 @@ public class SCUApplication  extends Application {
     @Override
     public void start(Stage primaryStage) {
 try {
-
+//
     GrpcService grpcService = new GrpcService(GrpcConfig.getAsyncStub());
     grpcService.initialConnectionRequest(null);
-    grpcService.initialConnectionRequest(null);
-    grpcService.initialConnectionRequest(null);
+//    grpcService.initialConnectionRequest(null);
+//    grpcService.initialConnectionRequest(null);
 
 
     FXMLLoader loader = new FXMLLoader(getClass().getResource(Path.SCU_DYNAMIC_VIEW));
@@ -42,7 +43,7 @@ try {
 //    primaryStage.setTitle("Redis Subscriber");
 
     primaryStage.setOnCloseRequest(e -> {
-        grpcService.shutdown();
+//        grpcService.shutdown();
         System.exit(0);}); // Exit the application when the window is closed
 
     primaryStage.show();

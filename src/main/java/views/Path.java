@@ -1,4 +1,4 @@
-package views2;
+package views;
 
 public interface Path {
      String APPLICATION_PATH="E:/Amay Technosystems/SCU";

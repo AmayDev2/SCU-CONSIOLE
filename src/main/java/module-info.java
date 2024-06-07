@@ -9,7 +9,7 @@ module com.amay.scu {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
-    requires javax.websocket.api;
+
     requires tyrus.client;
     requires spring.webflux;
     requires reactor.core;
@@ -25,8 +25,12 @@ module com.amay.scu {
 
     opens com.amay.scu to javafx.fxml;
     exports com.amay.scu;
-    exports org.network.monitorandcontrol.scu_console;
+    exports com.amay.scu.grpc;
+
 
     exports com.amay.scu.controller;
+    exports org.network.monitorandcontrol.ag;
+    exports org.network.monitorandcontrol.tom;
+    exports org.network.monitorandcontrol.scu_console;
     opens com.amay.scu.controller to javafx.fxml;
 }

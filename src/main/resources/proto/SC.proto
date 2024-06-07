@@ -34,19 +34,19 @@ message ConsoleProtocol{
     2 - Request for Peripheral Status
     3 - Request for Version 
     4 - Request for Last 5 Alarms
-    for command type 5 - console will send the respective ModeControl for the SLEs
+    for command type 5 - console will send the respective ModeControl for the SLE's
         
     
-    request_type :- request type will be sent in case SC wants to retrieve some data from SLE
+    request_type :- request type will be sent in case SC wants to reterive some data from SLE
     
     device_id :- Which Device To Send the Command
     
 */
 
 message StreamData{
-    CommandType command_type = 1;//send by console
+    CommandType command_type = 1;
     string equip_id = 2;
-    RequestType request_type = 3;//send by server
+    RequestType request_type = 3;
     google.protobuf.Any request_data = 4;
 }
 

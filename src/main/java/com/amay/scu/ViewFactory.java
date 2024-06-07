@@ -1,7 +1,7 @@
 package com.amay.scu;
 
 import javafx.fxml.FXMLLoader;
-import views2.Path;
+import views.Path;
 
 public class ViewFactory {
 

@@ -1,6 +1,7 @@
 package com.amay.scu.service;
 
 import com.amay.scu.grpc.GrpcConfig;
+import com.google.protobuf.Any;
 import com.google.protobuf.InvalidProtocolBufferException;
 import io.grpc.stub.StreamObserver;
 import org.network.monitorandcontrol.MonitorAndControlGrpc;
@@ -45,29 +46,24 @@ public class GrpcService  {
         return asyncStub.scStream(new StreamObserver<ConsoleProtocol>() {
             @Override
             public void onNext(ConsoleProtocol value) {
-                try {
-                    if (value.getStreamData().hasRequestData()){
-//                    logger.info("Received message from server: {}", value.getStreamData().getRequestData().unpack(AGDeviceInfo.class).toString());
-                    System.out.println("Received "+ value.getStreamData().getRequestData().unpack(AGDeviceInfo.class).toString());
+                if (value.hasStreamData()){
+                    try {
+                        logger.info("Received message from server: {}", value.getStreamData().getRequestData().unpack(AGDeviceInfo.class).toString());
+                    } catch (InvalidProtocolBufferException e) {
+                        logger.error("Received data exception {}",e.getMessage());
+                        throw new RuntimeException(e);
                     }
-                    else{
-                logger.info("Received message from server: {}", value);
+                }
+                else{
+            logger.info("Received message from server: {}", value);
 
-                    }
-                } catch (InvalidProtocolBufferException e) {
-                    throw new RuntimeException(e);
                 }
             }
 
             @Override
             public void onError(Throwable t){
-                try {
-                    Thread.sleep(5000);
-                }catch(Exception e){
-                    logger.error("Error in receiving message from server: {}", t.getMessage());
-                }
-                initialConnectionRequest(null);
-                logger.error("Error in receiving message from server: {}", t.getMessage());
+                logger.error("message from server: {}", t.getMessage());
+                t.printStackTrace();
             }
 
             @Override
@@ -76,15 +72,8 @@ public class GrpcService  {
             }
         });
     }
-
     public void shutdown() {
         requestObserver.onCompleted();
         GrpcConfig.shutdown();
     }
-
-
-
-
-
-
 }
