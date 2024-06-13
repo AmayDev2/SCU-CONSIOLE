@@ -1,6 +1,7 @@
 package com.amay.scu.controller;
 
 import com.amay.scu.enums.SLEStatus;
+import com.amay.scu.sleobj.LiveSLE;
 import com.amay.scu.sles.components.SLE;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -98,6 +99,16 @@ public class TVMController implements SLE {
 
     @Override
     public void updateStatus(SLEStatus status) {
+
+    }
+
+    @Override
+    public void updatePeripheralStatus(LiveSLE liveTOM) {
+
+    }
+
+    @Override
+    public void updateOperationMode(LiveSLE liveTOM) {
 
     }
 }

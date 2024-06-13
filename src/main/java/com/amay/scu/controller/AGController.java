@@ -1,6 +1,7 @@
 package com.amay.scu.controller;
 
 import com.amay.scu.enums.SLEStatus;
+import com.amay.scu.sleobj.LiveSLE;
 import com.amay.scu.sles.components.SLE;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -100,6 +101,16 @@ public class AGController  implements SLE {
     @Override
     public void updateStatus(SLEStatus status) {
         setStatus(status);
+
+    }
+
+    @Override
+    public void updatePeripheralStatus(LiveSLE liveTOM) {
+
+    }
+
+    @Override
+    public void updateOperationMode(LiveSLE liveTOM) {
 
     }
 

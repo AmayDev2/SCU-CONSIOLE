@@ -22,6 +22,7 @@ module com.amay.scu {
     requires protobuf.java;
     requires java.sql;
     requires static lombok;
+    requires java.desktop;
 
     opens com.amay.scu to javafx.fxml;
     exports com.amay.scu;
@@ -32,5 +33,6 @@ module com.amay.scu {
     exports org.network.monitorandcontrol.ag;
     exports org.network.monitorandcontrol.tom;
     exports org.network.monitorandcontrol.scu_console;
+
     opens com.amay.scu.controller to javafx.fxml;
 }

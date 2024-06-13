@@ -5,6 +5,7 @@ import com.amay.scu.enums.SLEStatus;
 import com.amay.scu.listenner.IStationDynamicMapViewListener;
 import com.amay.scu.listenner.impl.StationDynamicMapViewListener;
 import com.amay.scu.repository.StationDevicesRepository;
+import com.amay.scu.sleobj.LiveTOM;
 import com.amay.scu.sles.*;
 import com.amay.scu.sles.components.SLE;
 import javafx.fxml.FXML;
@@ -98,6 +99,18 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
             logger.debug("loop SLE ID: {} {}", sle.getId(), sleId);
             return sle.getId().equals(sleId);
         }).forEach(sle -> sle.updateStatus(status));
+    }
+
+    public void updateTOMPeripheralStatus(String equipId, LiveTOM liveTOM) {
+        sles.stream().filter(tom->tom.getId().equals(equipId)).forEach(filteredTom->{
+            filteredTom.updatePeripheralStatus(liveTOM);
+        });
+    }
+
+    public void updateTOMOperationMode(String equipId, LiveTOM liveTOM) {
+        sles.stream().filter(tom->tom.getId().equals(equipId)).forEach(filteredTom->{
+            filteredTom.updateOperationMode(liveTOM);
+        });
     }
 
 }

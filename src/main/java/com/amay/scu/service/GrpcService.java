@@ -1,6 +1,8 @@
 package com.amay.scu.service;
 
+import com.amay.scu.command.CommandTest;
 import com.amay.scu.grpc.GrpcConfig;
+import com.amay.scu.test_grpc_service.SCUService;
 import com.google.protobuf.Any;
 import com.google.protobuf.InvalidProtocolBufferException;
 import io.grpc.stub.StreamObserver;
@@ -19,10 +21,14 @@ public class GrpcService  {
     private MonitorAndControlGrpc.MonitorAndControlStub asyncStub=null;
 
     private StreamObserver<ConsoleProtocol> requestObserver=null;
+    private SCUService scuService=null;
 
     public  GrpcService(MonitorAndControlGrpc.MonitorAndControlStub asyncStub ) {
         this.asyncStub=asyncStub;
         requestObserver = scStreamObserver();
+        scuService=new SCUService();
+
+
 
     }
 
@@ -35,6 +41,7 @@ public class GrpcService  {
     public void initialConnectionRequest(StreamData message) {
         logger.info("Sending initial request to server: {}", message);
         requestObserver.onNext(ConsoleProtocol.newBuilder().setConsoleId("imscuconsole").build());
+        new CommandTest(this);
     }
 
     public void markComplete() {
@@ -47,12 +54,17 @@ public class GrpcService  {
             @Override
             public void onNext(ConsoleProtocol value) {
                 if (value.hasStreamData()){
-                    try {
-                        logger.info("Received message from server: {}", value.getStreamData().getRequestData().unpack(AGDeviceInfo.class).toString());
-                    } catch (InvalidProtocolBufferException e) {
-                        logger.error("Received data exception {}",e.getMessage());
-                        throw new RuntimeException(e);
-                    }
+
+                    scuService.detectDeviceType(value.getDeviceType(),value);
+
+//                    scuService.updateSLEs(value.getStreamData());
+//
+//                    try {
+//                        logger.info("Received message from server: {}", value.getStreamData().getRequestData().unpack(AGDeviceInfo.class).toString());
+//                    } catch (InvalidProtocolBufferException e) {
+//                        logger.error("Received data exception {}",e.getMessage());
+//                        throw new RuntimeException(e);
+//                    }
                 }
                 else{
             logger.info("Received message from server: {}", value);

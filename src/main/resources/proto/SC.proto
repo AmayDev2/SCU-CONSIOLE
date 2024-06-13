@@ -37,7 +37,7 @@ message ConsoleProtocol{
     for command type 5 - console will send the respective ModeControl for the SLE's
         
     
-    request_type :- request type will be sent in case SC wants to reterive some data from SLE
+    request_type :- request type will be sent in case SC wants to retrieve some data from SLE
     
     device_id :- Which Device To Send the Command
     

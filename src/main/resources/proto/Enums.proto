@@ -11,6 +11,7 @@ enum RequestType {
     PARAMETER_VERSION = 3;
     ALARMS = 4;
     RESPONSE = 5;
+//    OPERATION_MODE=6;
 }
 
 enum CommandType {

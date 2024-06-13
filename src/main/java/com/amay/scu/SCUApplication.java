@@ -3,14 +3,27 @@ package com.amay.scu;
 //import com.amay.scu.grpc.GrpcConfig;
 //import com.amay.scu.service.GrpcService;
 
+import com.amay.scu.controller.SCUController;
+import com.amay.scu.controller.StationDynamicMapController;
+import com.amay.scu.enums.TOMOperationMode;
 import com.amay.scu.grpc.GrpcConfig;
 //import com.amay.scu.service.GrpcService;
 //import com.amay.scu.service.GrpcService;
+import com.amay.scu.listenner.impl.StationDynamicMapViewListener;
 import com.amay.scu.service.GrpcService;
+import com.amay.scu.sleobj.LiveTOM;
+import com.amay.scu.test_grpc_service.SCUService;
+import com.google.protobuf.Any;
 import javafx.application.Application;
         import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
         import javafx.stage.Stage;
+import org.network.monitorandcontrol.DeviceType;
+import org.network.monitorandcontrol.OperationMode;
+import org.network.monitorandcontrol.RequestType;
+import org.network.monitorandcontrol.scu_console.ConsoleProtocol;
+import org.network.monitorandcontrol.scu_console.StreamData;
+import org.network.monitorandcontrol.tom.TOMPeripheralStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
         import views.Path;
@@ -29,8 +42,8 @@ public class SCUApplication  extends Application {
     public void start(Stage primaryStage) {
 try {
 //
-    GrpcService grpcService = new GrpcService(GrpcConfig.getAsyncStub());
-    grpcService.initialConnectionRequest(null);
+//    GrpcService grpcService = new GrpcService(GrpcConfig.getAsyncStub());
+//    grpcService.initialConnectionRequest(null);
 //    grpcService.initialConnectionRequest(null);
 //    grpcService.initialConnectionRequest(null);
 
@@ -41,6 +54,24 @@ try {
 
     primaryStage.setScene(scene);
 //    primaryStage.setTitle("Redis Subscriber");
+
+    GrpcService grpcService = new GrpcService(GrpcConfig.getAsyncStub());
+    grpcService.initialConnectionRequest(null);
+
+//    StationDynamicMapController scu=loader.getController();
+    StationDynamicMapViewListener stationDynamicMapViewListener= StationDynamicMapViewListener.getInstance();
+    LiveTOM liveTOM=new LiveTOM();
+    liveTOM.setOperationMode(TOMOperationMode.DISCONNECTED);
+    stationDynamicMapViewListener.updateTOMOperationMode("TOM5", liveTOM);
+
+
+//    SCUService scuService=new SCUService();
+//    ConsoleProtocol consoleProtocol=ConsoleProtocol.newBuilder()
+//            .setDeviceType(DeviceType.TOM)
+//            .setStreamData(StreamData.newBuilder().setEquipId("TOM1").setRequestType(RequestType.PERIPHERAL_STATUS).setRequestData(Any.pack(TOMPeripheralStatus.newBuilder().setScuConnected(true).build())).build())
+//            .build();
+////
+//    scuService.detectDeviceType(DeviceType.TOM,consoleProtocol);
 
     primaryStage.setOnCloseRequest(e -> {
 //        grpcService.shutdown();
