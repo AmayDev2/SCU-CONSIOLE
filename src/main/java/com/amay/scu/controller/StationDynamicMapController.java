@@ -26,6 +26,8 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
     private int arraysCount = 0;
     private int tvmCount = 0;
     List<StationDevicesDTO> stationDevices = null;
+    List<StationDevicesDTO>  ag=new ArrayList<>();
+    List<StationDevicesDTO>  tom=new ArrayList<>();
 
     Logger logger = LoggerFactory.getLogger(StationDynamicMapController.class);
 
@@ -37,6 +39,7 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
     @FXML
     public void initialize() {
         sles = new ArrayList<>();
+
 
         //initialize the listener
         StationDynamicMapViewListener.initialize(this);
@@ -50,12 +53,14 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
                 switch (stationDevice.getEquipName()) {
                     case "TOM":
                         tomCount++;
+                        tom.add(stationDevice );
                         break;
                     case "EFO":
                         efoCount++;
                         break;
                     case "AG":
                         gateCount++;
+                        ag.add(stationDevice );
                         break;
                     case "READER":
                         readerCount++;
@@ -70,10 +75,10 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
             }
 
             //create the SLE objects based on the count of the devices
-            sles.addAll(Arrays.stream(SLEFactory.getSLEFactory(new AGAbstractFactory(), anchorPane, gateCount)).toList());
-            SLEFactory.getSLEFactory(new EFOAbstractFactory(), anchorPane, efoCount);
-            sles.addAll(Arrays.stream(SLEFactory.getSLEFactory(new TOMAbstractFactory(), anchorPane, tomCount)).toList());
-            SLEFactory.getSLEFactory(new TVMAbstractFactory(), anchorPane, tvmCount);
+            sles.addAll(Arrays.stream(SLEFactory.getSLEFactory(new AGAbstractFactory(), anchorPane, gateCount,ag)).toList());
+            SLEFactory.getSLEFactory(new EFOAbstractFactory(), anchorPane, efoCount, ag);
+            sles.addAll(Arrays.stream(SLEFactory.getSLEFactory(new TOMAbstractFactory(), anchorPane, tomCount, tom)).toList());
+            SLEFactory.getSLEFactory(new TVMAbstractFactory(), anchorPane, tvmCount, ag);
 
 
             //update the status of the devices to  TODO: add logic

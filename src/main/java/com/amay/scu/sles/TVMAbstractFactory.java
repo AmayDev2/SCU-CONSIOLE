@@ -1,6 +1,7 @@
 package com.amay.scu.sles;
 
 import com.amay.scu.ViewFactory;
+import com.amay.scu.dto.StationDevicesDTO;
 import com.amay.scu.enums.SLEStatus;
 import com.amay.scu.exceptions.SLENotCreatedException;
 import com.amay.scu.sles.components.SLE;
@@ -18,7 +19,7 @@ public class TVMAbstractFactory extends SLEAbstractFactory {
 
 
     @Override
-    public SLE createSLE(AnchorPane anchorPane) {
+    public SLE createSLE(AnchorPane anchorPane, StationDevicesDTO stationDevicesDTO) {
 
         try {
             logger.debug("TVM is about to be created");

@@ -1,8 +1,11 @@
 package com.amay.scu.sles;
 
 import com.amay.scu.ViewFactory;
+import com.amay.scu.dto.StationDevicesDTO;
 import com.amay.scu.enums.SLEStatus;
 import com.amay.scu.exceptions.SLENotCreatedException;
+import com.amay.scu.sleobj.LiveAG;
+import com.amay.scu.sleobj.LiveTOM;
 import com.amay.scu.sles.components.SLE;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,20 +21,23 @@ public class AGAbstractFactory extends SLEAbstractFactory {
 
 
     @Override
-    public SLE createSLE(AnchorPane anchorPane) {
+    public SLE createSLE(AnchorPane anchorPane, StationDevicesDTO stationDevicesDTO) {
 
         try{
             logger.debug("AG is about to be created");
             FXMLLoader fxmlLoader = ViewFactory.getAGView();
+            LiveAG liveAG=new LiveAG(stationDevicesDTO.getEquipId(),stationDevicesDTO.getEquipIp(),"01",stationDevicesDTO.getEquipName(), stationDevicesDTO.getEquipType());
+
 
             Parent root=fxmlLoader.load();
             Button button = (Button) root.lookup("#ag");
-            button.setId(getTomId());
+            button.setId(stationDevicesDTO.getEquipId());
             anchorPane.getChildren().add(button);
-            logger.debug("AG created : {}",button.getId());
+            logger.debug("AG created : {}",stationDevicesDTO.getEquipId());
             SLE controller=fxmlLoader.getController();
             controller.setStatus(SLEStatus.PERIPHERAL_OFFLINE);
-            controller.setName(button.getId());
+            controller.setName(getAGId());
+            controller.setLiveSLE(liveAG);
             controller.setMovingProperties(button,anchorPane);
             return controller;
         } catch (Exception e) {
@@ -39,7 +45,7 @@ public class AGAbstractFactory extends SLEAbstractFactory {
         }
     }
 
-    private String getTomId() {
+    private String getAGId() {
         return NAME+TOM_COUNT++;
     }
 

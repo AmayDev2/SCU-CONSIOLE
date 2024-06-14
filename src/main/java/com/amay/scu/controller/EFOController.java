@@ -109,4 +109,9 @@ public class EFOController  implements SLE {
     public void updateOperationMode(LiveSLE liveTOM) {
 
     }
+
+    @Override
+    public void setLiveSLE(LiveSLE liveTOM) {
+
+    }
 }

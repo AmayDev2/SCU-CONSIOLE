@@ -1,13 +1,14 @@
 package com.amay.scu.sles;
 
 import com.amay.scu.ViewFactory;
+import com.amay.scu.dto.StationDevicesDTO;
 import com.amay.scu.enums.SLEStatus;
 import com.amay.scu.exceptions.SLENotCreatedException;
+import com.amay.scu.sleobj.LiveTOM;
 import com.amay.scu.sles.components.SLE;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,21 +19,24 @@ public class TOMAbstractFactory extends SLEAbstractFactory {
     Logger logger = LoggerFactory.getLogger(TOMAbstractFactory.class);
 
 
+
     @Override
-    public SLE createSLE(AnchorPane anchorPane) {
+    public SLE createSLE(AnchorPane anchorPane, StationDevicesDTO stationDevicesDTO) {
 
         try {
             logger.debug("TOM is about to be created");
             FXMLLoader fxmlLoader = ViewFactory.getTOMView();
+            LiveTOM liveTOM=new LiveTOM(stationDevicesDTO.getEquipId(),stationDevicesDTO.getEquipIp(),"01",stationDevicesDTO.getEquipName(), stationDevicesDTO.getEquipType());
 
             Parent root=fxmlLoader.load();
             Button button = (Button) root.lookup("#tom");
-            button.setId(getTomId());
+            button.setId(stationDevicesDTO.getEquipId());
             anchorPane.getChildren().add(button);
-            logger.debug("TOM created : {}",button.getId());
+            logger.debug("TOM created : {}",stationDevicesDTO.getEquipId());
             SLE controller=fxmlLoader.getController();
             controller.setStatus(SLEStatus.PERIPHERAL_OFFLINE);
-            controller.setName(button.getId());
+            controller.setName(getTomId());
+            controller.setLiveSLE(liveTOM);
             controller.setMovingProperties(button,anchorPane);
             return controller;
         } catch (Exception e) {

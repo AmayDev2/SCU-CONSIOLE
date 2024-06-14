@@ -1,5 +1,6 @@
 package com.amay.scu.sleobj;
 
+import com.amay.scu.enums.AGOperationMode;
 import com.amay.scu.enums.SLEStatus;
 import com.amay.scu.enums.TOMOperationMode;
 import com.amay.scu.sleobj.propertyenums.PropertyUpdate;
@@ -14,7 +15,7 @@ import java.beans.PropertyChangeSupport;
 
 @Data
 @NoArgsConstructor
-public class LiveTOM implements LiveSLE {
+public class LiveAG implements LiveSLE {
     private SLEStatus currentStatus = SLEStatus.OFFLINE;
    final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -26,13 +27,13 @@ public class LiveTOM implements LiveSLE {
     // information
     private String equipName;
     private String equipId;
-    private String tomIp;
+    private String agIp;
     private String deviceType;
     private String stationId="01";
 
-    public LiveTOM(String equipId,String tomIp,String stationId,String equipName, String deviceType){
+    public LiveAG(String equipId, String agIp, String stationId, String equipName, String deviceType){
         this.equipId=equipId;
-        this.tomIp=tomIp;
+        this.agIp=agIp;
 //        this.stationId=stationId;
         this.equipName=equipName;
         this.deviceType=deviceType;
@@ -61,7 +62,7 @@ public class LiveTOM implements LiveSLE {
     private String ticket;
 
     // current operation mode
-    private TOMOperationMode operationMode;
+    private AGOperationMode operationMode;
 
     public void setCurrentStatus(SLEStatus currentStatus){
         SLEStatus oldValue=this.currentStatus;
@@ -184,8 +185,8 @@ public class LiveTOM implements LiveSLE {
         parameterVersionListener.firePropertyChange("ticket", oldTicket, ticket);
     }
 
-    public void setOperationMode(TOMOperationMode operationMode) {
-        TOMOperationMode oldOperationMode = this.operationMode;
+    public void setOperationMode(AGOperationMode operationMode) {
+        AGOperationMode oldOperationMode = this.operationMode;
         this.operationMode = operationMode;
         pcs.firePropertyChange(PropertyUpdate.OPERATION_MODE.name(), oldOperationMode, operationMode);
     }

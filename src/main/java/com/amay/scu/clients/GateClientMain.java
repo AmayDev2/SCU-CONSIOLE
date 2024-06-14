@@ -1,4 +1,4 @@
-package com.amay.scu;
+package com.amay.scu.clients;
 
 import java.util.Random;
 import java.util.Scanner;

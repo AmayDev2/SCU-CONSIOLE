@@ -35,4 +35,6 @@ module com.amay.scu {
     exports org.network.monitorandcontrol.scu_console;
 
     opens com.amay.scu.controller to javafx.fxml;
+    exports com.amay.scu.clients;
+    opens com.amay.scu.clients to javafx.fxml;
 }

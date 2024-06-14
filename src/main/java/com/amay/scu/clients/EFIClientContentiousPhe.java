@@ -1,4 +1,4 @@
-package com.amay.scu;
+package com.amay.scu.clients;
 
 import java.util.Scanner;
 
@@ -108,12 +108,14 @@ public class EFIClientContentiousPhe {
 		boolean alive = true;
 		TOMDeviceInfo device_info = TOMDeviceInfo.newBuilder()
 				.setEquipId("TOM1")
-				.setEquipName("TEST_TOM_001")
+				.setDeviceType("TOM")
+				.setTomIp("192.168.1.1")
+				.setEquipName("TOM1")
 				.build();
 		client.sendRequest(RequestType.DEVICE_INFO, Any.pack(device_info));
 		while (alive) {
 			System.out.println("Enter message to send to server (or '0' to quit): ");
-			int message =2; //scanner.nextInt();
+			int message =scanner.nextInt();
 			Thread.sleep(100);
 			
 			switch (message) {
@@ -121,11 +123,13 @@ public class EFIClientContentiousPhe {
 				alive = false;
 				break;
 			case 1:
-//				TOMDeviceInfo device_info = TOMDeviceInfo.newBuilder()
-//					.setEquipId("TOM1")
-//					.setEquipName("TEST_TOM_001")
-//					.build();
-//				client.sendRequest(RequestType.DEVICE_INFO, Any.pack(device_info));
+				TOMDeviceInfo device_info1 = TOMDeviceInfo.newBuilder()
+						.setEquipId("TOM1")
+						.setDeviceType("TOM")
+						.setTomIp("192.168.1.1")
+						.setEquipName("TOM1")
+					.build();
+				client.sendRequest(RequestType.DEVICE_INFO, Any.pack(device_info1));
 				break;
 			case 2:
 				TOMPeripheralStatus peripheral = TOMPeripheralStatus.newBuilder()
@@ -141,7 +145,7 @@ public class EFIClientContentiousPhe {
 				  }
 				TOMPeripheralStatus peripheral1 = TOMPeripheralStatus.newBuilder()
 //                      .setScuConnected(true)
-                      .setCcuConnected(true)
+//                      .setCcuConnected(true)
 						.build();
 				client.sendRequest(RequestType.PERIPHERAL_STATUS, Any.pack(peripheral1));
 				break;

@@ -1,4 +1,4 @@
-package com.amay.scu;
+package com.amay.scu.clients;
 
 import org.network.monitorandcontrol.MonitorAndControlGrpc;
 import org.network.monitorandcontrol.RequestType;

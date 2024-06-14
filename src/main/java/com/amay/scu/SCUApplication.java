@@ -61,8 +61,15 @@ try {
 //    StationDynamicMapController scu=loader.getController();
     StationDynamicMapViewListener stationDynamicMapViewListener= StationDynamicMapViewListener.getInstance();
     LiveTOM liveTOM=new LiveTOM();
-    liveTOM.setOperationMode(TOMOperationMode.DISCONNECTED);
-    stationDynamicMapViewListener.updateTOMOperationMode("TOM5", liveTOM);
+    liveTOM.setOperationMode(TOMOperationMode.DEFICIENT);
+    LiveTOM liveTOM1=new LiveTOM();
+    liveTOM1.setOperationMode(TOMOperationMode.DISCONNECTED);
+    LiveTOM liveTOM2=new LiveTOM();
+    liveTOM2.setOperationMode(TOMOperationMode.MAINTENANCE);
+//
+    stationDynamicMapViewListener.updateTOMOperationMode("TOM4", liveTOM);
+    stationDynamicMapViewListener.updateTOMOperationMode("TOM3", liveTOM1);
+    stationDynamicMapViewListener.updateTOMOperationMode("TOM2", liveTOM2);
 
 
 //    SCUService scuService=new SCUService();
@@ -70,7 +77,7 @@ try {
 //            .setDeviceType(DeviceType.TOM)
 //            .setStreamData(StreamData.newBuilder().setEquipId("TOM1").setRequestType(RequestType.PERIPHERAL_STATUS).setRequestData(Any.pack(TOMPeripheralStatus.newBuilder().setScuConnected(true).build())).build())
 //            .build();
-////
+//
 //    scuService.detectDeviceType(DeviceType.TOM,consoleProtocol);
 
     primaryStage.setOnCloseRequest(e -> {

@@ -27,9 +27,6 @@ public class GrpcService  {
         this.asyncStub=asyncStub;
         requestObserver = scStreamObserver();
         scuService=new SCUService();
-
-
-
     }
 
     // Send some ConsoleStream messages
@@ -54,21 +51,10 @@ public class GrpcService  {
             @Override
             public void onNext(ConsoleProtocol value) {
                 if (value.hasStreamData()){
-
                     scuService.detectDeviceType(value.getDeviceType(),value);
-
-//                    scuService.updateSLEs(value.getStreamData());
-//
-//                    try {
-//                        logger.info("Received message from server: {}", value.getStreamData().getRequestData().unpack(AGDeviceInfo.class).toString());
-//                    } catch (InvalidProtocolBufferException e) {
-//                        logger.error("Received data exception {}",e.getMessage());
-//                        throw new RuntimeException(e);
-//                    }
                 }
                 else{
-            logger.info("Received message from server: {}", value);
-
+                    logger.info("Received message from server: {}", value);
                 }
             }
 

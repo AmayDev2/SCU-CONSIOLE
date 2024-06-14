@@ -1,7 +1,12 @@
 package com.amay.scu.controller;
 
+import com.amay.scu.enums.AGOperationMode;
 import com.amay.scu.enums.SLEStatus;
+import com.amay.scu.enums.TOMOperationMode;
+import com.amay.scu.sleobj.LiveAG;
 import com.amay.scu.sleobj.LiveSLE;
+import com.amay.scu.sleobj.LiveTOM;
+import com.amay.scu.sleobj.propertyenums.PropertyUpdate;
 import com.amay.scu.sles.components.SLE;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -20,13 +25,13 @@ public class AGController  implements SLE {
     @FXML
     private Label name;
 
-
     // Initial mouse cursor position
     private double initialX;
     private double initialY;
     // Initial button position
     private double initialLayoutX;
     private double initialLayoutY;
+    private LiveAG liveAG=null;
 
     @FXML
     void initialize() {
@@ -112,6 +117,33 @@ public class AGController  implements SLE {
     @Override
     public void updateOperationMode(LiveSLE liveTOM) {
 
+    }
+
+    @Override
+    public void setLiveSLE(LiveSLE liveAG) {
+        this.liveAG= (LiveAG) liveAG;
+
+        this.liveAG.addPropertyChangeListener(event -> {
+            System.out.println("Property " + event.getPropertyName() + " changed from " + event.getOldValue() + " to " + event.getNewValue());
+            logger.info("property updated ");
+            if (event.getPropertyName().equals(PropertyUpdate.SLE_STATUS_UPDATED.name())) {
+                logger.debug("listener new value {}", event.getNewValue());
+                this.updateStatus((SLEStatus) event.getNewValue());
+            } else if (event.getPropertyName().equals(PropertyUpdate.OPERATION_MODE.name())) {
+                logger.debug("listener new value {}", event.getNewValue());
+                this.updateOperationMode((AGOperationMode) event.getNewValue());
+            }
+        });
+
+        this.liveAG.addParameterVersionChangeListener(event -> {
+            System.out.println("Property " + event.getPropertyName() + " changed from " + event.getOldValue() + " to " + event.getNewValue());
+            logger.info("property updated ");
+        });
+
+    }
+
+    private void updateOperationMode(AGOperationMode agOperationMode) {
+        logger.info("Updating Operation Mode Of AG {}",ag);
     }
 
     private void handleMouseClick(MouseEvent event) {

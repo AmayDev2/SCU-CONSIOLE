@@ -5,6 +5,7 @@ import com.amay.scu.listenner.impl.StationDynamicMapViewListener;
 import com.amay.scu.sleobj.LiveTOM;
 import org.network.monitorandcontrol.CommandType;
 import org.network.monitorandcontrol.DeviceType;
+import org.network.monitorandcontrol.OperationMode;
 import org.network.monitorandcontrol.RequestType;
 import org.network.monitorandcontrol.scu_console.ConsoleProtocol;
 import org.network.monitorandcontrol.scu_console.StreamData;
@@ -12,6 +13,9 @@ import org.network.monitorandcontrol.scu_console.StreamData;
 import com.google.protobuf.Any;
 
 import io.grpc.stub.StreamObserver;
+import org.network.monitorandcontrol.tom.TOMDeviceInfo;
+import org.network.monitorandcontrol.tom.TOMModeControl;
+import org.network.monitorandcontrol.tom.TOMParameterVersion;
 import org.network.monitorandcontrol.tom.TOMPeripheralStatus;
 
 public class SCUService {
@@ -133,6 +137,7 @@ public class SCUService {
                 break;
             case DEVICE_INFO:
                 //TOM Device Info decode and display
+                checkTOMInfo(consoleProtocol);
                 break;
             case PERIPHERAL_STATUS:
                 //TOM Peripheral Status decode and display
@@ -140,6 +145,7 @@ public class SCUService {
                 break;
             case PARAMETER_VERSION:
                 //TOM Version Check decode and display
+                updateTOMParameterVersion(consoleProtocol);
                 break;
 //            case OPERATION_MODE:
 //                this.updateOperationMode(consoleProtocol);
@@ -151,24 +157,51 @@ public class SCUService {
         }
     }
 
-    private void updateOperationMode(ConsoleProtocol consoleProtocol) {
-//        TOMPeripheralStatus tomPeripheralStatus= consoleProtocol.getStreamData().getRequestData().unpack(TOMModeControl)
-//        LiveTOM liveTOM=new LiveTOM();
-//        liveTOM.setOperationMode();
-
-
-
-//        stationDynamicMapViewListener.updateTOMPeripheralStatus(consoleProtocol.getStreamData().getEquipId(), liveTOM);
-
-
+    private void checkTOMInfo(ConsoleProtocol consoleProtocol) {
+        try {
+            System.out.println(consoleProtocol.getStreamData().getRequestData().unpack(TOMDeviceInfo.class));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
-//
-//    /*
-//     * command_type
-//     * */
-//
-//    public void sendCommand(CommandType command_type, String equip_id, Any data) {
-//        StreamData command_data = StreamData.newBuilder().setCommandType(command_type).setEquipId(equip_id).setRequestData(data).build();
-//        stream_observer.onNext(ConsoleProtocol.newBuilder().setStreamData(command_data).build());
-//    }
+
+    private void updateTOMParameterVersion(ConsoleProtocol consoleProtocol) {
+        try {
+            System.out.println(consoleProtocol.getStreamData().getRequestData().unpack(TOMParameterVersion.class));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private void updateOperationMode(ConsoleProtocol consoleProtocol) {
+        try{
+            TOMModeControl tomModeControl= consoleProtocol.getStreamData().getRequestData().unpack(TOMModeControl.class);
+            LiveTOM liveTOM = new LiveTOM();
+            TOMOperationMode tomOperationMode=TOMOperationMode.DISCONNECTED;
+            switch(tomModeControl.getOperationMode()){
+                case  IN_SERVICE -> {
+                    tomOperationMode=TOMOperationMode.IN_SERVICE;
+                    tomOperationMode.updateQRSaleMode(tomModeControl.getQrSaleMode());
+                    tomOperationMode.updateCardProcessingMode(tomModeControl.getCardProcessMode());
+                }
+                case OUT_OF_SERVICE ->{
+                    tomOperationMode=TOMOperationMode.OUT_OF_SERVICE;
+                }
+                case MAINTENANCE ->  {
+                    tomOperationMode=TOMOperationMode.MAINTENANCE;
+                }
+                case UNRECOGNIZED -> {
+                    tomOperationMode=TOMOperationMode.OTHER;
+                }
+                case TEST -> {
+                    tomOperationMode=TOMOperationMode.TEST;
+                }
+            }
+            liveTOM.setOperationMode(tomOperationMode);
+            stationDynamicMapViewListener.updateTOMPeripheralStatus(consoleProtocol.getStreamData().getEquipId(), liveTOM);
+        }catch (Exception e){
+
+        }
+    }
+
 }

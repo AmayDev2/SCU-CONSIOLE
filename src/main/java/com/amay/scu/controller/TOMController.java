@@ -29,23 +29,11 @@ public class TOMController implements SLE {
     private double initialLayoutX;
     private double initialLayoutY;
 
-
     //live object
     private LiveTOM liveTOM = null;
 
     @FXML
     void initialize() {
-
-        liveTOM = new LiveTOM();
-        liveTOM.addPropertyChangeListener(event -> {
-            System.out.println("Property " + event.getPropertyName() + " changed from " + event.getOldValue() + " to " + event.getNewValue());
-            logger.info("property updated ");
-            if (event.getPropertyName().equals(PropertyUpdate.SLE_STATUS_UPDATED.name())) {
-                logger.debug("listener new value {}", event.getNewValue());
-                this.updateStatus((SLEStatus) event.getNewValue());
-            }
-        });
-
     }
 
     @Override
@@ -53,7 +41,6 @@ public class TOMController implements SLE {
         logger.debug("Setting scale of EFO to x:{} y:{} z:{}", x, y, z);
         tom.setLayoutX(x);
         tom.setLayoutX(y);
-//        tom.setScaleZ(z);
 
         return false;
     }
@@ -91,7 +78,6 @@ public class TOMController implements SLE {
             // Save initial button position
             initialLayoutX = button.getLayoutX();
             initialLayoutY = button.getLayoutY();
-
         });
         button.setOnMouseDragged(event -> {
             // Calculate new button position
@@ -119,7 +105,8 @@ public class TOMController implements SLE {
     public void updateStatus(SLEStatus status) {
         setStatus(status);
     }
-   void updateStatus1(TOMOperationMode status) {
+
+   void updateOperationMode(TOMOperationMode status) {
         setColor(status);
     }
 
@@ -159,5 +146,27 @@ public class TOMController implements SLE {
             liveTOM1 = (LiveTOM) liveTOM;
             this.liveTOM.setOperationMode(( liveTOM1).getOperationMode());
         }
+    }
+
+    @Override
+    public void setLiveSLE(LiveSLE liveTOM) {
+        this.liveTOM= (LiveTOM) liveTOM;
+
+        this.liveTOM.addPropertyChangeListener(event -> {
+            System.out.println("Property " + event.getPropertyName() + " changed from " + event.getOldValue() + " to " + event.getNewValue());
+            logger.info("property updated ");
+            if (event.getPropertyName().equals(PropertyUpdate.SLE_STATUS_UPDATED.name())) {
+                logger.debug("listener new value {}", event.getNewValue());
+                this.updateStatus((SLEStatus) event.getNewValue());
+            } else if (event.getPropertyName().equals(PropertyUpdate.OPERATION_MODE.name())) {
+                logger.debug("listener new value {}", event.getNewValue());
+                this.updateOperationMode((TOMOperationMode) event.getNewValue());
+            }
+        });
+
+        this.liveTOM.addParameterVersionChangeListener(event -> {
+            System.out.println("Property " + event.getPropertyName() + " changed from " + event.getOldValue() + " to " + event.getNewValue());
+            logger.info("property updated ");
+        });
     }
 }

@@ -17,4 +17,5 @@ public interface SLE {
     public void updateStatus(SLEStatus status);
     void updatePeripheralStatus(LiveSLE liveTOM);
     void updateOperationMode(LiveSLE liveTOM);
+    void setLiveSLE(LiveSLE liveTOM);
 }

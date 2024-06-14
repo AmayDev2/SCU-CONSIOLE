@@ -1,4 +1,4 @@
-package com.amay.scu;
+package com.amay.scu.clients;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

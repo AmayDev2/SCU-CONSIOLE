@@ -11,21 +11,24 @@ import org.network.monitorandcontrol.scu_console.StreamData;
 import org.network.monitorandcontrol.tom.TOMDeviceInfo;
 
 import java.util.Scanner;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class CommandTest {
 
     private final GrpcService grpcService;
     private final Scanner scanner;
+    ExecutorService singleThreadExecutor = null;
 
     public CommandTest(GrpcService grpcService) {
         this.grpcService = grpcService;
         this.scanner = new Scanner(System.in);
-        executeSendCommand();
+        singleThreadExecutor = Executors.newSingleThreadExecutor();
+        this.executeSendCommand();
     }
 
     private void executeSendCommand() {
-        Thread thread = new Thread(this::sendCommand,"Command Test");
-        thread.start();
+        singleThreadExecutor.submit(this::sendCommand,"Command Test");
     }
 
     public void sendCommand() {
