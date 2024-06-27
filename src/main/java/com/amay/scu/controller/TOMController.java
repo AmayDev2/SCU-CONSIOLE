@@ -92,6 +92,7 @@ public class TOMController implements SLE {
             if (newLayoutY >= 0 && newLayoutY + button.getHeight() <= anchorPane.getHeight()) {
                 button.setLayoutY(newLayoutY);
             }
+            logger.debug("Moving button {} to x:{} y:{}",tom.getId(),newLayoutX,newLayoutY);
         });
 
     }
