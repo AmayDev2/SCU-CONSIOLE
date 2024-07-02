@@ -1,32 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #f5c79c" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.SCUController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
-    <BorderPane fx:id="borderPane" prefHeight="1080.0" prefWidth="1920.0">
+<AnchorPane fx:id="scu" style="-fx-background-color: #f5c79c" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.SCUController">
 
+    <BorderPane fx:id="borderPane" stylesheets="@css/border-pane.css">
         <top>
-            <VBox fx:id="topVBox" alignment="CENTER" prefHeight="100.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-                <Label fx:id="text" text="Welcome to SCU!" />
-                <Button onAction="#onConnect" text="Connect" />
-                <Button onAction="#onDisconnect" text="Disconnect" />
-                <Button onAction="#onSend" text="Send" />
-
+            <VBox fx:id="topVBox" BorderPane.alignment="TOP_CENTER">
             </VBox>
         </top>
+<!--        <left>-->
+<!--            <VBox fx:id="leftVBox"  BorderPane.alignment="CENTER_LEFT">-->
+<!--            </VBox>-->
+<!--        </left>-->
+        <right>
+            <VBox fx:id="rightVBox" BorderPane.alignment="CENTER_RIGHT">
+            </VBox>
+        </right>
+
+<!--        <top>-->
+<!--            <VBox fx:id="topVBox" alignment="CENTER" prefHeight="100.0" prefWidth="100.0" BorderPane.alignment="CENTER">-->
+<!--                <Label fx:id="text" text="Welcome to SCU!" />-->
+<!--                <Button onAction="#onConnect" text="Connect" />-->
+<!--                <Button onAction="#onDisconnect" text="Disconnect" />-->
+<!--                <Button onAction="#onSend" text="Send" />-->
+
+<!--            </VBox>-->
+<!--        </top>-->
 
       <center>
-          <VBox fx:id="centerVBox" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-              <fx:include source="station_map/station-map-view.fxml" />
-          </VBox>
+<!--          <VBox fx:id="centerVBox" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">-->
+              <fx:include source="station_map/station-dynamic-map-view.fxml" />
+<!--          </VBox>-->
       </center>
+        <bottom>
+            <VBox fx:id="bottomVBox" BorderPane.alignment="BOTTOM_CENTER">
+            </VBox>
+        </bottom>
+      <padding>
+         <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
+      </padding>
+
     </BorderPane>
 </AnchorPane>

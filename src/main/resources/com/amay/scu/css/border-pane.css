@@ -1,0 +1,32 @@
+#topVBox{
+    -fx-background-color:  #f3f3b2;
+    -fx-min-height: 90;
+}
+
+#rightVBox{
+    -fx-background-color: #ffd4d4;
+    -fx-min-width: 300;
+    -fx-max-width: 300;
+}
+
+/*center*/
+#anchorPane {
+    -fx-border-width: 2px;
+    -fx-border-color: #000000;  /* You can change this to any color */
+    -fx-border-style: solid;  /* Other options: dotted, dashed, etc. */
+}
+
+#bottomVBox{
+    -fx-background-color: #f37d7d;
+    -fx-min-height: 130;
+    -fx-max-height: 130;
+
+}
+
+#borderPane{
+    -fx-background-color:  #f3f3b2;
+    -fx-pref-height: 1080;
+    -fx-pref-width: 1920;
+    -fx-start-margin: 10px;
+    -fx-end-margin: 10px;
+}

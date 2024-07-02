@@ -48,8 +48,8 @@ try {
 //    grpcService.initialConnectionRequest(null);
 
 
-    FXMLLoader loader = new FXMLLoader(getClass().getResource(Path.SCU_DYNAMIC_VIEW));
-    Scene scene=new Scene(loader.load(), 1000, 500);
+    FXMLLoader loader = new FXMLLoader(getClass().getResource(Path.SCU_VIEW));
+    Scene scene=new Scene(loader.load(), (double) 1920 /2, (double) 1080 /2);
     scene.getStylesheets().add(getClass().getResource("css/application.css").toExternalForm());
 
     primaryStage.setScene(scene);
@@ -70,6 +70,7 @@ try {
     stationDynamicMapViewListener.updateTOMOperationMode("TOM4", liveTOM);
     stationDynamicMapViewListener.updateTOMOperationMode("TOM3", liveTOM1);
     stationDynamicMapViewListener.updateTOMOperationMode("TOM2", liveTOM2);
+    primaryStage.setMaximized(true);
 
 
 //    SCUService scuService=new SCUService();
