@@ -3,6 +3,7 @@ package com.amay.scu.controller;
 import com.amay.scu.enums.AGOperationMode;
 import com.amay.scu.enums.SLEStatus;
 import com.amay.scu.enums.TOMOperationMode;
+import com.amay.scu.popup.PopupContent;
 import com.amay.scu.sleobj.LiveAG;
 import com.amay.scu.sleobj.LiveSLE;
 import com.amay.scu.sleobj.LiveTOM;
@@ -56,7 +57,6 @@ public class AGController  implements SLE {
     public boolean setStatus(SLEStatus status) {
         logger.debug("Setting status of AG to {}",status.getStatus());
         ag.setStyle(status.getStatus());
-
         return false;
     }
 
@@ -142,13 +142,19 @@ public class AGController  implements SLE {
 
     }
 
+    // updating the operation mode
     private void updateOperationMode(AGOperationMode agOperationMode) {
+//        ag.setStyle(agOperationMode.getColor());
+        liveAG.setOperationMode(agOperationMode);
         logger.info("Updating Operation Mode Of AG {}",ag);
     }
 
     private void handleMouseClick(MouseEvent event) {
         if (event.getButton() == MouseButton.PRIMARY) {
             // Handle left click
+            PopupContent popupContent = new PopupContent(liveAG);
+//            popupContent.xyz(liveAG,popupContent);
+            popupContent.show();
             logger.debug("Left click detected on button");
         } else if (event.getButton() == MouseButton.SECONDARY) {
             // Handle right click

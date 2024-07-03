@@ -37,5 +37,14 @@ public class ViewFactory {
                 (Path.AG_VIEW));
         return fxmlLoader;
     }
+    public static FXMLLoader getPopupView() {
+        FXMLLoader fxmlLoader = new FXMLLoader(ViewFactory.class.getResource
+                (Path.POPUP));
+        return fxmlLoader;
+    }
+
+    public static String loadStylesheet() {
+        return ViewFactory.class.getResource(Path.POPUP_CSS).toExternalForm();
+    }
 
 }

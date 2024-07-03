@@ -10,6 +10,7 @@ import com.amay.scu.grpc.GrpcConfig;
 //import com.amay.scu.service.GrpcService;
 //import com.amay.scu.service.GrpcService;
 import com.amay.scu.listenner.impl.StationDynamicMapViewListener;
+import com.amay.scu.popup.PopupContent;
 import com.amay.scu.service.GrpcService;
 import com.amay.scu.sleobj.LiveTOM;
 import com.amay.scu.test_grpc_service.SCUService;
@@ -73,6 +74,9 @@ try {
     primaryStage.setMaximized(true);
 
 
+
+
+
 //    SCUService scuService=new SCUService();
 //    ConsoleProtocol consoleProtocol=ConsoleProtocol.newBuilder()
 //            .setDeviceType(DeviceType.TOM)
@@ -93,6 +97,8 @@ try {
 
 
     }
+
+
 
     public static void main(String[] args) {
         launch(args);

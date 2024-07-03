@@ -50,6 +50,7 @@ public class TOMController implements SLE {
         return false;
     }
 
+    @Deprecated
     @Override
     public boolean setStatus(SLEStatus status) {
         logger.debug("Setting status of TOM to {}", status.getStatus());

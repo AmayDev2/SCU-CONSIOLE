@@ -7,9 +7,13 @@
     <list default="true" id="315d97bc-7335-4bbd-a14f-28c409037fec" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/SCUApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/SCUApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/ViewFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/AGController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/AGController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TOMController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TOMController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/sleobj/propertyenums/PropertyUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/sleobj/propertyenums/PropertyUpdate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/sles/AGAbstractFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/sles/AGAbstractFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/views/Path.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/Path.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/css/station-dynamic-map-view.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/css/station-dynamic-map-view.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/scu-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/scu-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/css/border-pane.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/css/border-pane.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -297,7 +301,8 @@
       <workItem from="1719728875979" duration="556000" />
       <workItem from="1719780735460" duration="194000" />
       <workItem from="1719829013538" duration="1160000" />
-      <workItem from="1719899333672" duration="10099000" />
+      <workItem from="1719899333672" duration="15772000" />
+      <workItem from="1719934583186" duration="13082000" />
     </task>
     <servers />
   </component>
@@ -377,12 +382,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TOMController.java</url>
-          <line>106</line>
+          <line>107</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/SCUApplication.java</url>
-          <line>62</line>
+          <line>63</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -392,7 +397,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TOMController.java</url>
-          <line>147</line>
+          <line>148</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -402,7 +407,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TOMController.java</url>
-          <line>105</line>
+          <line>106</line>
           <properties class="com.amay.scu.controller.TOMController" method="updateStatus">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

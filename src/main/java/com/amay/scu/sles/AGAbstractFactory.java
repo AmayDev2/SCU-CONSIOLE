@@ -14,6 +14,17 @@ import javafx.scene.layout.AnchorPane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/* @author: risab.7088@gmail.com
+* stationDevicesDTO:- is the object that we are getting from database
+* liveAG :- a real object to contain realtime data/status of sle
+*
+*
+*
+*
+*
+*
+* */
+
 public class AGAbstractFactory extends SLEAbstractFactory {
     static int TOM_COUNT = 1;
     private static final String NAME="AG";
@@ -45,6 +56,7 @@ public class AGAbstractFactory extends SLEAbstractFactory {
         }
     }
 
+    // auto increment  the  name
     private String getAGId() {
         return NAME+TOM_COUNT++;
     }

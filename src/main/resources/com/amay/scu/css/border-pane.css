@@ -4,7 +4,7 @@
 }
 
 #rightVBox{
-    -fx-background-color: #ffd4d4;
+    -fx-background-color: #f3f3b2;
     -fx-min-width: 300;
     -fx-max-width: 300;
 }
@@ -17,7 +17,7 @@
 }
 
 #bottomVBox{
-    -fx-background-color: #f37d7d;
+    -fx-background-color: #f3f3b2;
     -fx-min-height: 130;
     -fx-max-height: 130;
 

@@ -1,0 +1,37 @@
+#comandView{
+    -fx-background-color: #adf8ef;
+    -fx-pref-width: 500;
+    -fx-pref-height: 800;
+}
+
+#apply{
+    -fx-background-color: #33c205;
+    -fx-background-radius: 10;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+
+}
+
+#cancel {
+    -fx-background-color: #ff2626;
+    -fx-background-radius: 10;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+
+}
+
+
+/*pressing effect for the defined button*/
+#cancel:pressed,#apply:pressed {
+    -fx-background-radius: 10;
+    -fx-effect: innershadow(three-pass-box, rgba(0, 0, 0, 0.5), 10, 0, 0, 0); /* Inner shadow effect */
+}
+
+/*for stage */
+.root {
+    -fx-background-color: rgba(255, 255, 255, 0);
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-padding: 10;
+    /*-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 0);*/
+}
