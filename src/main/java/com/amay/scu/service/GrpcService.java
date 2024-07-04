@@ -38,7 +38,8 @@ public class GrpcService  {
     public void initialConnectionRequest(StreamData message) {
         logger.info("Sending initial request to server: {}", message);
         requestObserver.onNext(ConsoleProtocol.newBuilder().setConsoleId("imscuconsole").build());
-        new CommandTest(this);
+//        new CommandTest(this);
+        CommandTest.INSTANCE.initializeCommandTest(this);
     }
 
     public void markComplete() {

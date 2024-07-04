@@ -2,6 +2,8 @@ package com.amay.scu.controller;
 
 import com.amay.scu.enums.SLEStatus;
 import com.amay.scu.enums.TOMOperationMode;
+import com.amay.scu.popup.PopupContent;
+import com.amay.scu.popup.SleCommandInfo;
 import com.amay.scu.sleobj.LiveSLE;
 import com.amay.scu.sleobj.LiveTOM;
 import com.amay.scu.sleobj.propertyenums.PropertyUpdate;
@@ -9,6 +11,8 @@ import com.amay.scu.sles.components.SLE;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.network.monitorandcontrol.OperationMode;
 import org.slf4j.Logger;
@@ -34,6 +38,7 @@ public class TOMController implements SLE {
 
     @FXML
     void initialize() {
+        tom.setOnMouseClicked(this::handleMouseClick);           //handles the mouse click event
     }
 
     @Override
@@ -170,5 +175,17 @@ public class TOMController implements SLE {
             System.out.println("Property " + event.getPropertyName() + " changed from " + event.getOldValue() + " to " + event.getNewValue());
             logger.info("property updated ");
         });
+    }
+
+    private void handleMouseClick(MouseEvent event) {
+        if (event.getButton() == MouseButton.PRIMARY) {
+            // Handle left click
+            PopupContent popupContent = new PopupContent(liveTOM);
+            popupContent.show();
+            logger.debug("Left click detected on button");
+        } else if (event.getButton() == MouseButton.SECONDARY) {
+            // Handle right click
+            logger.debug("Right click detected on button");
+        }
     }
 }

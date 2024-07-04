@@ -3,6 +3,7 @@ package com.amay.scu.sleobj;
 import com.amay.scu.enums.AGOperationMode;
 import com.amay.scu.enums.SLEStatus;
 import com.amay.scu.enums.TOMOperationMode;
+import com.amay.scu.popup.SleCommandInfo;
 import com.amay.scu.sleobj.propertyenums.PropertyUpdate;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +16,7 @@ import java.beans.PropertyChangeSupport;
 
 @Data
 @NoArgsConstructor
-public class LiveAG implements LiveSLE {
+public class LiveAG implements LiveSLE, SleCommandInfo {
     private SLEStatus currentStatus = SLEStatus.OFFLINE;
    final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -27,13 +28,13 @@ public class LiveAG implements LiveSLE {
     // information
     private String equipName;
     private String equipId;
-    private String agIp;
+    private String equipIp;
     private String deviceType;
     private String stationId="01";
 
     public LiveAG(String equipId, String agIp, String stationId, String equipName, String deviceType){
         this.equipId=equipId;
-        this.agIp=agIp;
+        this.equipIp=agIp;
 //        this.stationId=stationId;
         this.equipName=equipName;
         this.deviceType=deviceType;

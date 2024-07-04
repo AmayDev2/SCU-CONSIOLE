@@ -153,7 +153,6 @@ public class AGController  implements SLE {
         if (event.getButton() == MouseButton.PRIMARY) {
             // Handle left click
             PopupContent popupContent = new PopupContent(liveAG);
-//            popupContent.xyz(liveAG,popupContent);
             popupContent.show();
             logger.debug("Left click detected on button");
         } else if (event.getButton() == MouseButton.SECONDARY) {
