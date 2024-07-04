@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="scu" style="-fx-background-color: #f5c79c" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.SCUController">
+<AnchorPane fx:id="scu" stylesheets="@css/application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.SCUController">
 
     <BorderPane fx:id="borderPane" stylesheets="@css/border-pane.css">
         <top>

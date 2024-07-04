@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox fx:id="comandView" alignment="CENTER" spacing="50.0" stylesheets="@../css/popup.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.CommandController">
+<VBox fx:id="comandView" alignment="CENTER" spacing="50.0" stylesheets="@../css/popup.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.CommandController">
    <children>
       <GridPane>
         <columnConstraints>

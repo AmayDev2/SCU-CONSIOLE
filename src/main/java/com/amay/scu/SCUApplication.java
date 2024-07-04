@@ -5,6 +5,7 @@ package com.amay.scu;
 
 import com.amay.scu.controller.SCUController;
 import com.amay.scu.controller.StationDynamicMapController;
+import com.amay.scu.enums.AGOperationMode;
 import com.amay.scu.enums.TOMOperationMode;
 import com.amay.scu.grpc.GrpcConfig;
 //import com.amay.scu.service.GrpcService;
@@ -12,6 +13,7 @@ import com.amay.scu.grpc.GrpcConfig;
 import com.amay.scu.listenner.impl.StationDynamicMapViewListener;
 import com.amay.scu.popup.PopupContent;
 import com.amay.scu.service.GrpcService;
+import com.amay.scu.sleobj.LiveAG;
 import com.amay.scu.sleobj.LiveTOM;
 import com.amay.scu.test_grpc_service.SCUService;
 import com.google.protobuf.Any;
@@ -51,7 +53,7 @@ try {
 
     FXMLLoader loader = new FXMLLoader(getClass().getResource(Path.SCU_VIEW));
     Scene scene=new Scene(loader.load(), (double) 1920 /2, (double) 1080 /2);
-    scene.getStylesheets().add(getClass().getResource("css/application.css").toExternalForm());
+//    scene.getStylesheets().add(getClass().getResource("css/application.css").toExternalForm());
 
     primaryStage.setScene(scene);
 //    primaryStage.setTitle("Redis Subscriber");
@@ -67,8 +69,12 @@ try {
     liveTOM1.setOperationMode(TOMOperationMode.DISCONNECTED);
     LiveTOM liveTOM2=new LiveTOM();
     liveTOM2.setOperationMode(TOMOperationMode.MAINTENANCE);
+    LiveAG liveAG=new LiveAG();
+//    liveAG.setOperationMode(AGOperationMode.TEST);
+//    liveAG.setP
 //
     stationDynamicMapViewListener.updateTOMOperationMode("TOM4", liveTOM);
+    stationDynamicMapViewListener.updateAGOperationMode("AG4", liveAG);
     stationDynamicMapViewListener.updateTOMOperationMode("TOM3", liveTOM1);
     stationDynamicMapViewListener.updateTOMOperationMode("TOM2", liveTOM2);
     primaryStage.setMaximized(true);

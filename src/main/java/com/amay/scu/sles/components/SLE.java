@@ -15,7 +15,7 @@ public interface SLE {
     public void setMovingProperties(Button button, AnchorPane anchorPane);
     public Object getId();
     public void updateStatus(SLEStatus status);
-    void updatePeripheralStatus(LiveSLE liveTOM);
-    void updateOperationMode(LiveSLE liveTOM);
-    void setLiveSLE(LiveSLE liveTOM);
+    void updatePeripheralStatus(LiveSLE liveSLE);
+    void updateOperationMode(LiveSLE liveSLE);
+    void setLiveSLE(LiveSLE liveSLE);
 }

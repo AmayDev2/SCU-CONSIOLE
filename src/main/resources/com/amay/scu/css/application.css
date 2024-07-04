@@ -1,3 +1,5 @@
 .background{
-    -fx-background-color: #cbf8ad;
+    -fx-background-color: #f8d3ad;
+    -fx-background-radius: 10px;
 }
+

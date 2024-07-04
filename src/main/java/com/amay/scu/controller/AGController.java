@@ -110,12 +110,31 @@ public class AGController  implements SLE {
     }
 
     @Override
-    public void updatePeripheralStatus(LiveSLE liveTOM) {
+    public void updatePeripheralStatus(LiveSLE agPeripheralStatus) {
+        LiveAG liveAG1;
+        if (agPeripheralStatus instanceof LiveAG) {
+            liveAG1 = (LiveAG) agPeripheralStatus;
+            this.liveAG.setScu_connected(liveAG1.isScu_connected());
+            this.liveAG.setCcu_connected(liveAG1.isCcu_connected());
+            this.liveAG.setReader_connected(liveAG1.isReader_connected());
+            this.liveAG.setScanner_connected(liveAG1.isScanner_connected());
+            this.liveAG.setPrinter_connected(liveAG1.isPrinter_connected());
+            this.liveAG.setPdu_connected(liveAG1.isPdu_connected());
+            this.liveAG.setCash_drawer_connected(liveAG1.isCash_drawer_connected());
+            this.liveAG.setUps_connected(liveAG1.isUps_connected());
+//            printStatus(tomPeripheralStatus);
+            this.liveAG.setDeviceMode(liveAG1.isScu_connected() || liveAG1.isCcu_connected() || liveAG1.isReader_connected() || liveAG1.isScanner_connected() || liveAG1.isPrinter_connected() || liveAG1.isPdu_connected() || liveAG1.isCash_drawer_connected() || liveAG1.isUps_connected());
+        }
 
     }
 
     @Override
-    public void updateOperationMode(LiveSLE liveTOM) {
+    public void updateOperationMode(LiveSLE liveAG) {
+        LiveAG liveAG1;
+        if (liveAG instanceof LiveAG) {
+            liveAG1 = (LiveAG) liveAG;
+            this.liveAG.setOperationMode(( liveAG1).getOperationMode());
+        }
 
     }
 
@@ -144,8 +163,7 @@ public class AGController  implements SLE {
 
     // updating the operation mode
     private void updateOperationMode(AGOperationMode agOperationMode) {
-//        ag.setStyle(agOperationMode.getColor());
-        liveAG.setOperationMode(agOperationMode);
+        ag.setStyle(agOperationMode.getColor());
         logger.info("Updating Operation Mode Of AG {}",ag);
     }
 

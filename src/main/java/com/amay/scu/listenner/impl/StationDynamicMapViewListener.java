@@ -2,6 +2,7 @@ package com.amay.scu.listenner.impl;
 
 import com.amay.scu.controller.StationDynamicMapController;
 import com.amay.scu.enums.SLEStatus;
+import com.amay.scu.sleobj.LiveAG;
 import com.amay.scu.sleobj.LiveTOM;
 import org.network.monitorandcontrol.tom.TOMPeripheralStatus;
 import org.slf4j.Logger;
@@ -57,6 +58,16 @@ public class StationDynamicMapViewListener {
     public void updateTOMOperationMode(String equipId, LiveTOM liveTOM) {
 
         stationDynamicMapController.updateTOMOperationMode(equipId,liveTOM);
+
+    }
+
+    public void updateAGPeripheralStatus(String equipId, LiveAG liveAG) {
+        stationDynamicMapController.updateAGPeripheralStatus(equipId,liveAG);
+    }
+
+    public void updateAGOperationMode(String equipId, LiveAG liveAG) {
+
+        stationDynamicMapController.updateAGOperationMode(equipId,liveAG);
 
     }
 }

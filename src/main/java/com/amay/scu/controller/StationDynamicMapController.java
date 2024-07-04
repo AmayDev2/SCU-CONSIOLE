@@ -5,6 +5,7 @@ import com.amay.scu.enums.SLEStatus;
 import com.amay.scu.listenner.IStationDynamicMapViewListener;
 import com.amay.scu.listenner.impl.StationDynamicMapViewListener;
 import com.amay.scu.repository.StationDevicesRepository;
+import com.amay.scu.sleobj.LiveAG;
 import com.amay.scu.sleobj.LiveTOM;
 import com.amay.scu.sles.*;
 import com.amay.scu.sles.components.SLE;
@@ -106,6 +107,7 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
         }).forEach(sle -> sle.updateStatus(status));
     }
 
+    //
     public void updateTOMPeripheralStatus(String equipId, LiveTOM liveTOM) {
         sles.stream().filter(tom->tom.getId().equals(equipId)).forEach(filteredTom->{
             filteredTom.updatePeripheralStatus(liveTOM);
@@ -115,6 +117,19 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
     public void updateTOMOperationMode(String equipId, LiveTOM liveTOM) {
         sles.stream().filter(tom->tom.getId().equals(equipId)).forEach(filteredTom->{
             filteredTom.updateOperationMode(liveTOM);
+        });
+    }
+
+    //AG
+    public void updateAGPeripheralStatus(String equipId, LiveAG liveAG) {
+        sles.stream().filter(tom->tom.getId().equals(equipId)).forEach(filteredTom->{
+            filteredTom.updatePeripheralStatus(liveAG);
+        });
+    }
+
+    public void updateAGOperationMode(String equipId, LiveAG liveAG) {
+        sles.stream().filter(tom->tom.getId().equals(equipId)).forEach(filteredTom->{
+            filteredTom.updateOperationMode(liveAG);
         });
     }
 

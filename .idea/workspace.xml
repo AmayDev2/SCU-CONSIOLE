@@ -6,16 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="315d97bc-7335-4bbd-a14f-28c409037fec" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/command/CommandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/command/CommandTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/SCUApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/SCUApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/AGController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/AGController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/CommandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/CommandController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TOMController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TOMController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/popup/PopupContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/popup/PopupContent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/service/GrpcService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/service/GrpcService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/sleobj/LiveAG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/sleobj/LiveAG.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/sleobj/LiveTOM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/sleobj/LiveTOM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/StationDynamicMapController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/StationDynamicMapController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/listenner/impl/StationDynamicMapViewListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/listenner/impl/StationDynamicMapViewListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/sles/components/SLE.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/sles/components/SLE.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/test_grpc_service/SCUService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/test_grpc_service/SCUService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/css/application.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/css/application.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/popups/command.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/popups/command.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/amay/scu/command/CommandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/amay/scu/command/CommandTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/scu-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/scu-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -304,7 +303,7 @@
       <workItem from="1719780735460" duration="194000" />
       <workItem from="1719829013538" duration="1160000" />
       <workItem from="1719899333672" duration="15772000" />
-      <workItem from="1719934583186" duration="22515000" />
+      <workItem from="1719934583186" duration="29865000" />
     </task>
     <servers />
   </component>
@@ -364,17 +363,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/test_grpc_service/SCUService.java</url>
-          <line>133</line>
+          <line>160</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/test_grpc_service/SCUService.java</url>
-          <line>102</line>
+          <line>103</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/test_grpc_service/SCUService.java</url>
-          <line>123</line>
+          <line>124</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -389,12 +388,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/SCUApplication.java</url>
-          <line>63</line>
+          <line>65</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/listenner/impl/StationDynamicMapViewListener.java</url>
-          <line>58</line>
+          <line>59</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

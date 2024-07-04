@@ -2,6 +2,7 @@ package com.amay.scu.test_grpc_service;
 
 import com.amay.scu.enums.TOMOperationMode;
 import com.amay.scu.listenner.impl.StationDynamicMapViewListener;
+import com.amay.scu.sleobj.LiveAG;
 import com.amay.scu.sleobj.LiveTOM;
 import org.network.monitorandcontrol.CommandType;
 import org.network.monitorandcontrol.DeviceType;
@@ -86,7 +87,7 @@ public class SCUService {
                 break;
             case PERIPHERAL_STATUS:
                 //AG Peripheral Status decode and display
-
+                this.updatePeripheralStatus(consoleProtocol,new LiveAG());
                 break;
             case PARAMETER_VERSION:
                 //AG Version Check decode and display
@@ -98,10 +99,10 @@ public class SCUService {
         }
     }
 
-    private void updatePeripheralStatus(ConsoleProtocol consoleProtocol){
+    private void updatePeripheralStatus(ConsoleProtocol consoleProtocol,LiveTOM liveTOM){
         try {
             TOMPeripheralStatus tomPeripheralStatus= consoleProtocol.getStreamData().getRequestData().unpack(TOMPeripheralStatus.class);
-            LiveTOM liveTOM=new LiveTOM();
+
 //            private boolean scu_connected;
 //            private boolean ccu_connected;
 //            private boolean reader_connected;
@@ -124,6 +125,32 @@ public class SCUService {
             e.printStackTrace();
         }
     }
+    private void updatePeripheralStatus(ConsoleProtocol consoleProtocol,LiveAG liveAG){
+        try {
+            TOMPeripheralStatus tomPeripheralStatus= consoleProtocol.getStreamData().getRequestData().unpack(TOMPeripheralStatus.class);
+
+//            private boolean scu_connected;
+//            private boolean ccu_connected;
+//            private boolean reader_connected;
+//            private boolean scanner_connected;
+//            private boolean printer_connected;
+//            private boolean pdu_connected;
+//            private boolean cash_drawer_connected;
+//            private boolean ups_connected;
+            liveAG.setScu_connected(tomPeripheralStatus.getScuConnected());
+            liveAG.setCcu_connected(tomPeripheralStatus.getCcuConnected());
+            liveAG.setReader_connected(tomPeripheralStatus.getReaderConnected());
+            liveAG.setScanner_connected(tomPeripheralStatus.getScannerConnected());
+            liveAG.setPrinter_connected(tomPeripheralStatus.getPrinterConnected());
+            liveAG.setPdu_connected(tomPeripheralStatus.getPduConnected());
+            liveAG.setCash_drawer_connected(tomPeripheralStatus.getCashDrawerConnected());
+            liveAG.setUps_connected(tomPeripheralStatus.getUpsConnected());
+
+            stationDynamicMapViewListener.updateAGPeripheralStatus(consoleProtocol.getStreamData().getEquipId(), liveAG);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
     public void decodeTOMResponse(ConsoleProtocol consoleProtocol) {
         try {
@@ -141,7 +168,7 @@ public class SCUService {
                 break;
             case PERIPHERAL_STATUS:
                 //TOM Peripheral Status decode and display
-                this.updatePeripheralStatus(consoleProtocol);
+                this.updatePeripheralStatus(consoleProtocol,new LiveTOM());
                 break;
             case PARAMETER_VERSION:
                 //TOM Version Check decode and display
