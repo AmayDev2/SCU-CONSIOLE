@@ -43,11 +43,11 @@ public class LiveAG implements LiveSLE, SleCommandInfo {
     // peripherals
     private boolean scu_connected;
     private boolean ccu_connected;
-    private boolean reader_connected;
-    private boolean scanner_connected;
-    private boolean printer_connected;
-    private boolean pdu_connected;
-    private boolean cash_drawer_connected;
+//    private boolean reader_connected;
+//    private boolean scanner_connected;
+//    private boolean printer_connected;
+//    private boolean pdu_connected;
+//    private boolean cash_drawer_connected;
     private boolean ups_connected;
 
     //all
@@ -108,35 +108,35 @@ public class LiveAG implements LiveSLE, SleCommandInfo {
         pcs.firePropertyChange("ccu_connected", oldCcu_connected, ccu_connected);
     }
 
-    public void setReader_connected(boolean reader_connected) {
-        boolean oldReader_connected = this.reader_connected;
-        this.reader_connected = reader_connected;
-        pcs.firePropertyChange("reader_connected", oldReader_connected, reader_connected);
-    }
-
-    public void setScanner_connected(boolean scanner_connected) {
-        boolean oldScanner_connected = this.scanner_connected;
-        this.scanner_connected = scanner_connected;
-        pcs.firePropertyChange("scanner_connected", oldScanner_connected, scanner_connected);
-    }
-
-    public void setPrinter_connected(boolean printer_connected) {
-        boolean oldPrinter_connected = this.printer_connected;
-        this.printer_connected = printer_connected;
-        pcs.firePropertyChange("printer_connected", oldPrinter_connected, printer_connected);
-    }
-
-    public void setPdu_connected(boolean pdu_connected) {
-        boolean oldPdu_connected = this.pdu_connected;
-        this.pdu_connected = pdu_connected;
-        pcs.firePropertyChange("pdu_connected", oldPdu_connected, pdu_connected);
-    }
-
-    public void setCash_drawer_connected(boolean cash_drawer_connected) {
-        boolean oldCash_drawer_connected = this.cash_drawer_connected;
-        this.cash_drawer_connected = cash_drawer_connected;
-        pcs.firePropertyChange("cash_drawer_connected", oldCash_drawer_connected, cash_drawer_connected);
-    }
+//    public void setReader_connected(boolean reader_connected) {
+//        boolean oldReader_connected = this.reader_connected;
+//        this.reader_connected = reader_connected;
+//        pcs.firePropertyChange("reader_connected", oldReader_connected, reader_connected);
+//    }
+//
+//    public void setScanner_connected(boolean scanner_connected) {
+//        boolean oldScanner_connected = this.scanner_connected;
+//        this.scanner_connected = scanner_connected;
+//        pcs.firePropertyChange("scanner_connected", oldScanner_connected, scanner_connected);
+//    }
+//
+//    public void setPrinter_connected(boolean printer_connected) {
+//        boolean oldPrinter_connected = this.printer_connected;
+//        this.printer_connected = printer_connected;
+//        pcs.firePropertyChange("printer_connected", oldPrinter_connected, printer_connected);
+//    }
+//
+//    public void setPdu_connected(boolean pdu_connected) {
+//        boolean oldPdu_connected = this.pdu_connected;
+//        this.pdu_connected = pdu_connected;
+//        pcs.firePropertyChange("pdu_connected", oldPdu_connected, pdu_connected);
+//    }
+//
+//    public void setCash_drawer_connected(boolean cash_drawer_connected) {
+//        boolean oldCash_drawer_connected = this.cash_drawer_connected;
+//        this.cash_drawer_connected = cash_drawer_connected;
+//        pcs.firePropertyChange("cash_drawer_connected", oldCash_drawer_connected, cash_drawer_connected);
+//    }
 
     public void setUps_connected(boolean ups_connected) {
         boolean oldUps_connected = this.ups_connected;

@@ -4,11 +4,14 @@ import com.amay.scu.dto.StationDevicesDTO;
 import com.amay.scu.enums.SLEStatus;
 import com.amay.scu.listenner.IStationDynamicMapViewListener;
 import com.amay.scu.listenner.impl.StationDynamicMapViewListener;
+import com.amay.scu.model.SLELocationListObject;
 import com.amay.scu.repository.StationDevicesRepository;
 import com.amay.scu.sleobj.LiveAG;
 import com.amay.scu.sleobj.LiveTOM;
 import com.amay.scu.sles.*;
 import com.amay.scu.sles.components.SLE;
+import com.amay.scu.util.ObjectSerialization;
+import com.fasterxml.jackson.core.type.TypeReference;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import org.slf4j.Logger;
@@ -17,6 +20,7 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class StationDynamicMapController implements IStationDynamicMapViewListener {
 
@@ -40,6 +44,9 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
     @FXML
     public void initialize() {
         sles = new ArrayList<>();
+        //load the location list from the json file
+        TypeReference<Map<String, SLELocationListObject.SLELocation>> typeRef = new TypeReference<>() {};
+        SLELocationListObject.list= ObjectSerialization.jsonFromFile("sleLocationList.json",typeRef );
 
 
         //initialize the listener
@@ -107,7 +114,7 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
         }).forEach(sle -> sle.updateStatus(status));
     }
 
-    //
+    //TOM
     public void updateTOMPeripheralStatus(String equipId, LiveTOM liveTOM) {
         sles.stream().filter(tom->tom.getId().equals(equipId)).forEach(filteredTom->{
             filteredTom.updatePeripheralStatus(liveTOM);

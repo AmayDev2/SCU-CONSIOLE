@@ -8,6 +8,7 @@ import org.network.monitorandcontrol.CommandType;
 import org.network.monitorandcontrol.DeviceType;
 import org.network.monitorandcontrol.OperationMode;
 import org.network.monitorandcontrol.RequestType;
+import org.network.monitorandcontrol.ag.AGPeripheralStatus;
 import org.network.monitorandcontrol.scu_console.ConsoleProtocol;
 import org.network.monitorandcontrol.scu_console.StreamData;
 
@@ -127,7 +128,7 @@ public class SCUService {
     }
     private void updatePeripheralStatus(ConsoleProtocol consoleProtocol,LiveAG liveAG){
         try {
-            TOMPeripheralStatus tomPeripheralStatus= consoleProtocol.getStreamData().getRequestData().unpack(TOMPeripheralStatus.class);
+            AGPeripheralStatus tomPeripheralStatus= consoleProtocol.getStreamData().getRequestData().unpack(AGPeripheralStatus.class);
 
 //            private boolean scu_connected;
 //            private boolean ccu_connected;
@@ -139,11 +140,11 @@ public class SCUService {
 //            private boolean ups_connected;
             liveAG.setScu_connected(tomPeripheralStatus.getScuConnected());
             liveAG.setCcu_connected(tomPeripheralStatus.getCcuConnected());
-            liveAG.setReader_connected(tomPeripheralStatus.getReaderConnected());
-            liveAG.setScanner_connected(tomPeripheralStatus.getScannerConnected());
-            liveAG.setPrinter_connected(tomPeripheralStatus.getPrinterConnected());
-            liveAG.setPdu_connected(tomPeripheralStatus.getPduConnected());
-            liveAG.setCash_drawer_connected(tomPeripheralStatus.getCashDrawerConnected());
+//            liveAG.setReader_connected(tomPeripheralStatus.getReaderConnected());
+//            liveAG.setScanner_connected(tomPeripheralStatus.getScannerConnected());
+//            liveAG.setPrinter_connected(tomPeripheralStatus.getPrinterConnected());
+//            liveAG.setPdu_connected(tomPeripheralStatus.getPduConnected());
+//            liveAG.setCash_drawer_connected(tomPeripheralStatus.getCashDrawerConnected());
             liveAG.setUps_connected(tomPeripheralStatus.getUpsConnected());
 
             stationDynamicMapViewListener.updateAGPeripheralStatus(consoleProtocol.getStreamData().getEquipId(), liveAG);

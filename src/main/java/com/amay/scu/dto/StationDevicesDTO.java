@@ -25,6 +25,7 @@ public class StationDevicesDTO implements Serializable {
     private int operationMode;
     private String lastTxn;
 
+
     // Getters and setters for all fields
 
     public String getEquipName() {

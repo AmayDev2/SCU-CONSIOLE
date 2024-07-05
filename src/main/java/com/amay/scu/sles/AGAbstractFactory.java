@@ -4,6 +4,7 @@ import com.amay.scu.ViewFactory;
 import com.amay.scu.dto.StationDevicesDTO;
 import com.amay.scu.enums.SLEStatus;
 import com.amay.scu.exceptions.SLENotCreatedException;
+import com.amay.scu.model.SLELocationListObject;
 import com.amay.scu.sleobj.LiveAG;
 import com.amay.scu.sleobj.LiveTOM;
 import com.amay.scu.sles.components.SLE;
@@ -47,7 +48,14 @@ public class AGAbstractFactory extends SLEAbstractFactory {
             logger.debug("AG created : {}",stationDevicesDTO.getEquipId());
             SLE controller=fxmlLoader.getController();
             controller.setStatus(SLEStatus.PERIPHERAL_OFFLINE);
-            controller.setName(getAGId());
+
+            String name=getAGId();
+            logger.debug("name : {}",name);
+            controller.setName(name);
+            SLELocationListObject.list.putIfAbsent(name, new SLELocationListObject.SLELocation());
+            logger.debug("AG location set : {} {}",name,SLELocationListObject.list.get(name));
+            controller.setLocation(SLELocationListObject.list.get(name));
+
             controller.setLiveSLE(liveAG);
             controller.setMovingProperties(button,anchorPane);
             return controller;

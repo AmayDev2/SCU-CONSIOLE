@@ -1,6 +1,7 @@
 package com.amay.scu.controller;
 
 import com.amay.scu.enums.SLEStatus;
+import com.amay.scu.model.SLELocationListObject;
 import com.amay.scu.sleobj.LiveSLE;
 import com.amay.scu.sles.components.SLE;
 import javafx.fxml.FXML;
@@ -87,6 +88,11 @@ public class EFOController  implements SLE {
                 button.setLayoutY(newLayoutY);
             }
         });
+
+    }
+
+    @Override
+    public void setLocation(SLELocationListObject.SLELocation location) {
 
     }
 

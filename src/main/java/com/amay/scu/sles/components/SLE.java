@@ -2,6 +2,7 @@ package com.amay.scu.sles.components;
 
 import com.amay.scu.enums.SLEStatus;
 import com.amay.scu.enums.TOMOperationMode;
+import com.amay.scu.model.SLELocationListObject;
 import com.amay.scu.sleobj.LiveSLE;
 import com.amay.scu.sleobj.LiveTOM;
 import javafx.scene.control.Button;
@@ -13,6 +14,7 @@ public interface SLE {
     public boolean setStatus(SLEStatus status);
     public void setName(String id);
     public void setMovingProperties(Button button, AnchorPane anchorPane);
+    public void setLocation(SLELocationListObject.SLELocation location);
     public Object getId();
     public void updateStatus(SLEStatus status);
     void updatePeripheralStatus(LiveSLE liveSLE);

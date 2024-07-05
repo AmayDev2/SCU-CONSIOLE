@@ -23,6 +23,7 @@ module com.amay.scu {
     requires java.sql;
     requires static lombok;
     requires java.desktop;
+    requires com.fasterxml.jackson.databind;
 
     opens com.amay.scu to javafx.fxml;
     exports com.amay.scu;
@@ -34,6 +35,7 @@ module com.amay.scu {
     exports org.network.monitorandcontrol.tom;
     exports org.network.monitorandcontrol.scu_console;
 
+    opens com.amay.scu.model to com.fasterxml.jackson.databind;
     opens com.amay.scu.controller to javafx.fxml;
     exports com.amay.scu.clients;
     opens com.amay.scu.clients to javafx.fxml;

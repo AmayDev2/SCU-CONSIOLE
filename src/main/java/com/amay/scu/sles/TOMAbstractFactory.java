@@ -4,6 +4,7 @@ import com.amay.scu.ViewFactory;
 import com.amay.scu.dto.StationDevicesDTO;
 import com.amay.scu.enums.SLEStatus;
 import com.amay.scu.exceptions.SLENotCreatedException;
+import com.amay.scu.model.SLELocationListObject;
 import com.amay.scu.sleobj.LiveTOM;
 import com.amay.scu.sles.components.SLE;
 import javafx.fxml.FXMLLoader;
@@ -35,7 +36,15 @@ public class TOMAbstractFactory extends SLEAbstractFactory {
             logger.debug("TOM created : {}",stationDevicesDTO.getEquipId());
             SLE controller=fxmlLoader.getController();
             controller.setStatus(SLEStatus.PERIPHERAL_OFFLINE);
-            controller.setName(getTomId());
+
+
+            String name=getTomId();
+            logger.debug("name : {}",name);
+            controller.setName(name);
+            SLELocationListObject.list.putIfAbsent(name, new SLELocationListObject.SLELocation());
+            logger.debug("TOM location set : {} {}",name,SLELocationListObject.list.get(name));
+            controller.setLocation(SLELocationListObject.list.get(name));
+
             controller.setLiveSLE(liveTOM);
             controller.setMovingProperties(button,anchorPane);
             return controller;

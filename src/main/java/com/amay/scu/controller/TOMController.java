@@ -2,6 +2,7 @@ package com.amay.scu.controller;
 
 import com.amay.scu.enums.SLEStatus;
 import com.amay.scu.enums.TOMOperationMode;
+import com.amay.scu.model.SLELocationListObject;
 import com.amay.scu.popup.PopupContent;
 import com.amay.scu.popup.SleCommandInfo;
 import com.amay.scu.sleobj.LiveSLE;
@@ -26,6 +27,7 @@ public class TOMController implements SLE {
     @FXML
     private Button tom;
 
+    SLELocationListObject.SLELocation location;
     // Initial mouse cursor position
     private double initialX;
     private double initialY;
@@ -98,9 +100,21 @@ public class TOMController implements SLE {
             if (newLayoutY >= 0 && newLayoutY + button.getHeight() <= anchorPane.getHeight()) {
                 button.setLayoutY(newLayoutY);
             }
+
+            // Set new button position (within bounds)
+            this.location.setXAxis(newLayoutX);
+            this.location.setYAxis(newLayoutY);
+
             logger.debug("Moving button {} to x:{} y:{}",tom.getId(),newLayoutX,newLayoutY);
         });
 
+    }
+
+    @Override
+    public void setLocation(SLELocationListObject.SLELocation location) {
+        this.location=location;
+        tom.setLayoutX(location.getXAxis());
+        tom.setLayoutY(location.getYAxis());
     }
 
     @Override

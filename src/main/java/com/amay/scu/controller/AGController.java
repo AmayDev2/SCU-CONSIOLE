@@ -3,12 +3,14 @@ package com.amay.scu.controller;
 import com.amay.scu.enums.AGOperationMode;
 import com.amay.scu.enums.SLEStatus;
 import com.amay.scu.enums.TOMOperationMode;
+import com.amay.scu.model.SLELocationListObject;
 import com.amay.scu.popup.PopupContent;
 import com.amay.scu.sleobj.LiveAG;
 import com.amay.scu.sleobj.LiveSLE;
 import com.amay.scu.sleobj.LiveTOM;
 import com.amay.scu.sleobj.propertyenums.PropertyUpdate;
 import com.amay.scu.sles.components.SLE;
+import com.amay.scu.util.ObjectSerialization;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -25,6 +27,7 @@ public class AGController  implements SLE {
 
     @FXML
     private Label name;
+    SLELocationListObject.SLELocation location;
 
     // Initial mouse cursor position
     private double initialX;
@@ -92,10 +95,18 @@ public class AGController  implements SLE {
             if (newLayoutY >= 0 && newLayoutY + button.getHeight() <= anchorPane.getHeight()) {
                 button.setLayoutY(newLayoutY);
             }
-
+            this.location.setXAxis(newLayoutX);
+            this.location.setYAxis(newLayoutY);
             logger.debug("Moving button {} to x:{} y:{}",ag.getId(),newLayoutX,newLayoutY);
         });
 
+    }
+
+    @Override
+    public void setLocation(SLELocationListObject.SLELocation location) {
+        this.location=location;
+        ag.setLayoutX(location.getXAxis());
+        ag.setLayoutY(location.getYAxis());
     }
 
     @Override
@@ -116,14 +127,14 @@ public class AGController  implements SLE {
             liveAG1 = (LiveAG) agPeripheralStatus;
             this.liveAG.setScu_connected(liveAG1.isScu_connected());
             this.liveAG.setCcu_connected(liveAG1.isCcu_connected());
-            this.liveAG.setReader_connected(liveAG1.isReader_connected());
-            this.liveAG.setScanner_connected(liveAG1.isScanner_connected());
-            this.liveAG.setPrinter_connected(liveAG1.isPrinter_connected());
-            this.liveAG.setPdu_connected(liveAG1.isPdu_connected());
-            this.liveAG.setCash_drawer_connected(liveAG1.isCash_drawer_connected());
+//            this.liveAG.setReader_connected(liveAG1.isReader_connected());
+//            this.liveAG.setScanner_connected(liveAG1.isScanner_connected());
+//            this.liveAG.setPrinter_connected(liveAG1.isPrinter_connected());
+//            this.liveAG.setPdu_connected(liveAG1.isPdu_connected());
+//            this.liveAG.setCash_drawer_connected(liveAG1.isCash_drawer_connected());
             this.liveAG.setUps_connected(liveAG1.isUps_connected());
 //            printStatus(tomPeripheralStatus);
-            this.liveAG.setDeviceMode(liveAG1.isScu_connected() || liveAG1.isCcu_connected() || liveAG1.isReader_connected() || liveAG1.isScanner_connected() || liveAG1.isPrinter_connected() || liveAG1.isPdu_connected() || liveAG1.isCash_drawer_connected() || liveAG1.isUps_connected());
+            this.liveAG.setDeviceMode(liveAG1.isScu_connected() || liveAG1.isCcu_connected() || /*liveAG1.isReader_connected() || liveAG1.isScanner_connected() || liveAG1.isPrinter_connected() || liveAG1.isPdu_connected() || liveAG1.isCash_drawer_connected() ||*/ liveAG1.isUps_connected());
         }
 
     }
