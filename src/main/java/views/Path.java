@@ -11,4 +11,5 @@ public interface Path {
      String AG_VIEW = "sles/ag.fxml";
      String POPUP_CSS="css/popup.css";
      String HEADER="header/top-header-view.fxml";
+    String REPORT = "report/report.fxml";
 }

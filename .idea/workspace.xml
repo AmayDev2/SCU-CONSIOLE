@@ -7,16 +7,11 @@
     <list default="true" id="315d97bc-7335-4bbd-a14f-28c409037fec" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sleLocationList.json" beforeDir="false" afterPath="$PROJECT_DIR$/sleLocationList.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/SCUApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/SCUApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/ViewFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/SCUController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/SCUController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/StationDynamicMapController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/StationDynamicMapController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/sles/AGAbstractFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/sles/AGAbstractFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/sles/TOMAbstractFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/sles/TOMAbstractFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/contservice/SCUControllerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/contservice/SCUControllerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/views/Path.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/Path.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/css/application.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/css/application.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/css/border-pane.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/css/border-pane.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/css/station-dynamic-map-view.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/css/station-dynamic-map-view.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/scu-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/scu-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,10 +25,10 @@
         <option value="package-info" />
         <option value="JUnit5 Test Class" />
         <option value="Enum" />
-        <option value="CSS File" />
+        <option value="Interface" />
         <option value="FxmlFile" />
         <option value="Class" />
-        <option value="Interface" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -304,7 +299,7 @@
       <workItem from="1719829013538" duration="1160000" />
       <workItem from="1719899333672" duration="15772000" />
       <workItem from="1719934583186" duration="50064000" />
-      <workItem from="1720237703735" duration="9544000" />
+      <workItem from="1720237703735" duration="14541000" />
     </task>
     <servers />
   </component>
@@ -409,7 +404,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/controller/SCUController.java</url>
-          <line>47</line>
+          <line>48</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>

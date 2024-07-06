@@ -47,4 +47,10 @@ public class ViewFactory {
         return ViewFactory.class.getResource(Path.POPUP_CSS).toExternalForm();
     }
 
+    public static FXMLLoader getReport() {
+        FXMLLoader fxmlLoader = new FXMLLoader(ViewFactory.class.getResource
+                (Path.REPORT));
+        return fxmlLoader;
+
+    }
 }

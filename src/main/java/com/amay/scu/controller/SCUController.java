@@ -1,5 +1,6 @@
 package com.amay.scu.controller;
 
+import com.amay.scu.ViewFactory;
 import com.amay.scu.contservice.HeaderListener;
 import com.amay.scu.contservice.InnerListener;
 import com.amay.scu.contservice.OuterListener;
@@ -56,23 +57,36 @@ public class SCUController implements Initializable{
     //Listener for SCUController
     private
     class SCUControllerListener implements InnerListener, OuterListener, HeaderListener {
+        int i=1;
 
         @Override
         public void onMenuClick() {
             System.out.println("Menu Clicked");
+            if(i==0){
+                return;
+            }
+            i=0;
             scuControllerService.onMenuClick();
         }
 
         @Override
         public void onMonitorClick() {
             System.out.println("Monitor Clicked");
-            scuControllerService.onMonitorClick();
+            if(i==1){
+                return;
+            }
+            i=1;
+            scuControllerService.onMonitorClick(borderPane);
         }
 
         @Override
         public void onReportClick() {
             System.out.println("Report Clicked");
-            scuControllerService.onReportClick();
+            if(i==2){
+                return;
+            }
+            i=2;
+            scuControllerService.onReportClick(borderPane, ViewFactory.getReport());
         }
     }
 }

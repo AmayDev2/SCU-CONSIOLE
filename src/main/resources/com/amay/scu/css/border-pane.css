@@ -17,6 +17,11 @@
     -fx-border-color: #000000;  /* You can change this to any color */
     -fx-border-style: solid;  /* Other options: dotted, dashed, etc. */
 }
+#reportAnchorPane{
+    -fx-border-width: 2px;
+    -fx-border-color: #000000;  /* You can change this to any color */
+    -fx-border-style: solid;  /* Other options: dotted, dashed, etc. */
+}
 
 #bottomVBox{
     -fx-background-color: rgba(243, 243, 178, 0);
