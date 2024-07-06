@@ -1,4 +1,6 @@
 .background{
-    -fx-background-color: #f3f3b2;
+    -fx-background-color: #b7fdeb;
+    -fx-border-radius: 10px;
+
     /*not setting dynamics here*/
 }

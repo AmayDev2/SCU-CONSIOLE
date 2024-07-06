@@ -13,6 +13,7 @@ import com.amay.scu.sles.components.SLE;
 import com.amay.scu.util.ObjectSerialization;
 import com.fasterxml.jackson.core.type.TypeReference;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -90,10 +91,10 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
 
 
             //update the status of the devices to  TODO: add logic
-            stationDevices.forEach(stationDevice -> {
-                logger.debug("Station Device: {}", stationDevice.getEquipId());
-                updateSLEStatus(stationDevice.getEquipId(), SLEStatus.OFFLINE);
-            });
+//            stationDevices.forEach(stationDevice -> {
+//                logger.debug("Station Device: {}", stationDevice.getEquipId());
+//                updateSLEStatus(stationDevice.getEquipId(), SLEStatus.PERIPHERAL_OFFLINE);
+//            });
 
         } catch (Exception e) {
             logger.error("Error in StationDynamicMapController initialize method: {}", e.getMessage());

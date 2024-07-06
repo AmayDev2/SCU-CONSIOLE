@@ -1,10 +1,12 @@
-#topVBox{
-    -fx-background-color:  #f3f3b2;
+#topHeader{
+    -fx-background-color: rgba(243, 243, 178, 0);
     -fx-min-height: 90;
+    -fx-start-margin: 20px;
+    -fx-end-margin: 20px
 }
 
 #rightVBox{
-    -fx-background-color: #f3f3b2;
+    -fx-background-color: rgba(243, 243, 178, 0);
     -fx-min-width: 300;
     -fx-max-width: 300;
 }
@@ -17,16 +19,15 @@
 }
 
 #bottomVBox{
-    -fx-background-color: #f3f3b2;
+    -fx-background-color: rgba(243, 243, 178, 0);
     -fx-min-height: 130;
     -fx-max-height: 130;
 
 }
 
 #borderPane{
-    -fx-background-color:  #f3f3b2;
-    -fx-pref-height: 1080;
+    -fx-background-color: #d4fff5;
+    -fx-pref-height: 1060;
     -fx-pref-width: 1920;
-    -fx-start-margin: 10px;
-    -fx-end-margin: 10px;
+    -fx-padding: 10px;
 }

@@ -35,7 +35,7 @@ public class TOMAbstractFactory extends SLEAbstractFactory {
             anchorPane.getChildren().add(button);
             logger.debug("TOM created : {}",stationDevicesDTO.getEquipId());
             SLE controller=fxmlLoader.getController();
-            controller.setStatus(SLEStatus.PERIPHERAL_OFFLINE);
+//            controller.setStatus(SLEStatus.PERIPHERAL_OFFLINE);
 
 
             String name=getTomId();

@@ -63,13 +63,14 @@ try {
     primaryStage.setMaximized(true);
 
     primaryStage.setScene(scene);
+    primaryStage.show();
 
 //    primaryStage.setTitle("Redis Subscriber");
-
+/*
    GrpcService grpcService = new GrpcService(GrpcConfig.getAsyncStub());
     grpcService.initialConnectionRequest(null);
 
-    primaryStage.show();
+
 
 //    StationDynamicMapController scu=loader.getController();
     StationDynamicMapViewListener stationDynamicMapViewListener= StationDynamicMapViewListener.getInstance();
@@ -84,7 +85,7 @@ try {
     stationDynamicMapViewListener.updateTOMOperationMode("TOM4", liveTOM);
 //    stationDynamicMapViewListener.updateAGOperationMode("AG4", liveAG);
     stationDynamicMapViewListener.updateTOMOperationMode("TOM3", liveTOM1);
-//    stationDynamicMapViewListener.updateTOMOperationMode("TOM2", liveTOM2);
+//    stationDynamicMapViewListener.updateTOMOperationMode("TOM2", liveTOM2);*/
 
 
 
