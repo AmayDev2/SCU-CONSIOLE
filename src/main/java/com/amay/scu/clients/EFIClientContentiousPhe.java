@@ -102,15 +102,15 @@ public class EFIClientContentiousPhe {
 		}
 	
 	public static void main(String[] args) throws InterruptedException {
-		EFIClientContentiousPhe client = new EFIClientContentiousPhe("192.168.137.100", 8000);
+		EFIClientContentiousPhe client = new EFIClientContentiousPhe("localhost", 8000);
 		Scanner scanner = new Scanner(System.in);
 		
 		boolean alive = true;
 		TOMDeviceInfo device_info = TOMDeviceInfo.newBuilder()
-				.setEquipId("TOM1")
+				.setEquipId("TOM2")
 				.setDeviceType("TOM")
 				.setTomIp("192.168.1.1")
-				.setEquipName("TOM1")
+				.setEquipName("TOM2")
 				.build();
 		client.sendRequest(RequestType.DEVICE_INFO, Any.pack(device_info));
 		while (alive) {

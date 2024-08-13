@@ -26,11 +26,11 @@ import java.util.Map;
 public class StationDynamicMapController implements IStationDynamicMapViewListener {
 
     private int tomCount = 0;
-    private int efoCount = 2;
+    private int efoCount = 0;
     private int readerCount = 0;
     private int gateCount = 0;
     private int arraysCount = 0;
-    private int tvmCount = 4;
+    private int tvmCount = 0;
     List<StationDevicesDTO> stationDevices = null;
     List<StationDevicesDTO>  ag=new ArrayList<>();
     List<StationDevicesDTO>  tom=new ArrayList<>();

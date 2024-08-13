@@ -99,7 +99,7 @@ public class TVMController implements SLE {
     }
 
     @Override
-    public Object getId() {
+    public String getId() {
         return null;
     }
 

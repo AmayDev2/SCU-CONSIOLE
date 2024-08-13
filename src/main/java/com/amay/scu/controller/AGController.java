@@ -110,7 +110,7 @@ public class AGController  implements SLE {
     }
 
     @Override
-    public Object getId() {
+    public String getId() {
         return ag.getId();
     }
 

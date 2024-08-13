@@ -26,5 +26,4 @@
             <Label fx:id="name" text="TOM" stylesheets="@../css/sle-name.css" />
         </VBox>
     </graphic>
-
 </Button>

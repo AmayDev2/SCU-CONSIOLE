@@ -274,7 +274,7 @@
         </extensions>
         <plugins>
 
-<!--            <plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
             </plugin>
@@ -302,9 +302,9 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
 
-            <!-- Compile proto file into java files. -->
+                        <!-- Compile proto file into java files. -->
 <!--            <plugin>-->
 <!--                <groupId>com.github.os72</groupId>-->
 <!--                <artifactId>protoc-jar-maven-plugin</artifactId>-->

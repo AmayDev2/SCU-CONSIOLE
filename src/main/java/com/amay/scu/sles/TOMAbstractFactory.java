@@ -27,7 +27,8 @@ public class TOMAbstractFactory extends SLEAbstractFactory {
         try {
             logger.debug("TOM is about to be created");
             FXMLLoader fxmlLoader = ViewFactory.getTOMView();
-            LiveTOM liveTOM=new LiveTOM(stationDevicesDTO.getEquipId(),stationDevicesDTO.getEquipIp(),"01",stationDevicesDTO.getEquipName(), stationDevicesDTO.getEquipType());
+            String name=getTomId();
+            LiveTOM liveTOM=new LiveTOM(stationDevicesDTO.getEquipId(),stationDevicesDTO.getEquipIp(),"01",name, stationDevicesDTO.getEquipType());
 
             Parent root=fxmlLoader.load();
             Button button = (Button) root.lookup("#tom");
@@ -38,7 +39,7 @@ public class TOMAbstractFactory extends SLEAbstractFactory {
 //            controller.setStatus(SLEStatus.PERIPHERAL_OFFLINE);
 
 
-            String name=getTomId();
+
             logger.debug("name : {}",name);
             controller.setName(name);
             SLELocationListObject.list.putIfAbsent(name, new SLELocationListObject.SLELocation());

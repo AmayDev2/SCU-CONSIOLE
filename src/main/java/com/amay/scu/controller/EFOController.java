@@ -97,7 +97,7 @@ public class EFOController  implements SLE {
     }
 
     @Override
-    public Object getId() {
+    public String getId() {
         return null;
     }
 

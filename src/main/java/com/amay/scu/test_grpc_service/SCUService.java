@@ -175,9 +175,9 @@ public class SCUService {
                 //TOM Version Check decode and display
                 updateTOMParameterVersion(consoleProtocol);
                 break;
-//            case OPERATION_MODE:
-//                this.updateOperationMode(consoleProtocol);
-//                break;
+            case RESPONSE:
+                this.updateOperationMode(consoleProtocol);
+                break;
             case ALARMS:
                 //last 10 alarms
             default:

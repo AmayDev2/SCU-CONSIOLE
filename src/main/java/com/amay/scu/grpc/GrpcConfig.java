@@ -11,7 +11,7 @@ public class GrpcConfig {
     static ManagedChannel channel;
 
     static {
-        channel = ManagedChannelBuilder.forAddress("192.168.137.100", 8000)
+        channel = ManagedChannelBuilder.forAddress("localhost", 8000)
                 .usePlaintext()  // No TLS for local development
                 .build();
     }

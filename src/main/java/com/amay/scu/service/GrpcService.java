@@ -51,7 +51,9 @@ public class GrpcService  {
         return asyncStub.scStream(new StreamObserver<ConsoleProtocol>() {
             @Override
             public void onNext(ConsoleProtocol value) {
+                System.out.println("INCOMING: "+value.toString());
                 if (value.hasStreamData()){
+
                     scuService.detectDeviceType(value.getDeviceType(),value);
                 }
                 else{

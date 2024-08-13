@@ -66,12 +66,12 @@ try {
     primaryStage.show();
 
 //    primaryStage.setTitle("Redis Subscriber");
-/*
+
    GrpcService grpcService = new GrpcService(GrpcConfig.getAsyncStub());
     grpcService.initialConnectionRequest(null);
 
 
-
+/*
 //    StationDynamicMapController scu=loader.getController();
     StationDynamicMapViewListener stationDynamicMapViewListener= StationDynamicMapViewListener.getInstance();
     LiveTOM liveTOM=new LiveTOM();

@@ -38,7 +38,8 @@ public class AGAbstractFactory extends SLEAbstractFactory {
         try{
             logger.debug("AG is about to be created");
             FXMLLoader fxmlLoader = ViewFactory.getAGView();
-            LiveAG liveAG=new LiveAG(stationDevicesDTO.getEquipId(),stationDevicesDTO.getEquipIp(),"01",stationDevicesDTO.getEquipName(), stationDevicesDTO.getEquipType());
+            String name=getAGId();
+            LiveAG liveAG=new LiveAG(stationDevicesDTO.getEquipId(),stationDevicesDTO.getEquipIp(),"01",name, stationDevicesDTO.getEquipType());
 
 
             Parent root=fxmlLoader.load();
@@ -49,7 +50,7 @@ public class AGAbstractFactory extends SLEAbstractFactory {
             SLE controller=fxmlLoader.getController();
 //            controller.setStatus(SLEStatus.);
 
-            String name=getAGId();
+
             logger.debug("name : {}",name);
             controller.setName(name);
             SLELocationListObject.list.putIfAbsent(name, new SLELocationListObject.SLELocation());

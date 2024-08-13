@@ -15,7 +15,7 @@ public interface SLE {
     public void setName(String id);
     public void setMovingProperties(Button button, AnchorPane anchorPane);
     public void setLocation(SLELocationListObject.SLELocation location);
-    public Object getId();
+    public String getId();
     public void updateStatus(SLEStatus status);
     void updatePeripheralStatus(LiveSLE liveSLE);
     void updateOperationMode(LiveSLE liveSLE);

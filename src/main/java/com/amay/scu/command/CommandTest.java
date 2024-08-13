@@ -5,10 +5,12 @@ import com.google.protobuf.Any;
 import javafx.scene.Parent;
 import org.network.monitorandcontrol.CommandType;
 import org.network.monitorandcontrol.DeviceType;
+import org.network.monitorandcontrol.OperationMode;
 import org.network.monitorandcontrol.RequestType;
 import org.network.monitorandcontrol.scu_console.ConsoleProtocol;
 import org.network.monitorandcontrol.scu_console.StreamData;
 import org.network.monitorandcontrol.tom.TOMDeviceInfo;
+import org.network.monitorandcontrol.tom.TOMModeControl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -91,7 +93,11 @@ public enum CommandTest{
     private ConsoleProtocol createCommandRequest(CommandType command, DeviceType deviceType, String equipId) {
         return ConsoleProtocol.newBuilder()
                 .setDeviceType(deviceType)
-                .setStreamData(StreamData.newBuilder().setEquipId(equipId).setCommandType(command).build())
+                .setStreamData(StreamData.newBuilder()
+                        .setEquipId(equipId)
+                        .setCommandType(command)
+                        .setRequestData(Any.pack(TOMModeControl.newBuilder().setOperationMode(OperationMode.OUT_OF_SERVICE).build()))
+                        .build())
                 .build();
     }
 

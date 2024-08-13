@@ -118,8 +118,8 @@ public class TOMController implements SLE {
     }
 
     @Override
-    public Object getId() {
-        return name.getText();
+    public String getId() {
+        return tom.getId();
     }
 
     @Override
