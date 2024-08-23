@@ -1,0 +1,75 @@
+.main-grid {
+    -fx-background-color: #ffffff;
+    -fx-padding: 20;
+    -fx-border-insets: 10;
+    -fx-background-insets: 10;
+}
+
+.header-text {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.section {
+    -fx-border-color: #d3d3d3;
+    -fx-background-color: #f9f9f9;
+    -fx-padding: 10;
+}
+
+.section-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+}
+
+.alarm-text {
+    -fx-font-size: 14px;
+    -fx-text-fill: #da1717;
+
+}
+#cancelButton{
+    -fx-background-color: TRANSPARENT;
+    -fx-text-fill: #333333;
+    -fx-font-size: 14px;
+    -fx-padding: 1 10;
+
+}
+
+.command-button {
+    -fx-font-size: 14px;
+    -fx-background-color: #dcdcdc;
+    -fx-text-fill: #333333;
+    -fx-padding: 1 10;
+    /*-fx-border-radius: 5;*/
+    /*-fx-background-radius: 5;*/
+}
+
+#outOfService {
+    -fx-background-color: #da1717;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 1 10;
+}
+
+#inService {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 1 10;
+}
+
+.dropdown-label {
+    -fx-font-size: 14px;
+}
+
+.dropdown-button {
+    -fx-font-size: 12px;
+    -fx-background-color: transparent;
+}
+/*ag peripheral*/
+.detail-row {
+    -fx-background-color: #f9f9f9;
+    -fx-padding: 10;
+    -fx-border-color: #d3d3d3;
+    -fx-border-width: 1;
+}

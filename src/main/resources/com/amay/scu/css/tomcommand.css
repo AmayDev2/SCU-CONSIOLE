@@ -1,0 +1,80 @@
+/* popup.css */
+
+.root {
+    -fx-background-color: #f4f4f4;
+    -fx-padding: 20px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 14px;
+}
+
+.label {
+    -fx-text-fill: #333;
+    -fx-font-weight: bold;
+}
+
+.text {
+    -fx-fill: #555;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+}
+
+.button {
+    -fx-background-color: #4CAF50; /* Green background */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-pref-height: 40px;
+    -fx-pref-width: 150px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+}
+
+.button:hover {
+    -fx-background-color: #45a049;
+}
+
+.button:pressed {
+    -fx-background-color: #3e8e41;
+}
+
+.apply {
+    -fx-background-color: #2196F3; /* Blue background */
+}
+
+.apply:hover {
+    -fx-background-color: #0b7dda;
+}
+
+.apply:pressed {
+    -fx-background-color: #0a6cc7;
+}
+
+.radio-button {
+    -fx-text-fill: #333;
+}
+
+.radio-button > .radio {
+    -fx-mark-color: #4CAF50;
+}
+
+.grid-pane {
+    -fx-hgap: 15px;
+    -fx-vgap: 15px;
+}
+
+.grid-pane .label {
+    -fx-font-size: 14px;
+    -fx-font-weight: normal;
+}
+
+.grid-pane .radio-button {
+    -fx-font-size: 14px;
+}
+
+.button:disabled {
+    -fx-background-color: #dddddd;
+    -fx-text-fill: #aaaaaa;
+}
+
+.button:disabled:hover {
+    -fx-background-color: #dddddd;
+}

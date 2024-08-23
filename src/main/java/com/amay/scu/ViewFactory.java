@@ -37,9 +37,9 @@ public class ViewFactory {
                 (Path.AG_VIEW));
         return fxmlLoader;
     }
-    public static FXMLLoader getPopupView() {
+    public static FXMLLoader getTomCommand() {
         FXMLLoader fxmlLoader = new FXMLLoader(ViewFactory.class.getResource
-                (Path.POPUP));
+                (Path.TOM_COMMAND));
         return fxmlLoader;
     }
 
@@ -52,5 +52,35 @@ public class ViewFactory {
                 (Path.REPORT));
         return fxmlLoader;
 
+    }
+
+    public static FXMLLoader getMonitorRightView() {
+        FXMLLoader fxmlLoader = new FXMLLoader(ViewFactory.class.getResource
+                (Path.MONITOR_RIGHT_VIEW));
+        return fxmlLoader;
+    }
+
+    public static FXMLLoader getAlert() {
+        FXMLLoader fxmlLoader = new FXMLLoader(ViewFactory.class.getResource
+                (Path.ALERT));
+        return fxmlLoader;
+    }
+
+    public static FXMLLoader getTomWidgets() {
+        FXMLLoader fxmlLoader = new FXMLLoader(ViewFactory.class.getResource
+                (Path.TOM_WIDGETS));
+        return fxmlLoader;
+    }
+
+    public static FXMLLoader getAGWidgets() {
+        FXMLLoader fxmlLoader = new FXMLLoader(ViewFactory.class.getResource
+                (Path.AG_WIDGETS));
+        return fxmlLoader;
+    }
+
+    public static FXMLLoader getAGCommand() {
+        FXMLLoader fxmlLoader = new FXMLLoader(ViewFactory.class.getResource
+                (Path.AG_COMMAND));
+        return fxmlLoader;
     }
 }

@@ -106,11 +106,11 @@
             <artifactId>jakarta.annotation-api</artifactId>
             <version>3.0.0</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.google.protobuf</groupId>-->
-<!--            <artifactId>protobuf-java</artifactId>-->
-<!--            <version>3.25.3</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>3.25.3</version>
+        </dependency>
 
 
         <!-- https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java-util -->
@@ -269,8 +269,6 @@
                 <artifactId>os-maven-plugin</artifactId>
                 <version>${os.maven.plugin.version}</version>
             </extension>
-
-
         </extensions>
         <plugins>
 

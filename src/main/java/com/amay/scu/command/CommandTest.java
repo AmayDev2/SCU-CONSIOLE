@@ -1,22 +1,17 @@
 package com.amay.scu.command;
 
+import com.amay.scu.enums.StationSpecialMode;
 import com.amay.scu.service.GrpcService;
 import com.google.protobuf.Any;
-import javafx.scene.Parent;
 import org.network.monitorandcontrol.CommandType;
 import org.network.monitorandcontrol.DeviceType;
 import org.network.monitorandcontrol.OperationMode;
-import org.network.monitorandcontrol.RequestType;
+import org.network.monitorandcontrol.SpecialMode;
 import org.network.monitorandcontrol.scu_console.ConsoleProtocol;
 import org.network.monitorandcontrol.scu_console.StreamData;
-import org.network.monitorandcontrol.tom.TOMDeviceInfo;
 import org.network.monitorandcontrol.tom.TOMModeControl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Scanner;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public enum CommandTest{
     INSTANCE;
@@ -76,7 +71,7 @@ public enum CommandTest{
 //        }
 //    }
 
-        public void sendCommand(CommandType command,DeviceType deviceType, String equipId) {
+    public void sendCommand(CommandType command,DeviceType deviceType, String equipId) {
 
             try{
                 ConsoleProtocol consoleProtocol = createCommandRequest(command, deviceType, equipId);
@@ -88,7 +83,28 @@ public enum CommandTest{
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input. Please enter numeric values.");
             }
+    }
+
+    //station level command
+    public void sendStationCommand(CommandType command, StationSpecialMode specialMode) {
+        System.out.println("Selected command: " + specialMode.name());
+
+        try{
+            ConsoleProtocol consoleProtocol = ConsoleProtocol.newBuilder()
+                    .setStreamData(StreamData.newBuilder()
+                            .setCommandType(command)
+                            .setRequestData(Any.pack(TOMModeControl.newBuilder().setSpecialMode(SpecialMode.EMERGENCY).build()))
+                            .build())
+                    .build();
+            if (consoleProtocol != null) {
+                grpcService.sendMessage(consoleProtocol);
+            } else {
+                System.out.println("Invalid command. Please try again.");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter numeric values.");
         }
+    }
 
     private ConsoleProtocol createCommandRequest(CommandType command, DeviceType deviceType, String equipId) {
         return ConsoleProtocol.newBuilder()

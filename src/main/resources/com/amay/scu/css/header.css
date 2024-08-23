@@ -15,3 +15,49 @@
     -fx-font-size: 18px;
     -fx-font-weight: bold;
 }
+
+
+.station-name {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.station-id {
+    -fx-font-size: 16px;
+}
+
+
+.icon-button {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
+#emergencyButton {
+    -fx-background-color: transparent;
+    -fx-padding: 5px;
+    -fx-shape: "M 100 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0"; /* Makes the button circular */
+    -fx-cursor: hand;
+}
+
+/*#emergencyButton:hover {*/
+/*    -fx-background-color: #ffcccc; !* Light red background on hover *!*/
+/*    -fx-border-color: #ff6666;    !* Border color on hover *!*/
+/*    -fx-border-radius: 50%; !* Ensures the button remains circular *!*/
+/*    -fx-background-radius: 50%; !* Ensures the background is circular *!*/
+/*}*/
+
+#emergencyButton:pressed {
+    -fx-background-color: #ff0000; /* Red background when pressed */
+    -fx-effect: dropshadow(gaussian, rgba(255, 0, 0, 0.8), 20, 0.5, 0, 0); /* Red glow effect */
+    -fx-border-color: #ff0000; /* Optional: Red border on press */
+    -fx-border-radius: 50%; /* Ensures the border remains circular */
+    -fx-background-radius: 50%; /* Ensures the background remains circular */
+}
+
+.icon-button:pressed {
+    -fx-background-color: #cceeff; /* Slightly darker blue on press */
+}
+
+.icon-button .image-view {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, 0, 0, 4); /* Shadow effect on icons */
+}

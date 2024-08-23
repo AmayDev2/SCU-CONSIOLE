@@ -24,6 +24,7 @@ module com.amay.scu {
     requires static lombok;
     requires java.desktop;
     requires com.fasterxml.jackson.databind;
+    requires com.google.common;
 
     opens com.amay.scu to javafx.fxml;
     exports com.amay.scu;
@@ -34,9 +35,17 @@ module com.amay.scu {
     exports org.network.monitorandcontrol.ag;
     exports org.network.monitorandcontrol.tom;
     exports org.network.monitorandcontrol.scu_console;
+    exports com.amay.scu.controller.components;
+    exports com.amay.scu.enums;
+    exports com.amay.scu.model;
+    exports com.amay.scu.clients;
+    exports org.amaytechnosystems;
+    opens com.amay.scu.grpc to com.fasterxml.jackson.databind;
+
 
     opens com.amay.scu.model to com.fasterxml.jackson.databind;
     opens com.amay.scu.controller to javafx.fxml;
-    exports com.amay.scu.clients;
+    opens com.amay.scu.controller.components to javafx.fxml;
     opens com.amay.scu.clients to javafx.fxml;
+    opens com.amay.scu.enums to com.fasterxml.jackson.databind;
 }

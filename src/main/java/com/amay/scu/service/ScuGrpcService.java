@@ -1,0 +1,68 @@
+package com.amay.scu.service;
+
+
+import com.amay.scu.grpc.GrpcConfig;
+import com.amay.scu.grpc.ScuGrpcConfig;
+import com.amay.scu.test_grpc_service.SCUService;
+//import org.amaytechnosystems.SCUServiceGrpc;
+import org.amaytechnosystems.*;
+
+
+public enum ScuGrpcService  {
+    INSTANCE;
+
+    private SCUServiceGrpc.SCUServiceBlockingStub blockingStub=null;
+
+    private SCUService scuService=null;
+
+    public void  ScuGrpcService(SCUServiceGrpc.SCUServiceBlockingStub asyncStub ) {
+        this.blockingStub=asyncStub;
+    }
+
+    public void reconnect() {
+        blockingStub= ScuGrpcConfig.reconnect();
+    }
+
+    // Send some ConsoleStream messages
+    public String sendMessage(SCUFareMediaRequestV1 requestV1) {
+     System.out.println("Sending message to server: "+requestV1);
+        SCUFareMediaResponseV1 response=this.blockingStub.getFareMedia(requestV1);
+        System.out.println("Response from server: "+response);
+        return response.getScuFareMediaData().getFareMediaCount().getFree();
+
+    }
+    public String getTotalRevenue(String deviceId, String fromDate) {
+
+        SCURevenueReportRequestV1 request=SCURevenueReportRequestV1.newBuilder()
+                .setDevice(ADevice.newBuilder().setDeviceId(deviceId).build())
+                .setFromDate(fromDate)
+                .build();
+
+        System.out.println("Sending message to server: "+request);
+        SCURevenueReportResponseV1 response=this.blockingStub.getRevenue(request);
+        System.out.println("Response from server: "+response);
+        return  response.getRevenueData().getRevenue().getQrRevenue()+"-"+response.getRevenueData().getRevenue().getCscRevenue()+"-"+response.getRevenueData().getRevenue().getTotalRevenue()+"-"+response.getLastTransactionTime();
+    }
+    public String getStockReport(String equipmentId, String s) {
+        SCUStockRequestV1 requestV1=SCUStockRequestV1.newBuilder()
+                .setStockData(SCUStockDataV1.newBuilder()
+                        .setOperator(AOperator.newBuilder().setShiftId(s).build())
+                        .setDevice(ADevice.newBuilder()
+                        .setDeviceId(equipmentId).build()).build())
+                .build();
+
+        System.out.println("Sending message to server for stock: "+requestV1);
+        SCUStockResponseV1 response=this.blockingStub.getStocks(requestV1);
+        System.out.println("Response from server for stock: "+response);
+        return String.valueOf(response.getStockData().getQrStock())+"-"+String.valueOf(response.getStockData().getQrSales())+"-"+String.valueOf(response.getStockData().getCscStock())+"-"+String.valueOf(response.getStockData().getCscSales());
+    }
+
+
+
+    //  response observer
+    public void shutdown() {
+        GrpcConfig.shutdown();
+    }
+
+
+}

@@ -2,23 +2,23 @@ package com.amay.scu.popup;
 
 import com.amay.scu.ViewFactory;
 import com.amay.scu.command.CommandTest;
-import com.amay.scu.controller.CommandController;
+import com.amay.scu.controller.AGCommandController;
+import com.amay.scu.controller.TomCommandController;
+import com.amay.scu.controller.components.AGWidgetsView;
+import com.amay.scu.controller.components.TomWidgetsView;
 import com.amay.scu.sleobj.LiveAG;
-import com.amay.scu.sleobj.LiveSLE;
 import com.amay.scu.sleobj.LiveTOM;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Window;
 import org.network.monitorandcontrol.CommandType;
 import org.network.monitorandcontrol.DeviceType;
-import views.Path;
 
 public class PopupContent {
     private Stage popupStage;
@@ -26,7 +26,7 @@ public class PopupContent {
     private DeviceType deviceType;
 
 
-    public PopupContent(SleCommandInfo sleCommandInfo) {
+    public PopupContent(SleCommandInfo sleCommandInfo, String left) {
 
         popupStage = new Stage();
         Window window = findActiveWindow();
@@ -47,14 +47,30 @@ public class PopupContent {
             deviceType=DeviceType.TOM;
         }
 
-        FXMLLoader loader = ViewFactory.getPopupView();
+        FXMLLoader loader;
+        if(left.equals("Right")) {
+
+            if(deviceType==DeviceType.TOM){
+            loader = ViewFactory.getTomWidgets();
+            loader.setControllerFactory(c -> new TomWidgetsView(this, sleCommandInfo));}
+            else{
+                loader = ViewFactory.getAGWidgets();
+                loader.setControllerFactory(c -> new AGWidgetsView(this, sleCommandInfo));
+            }
+        }else {
+            if(deviceType==DeviceType.AG){
+                loader = ViewFactory.getAGCommand();
+                loader.setControllerFactory(c -> new AGCommandController(this, sleCommandInfo));}
+            else{
+            loader = ViewFactory.getTomCommand();
+            loader.setControllerFactory(c -> new TomCommandController(this, sleCommandInfo));}
+        }
+
         try {
             Parent p = loader.load();
-            CommandController controller = loader.getController();
-            Scene scene = new Scene(p, 500, 500);
+            Scene scene = new Scene(p, Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
             scene.setFill(Color.TRANSPARENT); // Set the scene fill to transparent
             popupStage.setScene(scene);
-            controller.setInitialData(this, this.sleCommandInfo);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -10,10 +10,12 @@ import com.amay.scu.enums.TOMOperationMode;
 import com.amay.scu.grpc.GrpcConfig;
 //import com.amay.scu.service.GrpcService;
 //import com.amay.scu.service.GrpcService;
+import com.amay.scu.grpc.ScuGrpcConfig;
 import com.amay.scu.listenner.impl.StationDynamicMapViewListener;
 import com.amay.scu.model.SLELocationListObject;
 import com.amay.scu.popup.PopupContent;
 import com.amay.scu.service.GrpcService;
+import com.amay.scu.service.ScuGrpcService;
 import com.amay.scu.sleobj.LiveAG;
 import com.amay.scu.sleobj.LiveTOM;
 import com.amay.scu.test_grpc_service.SCUService;
@@ -70,6 +72,9 @@ try {
    GrpcService grpcService = new GrpcService(GrpcConfig.getAsyncStub());
     grpcService.initialConnectionRequest(null);
 
+   ScuGrpcService.INSTANCE.ScuGrpcService(ScuGrpcConfig.getBlockingStub());
+    ScuGrpcService.INSTANCE.sendMessage(null);
+
 
 /*
 //    StationDynamicMapController scu=loader.getController();
@@ -103,6 +108,7 @@ try {
     primaryStage.setOnCloseRequest(e -> {
 //        SLELocationListObject
 //        grpcService.shutdown();
+        System.out.println("Application closed");
         ObjectSerialization.saveJsonToFile(ObjectSerialization.objectToJson(SLELocationListObject.list),"sleLocationList.json");
 
         System.exit(0);}); // Exit the application when the window is closed
@@ -110,7 +116,7 @@ try {
 
 }catch (Exception e){
     System.out.println("Error in SCUApplication start method : "+e.getMessage());
-    e.getMessage();
+    e.printStackTrace();
 }
 
 

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<HBox spacing="10.0" styleClass="alert" stylesheets="@../css/alert.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.components.AlertController">
+
+    <!-- Icon or indicator -->
+    <Rectangle fx:id="iconIndicator" arcHeight="5.0" arcWidth="5.0" height="50.0" styleClass="status-indicator" width="5.0" />
+
+    <!-- Device ID and Date -->
+    <VBox maxWidth="250.0">
+        <HBox spacing="5.0">
+            <Label fx:id="device" styleClass="device-id" text="RE-AG-031" />
+            <Label fx:id="time" alignment="TOP_LEFT" styleClass="date-time" text="26 April 2024 18:28:39" />
+        </HBox>
+
+        <!-- Status message -->
+        <Label fx:id="status" alignment="TOP_LEFT" maxWidth="250.0" styleClass="status-text" text="operating status: out of service(1)" wrapText="true" />
+    </VBox>
+</HBox>

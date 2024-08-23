@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Rectangle?>
+
+<GridPane hgap="20" vgap="20" styleClass="main-grid" stylesheets="@../css/widgets.css"
+          xmlns="http://javafx.com/javafx/21"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.amay.scu.controller.components.TomPeripheralStatus">
+
+    <!-- Header -->
+    <Label styleClass="header-text" text="AG - 901" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+
+    <!-- Peripheral Details Section -->
+    <VBox spacing="10" styleClass="section" GridPane.columnIndex="0" GridPane.rowIndex="1">
+        <Label styleClass="section-title" text="PERIPHERAL DETAILS" />
+
+        <!-- SCU Connection Status -->
+        <HBox spacing="10" styleClass="detail-row">
+            <Rectangle fx:id="iconIndicatorSCU" arcHeight="5.0" arcWidth="5.0" height="15.0" styleClass="status-indicator" width="5.0" />
+            <Label text="SCU" />
+        </HBox>
+
+        <!-- CCU Connection Status -->
+        <HBox spacing="10" styleClass="detail-row">
+            <Rectangle fx:id="iconIndicatorCCU" arcHeight="5.0" arcWidth="5.0" height="15.0" styleClass="status-indicator" width="5.0" />
+            <Label text="CCU" />
+        </HBox>
+
+        <!-- Reader Connection Status -->
+        <HBox spacing="10" styleClass="detail-row">
+            <Rectangle fx:id="iconIndicatorReader" arcHeight="5.0" arcWidth="5.0" height="15.0" styleClass="status-indicator" width="5.0" />
+            <Label text="Reader" />
+        </HBox>
+
+        <!-- Scanner Connection Status -->
+        <HBox spacing="10" styleClass="detail-row">
+            <Rectangle fx:id="iconIndicatorScanner" arcHeight="5.0" arcWidth="5.0" height="15.0" styleClass="status-indicator" width="5.0" />
+            <Label text="Scanner" />
+        </HBox>
+
+        <!-- Printer Connection Status -->
+        <HBox spacing="10" styleClass="detail-row">
+            <Rectangle fx:id="iconIndicatorPrinter" arcHeight="5.0" arcWidth="5.0" height="15.0" styleClass="status-indicator" width="5.0" />
+            <Label text="Printer" />
+        </HBox>
+
+        <!-- PDU Connection Status -->
+        <HBox spacing="10" styleClass="detail-row">
+            <Rectangle fx:id="iconIndicatorPDU" arcHeight="5.0" arcWidth="5.0" height="15.0" styleClass="status-indicator" width="5.0" />
+            <Label text="PDU" />
+        </HBox>
+
+        <!-- Cash Drawer Connection Status -->
+        <HBox spacing="10" styleClass="detail-row">
+            <Rectangle fx:id="iconIndicatorCashDrawer" arcHeight="5.0" arcWidth="5.0" height="15.0" styleClass="status-indicator" width="5.0" />
+            <Label text="Cash Drawer" />
+        </HBox>
+
+        <!-- UPS Connection Status -->
+        <HBox spacing="10" styleClass="detail-row">
+            <Rectangle fx:id="iconIndicatorUPS" arcHeight="5.0" arcWidth="5.0" height="15.0" styleClass="status-indicator" width="5.0" />
+            <Label text="UPS" />
+        </HBox>
+    </VBox>
+
+    <!-- Column Constraints -->
+    <columnConstraints>
+        <ColumnConstraints hgrow="ALWAYS" />
+    </columnConstraints>
+
+</GridPane>

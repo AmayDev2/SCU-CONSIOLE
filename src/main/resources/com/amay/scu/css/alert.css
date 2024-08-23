@@ -1,0 +1,42 @@
+/* Styling for the HBox containing the entire message */
+
+
+/* Styling for the colored indicator (rectangle) */
+.status-indicator {
+    -fx-fill: #9C27B0; /* Purple color */
+}
+.status-indicator-red {
+    -fx-fill: #da1717; /* Purple color */
+}
+
+.status-indicator-green {
+    -fx-fill: #00ff0d; /* Purple color */
+}
+
+/* Styling for the device ID text */
+.device-id {
+    -fx-font-weight: bold;
+    -fx-font-size: 12pt;
+    -fx-text-fill: #333333;
+}
+
+/* Styling for the date and time text */
+.date-time {
+    -fx-font-size: 10pt;
+    -fx-text-fill: #888888; /* Grey color */
+}
+
+/* Styling for the status text */
+.status-text {
+    -fx-font-size: 8pt;
+    -fx-text-fill: #4CAF50; /* Green color */
+}
+
+.alert
+{
+    -fx-background-color: #f8d7da; /* Red color */
+    -fx-border-color: #f5c6cb; /* Light red color */
+    -fx-border-width: 1px;
+    -fx-border-radius: 5;
+    -fx-padding: 10;
+}

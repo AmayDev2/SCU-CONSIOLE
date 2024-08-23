@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="monitorRightVBox" maxWidth="1.7976931348623157E308" spacing="12.0" stylesheets="@../css/station-dynamic-map-view.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.MonitorRightView">
+<GridPane alignment="CENTER" hgap="10" prefHeight="117.0" prefWidth="308.0" vgap="10">
+    <columnConstraints>
+        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="140.0" prefWidth="140.0" />
+        <ColumnConstraints halignment="CENTER" maxWidth="1.7976931348623157E308" prefWidth="140.0" />
+    </columnConstraints>
+
+    <!-- Total QR Sale and Total CSC Sale -->
+    <Label prefHeight="40.0" styleClass="header-label" text="Total QR Sale" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+    <Label prefHeight="40.0" styleClass="header-label" text="Total CSC Sale" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+    <Label fx:id="qrSale" styleClass="value-label" text="₹ 0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+    <Label styleClass="value-label" text="₹0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <rowConstraints>
+         <RowConstraints />
+         <RowConstraints />
+      </rowConstraints>
+
+</GridPane>
+   <VBox spacing="20.0" VBox.vgrow="ALWAYS">
+      <children>
+          <HBox alignment="CENTER" prefHeight="35.0" spacing="10.0" VBox.vgrow="ALWAYS">
+              <children>
+                  <!-- Label for "ENTRY" -->
+                  <Label prefHeight="35.0" styleClass="header-label" text="ENTRY" />
+      
+                  <!-- ComboBox for Time Interval Selection -->
+                  <ComboBox fx:id="timeIntervalComboBox" prefHeight="35.0">
+                      <items>
+                          <FXCollections fx:factory="observableArrayList">
+                              <HBox maxWidth="100">
+                                  <children>
+                                      <DatePicker fx:id="customDatePicker" />
+                                  </children>
+                              </HBox>
+
+                              <String fx:value="1 hour" />
+                              <String fx:value="20 minutes" />
+                              <String fx:value="10 minutes" />
+                              <String fx:value="5 minutes" />
+                              <String fx:value="1 day" />
+                              <String fx:value="5 days" />
+                              <String fx:value="30 days" />
+
+                          </FXCollections>
+                      </items>
+                  </ComboBox>
+      
+                  <!-- Label for "EXIT" -->
+                  <Label prefHeight="35.0" styleClass="header-label" text="EXIT" />
+              </children>
+          </HBox>
+      
+            
+                <GridPane alignment="CENTER" hgap="10" prefHeight="165.0" prefWidth="288.0" vgap="10">
+              <columnConstraints>
+                  <ColumnConstraints halignment="LEFT" />
+               <ColumnConstraints halignment="CENTER" maxWidth="42.0" minWidth="10.0" prefWidth="50.0" />
+                  <ColumnConstraints halignment="LEFT" maxWidth="93.0" minWidth="81.0" prefWidth="86.0" />
+               <ColumnConstraints halignment="CENTER" minWidth="10.0" prefWidth="50.0" />
+              </columnConstraints>
+              <Label styleClass="h-label" text="QR Count" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+            <Label styleClass="h-label" text="CSC Count" GridPane.rowIndex="1" />
+            <Label styleClass="h-label" text="CSC Count" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label fx:id="entryCSCCount" styleClass="h-label" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="exitCSCCount" styleClass="h-label" text="0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Label fx:id="entryQRCount" styleClass="h-label" text="0" GridPane.columnIndex="1" />
+            <Label fx:id="exitQRCount" styleClass="h-label" text="0" GridPane.columnIndex="3" />
+            <Label styleClass="h-label" text="QR Count" />
+            <Label styleClass="header-label" text="Total" GridPane.rowIndex="2" />
+            <Label fx:id="entryCountTotal" styleClass="header-label" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label styleClass="header-label" text="Total" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label fx:id="exitCountTotal" styleClass="header-label" text="0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Label prefHeight="35.0" prefWidth="92.0" styleClass="header-label" text="Total Sale :" GridPane.rowIndex="3" />
+            <Label fx:id="totalSale" prefHeight="30.0" prefWidth="87.0" styleClass="header-label" text="0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+              <rowConstraints>
+                  <RowConstraints />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" />
+              </rowConstraints>
+      
+                </GridPane>
+      </children>
+   </VBox>
+
+    <TabPane tabClosingPolicy="SELECTED_TAB">
+        <!-- Existing Special Command Tab -->
+        <Tab closable="false" text="Special Command">
+            <ScrollPane fitToWidth="true">
+                <content>
+                    <VBox alignment="TOP_CENTER" spacing="10">
+                        <ToggleButton fx:id="emergencyButton" minWidth="200" styleClass="select-button" text="Emergency" />
+                        <ToggleButton fx:id="stationCloseButton" minWidth="200" styleClass="select-button" text="Station Close" />
+                        <ToggleButton fx:id="excessFareOverrideButton" minWidth="200" styleClass="select-button" text="Excess Fare Override" />
+                        <ToggleButton fx:id="fareBypassMode1Button" minWidth="200" styleClass="select-button" text="Fare Bypass Mode 1" />
+                        <ToggleButton fx:id="fareBypassMode2Button" minWidth="200" styleClass="select-button" text="Fare Bypass Mode 2" />
+                        <ToggleButton fx:id="highSecurityMode" minWidth="200" styleClass="select-button" text="High Security mode" />
+                        <Button fx:id="applyCommandButton" minWidth="200" styleClass="apply-button" text="Apply" />
+                    </VBox>
+                </content>
+            </ScrollPane>
+        </Tab>
+
+        <!-- New Tab with TOM and AG Sections -->
+        <Tab closable="false" text="Commands">
+            <ScrollPane fitToWidth="true">
+                <content>
+                    <VBox alignment="TOP_CENTER" spacing="10">
+                        <!-- TOM Section -->
+                        <TitledPane text="TOM">
+                            <VBox fx:id="tomSection" alignment="TOP_CENTER" spacing="10">
+                                <!-- ToggleButtons for TOM will be added dynamically -->
+                            </VBox>
+                        </TitledPane>
+                        <!-- AG Section -->
+                        <TitledPane text="AG">
+                            <VBox fx:id="agSection" alignment="TOP_CENTER" spacing="10">
+                                <!-- ToggleButtons for AG will be added dynamically -->
+                            </VBox>
+                        </TitledPane>
+
+                        <!-- Apply and Reset Buttons -->
+                        <HBox alignment="CENTER" spacing="10">
+                            <Button fx:id="applyButton" minWidth="100" text="Apply" />
+                            <Button fx:id="resetButton" minWidth="100" text="Reset" />
+                        </HBox>
+                    </VBox>
+                </content>
+            </ScrollPane>
+        </Tab>
+    </TabPane>
+
+
+
+
+
+    <!-- Alerts Section -->
+<VBox alignment="TOP_LEFT" spacing="10" style="-fx-background-color: #f3f3b2">
+    <Label styleClass="header-label" text="Alerts" />
+    <ListView fx:id="alertsListView">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+            </FXCollections>
+        </items>
+    </ListView>
+</VBox>
+</VBox>

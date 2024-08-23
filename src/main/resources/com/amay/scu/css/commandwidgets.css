@@ -1,0 +1,55 @@
+.main-grid {
+    -fx-padding: 20;
+    -fx-alignment: center;
+}
+
+.service-mode-toggle {
+    -fx-background-color: green;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-padding: 10 20;
+}
+
+.service-mode-toggle:pressed {
+    -fx-background-color: darkgreen;
+}
+
+.service-mode-toggle {
+    -fx-background-color: grey;
+    -fx-background-insets: 0, 0, 0, 0;
+}
+
+.service-mode-toggle:selected {
+    -fx-background-color: darkgrey;
+}
+
+
+Label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333;
+}
+
+Hyperlink {
+    -fx-font-size: 14px;
+    -fx-text-fill: blue;
+}
+
+VBox {
+    -fx-padding: 10 0;
+}
+
+RadioButton {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333;
+}
+
+Button {
+    -fx-background-color: lightgrey;
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+    -fx-padding: 5 15;
+}
+
+Button:pressed {
+    -fx-background-color: grey;
+}

@@ -1,24 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="topHeader" maxWidth="1.7976931348623157E308" minHeight="150.0" prefHeight="150.0" prefWidth="1960.0" styleClass="topHeader" stylesheets="@../css/header.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.HeaderController">
+<AnchorPane fx:id="topHeader" maxWidth="1.7976931348623157E308" minHeight="150.0" prefHeight="150.0" prefWidth="1960.0" styleClass="topHeader" stylesheets="@../css/header.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.HeaderController">
    <children>
+      <!-- Left Section: Logo and Station Information -->
+      <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" spacing="15.0">
+         <children>
+            <ImageView fx:id="logoImageView" fitHeight="74.0" fitWidth="205.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <!-- Replace with the actual logo image -->
+                  <Image url="@../images/logo.png" />
+               </image>
+            </ImageView>
+            <VBox alignment="CENTER_LEFT">
+               <Text fx:id="stationName" styleClass="station-name" text="AMAY METRO" />
+               <Text fx:id="stationId" styleClass="station-id" text="Station ID: 123456" />
+            </VBox>
+         </children>
+      </HBox>
+
+      <!-- Center Section: Navigation -->
       <HBox fx:id="navigatorHBox" alignment="CENTER" layoutX="830.0" layoutY="94.0" prefHeight="30.0" prefWidth="300.0" spacing="20.0">
          <children>
             <Text fx:id="menuNavigator" onMouseClicked="#onMenuClick" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigator" text="Menu" />
             <Text fx:id="monitorNavigator" onMouseClicked="#onMonitorClick" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigator" text="Monitor" />
             <Text fx:id="reportNavigator" onMouseClicked="#onReportClick" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigator" text="Report" />
-
-
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </HBox>
-   </children>
 
+      <!-- Right Section: Icons/Buttons -->
+      <!-- Right Section: Icons/Buttons -->
+      <HBox alignment="CENTER_RIGHT" layoutX="1600.0" layoutY="20.0" spacing="20.0">
+         <children>
+            <!-- Language Button -->
+            <VBox alignment="CENTER">
+            <Button fx:id="languageButton" styleClass="icon-button">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/ccu.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+                <Label text="CCU" />
+            </VBox>
+
+            <!-- Emergency Button -->
+            <VBox alignment="CENTER">
+            <Button fx:id="emergencyButton" styleClass="icon-button">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/emergency-icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+               <Label styleClass="EMERGENCY" text="EMERGENCY" />
+            </VBox>
+
+            <!-- User Button -->
+            <VBox alignment="CENTER">
+
+            <Button fx:id="userButton" styleClass="icon-button">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/user-icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label styleClass="user-name" text="User" />
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </HBox>
+
+   </children>
 </AnchorPane>

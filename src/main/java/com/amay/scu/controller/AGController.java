@@ -2,15 +2,12 @@ package com.amay.scu.controller;
 
 import com.amay.scu.enums.AGOperationMode;
 import com.amay.scu.enums.SLEStatus;
-import com.amay.scu.enums.TOMOperationMode;
 import com.amay.scu.model.SLELocationListObject;
 import com.amay.scu.popup.PopupContent;
 import com.amay.scu.sleobj.LiveAG;
 import com.amay.scu.sleobj.LiveSLE;
-import com.amay.scu.sleobj.LiveTOM;
 import com.amay.scu.sleobj.propertyenums.PropertyUpdate;
 import com.amay.scu.sles.components.SLE;
-import com.amay.scu.util.ObjectSerialization;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -181,11 +178,13 @@ public class AGController  implements SLE {
     private void handleMouseClick(MouseEvent event) {
         if (event.getButton() == MouseButton.PRIMARY) {
             // Handle left click
-            PopupContent popupContent = new PopupContent(liveAG);
+            PopupContent popupContent = new PopupContent(liveAG, "Left");
             popupContent.show();
             logger.debug("Left click detected on button");
         } else if (event.getButton() == MouseButton.SECONDARY) {
             // Handle right click
+            PopupContent popupContent = new PopupContent(liveAG, "Right");
+            popupContent.show();
             logger.debug("Right click detected on button");
         }
     }

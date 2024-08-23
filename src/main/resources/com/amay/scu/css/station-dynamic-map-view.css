@@ -4,3 +4,124 @@
 
     /*not setting dynamics here*/
 }
+
+#monitorRightVBox{
+    -fx-background-color: Transparent;
+    -fx-border-radius: 10px;
+    -fx-padding: 10px;
+    -fx-border-color: #000000;
+    -fx-border-width: 2px;
+}
+
+.header-label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #555555;
+}
+
+.value-label {
+    -fx-font-size: 24px;
+    -fx-text-fill: #000000;
+}
+
+.total-revenue-label {
+    -fx-font-size: 16px;
+    -fx-background-color: #FFFF99;
+    -fx-padding: 5px;
+    -fx-text-fill: #000000;
+}
+
+
+/* Style for the section title */
+/*.tab-pane {*/
+/*    -fx-background-color: #f0f0f0;*/
+/*    -fx-tab-min-width: 150px;*/
+/*    -fx-tab-max-width: 250px;*/
+/*    -fx-tab-background-color: #2a9d8f;*/
+/*    -fx-tab-text-color: #ffffff;*/
+/*    -fx-padding: 10;*/
+/*    -fx-tab-border-color: #264653;*/
+/*}*/
+
+/* Selected Tab Styling */
+/*.tab-pane .tab-header-area .tab:selected {*/
+/*    -fx-background-color: #264653;*/
+/*    -fx-text-fill: #ffffff;*/
+/*    -fx-font-weight: bold;*/
+/*}*/
+
+.section-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+}
+
+/* Style for ToggleButton unselected state */
+.select-button {
+    -fx-background-color: lightgray;
+    -fx-text-fill: black;
+    -fx-border-color: gray;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 5 10;
+}
+
+/* Style for ToggleButton selected state */
+.select-button:selected {
+    -fx-background-color: #007bff;
+    -fx-text-fill: white;
+    -fx-border-color: #0056b3;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+/* Style for the Apply button */
+.apply-button {
+    -fx-background-color: #28a745;
+    -fx-text-fill: white;
+    -fx-border-color: #218838;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 10 20;
+}
+
+
+
+
+ListView {
+    -fx-background-color: #F5F5F5;
+}
+
+.h-label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #555555;
+}
+
+.transparent-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+/*not showing button*/
+.select-button1 {
+    -fx-background-color: TRANSPARENT;
+    -fx-text-fill: black;
+
+    /*-fx-border-color: gray;*/
+    /*-fx-border-radius: 5;*/
+    /*-fx-background-radius: 5;*/
+    /*-fx-padding: 5 10;*/
+}
+
+/* Style for ToggleButton selected state */
+.select-button1:selected {
+    -fx-text-fill: red;
+    /*-fx-background-color: #007bff; !* Optional *!*/
+    /*-fx-border-color: #0056b3;     !* Optional *!*/
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+
+    /* Adding a selected mark using Unicode */
+    -fx-content-display: LEFT;
+    -fx-text: "\u2713 " + "Your Text Here"; /* Adds a checkmark (✓) before the text */
+}

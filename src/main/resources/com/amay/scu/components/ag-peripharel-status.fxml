@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<GridPane hgap="20" styleClass="main-grid" stylesheets="@../css/widgets.css" vgap="20" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.components.AgPeripheralStatus">
+
+    <!-- Header -->
+    <Label styleClass="header-text" text="TOM - 901" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+
+    <!-- Peripheral Details Section -->
+    <VBox spacing="10" styleClass="section" GridPane.columnIndex="0" GridPane.rowIndex="1">
+        <Label styleClass="section-title" text="PERIPHERAL DETAILS" />
+
+        <!-- Peripheral Detail Rows -->
+        <HBox spacing="10" styleClass="detail-row">
+            <!-- Icon or indicator -->
+            <Rectangle fx:id="iconIndicatorGCU" arcHeight="5.0" arcWidth="5.0" height="15.0" styleClass="status-indicator-red" width="5.0" />
+            <Label text="GCU" />
+        </HBox>
+
+        <HBox spacing="10" styleClass="detail-row">
+            <Rectangle fx:id="iconIndicatorPID" arcHeight="5.0" arcWidth="5.0" height="15.0" styleClass="status-indicator" width="5.0" />
+            <Label text="PID" />
+        </HBox>
+
+        <HBox spacing="10" styleClass="detail-row">
+            <Rectangle fx:id="iconIndicatorReader" arcHeight="5.0" arcWidth="5.0" height="15.0" styleClass="status-indicator" width="5.0" />
+            <Label text="CSC Reader - Communication Fail" />
+        </HBox>
+
+        <HBox spacing="10" styleClass="detail-row">
+            <Rectangle fx:id="iconIndicatorQRReader" arcHeight="5.0" arcWidth="5.0" height="15.0" styleClass="status-indicator" width="5.0" />
+            <Label text="QR Reader" />
+        </HBox>
+
+        <HBox spacing="10" styleClass="detail-row">
+            <Rectangle fx:id="iconIndicatorUPS" arcHeight="5.0" arcWidth="5.0" height="15.0" styleClass="status-indicator" width="5.0" />
+            <Label text="UPS" />
+        </HBox>
+
+        <HBox spacing="10" styleClass="detail-row">
+            <Rectangle fx:id="iconIndicatorECU" arcHeight="5.0" arcWidth="5.0" height="15.0" styleClass="status-indicator" width="5.0" />
+            <Label text="ECU" />
+        </HBox>
+
+        <HBox spacing="10" styleClass="detail-row">
+            <Rectangle fx:id="iconIndicatorSpeaker" arcHeight="5.0" arcWidth="5.0" height="15.0" styleClass="status-indicator" width="5.0" />
+            <Label text="Speaker" />
+        </HBox>
+
+        <HBox spacing="10" styleClass="detail-row">
+            <Rectangle fx:id="iconIndicatorBuzzer" arcHeight="5.0" arcWidth="5.0" height="15.0" styleClass="status-indicator" width="5.0" />
+            <Label text="Buzzer" />
+        </HBox>
+    </VBox>
+
+    <!-- Column Constraints -->
+    <columnConstraints>
+        <ColumnConstraints hgrow="ALWAYS" />
+    </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+
+</GridPane>

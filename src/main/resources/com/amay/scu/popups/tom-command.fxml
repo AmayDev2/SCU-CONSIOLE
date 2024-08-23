@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox fx:id="commandView" alignment="TOP_CENTER" spacing="20.0" stylesheets="@../css/popup.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.TomCommandController">
+    <children>
+        <!-- Device Information Section -->
+        <GridPane alignment="CENTER" hgap="10" vgap="10">
+            <columnConstraints>
+                <ColumnConstraints hgrow="ALWAYS" minWidth="100.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints vgrow="ALWAYS" />
+                <RowConstraints vgrow="ALWAYS" />
+                <RowConstraints vgrow="ALWAYS" />
+            </rowConstraints>
+            <children>
+                <Text styleClass="heading-text" text="Device Information" GridPane.columnSpan="2" />
+                <Text styleClass="label-text" text="Device Name" GridPane.rowIndex="1" />
+                <Text styleClass="label-text" text="Device IP" GridPane.rowIndex="2" />
+                <Text fx:id="name" styleClass="value-text" text="Device Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Text fx:id="ip" styleClass="value-text" text="IP" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            </children>
+        </GridPane>
+
+        <!-- Device Command Section -->
+        <GridPane alignment="CENTER" hgap="20" vgap="20">
+            <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="150.0" />
+            <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints vgrow="ALWAYS" />
+                <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+                <RowConstraints vgrow="ALWAYS" />
+            </rowConstraints>
+            <children>
+                <Text styleClass="label-text" text="Device Command:" GridPane.columnSpan="2" />
+                <Button fx:id="inService" prefWidth="200.0" styleClass="apply-button" text="In Service" GridPane.rowIndex="1" />
+                <Button fx:id="outOfService" prefWidth="200.0" styleClass="cancel-button" text="Out Of Service" GridPane.rowIndex="2" />
+            </children>
+        </GridPane>
+
+
+        <!-- Mode Selection Section -->
+        <GridPane alignment="CENTER" hgap="10" vgap="10">
+            <columnConstraints>
+                <ColumnConstraints hgrow="ALWAYS" minWidth="200.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints vgrow="ALWAYS" />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            </rowConstraints>
+            <children>
+                <Label styleClass="label-text" text="Card Processing Mode" GridPane.rowIndex="0" />
+                <RadioButton fx:id="CardProcessingOpen" styleClass="radio-button" text="Open" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                <RadioButton fx:id="CardProcessingClose" styleClass="radio-button" text="Close" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+
+                <Label styleClass="label-text" text="QR Sale Mode" GridPane.rowIndex="1" />
+                <RadioButton fx:id="QRSaleOpen" styleClass="radio-button" text="Open" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <RadioButton fx:id="QRSaleClose" styleClass="radio-button" text="Close" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+
+                <Label styleClass="label-text" text="Test Mode" GridPane.rowIndex="2" />
+                <RadioButton fx:id="TestOpen" styleClass="radio-button" text="Open" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <RadioButton fx:id="TestClose" styleClass="radio-button" text="Close" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+
+                <Label styleClass="label-text" text="Parameter Version Query" GridPane.rowIndex="3" />
+                <RadioButton fx:id="ParameterVersionOn" styleClass="radio-button" text="On" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+
+                <Label styleClass="label-text" text="Software Version Query" GridPane.rowIndex="4" />
+                <RadioButton fx:id="SoftwareVersionOn" styleClass="radio-button" text="On" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+
+                <Label styleClass="label-text" text="Device Status Query" GridPane.rowIndex="5" />
+                <RadioButton fx:id="DeviceStatusOn" styleClass="radio-button" text="On" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+
+                <Label styleClass="label-text" text="Register Data Query" GridPane.rowIndex="6" />
+                <RadioButton fx:id="RegisterDataOn" styleClass="radio-button" text="On" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+
+                <Label styleClass="label-text" text="Shift End" GridPane.rowIndex="7" />
+                <RadioButton fx:id="ShiftEndOn" styleClass="radio-button" text="On" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+
+                <Label styleClass="label-text" text="Restart" GridPane.rowIndex="8" />
+                <RadioButton fx:id="ReStartOn" styleClass="radio-button" text="On" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+
+                <Label styleClass="label-text" text="Shutdown" GridPane.rowIndex="9" />
+                <RadioButton fx:id="ShutdownOn" styleClass="radio-button" text="On" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+            </children>
+        </GridPane>
+
+        <!-- Apply and Cancel Buttons -->
+        <GridPane alignment="CENTER" hgap="10" vgap="10" VBox.vgrow="NEVER">
+            <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints vgrow="ALWAYS" />
+                <RowConstraints vgrow="ALWAYS" />
+            </rowConstraints>
+            <children>
+                <Button fx:id="apply" onAction="#applyCommand" prefWidth="150.0" styleClass="apply-button" text="Apply" />
+                <Button fx:id="cancel" onAction="#cancelCommand" prefWidth="150.0" styleClass="cancel-button" text="Cancel" GridPane.columnIndex="1" />
+            </children>
+        </GridPane>
+    </children>
+</VBox>

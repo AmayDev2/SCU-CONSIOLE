@@ -1,5 +1,6 @@
 package com.amay.scu.contservice;
 
+import com.amay.scu.ViewFactory;
 import com.amay.scu.controller.SCUController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;

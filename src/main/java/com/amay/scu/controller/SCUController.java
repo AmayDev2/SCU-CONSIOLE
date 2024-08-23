@@ -6,12 +6,14 @@ import com.amay.scu.contservice.InnerListener;
 import com.amay.scu.contservice.OuterListener;
 import com.amay.scu.contservice.SCUControllerService;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 /*login
@@ -34,7 +36,17 @@ public class SCUController implements Initializable{
         System.out.println("SCUController initialize 1");
         scuControllerListener = new SCUControllerListener();
         scuControllerService = new SCUControllerService( scuControllerListener);
+        this.setRight();
 
+    }
+
+    private void setRight() {
+            try{
+                FXMLLoader loader= ViewFactory.getMonitorRightView();
+                borderPane.setRight(loader.load());
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
     }
 
     @FXML
@@ -43,7 +55,6 @@ public class SCUController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initialize();
-
         System.out.println("SCUController initialize : "+location+" : "+resources+" : "+topHeaderIncludeController);
         // Initialization logic
         if (topHeaderIncludeController != null) {
@@ -87,6 +98,7 @@ public class SCUController implements Initializable{
             }
             i=2;
             scuControllerService.onReportClick(borderPane, ViewFactory.getReport());
+
         }
     }
 }

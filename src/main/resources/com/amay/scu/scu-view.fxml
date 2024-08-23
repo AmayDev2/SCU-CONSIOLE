@@ -16,8 +16,7 @@
 <!--            </VBox>-->
 <!--        </left>-->
         <right>
-            <VBox fx:id="rightVBox" BorderPane.alignment="CENTER_RIGHT">
-            </VBox>
+<!--            <fx:include source="popups/monitor-right-view.fxml"/>-->
         </right>
 
       <center>
