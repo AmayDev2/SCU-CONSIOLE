@@ -5,32 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="315d97bc-7335-4bbd-a14f-28c409037fec" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TomCommandController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/popups/tom-command.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sleLocationList.json" beforeDir="false" afterPath="$PROJECT_DIR$/sleLocationList.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/SCUApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/SCUApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/ViewFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/command/CommandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/command/CommandTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/AGController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/AGController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/CommandController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/SCUController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/SCUController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TOMController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TOMController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/contservice/SCUControllerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/contservice/SCUControllerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/AGCommandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/AGCommandController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/HeaderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/HeaderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/MonitorRightView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/MonitorRightView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TomCommandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TomCommandController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/components/AlertController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/components/AlertController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/components/TomWidgetsView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/components/TomWidgetsView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/enums/StationSpecialMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/enums/StationSpecialMode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/grpc/GrpcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/grpc/GrpcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/grpc/ScuGrpcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/grpc/ScuGrpcConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/popup/PopupContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/popup/PopupContent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/tersr/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/tersr/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/service/GrpcService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/service/GrpcService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/service/ScuGrpcService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/service/ScuGrpcService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/sleobj/LiveTOM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/sleobj/LiveTOM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/test_grpc_service/SCUService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/test_grpc_service/SCUService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/util/TimeUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/util/TimeUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/views/Path.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/Path.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/css/border-pane.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/css/border-pane.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/css/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/css/popup.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/css/popup.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/css/station-dynamic-map-view.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/css/station-dynamic-map-view.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/header/top-header-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/header/top-header-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/popups/command.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/scu-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/scu-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/station_map/station-dynamic-map-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/station_map/station-dynamic-map-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/popups/tom-widgets-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/popups/tom-widgets-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,10 +42,10 @@
         <option value="Record" />
         <option value="package-info" />
         <option value="JUnit5 Test Class" />
-        <option value="Interface" />
-        <option value="CSS File" />
-        <option value="FxmlFile" />
         <option value="Enum" />
+        <option value="CSS File" />
+        <option value="Interface" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -75,55 +74,56 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.EFIClientContentiousPhe.executor": "Run",
-    "Application.EFOClient.executor": "Run",
-    "Application.GateClient.executor": "Run",
-    "Application.GateClientMain.executor": "Run",
-    "Application.GateClientManager.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.ObjectSerialization.executor": "Run",
-    "Application.SCUApplication.executor": "Run",
-    "Application.TOMOperationMode.executor": "Run",
-    "Application.com.amay.scu.GateClientManager.executor": "Run",
-    "Application.myCode.executor": "Run",
-    "JUnit.GrpcServiceTest.sendCommandTest.executor": "Run",
-    "JUnit.LiveTOMTest.liveTomPropChange.executor": "Run",
-    "JUnit.SCUServiceTest.updateSLE.executor": "Run",
-    "JUnit.SLEFactoryTest.createSLE.executor": "Run",
-    "JUnit.StationDevicesRepositoryTest.testGetAllAGDevices.executor": "Run",
-    "JUnit.StationDevicesRepositoryTest.testGetAllStationDevices.executor": "Run",
-    "JUnit.StationDevicesRepositoryTest.testGetAllTOMDevices.executor": "Run",
-    "JUnit.TOMOperationModeTest.test.executor": "Run",
-    "Maven.scu [clean].executor": "Run",
-    "Maven.scu [compile].executor": "Run",
-    "Maven.scu [install].executor": "Run",
-    "Maven.scu [package].executor": "Run",
-    "Maven.scu [test].executor": "Run",
-    "Maven.scu [validate].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/Amay Technosystems/SCU/src/main/resources/proto",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.28735632",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.EFIClientContentiousPhe.executor&quot;: &quot;Run&quot;,
+    &quot;Application.EFOClient.executor&quot;: &quot;Run&quot;,
+    &quot;Application.GateClient.executor&quot;: &quot;Run&quot;,
+    &quot;Application.GateClientMain.executor&quot;: &quot;Run&quot;,
+    &quot;Application.GateClientManager.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ObjectSerialization.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SCUApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TOMOperationMode.executor&quot;: &quot;Run&quot;,
+    &quot;Application.com.amay.scu.GateClientManager.executor&quot;: &quot;Run&quot;,
+    &quot;Application.myCode.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GrpcServiceTest.sendCommandTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LiveTOMTest.liveTomPropChange.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SCUServiceTest.updateSLE.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SLEFactoryTest.createSLE.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StationDevicesRepositoryTest.testGetAllAGDevices.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StationDevicesRepositoryTest.testGetAllStationDevices.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StationDevicesRepositoryTest.testGetAllTOMDevices.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TOMOperationModeTest.test.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.scu [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.scu [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.scu [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.scu [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.scu [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.scu [validate].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Amay Technosystems/SCU/src/main/resources/com/amay/scu/popups&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.28735632&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -132,9 +132,9 @@
       <recent name="com.amay.scu.sleobj" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Amay Technosystems\SCU\src\main\resources\com\amay\scu\popups" />
       <recent name="E:\Amay Technosystems\SCU\src\main\resources\proto" />
       <recent name="E:\Amay Technosystems\SCU\src\main\resources\proto\scu" />
-      <recent name="E:\Amay Technosystems\SCU\src\main\resources\com\amay\scu\popups" />
       <recent name="E:\Amay Technosystems\SCU\src\main\resources\com\amay\scu\components" />
       <recent name="E:\Amay Technosystems\SCU\src\main\resources\com\amay\scu\images" />
     </key>
@@ -159,11 +159,11 @@
       <recent name="com.amay.scu.repository" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.amay.scu.controller" />
+      <recent name="com.amay.scu.listenner.impl" />
+      <recent name="com.amay.scu.popup" />
       <recent name="com.amay.scu.grpc" />
       <recent name="com.amay.scu.sleobj" />
-      <recent name="com.amay.scu.repository" />
-      <recent name="com.amay.scu.database" />
-      <recent name="com.amay.scu.sles" />
     </key>
   </component>
   <component name="RunManager" selected="Application.SCUApplication">
@@ -341,7 +341,16 @@
       <workItem from="1724212845581" duration="1908000" />
       <workItem from="1724214779875" duration="10667000" />
       <workItem from="1724299712171" duration="6417000" />
-      <workItem from="1724388998155" duration="10498000" />
+      <workItem from="1724388998155" duration="19012000" />
+      <workItem from="1724438301125" duration="9386000" />
+      <workItem from="1724582498291" duration="4499000" />
+      <workItem from="1724624008102" duration="786000" />
+      <workItem from="1724732391617" duration="9303000" />
+      <workItem from="1724753387694" duration="599000" />
+      <workItem from="1724818528019" duration="5200000" />
+      <workItem from="1724906062462" duration="2973000" />
+      <workItem from="1724914435251" duration="16004000" />
+      <workItem from="1725077882181" duration="3158000" />
     </task>
     <servers />
   </component>
@@ -396,22 +405,22 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/service/GrpcService.java</url>
-          <line>56</line>
+          <line>74</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/test_grpc_service/SCUService.java</url>
-          <line>125</line>
+          <line>129</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/sleobj/LiveTOM.java</url>
-          <line>216</line>
+          <line>218</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/SCUApplication.java</url>
-          <line>81</line>
+          <line>83</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -426,7 +435,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/SCUApplication.java</url>
-          <line>89</line>
+          <line>91</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -446,12 +455,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/test_grpc_service/SCUService.java</url>
-          <line>167</line>
+          <line>171</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/test_grpc_service/SCUService.java</url>
-          <line>171</line>
+          <line>175</line>
           <option name="timeStamp" value="29" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -461,8 +470,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/controller/components/TomWidgetsView.java</url>
-          <line>81</line>
+          <line>85</line>
           <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/grpc/ScuGrpcConfig.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/interceptor/AuthClientInterceptor.java</url>
+          <line>7</line>
+          <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/controller/StationDynamicMapController.java</url>
@@ -472,6 +491,15 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/interceptor/AuthClientInterceptor.java</url>
+          <line>11</line>
+          <properties class="AuthClientInterceptor" method="interceptCall">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="34" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

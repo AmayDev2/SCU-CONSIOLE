@@ -35,6 +35,7 @@ module com.amay.scu {
     exports org.network.monitorandcontrol.ag;
     exports org.network.monitorandcontrol.tom;
     exports org.network.monitorandcontrol.scu_console;
+    exports org.network.monitorandcontrol;
     exports com.amay.scu.controller.components;
     exports com.amay.scu.enums;
     exports com.amay.scu.model;

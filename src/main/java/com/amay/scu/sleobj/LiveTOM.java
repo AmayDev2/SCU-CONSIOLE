@@ -29,7 +29,7 @@ public class LiveTOM implements LiveSLE, SleCommandInfo {
     private String equipId;
     private String equipIp;
     private String deviceType;
-    private String stationId="01";
+    private String stationId="10";
 
     public LiveTOM(String equipId,String tomIp,String stationId,String equipName, String deviceType){
         this.equipId=equipId;
@@ -63,6 +63,8 @@ public class LiveTOM implements LiveSLE, SleCommandInfo {
 
     // current operation mode
     private TOMOperationMode operationMode;
+
+
 
     public void setCurrentStatus(SLEStatus currentStatus){
         SLEStatus oldValue=this.currentStatus;

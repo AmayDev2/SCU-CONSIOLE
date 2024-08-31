@@ -14,7 +14,7 @@
 <GridPane hgap="20" styleClass="main-grid" stylesheets="@../css/widgets.css" vgap="20" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.components.TomWidgetsView">
 
     <!-- Header -->
-    <Label styleClass="header-text" text="TOM - 1324" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+    <Label fx:id="headerTomId" styleClass="header-text" text="TOM - 1324" GridPane.columnIndex="0" GridPane.rowIndex="0" />
     <Label fx:id="lastTransaction" text="Last Transaction : 12 March 2022  13:30" GridPane.columnIndex="0" GridPane.rowIndex="1" />
     <Label text="Last Sync : 12 March 2022  13:30" GridPane.columnIndex="0" GridPane.rowIndex="2" />
 

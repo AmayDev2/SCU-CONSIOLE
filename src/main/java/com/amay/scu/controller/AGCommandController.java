@@ -161,7 +161,7 @@ public class AGCommandController {
     public void applyCommand(ActionEvent actionEvent) {
         logger.debug("given command : {} {}",id,command);
 
-        popupContent.sendCommand(id,command);
+        popupContent.sendCommand(id,command,null);
 
     }
 }

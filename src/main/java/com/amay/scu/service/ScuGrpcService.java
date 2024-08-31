@@ -31,10 +31,9 @@ public enum ScuGrpcService  {
         return response.getScuFareMediaData().getFareMediaCount().getFree();
 
     }
-    public String getTotalRevenue(String deviceId, String fromDate) {
-
+    public String getTotalRevenue(String fromDate) {
+        try{
         SCURevenueReportRequestV1 request=SCURevenueReportRequestV1.newBuilder()
-                .setDevice(ADevice.newBuilder().setDeviceId(deviceId).build())
                 .setFromDate(fromDate)
                 .build();
 
@@ -42,8 +41,29 @@ public enum ScuGrpcService  {
         SCURevenueReportResponseV1 response=this.blockingStub.getRevenue(request);
         System.out.println("Response from server: "+response);
         return  response.getRevenueData().getRevenue().getQrRevenue()+"-"+response.getRevenueData().getRevenue().getCscRevenue()+"-"+response.getRevenueData().getRevenue().getTotalRevenue()+"-"+response.getLastTransactionTime();
+        }catch (Exception e){
+            e.printStackTrace();
+            return "0-0-0-0";
+        }
+    }
+    public String getTotalRevenue(String deviceId, String fromDate) {
+        try{
+            SCURevenueReportRequestV1 request=SCURevenueReportRequestV1.newBuilder()
+                    .setDevice(ADevice.newBuilder().setDeviceId(deviceId).build())
+                    .setFromDate(fromDate)
+                    .build();
+
+            System.out.println("Sending message to server: "+request);
+            SCURevenueReportResponseV1 response=this.blockingStub.getRevenue(request);
+            System.out.println("Response from server: "+response);
+            return  response.getRevenueData().getRevenue().getQrRevenue()+"-"+response.getRevenueData().getRevenue().getCscRevenue()+"-"+response.getRevenueData().getRevenue().getTotalRevenue()+"-"+response.getLastTransactionTime();
+        }catch (Exception e){
+            e.printStackTrace();
+            return "0-0-0-0";
+        }
     }
     public String getStockReport(String equipmentId, String s) {
+        try{
         SCUStockRequestV1 requestV1=SCUStockRequestV1.newBuilder()
                 .setStockData(SCUStockDataV1.newBuilder()
                         .setOperator(AOperator.newBuilder().setShiftId(s).build())
@@ -55,6 +75,10 @@ public enum ScuGrpcService  {
         SCUStockResponseV1 response=this.blockingStub.getStocks(requestV1);
         System.out.println("Response from server for stock: "+response);
         return String.valueOf(response.getStockData().getQrStock())+"-"+String.valueOf(response.getStockData().getQrSales())+"-"+String.valueOf(response.getStockData().getCscStock())+"-"+String.valueOf(response.getStockData().getCscSales());
+        }catch (Exception e){
+            e.printStackTrace();
+            return "0-0-0-0";
+        }
     }
 
 

@@ -18,6 +18,8 @@ public class TomWidgetsView {
 
 
     @FXML
+    private  Label headerTomId;
+    @FXML
     private Label lastTransaction;
     @FXML
     private DatePicker datePicker;
@@ -49,9 +51,11 @@ public class TomWidgetsView {
     public TomWidgetsView(PopupContent popupContent, SleCommandInfo sleCommandInfo) {
         this.equipmentId = sleCommandInfo.getEquipId();
         this.popupContent = popupContent;
+        this.equipmentId = sleCommandInfo.getEquipId();
     }
     @FXML
     void initialize() {
+        headerTomId.setText(headerTomId.getText().split("-")[0]+" - "+equipmentId);
         // TODO
         cancelButton.setOnAction(event -> {
             popupContent.Close();
@@ -64,14 +68,14 @@ public class TomWidgetsView {
         );
 
        datePicker.setValue(java.time.LocalDate.now());
-       updateRevenue(TimeUtil.getCurrentDateInEpoch());
+       updateRevenue(TimeUtil.datePickerToEpoch(datePicker.getValue()));
        updateStock();
 
     }
 
     private void updateStock() {
         Platform.runLater(() -> {
-            String qrStock=ScuGrpcService.INSTANCE.getStockReport("01", "12345");
+            String qrStock=ScuGrpcService.INSTANCE.getStockReport(equipmentId, "12345");
             qrPaper.setText(qrStock.split("-")[0]);
             remainedQR.setText(String.valueOf(Integer.parseInt(qrStock.split("-")[0])-Integer.parseInt(qrStock.split("-")[1])));
             csc.setText(qrStock.split("-")[2]);
@@ -81,7 +85,7 @@ public class TomWidgetsView {
     private void updateRevenue(String value) {
         System.out.println("Updating Revenue Tom :"+value+" : "+"01");
 //        Platform.runLater(() -> {
-            String qrRevenue=ScuGrpcService.INSTANCE.getTotalRevenue("01", value);
+            String qrRevenue=ScuGrpcService.INSTANCE.getTotalRevenue(equipmentId, value);
             qrSale.setText(qrRevenue.split("-")[0]);
             totalSale.setText(Integer.parseInt(qrRevenue.split("-")[0])+Integer.parseInt(qrRevenue.split("-")[1])+"");
             cscSale.setText(qrRevenue.split("-")[1]);

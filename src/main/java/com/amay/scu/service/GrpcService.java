@@ -13,6 +13,11 @@ import org.network.monitorandcontrol.scu_console.StreamData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import static java.util.concurrent.CompletableFuture.runAsync;
+
 
 public class GrpcService  {
 
@@ -22,11 +27,14 @@ public class GrpcService  {
 
     private StreamObserver<ConsoleProtocol> requestObserver=null;
     private SCUService scuService=null;
+    private Set<String> set =null;
 
     public  GrpcService(MonitorAndControlGrpc.MonitorAndControlStub asyncStub ) {
         this.asyncStub=asyncStub;
         requestObserver = scStreamObserver();
-        scuService=new SCUService();
+        this.set= new HashSet<>();
+        scuService=new SCUService(set);
+
     }
 
     // Send some ConsoleStream messages
@@ -35,13 +43,23 @@ public class GrpcService  {
             requestObserver.onNext(message);
     }
 
+
+
     public void initialConnectionRequest(StreamData message) {
         logger.info("Sending initial request to server: {}", message);
         requestObserver.onNext(ConsoleProtocol.newBuilder().setConsoleId("imscuconsole").build());
-//        new CommandTest(this);
-        CommandTest.INSTANCE.initializeCommandTest(this);
+        CommandTest.INSTANCE.initializeCommandTest(this,set);
     }
 
+    private void reconnect(){
+        try{
+            Thread.sleep(5000);
+        }catch (InterruptedException e){
+            e.printStackTrace();}
+
+        requestObserver = scStreamObserver();
+        initialConnectionRequest(null);
+    }
     public void markComplete() {
         requestObserver.onCompleted();
     }
@@ -64,7 +82,8 @@ public class GrpcService  {
             @Override
             public void onError(Throwable t){
                 logger.error("message from server: {}", t.getMessage());
-                t.printStackTrace();
+                runAsync(()->reconnect());
+
             }
 
             @Override

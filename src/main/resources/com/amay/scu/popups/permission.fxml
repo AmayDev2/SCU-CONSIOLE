@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER"  spacing="10" styleClass="login-vbox" stylesheets="@../css/login.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.PermissionController">
+
+    <Label fx:id="warningMessage" styleClass="login-title" text="Do you want to logout?" />
+    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+        <children>
+
+            <Button fx:id="logoutButton" styleClass="login-button" text="Yes" />
+            <Button fx:id="backButton" styleClass="login-button" text="No" />
+        </children>
+    </HBox>
+
+</VBox>

@@ -34,6 +34,12 @@ public class TimeUtil {
         return String.valueOf(System.currentTimeMillis());
     }
 
+    public static String getAlertDate(){
+        String pattern = "MMM dd HH:mm:ss";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        return simpleDateFormat.format(new Date());
+    }
+
     public static String getCurrentDateInEpoch() {
         return String.valueOf(LocalDate.now().atStartOfDay().toEpochSecond(java.time.ZoneOffset.UTC));
     }

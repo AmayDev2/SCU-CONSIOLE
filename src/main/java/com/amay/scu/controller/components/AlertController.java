@@ -24,11 +24,11 @@ public class AlertController {
 
 
 
-    public AlertController(String name, String alertDescription, String alertType,String priority) {
+    public AlertController(String name, String alertDescription, String alertTime, int priority) {
         this.name = name;
         this.alertDescription = alertDescription;
-        this.timeOfAlert = alertType;
-        this.priority = priority;
+        this.timeOfAlert = alertTime;
+        this.priority = priority>=500?"status-indicator-red":priority>=400?"status-indicator":"status-indicator-green";
     }
 
 

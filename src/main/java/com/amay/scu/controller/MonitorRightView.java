@@ -4,6 +4,7 @@ import com.amay.scu.ViewFactory;
 import com.amay.scu.command.CommandTest;
 import com.amay.scu.controller.components.AlertController;
 import com.amay.scu.enums.StationSpecialMode;
+import com.amay.scu.listenner.impl.MonitoringRightViewListener;
 import com.amay.scu.service.ScuGrpcService;
 import com.amay.scu.util.TimeUtil;
 import javafx.application.Platform;
@@ -15,12 +16,18 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import org.network.monitorandcontrol.CommandType;
+import org.network.monitorandcontrol.RequestType;
 import org.network.monitorandcontrol.SpecialMode;
 
 import java.io.IOException;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.Comparator;
+import java.util.Map;
 import java.util.concurrent.ThreadPoolExecutor;
+import java.util.stream.Collectors;
 
 public class MonitorRightView {
     @FXML
@@ -85,6 +92,10 @@ public class MonitorRightView {
     private Button applyCommandButton;
 
 
+
+    private MonitoringRightViewListener monitoringRightViewListener;
+
+
     private void handleSelection(ToggleButton button) {
         // Handle the logic when a button is toggled
         if (button.isSelected()) {
@@ -105,8 +116,22 @@ public class MonitorRightView {
 
     @FXML
     private void initialize() {
+        monitoringRightViewListener=MonitoringRightViewListener.initialize(this);
         pickTime();
+        updateEntryExitCount();
         alerts = alertsListView.getItems();
+
+//        alertsListView.setCellFactory(param -> new ListCell<Parent>() {
+//            @Override
+//            protected void updateItem(Parent item, boolean empty) {
+//                super.updateItem(item, empty);
+//                if (empty || item == null) {
+//                    setGraphic(null);
+//                } else {
+//                    setGraphic(item);
+//                }
+//            }
+//        });
 
         updateRevenueContinue();
         updateRevenue();
@@ -123,8 +148,8 @@ public class MonitorRightView {
         fareBypassMode1Button.setText(StationSpecialMode.FARE_BYPASS_MODE_1.name());
         fareBypassMode2Button.setToggleGroup(commandGroup);
         fareBypassMode2Button.setText(StationSpecialMode.FARE_BYPASS_MODE_2.name());
-        highSecurityMode.setToggleGroup(commandGroup);
-        highSecurityMode.setText(StationSpecialMode.HIGH_SECURITY_MODE.name());
+//        highSecurityMode.setToggleGroup(commandGroup);
+//        highSecurityMode.setText(StationSpecialMode.HIGH_SECURITY_MODE.name());
 
         // Add event handlers to each button
         emergencyButton.setOnAction(event -> handleSelection(emergencyButton));
@@ -169,7 +194,7 @@ public class MonitorRightView {
 
             if (selectedCommand != null) {
                 System.out.println("Selected command: " + selectedCommand.getText());
-                CommandTest.INSTANCE.sendStationCommand(CommandType.MODE_CONTROL, StationSpecialMode.valueOf(selectedCommand.getText()));
+                CommandTest.INSTANCE.sendStationCommand(StationSpecialMode.valueOf(selectedCommand.getText()));
             } else {
                 System.out.println("No command selected");
             }
@@ -212,10 +237,39 @@ public class MonitorRightView {
     private void updateRevenue() {
         Platform.runLater(() -> {
             System.out.println("Updating revenue"+this.hashCode());
-            String qrRevenue= ScuGrpcService.INSTANCE.getTotalRevenue("01", TimeUtil.getCurrentDateInEpoch());
+            String qrRevenue= ScuGrpcService.INSTANCE.getTotalRevenue(TimeUtil.getCurrentDateInEpoch());
             qrSale.setText("₹"+qrRevenue.split("-")[0]+"/-");
             totalSale.setText("₹"+qrRevenue.split("-")[0]+"/-");
 
         });
+    }
+
+    private void updateEntryExitCount() {
+        Platform.runLater(() -> {
+            entryCountTotal.setText("100");
+            exitCountTotal.setText("100");
+            entryQRCount.setText("50");
+            exitQRCount.setText("50");
+            entryCSCCount.setText("50");
+            exitCSCCount.setText("50");
+        });
+    }
+
+    public void sendAlarm(Map<Integer,String> alarms, String equipId, String requestType) {
+        for(Map.Entry<Integer, String> entry : alarms.entrySet()) {
+            Platform.runLater(() -> {
+                System.out.println("Updating alerts"+this.hashCode());
+                try {
+                    FXMLLoader loader = ViewFactory.getAlert();
+                    loader.setControllerFactory(c -> new AlertController(requestType+"-"+equipId,"("+entry.getKey().toString()+") "+ entry.getValue(), TimeUtil.getAlertDate(),entry.getKey()));
+                    Parent alert = loader.load();
+                    alerts.add(alert);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+
+        }
+
     }
 }

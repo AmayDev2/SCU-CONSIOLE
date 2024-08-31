@@ -83,4 +83,16 @@ public class ViewFactory {
                 (Path.AG_COMMAND));
         return fxmlLoader;
     }
+
+    public static FXMLLoader getLogin() {
+        return new FXMLLoader(ViewFactory.class.getResource(Path.LOGIN));
+    }
+
+    public static FXMLLoader getLogout() {
+        return new FXMLLoader(ViewFactory.class.getResource(Path.LOGOUT));
+    }
+
+    public static FXMLLoader getPermission() {
+        return new FXMLLoader(ViewFactory.class.getResource(Path.PERMISSION));
+    }
 }

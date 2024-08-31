@@ -1,13 +1,11 @@
 package com.amay.scu.test_grpc_service;
 
 import com.amay.scu.enums.TOMOperationMode;
+import com.amay.scu.listenner.impl.MonitoringRightViewListener;
 import com.amay.scu.listenner.impl.StationDynamicMapViewListener;
 import com.amay.scu.sleobj.LiveAG;
 import com.amay.scu.sleobj.LiveTOM;
-import org.network.monitorandcontrol.CommandType;
-import org.network.monitorandcontrol.DeviceType;
-import org.network.monitorandcontrol.OperationMode;
-import org.network.monitorandcontrol.RequestType;
+import org.network.monitorandcontrol.*;
 import org.network.monitorandcontrol.ag.AGPeripheralStatus;
 import org.network.monitorandcontrol.scu_console.ConsoleProtocol;
 import org.network.monitorandcontrol.scu_console.StreamData;
@@ -20,14 +18,20 @@ import org.network.monitorandcontrol.tom.TOMModeControl;
 import org.network.monitorandcontrol.tom.TOMParameterVersion;
 import org.network.monitorandcontrol.tom.TOMPeripheralStatus;
 
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 public class SCUService {
     static int st=0;
+    private Set<String> set =null;
 
     StationDynamicMapViewListener stationDynamicMapViewListener;
 
 
-    public SCUService() {
+    public SCUService(Set<String> set) {
         stationDynamicMapViewListener=StationDynamicMapViewListener.getInstance();
+        this.set=set;
     }
 
     public void updateSLEs(StreamData streamData) {
@@ -179,14 +183,30 @@ public class SCUService {
                 this.updateOperationMode(consoleProtocol);
                 break;
             case ALARMS:
-                //last 10 alarms
+                pushAlarms(consoleProtocol);
             default:
                 break;
         }
     }
 
+    private void pushAlarms(ConsoleProtocol consoleProtocol) {
+        try {
+            System.out.println(consoleProtocol.getStreamData().getRequestData().unpack(Alarms.class));
+
+            var s=consoleProtocol.getStreamData().getRequestData().unpack(Alarms.class);
+            System.out.println(s.getAlarmsMap());
+            Map<Integer,String> map=s.getAlarmsMap();
+            MonitoringRightViewListener.getInstance().sendAlarm(map,consoleProtocol.getStreamData().getEquipId(),"TOM");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
+
     private void checkTOMInfo(ConsoleProtocol consoleProtocol) {
         try {
+            set.add(consoleProtocol.getStreamData().getEquipId());
             System.out.println(consoleProtocol.getStreamData().getRequestData().unpack(TOMDeviceInfo.class));
         }catch (Exception e){
             e.printStackTrace();

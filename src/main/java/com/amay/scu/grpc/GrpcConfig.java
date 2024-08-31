@@ -29,6 +29,7 @@ public class GrpcConfig {
     }
 
     public static boolean reconnect() {
+        shutdown();
     	try {
             channel = ManagedChannelBuilder.forAddress("localhost", 8000)
                     .usePlaintext()  // No TLS for local development

@@ -73,6 +73,8 @@ try {
     grpcService.initialConnectionRequest(null);
 
    ScuGrpcService.INSTANCE.ScuGrpcService(ScuGrpcConfig.getBlockingStub());
+    //TODO: Add the below line to the SCUController
+    ScuGrpcConfig.watchConnectivityState();
     ScuGrpcService.INSTANCE.sendMessage(null);
 
 

@@ -17,4 +17,7 @@ public interface Path {
      String TOM_WIDGETS = "popups/tom-widgets-view.fxml";
      String AG_WIDGETS = "popups/ag-widgets-view.fxml";
      String AG_COMMAND="popups/ag-command.fxml";
+     String LOGIN="popups/login.fxml";
+     String LOGOUT = "popups/logout.fxml";
+    String PERMISSION = "popups/permission.fxml";
 }

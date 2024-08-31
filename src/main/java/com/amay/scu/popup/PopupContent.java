@@ -19,6 +19,7 @@ import javafx.stage.StageStyle;
 import javafx.stage.Window;
 import org.network.monitorandcontrol.CommandType;
 import org.network.monitorandcontrol.DeviceType;
+import org.network.monitorandcontrol.tom.TOMModeControl;
 
 public class PopupContent {
     private Stage popupStage;
@@ -94,7 +95,7 @@ public class PopupContent {
         popupStage.showAndWait();
     }
 
-    public void sendCommand(String id, CommandType command) {
-        CommandTest.INSTANCE.sendCommand(command, deviceType, id);
+    public void sendCommand(String id, CommandType command, TOMModeControl tomModeControl) {
+        CommandTest.INSTANCE.sendCommand(command, deviceType, id,tomModeControl);
     }
 }

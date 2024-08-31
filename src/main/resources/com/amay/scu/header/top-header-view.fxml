@@ -19,7 +19,7 @@
             </ImageView>
             <VBox alignment="CENTER_LEFT">
                <Text fx:id="stationName" styleClass="station-name" text="AMAY METRO" />
-               <Text fx:id="stationId" styleClass="station-id" text="Station ID: 123456" />
+               <Text fx:id="stationId" styleClass="station-id" text="Station ID: 10" />
             </VBox>
          </children>
       </HBox>
@@ -56,7 +56,7 @@
 
             <!-- Emergency Button -->
             <VBox alignment="CENTER">
-            <Button fx:id="emergencyButton" styleClass="icon-button">
+            <Button fx:id="emergencyButton" onAction="#onEmergency" styleClass="icon-button">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -71,7 +71,7 @@
             <!-- User Button -->
             <VBox alignment="CENTER">
 
-            <Button fx:id="userButton" styleClass="icon-button">
+            <Button fx:id="userButton" onAction="#onAuthClick" styleClass="icon-button">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -80,7 +80,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label styleClass="user-name" text="User" />
+            <Label fx:id="userName" styleClass="user-name" text="User" />
             </VBox>
          </children>
          <padding>

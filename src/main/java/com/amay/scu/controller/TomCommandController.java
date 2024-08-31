@@ -7,11 +7,18 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import org.network.monitorandcontrol.CommandType;
+import org.network.monitorandcontrol.OperationMode;
+import org.network.monitorandcontrol.SpecialMode;
+import org.network.monitorandcontrol.tom.TOMModeControl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class TomCommandController {
 
+    @FXML
+    private  Button inService;
+    @FXML
+    private  Button outOfService;
     @FXML
     private RadioButton ParameterVersionOn;
     @FXML
@@ -26,10 +33,6 @@ public class TomCommandController {
     private RadioButton ReStartOn;
     @FXML
     private RadioButton ShutdownOn;
-
-
-
-
 
     @FXML
     private RadioButton CardProcessingOpen;
@@ -76,10 +79,15 @@ public class TomCommandController {
 
     private SleCommandInfo sleCommandInfo;
 
+    private TOMModeControl.Builder tomModeControlBuilder;
+    ToggleGroup globleGroup =null;
+
 
     public TomCommandController(PopupContent popupContent, SleCommandInfo sleCommandInfo) {
         this.popupContent=popupContent;
         this.sleCommandInfo=sleCommandInfo;
+        globleGroup = new ToggleGroup();
+        this.id=sleCommandInfo.getEquipId();
     }
 
 
@@ -97,32 +105,115 @@ public class TomCommandController {
         ToggleGroup cardProcessingModeGroup = new ToggleGroup();
         CardProcessingOpen.setToggleGroup(cardProcessingModeGroup);
         CardProcessingClose.setToggleGroup(cardProcessingModeGroup);
+        CardProcessingClose.setToggleGroup(globleGroup);
+        CardProcessingOpen.setToggleGroup(globleGroup);
 
         // ToggleGroup for QR Sale Mode
         ToggleGroup qrSaleModeGroup = new ToggleGroup();
         QRSaleOpen.setToggleGroup(qrSaleModeGroup);
         QRSaleClose.setToggleGroup(qrSaleModeGroup);
+        QRSaleClose.setToggleGroup(globleGroup);
+        QRSaleOpen.setToggleGroup(globleGroup);
 
         // ToggleGroup for Test Mode
         ToggleGroup testModeGroup = new ToggleGroup();
         TestOpen.setToggleGroup(testModeGroup);
         TestClose.setToggleGroup(testModeGroup);
+        TestClose.setToggleGroup(globleGroup);
+        TestOpen.setToggleGroup(globleGroup);
+
+
 
         this.setCommand();
-
-
     }
 
     private void setCommand() {
+        ParameterVersionOn.setToggleGroup(globleGroup);
+        DeviceStatusOn.setToggleGroup(globleGroup);
+        RegisterDataOn.setToggleGroup(globleGroup);
+        ShiftEndOn.setToggleGroup(globleGroup);
+        ReStartOn.setToggleGroup(globleGroup);
+        ShutdownOn.setToggleGroup(globleGroup);
+        SoftwareVersionOn.setToggleGroup(globleGroup);
+
+        inService.setOnAction(event -> {
+            this.command=CommandType.MODE_CONTROL;
+            tomModeControlBuilder=TOMModeControl.newBuilder().setOperationMode(OperationMode.IN_SERVICE);
+            logger.info("In Service");
+        });
+
+        outOfService.setOnAction(event -> {
+            this.command=CommandType.MODE_CONTROL;
+            tomModeControlBuilder=TOMModeControl.newBuilder().setOperationMode(OperationMode.OUT_OF_SERVICE);
+            logger.info("Out Of Service");
+        });
+
+
         ParameterVersionOn.setOnAction(event -> {
             System.out.println("ParameterVersionOn");
-            this.command=CommandType.GET_DIVICE_VERSIONS;
+            this.command=CommandType.GET_PERIPHERAL_STATUS;
+            tomModeControlBuilder=TOMModeControl.newBuilder();
         });
 
         DeviceStatusOn.setOnAction(event -> {
-            this.command=CommandType.GET_PERIPHERAL_STATUS;
+            this.command=CommandType.GET_DEVICE_INFO;
+            tomModeControlBuilder=TOMModeControl.newBuilder();
         });
 
+        RegisterDataOn.setOnAction(event -> {
+            this.command=CommandType.GET_DEVICE_INFO;
+            tomModeControlBuilder=TOMModeControl.newBuilder();
+        });
+
+        ShiftEndOn.setOnAction(event -> {
+            this.command=CommandType.MODE_CONTROL;
+            tomModeControlBuilder=TOMModeControl.newBuilder().setSpecialMode(SpecialMode.SHIFT_END);
+        });
+
+        ReStartOn.setOnAction(event -> {
+            this.command=CommandType.MODE_CONTROL;
+            tomModeControlBuilder=TOMModeControl.newBuilder().setSpecialMode(SpecialMode.RESTART);
+        });
+
+        ShutdownOn.setOnAction(event -> {
+            this.command=CommandType.MODE_CONTROL;
+            tomModeControlBuilder=TOMModeControl.newBuilder().setSpecialMode(SpecialMode.SHUT_DOWN);
+        });
+
+        CardProcessingOpen.setOnAction(event -> {
+            if(CardProcessingOpen.isSelected()){
+            this.command=CommandType.MODE_CONTROL;
+            tomModeControlBuilder=TOMModeControl.newBuilder().setCardProcessMode(true);}
+        });
+
+        CardProcessingClose.setOnAction(event -> {
+            if(CardProcessingClose.isSelected()){
+                this.command=CommandType.MODE_CONTROL;
+                tomModeControlBuilder=TOMModeControl.newBuilder().setCardProcessMode(false);}
+        });
+
+
+        QRSaleOpen.setOnAction(event -> {
+            if(QRSaleOpen.isSelected()){
+                this.command=CommandType.MODE_CONTROL;
+                tomModeControlBuilder=TOMModeControl.newBuilder().setQrSaleMode(true);}
+        });
+
+        QRSaleClose.setOnAction(event -> {
+            if(QRSaleClose.isSelected()){
+                this.command=CommandType.MODE_CONTROL;
+                tomModeControlBuilder=TOMModeControl.newBuilder().setQrSaleMode(false);}
+        });
+
+        TestOpen.setOnAction(event -> {
+            if(TestOpen.isSelected()){
+                this.command=CommandType.MODE_CONTROL;
+                tomModeControlBuilder=TOMModeControl.newBuilder().setOperationMode(OperationMode.TEST);}
+        });
+
+        TestClose.setOnAction(event -> {
+            this.command=CommandType.MODE_CONTROL;
+        });
 
     }
 
@@ -139,7 +230,7 @@ public class TomCommandController {
 
     public void applyCommand(ActionEvent actionEvent) {
         logger.debug("given command : {} {}",id,command);
-        popupContent.sendCommand(id,command);
+        popupContent.sendCommand(id,command,tomModeControlBuilder.build());
 
     }
 }
