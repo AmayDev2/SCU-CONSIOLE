@@ -6,4 +6,5 @@ public interface HeaderListener {
     void onMonitorClick();
 
     void onReportClick();
+
 }

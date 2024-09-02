@@ -43,7 +43,8 @@ public enum CommandTest{
     //station level command
     public void sendStationCommand(StationSpecialMode specialMode) {
         System.out.println("Selected command: " + specialMode.name());
-        TOMModeControl tomModeControl=TOMModeControl.newBuilder().setSpecialMode(specialMode.getGrpcMode()).build();
+        StationSpecialMode.setStationSpecialMode(specialMode);
+        TOMModeControl tomModeControl=TOMModeControl.newBuilder().setSpecialMode(specialMode.getSpecialMode()).build();
 
         for(String equipId:set) {
             try {
