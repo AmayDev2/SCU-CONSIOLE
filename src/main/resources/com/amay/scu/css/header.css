@@ -53,6 +53,13 @@
     -fx-border-radius: 50%; /* Ensures the border remains circular */
     -fx-background-radius: 50%; /* Ensures the background remains circular */
 }
+.emergencyButtonActive {
+    -fx-background-color: #ff0000; /* Red background when pressed */
+    -fx-effect: dropshadow(gaussian, rgba(255, 0, 0, 0.8), 20, 0.5, 0, 0); /* Red glow effect */
+    -fx-border-color: #ff0000; /* Optional: Red border on press */
+    -fx-border-radius: 50%; /* Ensures the border remains circular */
+    -fx-background-radius: 50%; /* Ensures the background remains circular */
+}
 
 .icon-button:pressed {
     -fx-background-color: #cceeff; /* Slightly darker blue on press */

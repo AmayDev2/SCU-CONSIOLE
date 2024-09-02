@@ -1,6 +1,7 @@
 package com.amay.scu.controller;
 
 import com.amay.scu.ViewFactory;
+import com.amay.scu.auth.AuthService;
 import com.amay.scu.command.CommandTest;
 import com.amay.scu.controller.components.AlertController;
 import com.amay.scu.enums.StationSpecialMode;
@@ -95,6 +96,13 @@ public class MonitorRightView {
 
     private MonitoringRightViewListener monitoringRightViewListener;
 
+    private AuthService authService;
+
+    public  MonitorRightView(AuthService authService){
+        this.authService=authService;
+
+    }
+
 
     private void handleSelection(ToggleButton button) {
         // Handle the logic when a button is toggled
@@ -119,6 +127,7 @@ public class MonitorRightView {
         monitoringRightViewListener=MonitoringRightViewListener.initialize(this);
         pickTime();
         updateEntryExitCount();
+
         alerts = alertsListView.getItems();
 
 //        alertsListView.setCellFactory(param -> new ListCell<Parent>() {
@@ -186,6 +195,20 @@ public class MonitorRightView {
 
         //******************************
 
+        authService.isAuthenticated().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                // User is authenticated
+                System.out.println("User is authenticated");
+                // Enable the emergency button
+                applyCommandButton.setDisable(false);
+            } else {
+                // User is not authenticated
+                System.out.println("User is not authenticated");
+                // Disable the emergency button
+                applyCommandButton.setDisable(true);
+            }
+        });
+
 
 
 
@@ -199,6 +222,8 @@ public class MonitorRightView {
                 System.out.println("No command selected");
             }
         });
+
+//        applyButton.setDisable(true);
 
 //            try {
 //                FXMLLoader loader11 = ViewFactory.getAlert();

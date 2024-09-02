@@ -103,7 +103,7 @@
                         <ToggleButton fx:id="fareBypassMode1Button" minWidth="200" styleClass="select-button" text="Fare Bypass Mode 1" />
                         <ToggleButton fx:id="fareBypassMode2Button" minWidth="200" styleClass="select-button" text="Fare Bypass Mode 2" />
                         <ToggleButton fx:id="highSecurityMode" minWidth="200" styleClass="select-button" text="High Security mode" />
-                        <Button fx:id="applyCommandButton" minWidth="200" styleClass="apply-button" text="Apply" />
+                        <Button fx:id="applyCommandButton" minWidth="200" styleClass="apply-button" disable="true" text="Apply" />
                     </VBox>
                 </content>
             </ScrollPane>

@@ -1,23 +1,26 @@
 package com.amay.scu.auth;
 
 import com.amay.scu.controller.HeaderController;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import lombok.Getter;
 
 public class AuthService {
 
     @Getter
     private String username;
-    private boolean isAuthenticated = false;
-    private HeaderController authenticated;
+    private final BooleanProperty isAuthenticated = new SimpleBooleanProperty(false);
+    private final HeaderController authenticated;
 
     public AuthService(HeaderController authenticated) {
         this.authenticated = authenticated;
+        isAuthenticated.setValue(false);
     }
 
     public boolean login(String username, String password) {
         if (username.equals("admin") && password.equals("admin")) {
             this.username = username;
-            isAuthenticated = true;
+            isAuthenticated.setValue(true);
             authenticated.authenticated();
             return true;
         }
@@ -27,12 +30,12 @@ public class AuthService {
     }
 
     public boolean logout() {
-        isAuthenticated = false;
+        isAuthenticated.setValue(false);
         authenticated.logout();
         return true;
     }
 
-    public boolean isAuthenticated() {
+    public BooleanProperty isAuthenticated() {
         return isAuthenticated;
     }
 

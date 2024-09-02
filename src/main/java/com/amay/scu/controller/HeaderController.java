@@ -22,6 +22,8 @@ import org.slf4j.LoggerFactory;
 public class HeaderController {
 
     @FXML
+    private Button emergencyButton;
+    @FXML
     private Label userName;
     @FXML
     private Button userButton;
@@ -48,6 +50,21 @@ public class HeaderController {
         menuNavigator.setVisible(false);
         reportNavigator.setVisible(false);
         monitorNavigator.setVisible(false);
+        emergencyButton.setDisable(true);
+
+        StationSpecialMode.StationSpecialModeListener listener = newMode -> {
+            System.out.println("Mode changed to: " + newMode.getModeName() + " with color " + newMode.getColor());
+            if(emergencyModeActive && newMode != StationSpecialMode.EMERGENCY) {
+                emergencyButton.getStyleClass().remove("emergencyButtonActive");
+                emergencyModeActive = false;
+            }
+            if(newMode == StationSpecialMode.EMERGENCY) {
+                emergencyButton.getStyleClass().add("emergencyButtonActive");
+                emergencyModeActive = true;
+            }
+
+        };
+        StationSpecialMode.addStationSpecialModeListener(listener);
 
 
     }
@@ -83,7 +100,7 @@ public class HeaderController {
     private void onAuthClick(ActionEvent actionEvent) {
         PopupWindow popupWindow = new PopupWindow();
         FXMLLoader fxmlLoader=null;
-        if(!authService.isAuthenticated()){
+        if(!authService.isAuthenticated().get()){
          fxmlLoader = ViewFactory.getLogin();
             fxmlLoader.setControllerFactory(c -> new LoginController((String userId, String password)->{if(authService.login(userId,password))popupWindow.Close();}, popupWindow));
         }
@@ -97,13 +114,12 @@ public class HeaderController {
     }
 
 
-
-
     public void authenticated(){
         menuNavigator.setVisible(true);
         reportNavigator.setVisible(true);
         monitorNavigator.setVisible(true);
         userName.setText(authService.getUsername());
+        emergencyButton.setDisable(false);
 
     }
 
@@ -113,19 +129,36 @@ public class HeaderController {
         reportNavigator.setVisible(false);
         monitorNavigator.setVisible(false);
         userName.setText("user");
+        emergencyButton.setDisable(true);
 
     }
 
+    boolean emergencyModeActive=false;
     public void onEmergency(ActionEvent actionEvent) {
+
+        if(emergencyModeActive){
+            CommandTest.INSTANCE.sendStationCommand(StationSpecialMode.STATION_CLOSED);
+            emergencyButton.getStyleClass().remove("emergencyButtonActive");
+            emergencyModeActive=false;
+            return;
+        }
+
         PopupWindow popupWindow = new PopupWindow();
         FXMLLoader fxmlLoader=null;
         fxmlLoader = ViewFactory.getPermission();
         fxmlLoader.setControllerFactory(c -> new PermissionController(()->{
-            CommandTest.INSTANCE.sendStationCommand(StationSpecialMode.EMERGENCY);popupWindow.Close();}, popupWindow,"Do you really want to set Emergency Mode??"));
+            CommandTest.INSTANCE.sendStationCommand(StationSpecialMode.EMERGENCY);popupWindow.Close();
+                emergencyButton.getStyleClass().add("emergencyButtonActive");emergencyModeActive=true;},
+                popupWindow,"Do you really want to set Emergency Mode??"));
         popupWindow.show(fxmlLoader);
 
+    }
 
 
-
+    public AuthService getAuthService() {
+        if(authService==null){
+            throw new IllegalStateException("AuthService is not initialized");
+        }
+        return authService;
     }
 }

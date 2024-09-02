@@ -1,10 +1,13 @@
 package com.amay.scu.controller;
 
 import com.amay.scu.ViewFactory;
+import com.amay.scu.auth.AuthService;
+import com.amay.scu.auth.functional.Authentication;
 import com.amay.scu.contservice.HeaderListener;
 import com.amay.scu.contservice.InnerListener;
 import com.amay.scu.contservice.OuterListener;
 import com.amay.scu.contservice.SCUControllerService;
+import com.amay.scu.enums.StationSpecialMode;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -31,19 +34,19 @@ public class SCUController implements Initializable{
     private SCUControllerService scuControllerService=null;
     private  SCUControllerListener scuControllerListener=null;
 
-    @FXML
-    void initialize() {
-        System.out.println("SCUController initialize 1");
-        scuControllerListener = new SCUControllerListener();
-        scuControllerService = new SCUControllerService( scuControllerListener);
-        this.setRight();
-
-    }
+//    @FXML
+//    void initialize() {
+//
+//
+//
+//    }
 
     private void setRight() {
             try{
                 FXMLLoader loader= ViewFactory.getMonitorRightView();
+                loader.setControllerFactory(c -> new MonitorRightView(authService));
                 borderPane.setRight(loader.load());
+
             }catch (IOException e) {
                 e.printStackTrace();
             }
@@ -52,17 +55,28 @@ public class SCUController implements Initializable{
     @FXML
     private HeaderController topHeaderIncludeController;
 
+    private AuthService authService;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        initialize();
+
         System.out.println("SCUController initialize : "+location+" : "+resources+" : "+topHeaderIncludeController);
+        System.out.println("SCUController initialize 1");
+        scuControllerListener = new SCUControllerListener();
+        scuControllerService = new SCUControllerService( scuControllerListener);
+
         // Initialization logic
         if (topHeaderIncludeController != null) {
             topHeaderIncludeController.onMenuClick(); // Example usage
             topHeaderIncludeController.setListener(scuControllerListener);
+            authService= topHeaderIncludeController.getAuthService();
+
+
         } else {
             logger.error("topHeaderIncludeController is not initialized");
         }
+//        initialize();
+        this.setRight();
     }
 
     //Listener for SCUController
@@ -100,5 +114,7 @@ public class SCUController implements Initializable{
             scuControllerService.onReportClick(borderPane, ViewFactory.getReport());
 
         }
+
+
     }
 }
