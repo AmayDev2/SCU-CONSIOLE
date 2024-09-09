@@ -7,6 +7,7 @@ import com.amay.scu.command.CommandTest;
 import com.amay.scu.contservice.HeaderListener;
 import com.amay.scu.enums.StationSpecialMode;
 import com.amay.scu.popup.PopupWindow;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,18 +54,27 @@ public class HeaderController {
         emergencyButton.setDisable(true);
 
         StationSpecialMode.StationSpecialModeListener listener = newMode -> {
-            System.out.println("Mode changed to: " + newMode.getModeName() + " with color " + newMode.getColor());
-            if(emergencyModeActive && newMode != StationSpecialMode.EMERGENCY) {
-                emergencyButton.getStyleClass().remove("emergencyButtonActive");
-                emergencyModeActive = false;
-            }
-            if(newMode == StationSpecialMode.EMERGENCY) {
-                emergencyButton.getStyleClass().add("emergencyButtonActive");
-                emergencyModeActive = true;
-            }
+            logger.debug("New special mode: {}  {}", newMode, emergencyModeActive);
 
+            if (newMode.equals(StationSpecialMode.EMERGENCY) && !emergencyModeActive) {
+                // Entering Emergency Mode
+                logger.debug("Entering emergency mode");
+                emergencyModeActive = true;
+                Platform.runLater(() -> {
+                    emergencyButton.getStyleClass().add("emergencyButtonActive");
+                });
+            } else if (!newMode.equals(StationSpecialMode.EMERGENCY) && emergencyModeActive) {
+                // Exiting Emergency Mode
+                logger.debug("Exiting emergency mode");
+                emergencyModeActive = false;
+                Platform.runLater(() -> {
+                    emergencyButton.getStyleClass().remove("emergencyButtonActive");
+                });
+            }
         };
+
         StationSpecialMode.addStationSpecialModeListener(listener);
+
 
 
     }
@@ -148,7 +158,7 @@ public class HeaderController {
         fxmlLoader = ViewFactory.getPermission();
         fxmlLoader.setControllerFactory(c -> new PermissionController(()->{
             CommandTest.INSTANCE.sendStationCommand(StationSpecialMode.EMERGENCY);popupWindow.Close();
-                emergencyButton.getStyleClass().add("emergencyButtonActive");emergencyModeActive=true;},
+                StationSpecialMode.setStationSpecialMode(StationSpecialMode.EMERGENCY);},
                 popupWindow,"Do you really want to set Emergency Mode??"));
         popupWindow.show(fxmlLoader);
 

@@ -6,13 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum StationSpecialMode {
-    EMERGENCY(1, "Emergency", "-fx-background-color: red;", SpecialMode.EMERGENCY),
-    TIME_OVERRIDE(2, "Time Override", "-fx-background-color: yellow;", SpecialMode.TIME_OVERRIDE),
-    ENTRY_EXIT_OVERRIDE(3, "Entry/Exit Override", "-fx-background-color: yellow;", SpecialMode.ENTRY_EXIT_OVERRIDE),
-    EXCESS_FARE_OVERRIDE(4, "Excess Fare Override", "-fx-background-color: yellow;", SpecialMode.EXCESS_FARE_OVERRIDE),
-    FARE_BYPASS_MODE_1(5, "Fare Bypass Mode 1", "-fx-background-color: yellow;", SpecialMode.FARE_BYPASS_MODE_1),
-    FARE_BYPASS_MODE_2(6, "Fare Bypass Mode 2", "-fx-background-color: yellow;", SpecialMode.FARE_BYPASS_MODE_2),
-    STATION_CLOSED(7, "Station Closed", "-fx-background-color: yellow;", SpecialMode.STATION_CLOSED_MODE);
+    STATION_NORMAL(1, "Station Normal", "-fx-background-color: yellow;",  SpecialMode.TIME_OVERRIDE), // 01
+    EMERGENCY(2, "Emergency", "-fx-background-color: red;", SpecialMode.EMERGENCY), // 02
+    TIME_OVERRIDE(3, "Time Override", "-fx-background-color: yellow;", SpecialMode.TIME_OVERRIDE), // 03
+    ENTRY_EXIT_OVERRIDE(4, "Entry/Exit Override", "-fx-background-color: yellow;", SpecialMode.ENTRY_EXIT_OVERRIDE), // 04
+    EXCESS_FARE_OVERRIDE(5, "Excess Fare Override", "-fx-background-color: yellow;", SpecialMode.EXCESS_FARE_OVERRIDE), // 05
+    FARE_BYPASS_MODE_1(6, "Fare Bypass Mode 1", "-fx-background-color: yellow;", SpecialMode.FARE_BYPASS_MODE_1), // 06
+    FARE_BYPASS_MODE_2(7, "Fare Bypass Mode 2", "-fx-background-color: yellow;", SpecialMode.FARE_BYPASS_MODE_2), // 07
+    STATION_CLOSED(0, "Station Closed", "-fx-background-color: yellow;", SpecialMode.STATION_CLOSED_MODE), // 00
+    HIGH_SECURITY_MODE(8, "High Security Mode", "-fx-background-color: yellow;", SpecialMode.TIME_OVERRIDE); // 08
+    ;
+
 
     private final int modeId;
     private final String modeName;
@@ -51,6 +55,7 @@ public enum StationSpecialMode {
 
     // Register a listener
     public static void addStationSpecialModeListener(StationSpecialModeListener listener) {
+        System.out.println("in addStationSpecialModeListener");
         listeners.add(listener);
     }
 
@@ -61,13 +66,16 @@ public enum StationSpecialMode {
 
     // Notify all listeners of a mode change
     private static void notifyListeners(StationSpecialMode newMode) {
+        System.out.println("In notifyListeners");
         for (StationSpecialModeListener listener : listeners) {
+            System.out.println("In listener Mode changed to: " + newMode.getModeName() + " with color " + newMode.getColor());
             listener.onModeChanged(newMode);
         }
     }
 
     // Method to set the station mode and notify listeners
     public static void setStationSpecialMode(StationSpecialMode newMode) {
+        System.out.println("In setStationSpecialMode");
         notifyListeners(newMode);
     }
 
@@ -90,4 +98,16 @@ public enum StationSpecialMode {
         }
         return null;
     }
+
+    public static StationSpecialMode getSpecialMode(String specialModeName) {
+        for (StationSpecialMode mode : StationSpecialMode.values()) {
+            if (mode.getSpecialMode().equals(SpecialMode.valueOf(specialModeName))) {
+//                setStationSpecialMode(mode);  // Notify listeners
+                return mode;
+            }
+        }
+        return null;
+    }
+
+
 }

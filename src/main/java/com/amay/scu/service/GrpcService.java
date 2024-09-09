@@ -27,14 +27,11 @@ public class GrpcService  {
 
     private StreamObserver<ConsoleProtocol> requestObserver=null;
     private SCUService scuService=null;
-    private Set<String> set =null;
 
     public  GrpcService(MonitorAndControlGrpc.MonitorAndControlStub asyncStub ) {
         this.asyncStub=asyncStub;
         requestObserver = scStreamObserver();
-        this.set= new HashSet<>();
-        scuService=new SCUService(set);
-
+        scuService=new SCUService();
     }
 
     // Send some ConsoleStream messages
@@ -48,7 +45,7 @@ public class GrpcService  {
     public void initialConnectionRequest(StreamData message) {
         logger.info("Sending initial request to server: {}", message);
         requestObserver.onNext(ConsoleProtocol.newBuilder().setConsoleId("imscuconsole").build());
-        CommandTest.INSTANCE.initializeCommandTest(this,set);
+        CommandTest.INSTANCE.initializeCommandTest(this);
     }
 
     private void reconnect(){

@@ -1,5 +1,6 @@
 package com.amay.scu.sleobj;
 
+import com.amay.scu.enums.OperationMode;
 import com.amay.scu.enums.SLEStatus;
 import com.amay.scu.enums.TOMOperationMode;
 import com.amay.scu.popup.SleCommandInfo;
@@ -11,13 +12,19 @@ import org.slf4j.LoggerFactory;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.LinkedList;
+import java.util.Queue;
 
 
 @Data
 @NoArgsConstructor
 public class LiveTOM implements LiveSLE, SleCommandInfo {
+    private final int commandQueueSize = 10;
     private SLEStatus currentStatus = SLEStatus.OFFLINE;
    final Logger logger = LoggerFactory.getLogger(getClass());
+
+   private final Queue<String> commandQueue = new LinkedList<>();
+
 
     // PropertyChangeSupport instance
     private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
@@ -64,7 +71,20 @@ public class LiveTOM implements LiveSLE, SleCommandInfo {
     // current operation mode
     private TOMOperationMode operationMode;
 
+    public void addCommand(String command) {
+        if (commandQueue.size() >= 10) {
+            commandQueue.poll();  // Remove the first (oldest) element
+        }
+        commandQueue.add(command);  // Add the new element
+    }
 
+    public String getAllCommands() {
+        StringBuilder sb = new StringBuilder();
+        for (String command : commandQueue) {
+            sb.append(command).append("\n");
+        }
+        return sb.toString();
+    }
 
     public void setCurrentStatus(SLEStatus currentStatus){
         SLEStatus oldValue=this.currentStatus;
@@ -188,8 +208,10 @@ public class LiveTOM implements LiveSLE, SleCommandInfo {
     }
 
     public void setOperationMode(TOMOperationMode operationMode) {
+        logger.info("Changing Operation Mode {} {}", operationMode,this.hashCode());
         TOMOperationMode oldOperationMode = this.operationMode;
         this.operationMode = operationMode;
+        logger.info("Operation Mode changed {} to {}", oldOperationMode, operationMode);
         pcs.firePropertyChange(PropertyUpdate.OPERATION_MODE.name(), oldOperationMode, operationMode);
     }
 
@@ -217,9 +239,9 @@ public class LiveTOM implements LiveSLE, SleCommandInfo {
 
         logger.info("Is all Peripherals connected {}",isAllPeripheralConnected);
         if(!isAllPeripheralConnected ){
-            this.setCurrentStatus(SLEStatus.PERIPHERAL_OFFLINE);
+            this.setOperationMode(TOMOperationMode.DEFICIENT);
         }else{
-            this.setCurrentStatus(SLEStatus.ONLINE);
+            this.setOperationMode(TOMOperationMode.IN_SERVICE);
         }
 
     }

@@ -1,14 +1,14 @@
 package com.amay.scu.enums;
 
 public enum TOMOperationMode implements OperationMode, TOMServiceProperties {
-    IN_SERVICE(true, true, "-fx-background-color: #00FF00"),  // Green
-    OUT_OF_SERVICE("-fx-background-color: #FF0000"),         // Red
-    DEFICIENT("-fx-background-color: #FFA500"),              // Orange
-    MAINTENANCE("-fx-background-color: #FFFF00"),            // Yellow
-    TEST("-fx-background-color: #0000FF"),                   // Blue
-    PAUSE("-fx-background-color: #808080"),                  // Grey
-    DISCONNECTED("-fx-background-color: #800080"),           // Purple
-    OTHER("-fx-background-color: #FBA500");                  // Another Orange
+    IN_SERVICE(true, true, "-fx-background-color: #00FF00"),  // Green 100,110,111
+    OUT_OF_SERVICE("-fx-background-color: #FF0000"),         // Red 200
+    DEFICIENT("-fx-background-color: #FFA500"),              // Orange 300
+    MAINTENANCE("-fx-background-color: #FFFF00"),            // Yellow 400
+    TEST("-fx-background-color: #0000FF"),                   // Blue 500
+    PAUSE("-fx-background-color: #808080"),                  // Grey 600
+    DISCONNECTED("-fx-background-color: #800080"),           // Purple 700
+    OTHER("-fx-background-color: #FBA500");                  // Another Orange 800
 
     private final String color;
     private boolean qrSaleModeEnabled;

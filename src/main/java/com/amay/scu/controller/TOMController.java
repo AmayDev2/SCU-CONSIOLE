@@ -9,6 +9,7 @@ import com.amay.scu.sleobj.LiveSLE;
 import com.amay.scu.sleobj.LiveTOM;
 import com.amay.scu.sleobj.propertyenums.PropertyUpdate;
 import com.amay.scu.sles.components.SLE;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -68,8 +69,8 @@ public class TOMController implements SLE {
 
     public boolean setColor(TOMOperationMode status) {
         logger.debug("Setting status of TOM to {}", status.getColor());
-        tom.setStyle(status.getColor());
-        return false;
+        Platform.runLater(() -> tom.setStyle(status.getColor()));
+        return true;
     }
 
     @Override
@@ -128,7 +129,10 @@ public class TOMController implements SLE {
     }
 
    void updateOperationMode(TOMOperationMode status) {
-        setColor(status);
+        logger.info("Changing Operation Mode {}", status.getColor());
+        if(!this.setColor(status)){
+            throw new IllegalStateException("Operation Mode not set");
+        }
     }
 
     @Override
@@ -162,10 +166,11 @@ public class TOMController implements SLE {
 
     @Override
     public void updateOperationMode(LiveSLE liveTOM) {
+        logger.info("Setting in live object {}",liveTOM.toString());
         LiveTOM liveTOM1;
         if (liveTOM instanceof LiveTOM) {
             liveTOM1 = (LiveTOM) liveTOM;
-            this.liveTOM.setOperationMode(( liveTOM1).getOperationMode());
+            this.liveTOM.setOperationMode(liveTOM1.getOperationMode());
         }
     }
 
@@ -174,15 +179,26 @@ public class TOMController implements SLE {
         this.liveTOM= (LiveTOM) liveTOM;
 
         this.liveTOM.addPropertyChangeListener(event -> {
-            System.out.println("Property " + event.getPropertyName() + " changed from " + event.getOldValue() + " to " + event.getNewValue());
-            logger.info("property updated ");
-            if (event.getPropertyName().equals(PropertyUpdate.SLE_STATUS_UPDATED.name())) {
-                logger.debug("listener new value {}", event.getNewValue());
-                this.updateStatus((SLEStatus) event.getNewValue());
-            } else if (event.getPropertyName().equals(PropertyUpdate.OPERATION_MODE.name())) {
-                logger.debug("listener new value {}", event.getNewValue());
-                this.updateOperationMode((TOMOperationMode) event.getNewValue());
-            }
+
+                System.out.println("Property " + event.getPropertyName() + " changed from " + event.getOldValue() + " to " + event.getNewValue());
+                logger.info("property updated ");
+                if (event.getPropertyName().equals(PropertyUpdate.SLE_STATUS_UPDATED.name())) {
+                    logger.debug("listener new value {}", event.getNewValue());
+                    this.updateStatus((SLEStatus) event.getNewValue());
+                } else if (event.getPropertyName().equals(PropertyUpdate.OPERATION_MODE.name())) {
+                    logger.debug("listener new value {}", event.getNewValue());
+                    this.updateOperationMode((TOMOperationMode) event.getNewValue());
+                }
+
+//            System.out.println("Property " + event.getPropertyName() + " changed from " + event.getOldValue() + " to " + event.getNewValue());
+//            logger.info("property updated ");
+//            if (event.getPropertyName().equals(PropertyUpdate.SLE_STATUS_UPDATED.name())) {
+//                logger.debug("listener new value {}", event.getNewValue());
+//                this.updateStatus((SLEStatus) event.getNewValue());
+//            } else if (event.getPropertyName().equals(PropertyUpdate.OPERATION_MODE.name())) {
+//                logger.debug("listener new value {}", event.getNewValue());
+//                this.updateOperationMode((TOMOperationMode) event.getNewValue());
+//            }
         });
 
         this.liveTOM.addParameterVersionChangeListener(event -> {

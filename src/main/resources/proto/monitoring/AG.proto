@@ -1,0 +1,94 @@
+syntax = "proto3";
+
+package com.proto.scu.object;
+
+option java_multiple_files = true;
+option java_package = "org.amaytechnosystems";
+option java_outer_classname = "SCUCommonProto";
+
+// Define DirectionMode as an enum
+enum DirectionMode {
+  ENTRY = 0;
+  EXIT = 1;
+  BOTH = 2;
+}
+
+// Define AGOperationMode as an enum
+enum AGOperationMode {
+  IN_SERVICE = 0;
+  OUT_OF_SERVICE = 1;
+  DEFICIENT = 2;
+  MAINTENANCE = 3;
+  TEST = 4;
+  PAUSE = 5;
+  DISCONNECTED = 6;
+  OTHER = 7;
+}
+
+// Specific properties for IN_SERVICE mode
+message InServiceProperties {
+  bool cardFareModeEnabled = 1;
+  DirectionMode directionModeEnabled = 2;
+  bool doorModeEnabled = 3;
+  bool qrFareModeEnabled = 4;
+}
+
+// Specific properties for OUT_OF_SERVICE mode
+message OutOfServiceProperties {
+  string reason = 1;
+  int32 estimatedDowntimeMinutes = 2;
+}
+
+// Specific properties for DEFICIENT mode
+message DeficientProperties {
+  repeated string missingComponents = 1;
+  bool criticalIssue = 2;
+}
+
+// Specific properties for MAINTENANCE mode
+message MaintenanceProperties {
+  string technicianName = 1;
+  string maintenanceType = 2;
+}
+
+// Specific properties for TEST mode
+message TestProperties {
+  bool isAutomatedTest = 1;
+  string testSuiteName = 2;
+}
+
+// Specific properties for PAUSE mode
+message PauseProperties {
+  string pauseReason = 1;
+  int32 pauseDurationMinutes = 2;
+}
+
+// Specific properties for DISCONNECTED mode
+message DisconnectedProperties {
+  string lastKnownLocation = 1;
+  int64 disconnectedSinceTimestamp = 2;
+}
+
+// Specific properties for OTHER mode
+message OtherProperties {
+  string description = 1;
+  map<string, string> additionalInfo = 2;
+}
+
+// Main message containing mode and properties
+message AGOperationModeProperties {
+  AGOperationMode mode = 1;
+//  string color = 2;
+
+  // Use oneof to specify that only one set of properties can be set
+  oneof mode_specific_properties {
+    InServiceProperties inServiceProperties = 3;
+    OutOfServiceProperties outOfServiceProperties = 4;
+    DeficientProperties deficientProperties = 5;
+    MaintenanceProperties maintenanceProperties = 6;
+    TestProperties testProperties = 7;
+    PauseProperties pauseProperties = 8;
+    DisconnectedProperties disconnectedProperties = 9;
+    OtherProperties otherProperties = 10;
+  }
+}

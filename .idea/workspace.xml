@@ -5,7 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="315d97bc-7335-4bbd-a14f-28c409037fec" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sleLocationList.json" beforeDir="false" afterPath="$PROJECT_DIR$/sleLocationList.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/SCUApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/SCUApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/command/CommandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/command/CommandTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/HeaderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/HeaderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/MonitorRightView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/MonitorRightView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TOMController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TOMController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TomCommandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TomCommandController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/components/TomWidgetsView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/components/TomWidgetsView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/enums/AGInServiceProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/enums/AGInServiceProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/enums/AGOperationMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/enums/AGOperationMode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/enums/StationSpecialMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/enums/StationSpecialMode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/enums/TOMOperationMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/enums/TOMOperationMode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/grpc/GrpcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/grpc/GrpcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/grpc/ScuGrpcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/grpc/ScuGrpcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/listenner/impl/MonitoringRightViewListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/listenner/impl/MonitoringRightViewListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/popup/SleCommandInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/popup/SleCommandInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/service/GrpcService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/service/GrpcService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/service/ScuGrpcService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/service/ScuGrpcService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/sleobj/LiveAG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/sleobj/LiveAG.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/sleobj/LiveTOM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/sleobj/LiveTOM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/sles/TOMAbstractFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/sles/TOMAbstractFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/test_grpc_service/SCUService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/test_grpc_service/SCUService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/css/widgets.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/css/widgets.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/popups/tom-widgets-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/popups/tom-widgets-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/proto/AG.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/proto/AG.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/proto/Enums.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/proto/Enums.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/proto/SC.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/proto/SC.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/proto/TOM.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/proto/TOM.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/amay/scu/command/CommandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/amay/scu/command/CommandTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,10 +51,10 @@
         <option value="Record" />
         <option value="package-info" />
         <option value="JUnit5 Test Class" />
-        <option value="Enum" />
         <option value="CSS File" />
         <option value="Interface" />
         <option value="FxmlFile" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -63,6 +96,7 @@
     &quot;Application.TOMOperationMode.executor&quot;: &quot;Run&quot;,
     &quot;Application.com.amay.scu.GateClientManager.executor&quot;: &quot;Run&quot;,
     &quot;Application.myCode.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CommandTest.testCommand.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.GrpcServiceTest.sendCommandTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.LiveTOMTest.liveTomPropChange.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.SCUServiceTest.updateSLE.executor&quot;: &quot;Run&quot;,
@@ -135,11 +169,11 @@
       <recent name="com.amay.scu.repository" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.amay.scu.interceptor" />
       <recent name="com.amay.scu.controller" />
       <recent name="com.amay.scu.listenner.impl" />
       <recent name="com.amay.scu.popup" />
       <recent name="com.amay.scu.grpc" />
-      <recent name="com.amay.scu.sleobj" />
     </key>
   </component>
   <component name="RunManager" selected="Application.SCUApplication">
@@ -156,7 +190,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Main" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.amay.scu.tersr.Main" />
       <module name="scu" />
       <extension name="coverage">
@@ -164,6 +198,16 @@
           <option name="PATTERN" value="com.amay.scu.tersr.*" />
           <option name="ENABLED" value="true" />
         </pattern>
+      </extension>
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+        </ENTRIES>
       </extension>
       <method v="2">
         <option name="Make" enabled="true" />
@@ -182,7 +226,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SCUApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="SCUApplication" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.amay.scu.SCUApplication" />
       <module name="scu" />
       <extension name="coverage">
@@ -191,6 +235,42 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+        </ENTRIES>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommandTest.testCommand" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="scu" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.amay.scu.command.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+        </ENTRIES>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.amay.scu.command" />
+      <option name="MAIN_CLASS_NAME" value="com.amay.scu.command.CommandTest" />
+      <option name="METHOD_NAME" value="testCommand" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -208,10 +288,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.EFIClientContentiousPhe" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.ObjectSerialization" />
+      <item itemvalue="Application.SCUApplication" />
+      <item itemvalue="JUnit.CommandTest.testCommand" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.SCUApplication" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.CommandTest.testCommand" />
         <item itemvalue="Application.EFIClientContentiousPhe" />
         <item itemvalue="Application.ObjectSerialization" />
       </list>
@@ -327,7 +415,20 @@
       <workItem from="1724906062462" duration="2973000" />
       <workItem from="1724914435251" duration="16004000" />
       <workItem from="1725077882181" duration="15230000" />
-      <workItem from="1725251368405" duration="2433000" />
+      <workItem from="1725251368405" duration="7245000" />
+      <workItem from="1725343674971" duration="4236000" />
+      <workItem from="1725425176399" duration="17071000" />
+      <workItem from="1725493147462" duration="3091000" />
+      <workItem from="1725509927495" duration="22909000" />
+      <workItem from="1725553699749" duration="5055000" />
+      <workItem from="1725612251819" duration="4274000" />
+      <workItem from="1725645655655" duration="11169000" />
+      <workItem from="1725709952994" duration="4942000" />
+      <workItem from="1725729018950" duration="5072000" />
+      <workItem from="1725809578658" duration="7218000" />
+      <workItem from="1725858092877" duration="69000" />
+      <workItem from="1725858184718" duration="136000" />
+      <workItem from="1725859119284" duration="80000" />
     </task>
     <servers />
   </component>
@@ -375,92 +476,97 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/controller/EFOController.java</url>
           <line>122</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/service/GrpcService.java</url>
-          <line>74</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/test_grpc_service/SCUService.java</url>
-          <line>129</line>
+          <line>140</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/sleobj/LiveTOM.java</url>
-          <line>218</line>
+          <line>240</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/SCUApplication.java</url>
-          <line>83</line>
+          <line>88</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/listenner/impl/StationDynamicMapViewListener.java</url>
           <line>59</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TOMController.java</url>
-          <line>167</line>
+          <line>172</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/SCUApplication.java</url>
-          <line>91</line>
+          <line>96</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TOMController.java</url>
-          <line>177</line>
+          <line>193</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/controller/StationDynamicMapController.java</url>
           <line>120</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TOMController.java</url>
-          <line>121</line>
+          <line>122</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/test_grpc_service/SCUService.java</url>
-          <line>171</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/test_grpc_service/SCUService.java</url>
-          <line>175</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/listenner/impl/StationDynamicMapViewListener.java</url>
           <line>53</line>
           <option name="timeStamp" value="30" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/controller/components/TomWidgetsView.java</url>
-          <line>85</line>
+          <line>112</line>
           <option name="timeStamp" value="32" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/grpc/ScuGrpcConfig.java</url>
-          <line>17</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/interceptor/AuthClientInterceptor.java</url>
           <line>7</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TOMController.java</url>
+          <line>140</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/test_grpc_service/SCUService.java</url>
+          <line>177</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TOMController.java</url>
+          <line>182</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/service/GrpcService.java</url>
+          <line>71</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/controller/MonitorRightView.java</url>
+          <line>161</line>
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/controller/StationDynamicMapController.java</url>
           <line>118</line>
           <properties class="com.amay.scu.controller.StationDynamicMapController" method="updateTOMPeripheralStatus">
@@ -469,14 +575,41 @@
           </properties>
           <option name="timeStamp" value="27" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/interceptor/AuthClientInterceptor.java</url>
           <line>11</line>
-          <properties class="AuthClientInterceptor" method="interceptCall">
+          <properties class="com.amay.scu.interceptor.AuthClientInterceptor">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TOMController.java</url>
+          <line>130</line>
+          <properties class="com.amay.scu.controller.TOMController" method="updateOperationMode">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/sleobj/LiveTOM.java</url>
+          <line>209</line>
+          <properties class="com.amay.scu.sleobj.LiveTOM" method="setOperationMode">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/enums/StationSpecialMode.java</url>
+          <line>91</line>
+          <properties class="com.amay.scu.enums.StationSpecialMode" method="getStationSpecialMode">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="44" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

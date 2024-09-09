@@ -1,5 +1,6 @@
 package com.amay.scu.test_grpc_service;
 
+import com.amay.scu.enums.StationSpecialMode;
 import com.amay.scu.enums.TOMOperationMode;
 import com.amay.scu.listenner.impl.MonitoringRightViewListener;
 import com.amay.scu.listenner.impl.StationDynamicMapViewListener;
@@ -10,28 +11,23 @@ import org.network.monitorandcontrol.ag.AGPeripheralStatus;
 import org.network.monitorandcontrol.scu_console.ConsoleProtocol;
 import org.network.monitorandcontrol.scu_console.StreamData;
 
-import com.google.protobuf.Any;
-
-import io.grpc.stub.StreamObserver;
 import org.network.monitorandcontrol.tom.TOMDeviceInfo;
 import org.network.monitorandcontrol.tom.TOMModeControl;
 import org.network.monitorandcontrol.tom.TOMParameterVersion;
 import org.network.monitorandcontrol.tom.TOMPeripheralStatus;
 
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
 public class SCUService {
     static int st=0;
-    private Set<String> set =null;
 
     StationDynamicMapViewListener stationDynamicMapViewListener;
 
 
-    public SCUService(Set<String> set) {
+    public SCUService() {
         stationDynamicMapViewListener=StationDynamicMapViewListener.getInstance();
-        this.set=set;
+
     }
 
     public void updateSLEs(StreamData streamData) {
@@ -68,9 +64,24 @@ public class SCUService {
                 decodeAGResponse(value);
                 break;
             }
-            default:{
-
+            case SCU :{
+                System.out.println("SCU Response");
+                decodeSCUResponse(value);
+                break;
             }
+            default:{
+                System.out.println("Device Type not found");
+            }
+        }
+    }
+
+    private void decodeSCUResponse(ConsoleProtocol value) {
+        try {
+            StationSpecialMode stationSpecialMode= StationSpecialMode.getSpecialMode(value.getErrorMsg());
+            System.out.println("Station Special Mode about to set : "+stationSpecialMode.getModeName());
+            StationSpecialMode.setStationSpecialMode(stationSpecialMode);
+        }catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -166,10 +177,12 @@ public class SCUService {
         switch (consoleProtocol.getStreamData().getRequestType()) {
             case DIVICE_DISCONNECT:
                 //device is disconnected
+                deviceDisconnected(consoleProtocol, new LiveTOM());
+                System.out.println("Equip Id disconnected : "+consoleProtocol.getStreamData().getEquipId());
                 break;
             case DEVICE_INFO:
                 //TOM Device Info decode and display
-                checkTOMInfo(consoleProtocol);
+                checkTOMInfo(consoleProtocol, new LiveTOM());
                 break;
             case PERIPHERAL_STATUS:
                 //TOM Peripheral Status decode and display
@@ -184,8 +197,23 @@ public class SCUService {
                 break;
             case ALARMS:
                 pushAlarms(consoleProtocol);
+                break;
+            case OPERATION_MODE:
+
+                break;
             default:
                 break;
+        }
+    }
+
+    private void deviceDisconnected(ConsoleProtocol consoleProtocol, LiveTOM liveTOM) {
+        try {
+            System.out.println("Equip Id in set : "+consoleProtocol.getStreamData().getEquipId());
+            liveTOM.setEquipId(consoleProtocol.getStreamData().getEquipId());
+            liveTOM.setOperationMode(TOMOperationMode.DISCONNECTED);
+            stationDynamicMapViewListener.updateTOMOperationMode(consoleProtocol.getStreamData().getEquipId(), liveTOM);
+        }catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -204,9 +232,9 @@ public class SCUService {
 
 
 
-    private void checkTOMInfo(ConsoleProtocol consoleProtocol) {
+    private void checkTOMInfo(ConsoleProtocol consoleProtocol, LiveTOM liveTOM) {
         try {
-            set.add(consoleProtocol.getStreamData().getEquipId());
+            System.out.println("Equip Id in set : "+consoleProtocol.getStreamData().getEquipId());
             System.out.println(consoleProtocol.getStreamData().getRequestData().unpack(TOMDeviceInfo.class));
         }catch (Exception e){
             e.printStackTrace();

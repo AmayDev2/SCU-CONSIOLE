@@ -26,11 +26,10 @@ import javafx.application.Application;
         import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
         import javafx.stage.Stage;
-import org.network.monitorandcontrol.DeviceType;
-import org.network.monitorandcontrol.OperationMode;
-import org.network.monitorandcontrol.RequestType;
+import org.network.monitorandcontrol.*;
 import org.network.monitorandcontrol.scu_console.ConsoleProtocol;
 import org.network.monitorandcontrol.scu_console.StreamData;
+import org.network.monitorandcontrol.tom.TOMModeControl;
 import org.network.monitorandcontrol.tom.TOMPeripheralStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -71,6 +70,12 @@ try {
 
    GrpcService grpcService = new GrpcService(GrpcConfig.getAsyncStub());
     grpcService.initialConnectionRequest(null);
+//
+//    //1-command test
+//    grpcService.sendMessage(ConsoleProtocol.newBuilder()
+//            .setDeviceType(DeviceType.TOM)
+//            .setStreamData(StreamData.newBuilder().setEquipId("TOM1").setCommandType(CommandType.MODE_CONTROL).setRequestData(Any.pack(TOMModeControl.newBuilder().setOperationMode(OperationMode.IN_SERVICE).build())).build())
+//            .build());
 
    ScuGrpcService.INSTANCE.ScuGrpcService(ScuGrpcConfig.getBlockingStub());
     //TODO: Add the below line to the SCUController

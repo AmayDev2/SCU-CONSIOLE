@@ -11,11 +11,11 @@ enum RequestType {
     PARAMETER_VERSION = 3;
     ALARMS = 4;
     RESPONSE = 5;
-//    OPERATION_MODE=6;
+    OPERATION_MODE=6;
 }
 
 enum CommandType {
-    UNKNOWN_COMMAND = 0;
+    UNKNOWN_COMMAND = 0; // for special commands
     MODE_CONTROL = 1;
     GET_DEVICE_INFO = 2;
     GET_PERIPHERAL_STATUS = 3;
@@ -40,9 +40,12 @@ enum SpecialMode {
     SHIFT_END = 7; //TOM
     SHUT_DOWN = 8; //TOM
     RESTART = 9; //TOM
+    NORMAL=10;
+
 }
 
 enum DeviceType{
     TOM = 0;
     AG = 1;
+    SCU = 2;
 }

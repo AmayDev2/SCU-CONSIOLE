@@ -22,13 +22,6 @@
     <VBox maxHeight="150" spacing="10" styleClass="section" GridPane.columnIndex="0" GridPane.rowIndex="3">
         <Label styleClass="section-title" text="ALARMS" />
     <ListView fx:id="alarmsListView" style="-fx-border-color: #d3d3d3; -fx-background-color: #f9f9f9;" styleClass="section">
-        <items>
-            <FXCollections fx:factory="observableArrayList">
-                <Label styleClass="alarm-text" text="• Operator Login (10)" wrapText="true" />
-                <Label styleClass="alarm-text" text="• TOM Logon failure for 3 times (11)" wrapText="true" />
-                <Label styleClass="alarm-text" text="• In-service Mode applied (001)" wrapText="true" />
-            </FXCollections>
-        </items>
     </ListView>
     </VBox>
 
@@ -101,24 +94,24 @@
     <!-- Footer -->
     <!-- Configuration Section in HBox -->
     <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="5">
-        <Label text="Configuration version: -TM0001.1" />
-    <Label text="User version: -xxxxx" />
+        <Label fx:id="configVersion" text="Configuration version: -TM0001.1" />
+    <Label  fx:id="userVersion" text="User version: -xxxxx" />
     </HBox>
 
     <!-- Other Labels -->
     <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="6">
-        <Label text="Parameter version:  -xxxxx   " />
-        <Label text="Product version: -xxxxx" />
+        <Label fx:id="parameterVersion" text="Parameter version:  -xxxxx   " />
+        <Label fx:id="productVersion" text="Product version: -xxxxx" />
     </HBox>
 
     <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="7">
-    <Label text="Software version: -xxxxx" />
-    <Label text="Blacklist version: -xxxx" />
+    <Label fx:id="softwareVersion" text="Software version: -xxxxx" />
+    <Label fx:id="blacklistVersion" text="Blacklist version: -xxxx" />
      </HBox>
    <HBox layoutX="30.0" layoutY="496.0" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="5">
       <children>
-           <Label text="Fare version: -xxxxx" />
-           <Label text="IP address: -00.11000.00" />
+           <Label fx:id="fareVersion" text="Fare version: -xxxxx" />
+           <Label fx:id="ipAddress" text="IP address: -00.11000.00" />
       </children>
    </HBox>
    <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="1">

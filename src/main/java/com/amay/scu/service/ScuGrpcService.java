@@ -1,15 +1,20 @@
 package com.amay.scu.service;
 
 
+import com.amay.scu.enums.StationSpecialMode;
 import com.amay.scu.grpc.GrpcConfig;
 import com.amay.scu.grpc.ScuGrpcConfig;
 import com.amay.scu.test_grpc_service.SCUService;
 //import org.amaytechnosystems.SCUServiceGrpc;
 import org.amaytechnosystems.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 public enum ScuGrpcService  {
     INSTANCE;
+
+    Logger logger= LoggerFactory.getLogger(ScuGrpcService.class);
 
     private SCUServiceGrpc.SCUServiceBlockingStub blockingStub=null;
 
@@ -79,6 +84,26 @@ public enum ScuGrpcService  {
             e.printStackTrace();
             return "0-0-0-0";
         }
+    }
+
+    public void setStationCurrentMode(StationSpecialMode specialMode) {
+        try {
+         logger.info("Selected command: " + specialMode.name());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public StationSpecialMode getStationCurrentMode() {
+        StationSpecialMode specialMode=null;
+        try {
+            specialMode=StationSpecialMode.STATION_CLOSED;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return specialMode;
     }
 
 

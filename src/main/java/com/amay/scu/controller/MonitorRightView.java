@@ -6,6 +6,7 @@ import com.amay.scu.command.CommandTest;
 import com.amay.scu.controller.components.AlertController;
 import com.amay.scu.enums.StationSpecialMode;
 import com.amay.scu.listenner.impl.MonitoringRightViewListener;
+import com.amay.scu.model.Alerts;
 import com.amay.scu.service.ScuGrpcService;
 import com.amay.scu.util.TimeUtil;
 import javafx.application.Platform;
@@ -19,6 +20,8 @@ import javafx.scene.layout.VBox;
 import org.network.monitorandcontrol.CommandType;
 import org.network.monitorandcontrol.RequestType;
 import org.network.monitorandcontrol.SpecialMode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.time.Instant;
@@ -92,11 +95,12 @@ public class MonitorRightView {
     @FXML
     private Button applyCommandButton;
 
+    private final Logger logger = LoggerFactory.getLogger(MonitorRightView.class);
 
 
     private MonitoringRightViewListener monitoringRightViewListener;
 
-    private AuthService authService;
+    private final AuthService authService;
 
     public  MonitorRightView(AuthService authService){
         this.authService=authService;
@@ -127,22 +131,9 @@ public class MonitorRightView {
         monitoringRightViewListener=MonitoringRightViewListener.initialize(this);
         pickTime();
         updateEntryExitCount();
-
         alerts = alertsListView.getItems();
 
-//        alertsListView.setCellFactory(param -> new ListCell<Parent>() {
-//            @Override
-//            protected void updateItem(Parent item, boolean empty) {
-//                super.updateItem(item, empty);
-//                if (empty || item == null) {
-//                    setGraphic(null);
-//                } else {
-//                    setGraphic(item);
-//                }
-//            }
-//        });
-
-        updateRevenueContinue();
+//        updateRevenueContinue();
         updateRevenue();
 
         ToggleGroup commandGroup = new ToggleGroup();
@@ -167,91 +158,80 @@ public class MonitorRightView {
         fareBypassMode1Button.setOnAction(event -> handleSelection(fareBypassMode1Button));
         fareBypassMode2Button.setOnAction(event -> handleSelection(fareBypassMode2Button));
         highSecurityMode.setOnAction(event -> handleSelection(highSecurityMode));
-        //*************************
 
-        // Dynamically create and add ToggleButtons to the TOM section
-//        ToggleButton tomButton1 = new ToggleButton("TOM Command 1");
-////        tomButton1.setMinWidth(200);
-//        tomButton1.getStyleClass().add("select-button1");
-////        tomButton1.getStyleClass().add("transparent-button");
-//
-//        ToggleButton tomButton2 = new ToggleButton("TOM Command 2");
-//        tomButton2.setMinWidth(200);
-//        tomButton2.getStyleClass().add("select-button");
-//
-//        tomSection.getChildren().addAll(tomButton1, tomButton2);
-//
-//        // Dynamically create and add ToggleButtons to the AG section
-//        ToggleButton agButton1 = new ToggleButton("AG Command 1");
-//        agButton1.setMinWidth(200);
-//        agButton1.getStyleClass().add("select-button");
-//
-//        ToggleButton agButton2 = new ToggleButton("AG Command 2");
-//        agButton2.setMinWidth(200);
-//        agButton2.getStyleClass().add("select-button");
-//
-//        agSection.getChildren().addAll(agButton1, agButton2);
+        StationSpecialMode.StationSpecialModeListener listener = newMode -> {
+            if( newMode.equals(StationSpecialMode.EMERGENCY)) {
+                logger.debug("Entering emergency mode");
+                stationCloseButton.setDisable(true);
+                excessFareOverrideButton.setDisable(true);
+                fareBypassMode1Button.setDisable(true);
+                fareBypassMode2Button.setDisable(true);
+                highSecurityMode.setDisable(true);
+//                emergencyButton.setSelected(true);
+            }else{
+                stationCloseButton.setDisable(false);
+                excessFareOverrideButton.setDisable(false);
+                fareBypassMode1Button.setDisable(false);
+                fareBypassMode2Button.setDisable(false);
+                highSecurityMode.setDisable(false);
+                emergencyButton.setSelected(false);
+            }
+            switch (newMode) {
+                case EMERGENCY:
+                    emergencyButton.setSelected(true);
+                    break;
+                case STATION_CLOSED:
+                    stationCloseButton.setSelected(true);
+                    break;
+                case EXCESS_FARE_OVERRIDE:
+                    excessFareOverrideButton.setSelected(true);
+                    break;
+                case FARE_BYPASS_MODE_1:
+                    fareBypassMode1Button.setSelected(true);
+                    break;
+                case FARE_BYPASS_MODE_2:
+                    fareBypassMode2Button.setSelected(true);
+                    break;
+                case HIGH_SECURITY_MODE:
+                    highSecurityMode.setSelected(true);
+                    break;
+                default:
+                    break;
+            }
 
-
-        //******************************
+        };
+        StationSpecialMode.addStationSpecialModeListener(listener);
 
         authService.isAuthenticated().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 // User is authenticated
-                System.out.println("User is authenticated");
+                logger.info("User is authenticated");
                 // Enable the emergency button
                 applyCommandButton.setDisable(false);
             } else {
                 // User is not authenticated
-                System.out.println("User is not authenticated");
+                logger.info("User is not authenticated");
                 // Disable the emergency button
                 applyCommandButton.setDisable(true);
             }
         });
 
 
-
-
-
         applyCommandButton.setOnAction(event ->{
-
             if (selectedCommand != null) {
                 System.out.println("Selected command: " + selectedCommand.getText());
                 CommandTest.INSTANCE.sendStationCommand(StationSpecialMode.valueOf(selectedCommand.getText()));
             } else {
                 System.out.println("No command selected");
+                CommandTest.INSTANCE.sendStationCommand(StationSpecialMode.STATION_CLOSED);
             }
         });
-
-//        applyButton.setDisable(true);
-
-//            try {
-//                FXMLLoader loader11 = ViewFactory.getAlert();
-//                loader11.setControllerFactory(c -> new AlertController("RE-AG-033", "Alert description Alert description Alert description Alert description Alert description", "26 April 2024 18:28:39", "status-indicator"));
-//                Parent alert111 = loader11.load();
-//                alerts.add(alert111);
-//
-//            // Load the FXML for the alert item
-//            FXMLLoader loader = ViewFactory.getAlert();
-//            loader.setControllerFactory(c -> new AlertController("RE-AG-031", "Alert description Alert description Alert description Alert description Alert description","26 April 2024 18:28:39", "status-indicator-red"));
-//            Parent alert1 = loader.load();
-//            alerts.add(alert1);
-//
-//            FXMLLoader loader1 = ViewFactory.getAlert();
-//            loader1.setControllerFactory(c -> new AlertController("RE-AG-032", "Alert description Alert description Alert description Alert description Alert description","26 April 2024 18:28:39", "status-indicator-green"));
-//            Parent alert11 = loader1.load();
-//            alerts.add(alert11);
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    });
         }
 
     private void updateRevenueContinue() {
 //
         // Create a timeline that updates the revenue every 5 seconds
-        javafx.animation.Timeline timeline = new javafx.animation.Timeline(new javafx.animation.KeyFrame(javafx.util.Duration.minutes(1), event -> {
+        javafx.animation.Timeline timeline = new javafx.animation.Timeline(new javafx.animation.KeyFrame(javafx.util.Duration.minutes(5), event -> {
             updateRevenue();
         }));
         timeline.setCycleCount(javafx.animation.Animation.INDEFINITE); // Run indefinitely
@@ -282,6 +262,7 @@ public class MonitorRightView {
 
     public void sendAlarm(Map<Integer,String> alarms, String equipId, String requestType) {
         for(Map.Entry<Integer, String> entry : alarms.entrySet()) {
+            Alerts.addAlert(new Alerts.Alert(equipId,String.valueOf(entry.getKey()),entry.getValue(), TimeUtil.getAlertDate()));
             Platform.runLater(() -> {
                 System.out.println("Updating alerts"+this.hashCode());
                 try {
@@ -297,4 +278,30 @@ public class MonitorRightView {
         }
 
     }
+
+//    public void setStationMode(StationSpecialMode mode) {
+//
+//        switch (mode) {
+//            case EMERGENCY:
+//                emergencyButton.setSelected(true);
+//                break;
+//            case STATION_CLOSED:
+//                stationCloseButton.setSelected(true);
+//                break;
+//            case EXCESS_FARE_OVERRIDE:
+//                excessFareOverrideButton.setSelected(true);
+//                break;
+//            case FARE_BYPASS_MODE_1:
+//                fareBypassMode1Button.setSelected(true);
+//                break;
+//            case FARE_BYPASS_MODE_2:
+//                fareBypassMode2Button.setSelected(true);
+//                break;
+//            case HIGH_SECURITY_MODE:
+//                highSecurityMode.setSelected(true);
+//                break;
+//            default:
+//                break;
+//        }
+//    }
 }

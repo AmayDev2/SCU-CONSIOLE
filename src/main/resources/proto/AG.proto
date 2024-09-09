@@ -67,10 +67,12 @@ message AGParameterVersion{
 /*
     GateInfo is information about modes set in the GCU
 */
+
+//TODO:???????????
 message GateInfo{
     int32 gate_mode = 1;
     int32 passage_info = 2;
-    int32 emergency_mode = 3;
+    int32 emergency_mode = 3;   //TODO:???????????
     int32 maintenance_flap_info = 4;
     string gcu_version = 5;
 }

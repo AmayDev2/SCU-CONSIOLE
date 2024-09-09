@@ -1,7 +1,8 @@
 package com.amay.scu.enums;
 
+
 public enum AGOperationMode implements OperationMode, AGInServiceProperties {
-    IN_SERVICE(true, true, true, true, "-fx-background-color: #00FF00"),  // Green
+    IN_SERVICE(true, DirectionMode.ENTRY, true, true, "-fx-background-color: #00FF00"),  // Green
     OUT_OF_SERVICE("-fx-background-color: #FF0000"),                      // Red
     DEFICIENT("-fx-background-color: #FFA500"),                           // Orange
     MAINTENANCE("-fx-background-color: #FFFF00"),                         // Yellow
@@ -11,7 +12,7 @@ public enum AGOperationMode implements OperationMode, AGInServiceProperties {
     OTHER("-fx-background-color: #FBA500");                               // Another Orange
 
     private final boolean cardFareModeEnabled;
-    private final boolean directionModeEnabled;
+    private final DirectionMode directionModeEnabled;
     private final boolean doorModeEnabled;
     private final boolean qrFareModeEnabled;
     private final String color;
@@ -19,14 +20,14 @@ public enum AGOperationMode implements OperationMode, AGInServiceProperties {
     // Constructor for modes other than IN_SERVICE
     AGOperationMode(String color) {
         this.cardFareModeEnabled = false;
-        this.directionModeEnabled = false;
+        this.directionModeEnabled = DirectionMode.ENTRY;
         this.doorModeEnabled = false;
         this.qrFareModeEnabled = false;
         this.color = color;
     }
 
     // Constructor for IN_SERVICE mode
-    AGOperationMode(boolean cardFareModeEnabled, boolean directionModeEnabled, boolean doorModeEnabled, boolean qrFareModeEnabled, String color) {
+    AGOperationMode(boolean cardFareModeEnabled, DirectionMode directionModeEnabled, boolean doorModeEnabled, boolean qrFareModeEnabled, String color) {
         this.cardFareModeEnabled = cardFareModeEnabled;
         this.directionModeEnabled = directionModeEnabled;
         this.doorModeEnabled = doorModeEnabled;
@@ -44,7 +45,7 @@ public enum AGOperationMode implements OperationMode, AGInServiceProperties {
     }
 
     @Override
-    public boolean isDirectionModeEnabled() {
+    public DirectionMode isDirectionModeEnabled() {
         if (this == IN_SERVICE) {
             return directionModeEnabled;
         }

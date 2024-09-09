@@ -2,6 +2,7 @@ package com.amay.scu.grpc;
 
 
 import com.amay.scu.interceptor.AuthClientInterceptor;
+import com.amay.scu.interceptor.ClientIdInterceptor;
 import com.amay.scu.interceptor.ClientLoggingInterceptor;
 import io.grpc.ConnectivityState;
 import io.grpc.ManagedChannel;
@@ -18,6 +19,7 @@ public class ScuGrpcConfig {
                 .usePlaintext()  // No TLS for local development
                 .intercept(new ClientLoggingInterceptor()) // Apply the interceptor
                 .intercept(new AuthClientInterceptor("1234")) // Pass the token to the interceptor
+                .intercept(new ClientIdInterceptor("03100902"))
                 .build();
         System.out.println("Channel created "+channel.toString());
     }

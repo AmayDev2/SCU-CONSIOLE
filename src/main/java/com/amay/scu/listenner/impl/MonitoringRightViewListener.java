@@ -3,6 +3,7 @@ package com.amay.scu.listenner.impl;
 import com.amay.scu.controller.MonitorRightView;
 import com.amay.scu.controller.StationDynamicMapController;
 import com.amay.scu.enums.SLEStatus;
+import com.amay.scu.enums.StationSpecialMode;
 import com.amay.scu.sleobj.LiveAG;
 import com.amay.scu.sleobj.LiveTOM;
 import org.network.monitorandcontrol.Alarms;
@@ -48,4 +49,8 @@ public class MonitoringRightViewListener {
     public void sendAlarm(Map<Integer, String> alarms, String equipId, String equipType) {
         monitorRightView.sendAlarm(alarms, equipId, equipType);
     }
+
+//    public void setStationMode(StationSpecialMode mode) {
+//        monitorRightView.setStationMode(mode);
+//    }
 }

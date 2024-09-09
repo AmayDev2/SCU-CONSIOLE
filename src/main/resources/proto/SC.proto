@@ -48,6 +48,7 @@ message StreamData{
     string equip_id = 2;
     RequestType request_type = 3;
     google.protobuf.Any request_data = 4;
+    DeviceType device_type = 5;
 }
 
 /*

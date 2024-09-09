@@ -16,6 +16,10 @@
     -fx-padding: 10;
 }
 
+.list-cell {
+    -fx-text-fill: red;  /* This sets the text color to red */
+}
+
 .section-title {
     -fx-font-size: 16px;
     -fx-font-weight: bold;

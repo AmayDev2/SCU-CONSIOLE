@@ -222,4 +222,14 @@ public class LiveAG implements LiveSLE, SleCommandInfo {
         }
 
     }
+
+    @Override
+    public String getAllCommands() {
+        return null;
+    }
+
+    @Override
+    public void addCommand(String command) {
+
+    }
 }

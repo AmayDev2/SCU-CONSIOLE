@@ -154,6 +154,10 @@ public class TomCommandController {
             this.command=CommandType.GET_PERIPHERAL_STATUS;
             tomModeControlBuilder=TOMModeControl.newBuilder();
         });
+        SoftwareVersionOn.setOnAction(event -> {
+            this.command=CommandType.GET_DIVICE_VERSIONS;
+            tomModeControlBuilder=TOMModeControl.newBuilder();
+        });
 
         DeviceStatusOn.setOnAction(event -> {
             this.command=CommandType.GET_DEVICE_INFO;
@@ -230,7 +234,28 @@ public class TomCommandController {
 
     public void applyCommand(ActionEvent actionEvent) {
         logger.debug("given command : {} {}",id,command);
-        popupContent.sendCommand(id,command,tomModeControlBuilder.build());
+        TOMModeControl tomModeControl=tomModeControlBuilder.build();
+        saveIntoQueue(command,tomModeControl);
+        popupContent.sendCommand(id,command,tomModeControl);
 
+    }
+
+    private void saveIntoQueue(CommandType command, TOMModeControl tomModeControl) {
+        switch (command){
+            case MODE_CONTROL:
+                logger.info("Command : {} {}",command,tomModeControl.getOperationMode());
+                this.sleCommandInfo.addCommand(tomModeControl.getOperationMode().name());
+                break;
+            case GET_DEVICE_INFO:
+                logger.info("Command : {} {}",command);
+                this.sleCommandInfo.addCommand(command.name());
+                break;
+            case GET_DIVICE_VERSIONS:
+                logger.info("Command : {} {}",command);
+                break;
+            case GET_PERIPHERAL_STATUS:
+                logger.info("Command : {} {}",command);
+                break;
+        }
     }
 }

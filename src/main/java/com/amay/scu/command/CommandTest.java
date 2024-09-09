@@ -18,11 +18,9 @@ public enum CommandTest{
 
     final Logger logger= LoggerFactory.getLogger(CommandTest.class);
     private  GrpcService grpcService;
-    Set<String> set;
 
-    public void initializeCommandTest(GrpcService grpcService, Set<String> set) {
+    public void initializeCommandTest(GrpcService grpcService) {
         this.grpcService = grpcService;
-        this.set=set;
 
     }
 
@@ -30,11 +28,7 @@ public enum CommandTest{
 
             try{
                 ConsoleProtocol consoleProtocol = createCommandRequest(command, deviceType, equipId, tomModeControl);
-                if (consoleProtocol != null) {
-                    grpcService.sendMessage(consoleProtocol);
-                } else {
-                    System.out.println("Invalid command. Please try again.");
-                }
+                grpcService.sendMessage(consoleProtocol);
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input. Please enter numeric values.");
             }
@@ -42,32 +36,23 @@ public enum CommandTest{
 
     //station level command
     public void sendStationCommand(StationSpecialMode specialMode) {
-        System.out.println("Selected command: " + specialMode.name());
-        StationSpecialMode.setStationSpecialMode(specialMode);
-        TOMModeControl tomModeControl=TOMModeControl.newBuilder().setSpecialMode(specialMode.getSpecialMode()).build();
 
-        for(String equipId:set) {
+        System.out.println("Selected command: " + specialMode.name());
+
+        TOMModeControl tomModeControl=TOMModeControl.newBuilder().setSpecialMode(specialMode.getSpecialMode()).build();
             try {
-                char[] arr=equipId.toCharArray();
-                DeviceType deviceTypes=arr[6]=='2'?DeviceType.AG:DeviceType.TOM;
                 ConsoleProtocol consoleProtocol = ConsoleProtocol.newBuilder()
-                        .setDeviceType(deviceTypes)
                         .setStreamData(StreamData.newBuilder()
-                                .setEquipId(equipId)
                                 .setCommandType(CommandType.MODE_CONTROL)
                                 .setRequestData(Any.pack(tomModeControl))
                                 .build())
                         .build();
-                if (consoleProtocol != null) {
-                    logger.info("Sending command to device: {}", equipId);
-                    grpcService.sendMessage(consoleProtocol);
-                } else {
-                    System.out.println("Invalid command. Please try again.");
-                }
+                grpcService.sendMessage(consoleProtocol);
+                StationSpecialMode.setStationSpecialMode(specialMode);
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input. Please enter numeric values.");
             }
-        }
+//        }
     }
 
 

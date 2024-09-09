@@ -1,5 +1,6 @@
 package com.amay.scu.controller.components;
 
+import com.amay.scu.model.Alerts;
 import com.amay.scu.popup.PopupContent;
 import com.amay.scu.popup.SleCommandInfo;
 import com.amay.scu.service.ScuGrpcService;
@@ -16,6 +17,24 @@ import java.time.LocalDate;
 
 public class TomWidgetsView {
 
+    /**********************************+++++++++++++++++^^^^^^^^^^^^^^^^^^^^^^^^^^^^++++++++++++++++++++**********************************/
+    @FXML
+    private Label configVersion;
+    @FXML
+    private Label userVersion;
+    @FXML
+    private Label parameterVersion;
+    @FXML
+    private Label productVersion;
+    @FXML
+    private Label blacklistVersion;
+    @FXML
+    private Label softwareVersion;
+    @FXML
+    private Label fareVersion;
+    @FXML
+    private Label ipAddress;
+/**********************************+++++++++++++++++^^^^^^^^^^^^^^^^^^^^^^^^^^^^++++++++++++++++++++**********************************/
 
     @FXML
     private  Label headerTomId;
@@ -47,11 +66,13 @@ public class TomWidgetsView {
     private final PopupContent popupContent;
 
     private String equipmentId;
+    private final SleCommandInfo sleCommandInfo;
 
     public TomWidgetsView(PopupContent popupContent, SleCommandInfo sleCommandInfo) {
         this.equipmentId = sleCommandInfo.getEquipId();
         this.popupContent = popupContent;
         this.equipmentId = sleCommandInfo.getEquipId();
+        this.sleCommandInfo = sleCommandInfo;
     }
     @FXML
     void initialize() {
@@ -70,6 +91,12 @@ public class TomWidgetsView {
        datePicker.setValue(java.time.LocalDate.now());
        updateRevenue(TimeUtil.datePickerToEpoch(datePicker.getValue()));
        updateStock();
+       commandListView.getItems().clear();
+       commandListView.getItems().addAll(this.sleCommandInfo.getAllCommands().split("\n"));
+       alarmsListView.getItems().clear();
+       alarmsListView.getItems().addAll(Alerts.getAlertsByDeviceId(equipmentId));
+
+        updateVersion();
 
     }
 
@@ -93,5 +120,11 @@ public class TomWidgetsView {
             lastTransaction.setText(lastTransaction.getText().split(":")[0]+" : "+lastTransactionTime);
 
 //        });
+    }
+
+    private void updateVersion(){
+        Platform.runLater(() -> {
+            ipAddress.setText(ipAddress.getText().split(":")[0]+" : "+this.sleCommandInfo.getEquipIp());
+        });
     }
 }

@@ -69,4 +69,5 @@ message TOMModeControl {
     bool card_process_mode = 2;
     bool qr_sale_mode = 3;
     SpecialMode special_mode = 4;
+
 }
