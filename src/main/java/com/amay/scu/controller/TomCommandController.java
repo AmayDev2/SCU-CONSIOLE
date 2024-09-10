@@ -1,5 +1,6 @@
 package com.amay.scu.controller;
 
+import com.amay.scu.enums.TOMOperationMode;
 import com.amay.scu.popup.PopupContent;
 import com.amay.scu.popup.SleCommandInfo;
 import javafx.event.ActionEvent;
@@ -125,6 +126,7 @@ public class TomCommandController {
 
 
         this.setCommand();
+        this.setOperationMode();
     }
 
     private void setCommand() {
@@ -138,7 +140,10 @@ public class TomCommandController {
 
         inService.setOnAction(event -> {
             this.command=CommandType.MODE_CONTROL;
-            tomModeControlBuilder=TOMModeControl.newBuilder().setOperationMode(OperationMode.IN_SERVICE);
+            tomModeControlBuilder=TOMModeControl.newBuilder().setQrSaleMode(true)
+                    .setCardProcessMode(true)
+                    .setOperationMode(OperationMode.IN_SERVICE);
+
             logger.info("In Service");
         });
 
@@ -256,6 +261,22 @@ public class TomCommandController {
             case GET_PERIPHERAL_STATUS:
                 logger.info("Command : {} {}",command);
                 break;
+        }
+    }
+
+    private void setOperationMode(){
+        com.amay.scu.enums.OperationMode operationMode=this.sleCommandInfo.getOperationMode();
+        if(operationMode instanceof TOMOperationMode){
+            TOMOperationMode tomOperationMode=(TOMOperationMode) operationMode;
+            if(tomOperationMode.equals(TOMOperationMode.IN_SERVICE)){
+                inService.setDisable(true);
+                if(tomOperationMode.isQRSaleModeEnabled())
+                    QRSaleOpen.setSelected(true);
+                if(tomOperationMode.isCardProcessingModeEnabled())
+                    CardProcessingOpen.setSelected(true);
+            }else if(tomOperationMode.equals(TOMOperationMode.OUT_OF_SERVICE)){
+                outOfService.setDisable(true);
+            }
         }
     }
 }

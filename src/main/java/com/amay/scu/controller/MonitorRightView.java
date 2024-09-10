@@ -223,7 +223,7 @@ public class MonitorRightView {
                 CommandTest.INSTANCE.sendStationCommand(StationSpecialMode.valueOf(selectedCommand.getText()));
             } else {
                 System.out.println("No command selected");
-                CommandTest.INSTANCE.sendStationCommand(StationSpecialMode.STATION_CLOSED);
+                CommandTest.INSTANCE.sendStationCommand(StationSpecialMode.FARE_BYPASS_MODE_2);
             }
         });
         }

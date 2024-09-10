@@ -68,6 +68,7 @@ public class LiveTOM implements LiveSLE, SleCommandInfo {
     private String qr_key;
     private String ticket;
 
+
     // current operation mode
     private TOMOperationMode operationMode;
 

@@ -253,8 +253,8 @@ public class SCUService {
         try{
             TOMModeControl tomModeControl= consoleProtocol.getStreamData().getRequestData().unpack(TOMModeControl.class);
             LiveTOM liveTOM = new LiveTOM();
-            TOMOperationMode tomOperationMode=TOMOperationMode.DISCONNECTED;
-            switch(tomModeControl.getOperationMode()){
+            TOMOperationMode tomOperationMode=null;
+            if(!tomModeControl.toString().contains("special_mode"))switch(tomModeControl.getOperationMode()){
                 case  IN_SERVICE -> {
                     tomOperationMode=TOMOperationMode.IN_SERVICE;
                     tomOperationMode.updateQRSaleMode(tomModeControl.getQrSaleMode());
@@ -274,7 +274,8 @@ public class SCUService {
                 }
             }
             liveTOM.setOperationMode(tomOperationMode);
-            stationDynamicMapViewListener.updateTOMPeripheralStatus(consoleProtocol.getStreamData().getEquipId(), liveTOM);
+//            stationDynamicMapViewListener.updateTOMPeripheralStatus(consoleProtocol.getStreamData().getEquipId(), liveTOM);
+            stationDynamicMapViewListener.updateTOMOperationMode(consoleProtocol.getStreamData().getEquipId(), liveTOM);
         }catch (Exception e){
 
         }

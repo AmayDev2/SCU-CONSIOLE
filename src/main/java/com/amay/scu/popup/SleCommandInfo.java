@@ -9,4 +9,6 @@ public interface SleCommandInfo {
     public String getEquipIp();
     public String getAllCommands();
     public void addCommand(String command);
+
+
 }
