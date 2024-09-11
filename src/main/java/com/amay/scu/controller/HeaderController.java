@@ -147,7 +147,7 @@ public class HeaderController {
     public void onEmergency(ActionEvent actionEvent) {
 
         if(emergencyModeActive){
-            CommandTest.INSTANCE.sendStationCommand(StationSpecialMode.STATION_CLOSED);
+            CommandTest.INSTANCE.sendStationCommand(StationSpecialMode.STATION_NORMAL);
             emergencyButton.getStyleClass().remove("emergencyButtonActive");
             emergencyModeActive=false;
             return;

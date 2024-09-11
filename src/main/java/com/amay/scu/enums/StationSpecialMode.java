@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum StationSpecialMode {
-    STATION_NORMAL(1, "Station Normal", "-fx-background-color: yellow;",  SpecialMode.TIME_OVERRIDE), // 01
+    STATION_NORMAL(1, "Station Normal", "-fx-background-color: yellow;",  SpecialMode.NORMAL), // 01
     EMERGENCY(2, "Emergency", "-fx-background-color: red;", SpecialMode.EMERGENCY), // 02
     TIME_OVERRIDE(3, "Time Override", "-fx-background-color: yellow;", SpecialMode.TIME_OVERRIDE), // 03
     ENTRY_EXIT_OVERRIDE(4, "Entry/Exit Override", "-fx-background-color: yellow;", SpecialMode.ENTRY_EXIT_OVERRIDE), // 04

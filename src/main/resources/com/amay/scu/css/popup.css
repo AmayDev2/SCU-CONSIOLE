@@ -18,6 +18,13 @@
     -fx-text-fill: #555;
     -fx-font-weight: bold;
 }
+.mode-active {
+    -fx-text-fill: #00ff0d;
+}
+
+.mode-inactive {
+    -fx-text-fill: #f35959;
+}
 
 .value-text {
     -fx-text-fill: #333;

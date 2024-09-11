@@ -6,11 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="315d97bc-7335-4bbd-a14f-28c409037fec" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sleLocationList.json" beforeDir="false" afterPath="$PROJECT_DIR$/sleLocationList.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/HeaderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/HeaderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/MonitorRightView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/MonitorRightView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TomCommandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TomCommandController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/popup/SleCommandInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/popup/SleCommandInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/sleobj/LiveTOM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/sleobj/LiveTOM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/test_grpc_service/SCUService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/test_grpc_service/SCUService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/enums/StationSpecialMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/enums/StationSpecialMode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/css/popup.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/css/popup.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/popups/tom-command.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/popups/tom-command.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,57 +57,57 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.EFIClientContentiousPhe.executor&quot;: &quot;Run&quot;,
-    &quot;Application.EFOClient.executor&quot;: &quot;Run&quot;,
-    &quot;Application.GateClient.executor&quot;: &quot;Run&quot;,
-    &quot;Application.GateClientMain.executor&quot;: &quot;Run&quot;,
-    &quot;Application.GateClientManager.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ObjectSerialization.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SCUApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TOMOperationMode.executor&quot;: &quot;Run&quot;,
-    &quot;Application.com.amay.scu.GateClientManager.executor&quot;: &quot;Run&quot;,
-    &quot;Application.myCode.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CommandTest.testCommand.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.GrpcServiceTest.sendCommandTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.LiveTOMTest.liveTomPropChange.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SCUServiceTest.updateSLE.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SLEFactoryTest.createSLE.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.StationDevicesRepositoryTest.testGetAllAGDevices.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.StationDevicesRepositoryTest.testGetAllStationDevices.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.StationDevicesRepositoryTest.testGetAllTOMDevices.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TOMOperationModeTest.test.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.scu [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.scu [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.scu [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.scu [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.scu [test].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.scu [validate].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Amay Technosystems/SCU-UI/SCU-UI&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.28735632&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.EFIClientContentiousPhe.executor": "Run",
+    "Application.EFOClient.executor": "Run",
+    "Application.GateClient.executor": "Run",
+    "Application.GateClientMain.executor": "Run",
+    "Application.GateClientManager.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.ObjectSerialization.executor": "Run",
+    "Application.SCUApplication.executor": "Run",
+    "Application.TOMOperationMode.executor": "Run",
+    "Application.com.amay.scu.GateClientManager.executor": "Run",
+    "Application.myCode.executor": "Run",
+    "JUnit.CommandTest.testCommand.executor": "Run",
+    "JUnit.GrpcServiceTest.sendCommandTest.executor": "Run",
+    "JUnit.LiveTOMTest.liveTomPropChange.executor": "Run",
+    "JUnit.SCUServiceTest.updateSLE.executor": "Run",
+    "JUnit.SLEFactoryTest.createSLE.executor": "Run",
+    "JUnit.StationDevicesRepositoryTest.testGetAllAGDevices.executor": "Run",
+    "JUnit.StationDevicesRepositoryTest.testGetAllStationDevices.executor": "Run",
+    "JUnit.StationDevicesRepositoryTest.testGetAllTOMDevices.executor": "Run",
+    "JUnit.TOMOperationModeTest.test.executor": "Run",
+    "Maven.scu [clean].executor": "Run",
+    "Maven.scu [compile].executor": "Run",
+    "Maven.scu [install].executor": "Run",
+    "Maven.scu [package].executor": "Run",
+    "Maven.scu [test].executor": "Run",
+    "Maven.scu [validate].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/Amay Technosystems/SCU-UI/SCU-UI",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.28735632",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -407,7 +409,9 @@
       <workItem from="1725864846271" duration="504000" />
       <workItem from="1725865850684" duration="26000" />
       <workItem from="1725868530184" duration="482000" />
-      <workItem from="1725891803411" duration="6608000" />
+      <workItem from="1725891803411" duration="10451000" />
+      <workItem from="1725977363732" duration="7218000" />
+      <workItem from="1726028631769" duration="1851000" />
     </task>
     <servers />
   </component>

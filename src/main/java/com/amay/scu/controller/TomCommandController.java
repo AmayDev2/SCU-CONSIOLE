@@ -3,6 +3,7 @@ package com.amay.scu.controller;
 import com.amay.scu.enums.TOMOperationMode;
 import com.amay.scu.popup.PopupContent;
 import com.amay.scu.popup.SleCommandInfo;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -16,6 +17,12 @@ import org.slf4j.LoggerFactory;
 
 public class TomCommandController {
 
+    @FXML
+    private Label cardProcessingMode;
+    @FXML
+    private Label qrSaleMode;
+    @FXML
+    private Label testMode;
     @FXML
     private  Button inService;
     @FXML
@@ -192,26 +199,26 @@ public class TomCommandController {
         CardProcessingOpen.setOnAction(event -> {
             if(CardProcessingOpen.isSelected()){
             this.command=CommandType.MODE_CONTROL;
-            tomModeControlBuilder=TOMModeControl.newBuilder().setCardProcessMode(true);}
+            tomModeControlBuilder=TOMModeControl.newBuilder().setCardProcessMode(true).setQrSaleMode(((TOMOperationMode)this.sleCommandInfo.getOperationMode()).isCardProcessingModeEnabled());}
         });
 
         CardProcessingClose.setOnAction(event -> {
             if(CardProcessingClose.isSelected()){
                 this.command=CommandType.MODE_CONTROL;
-                tomModeControlBuilder=TOMModeControl.newBuilder().setCardProcessMode(false);}
+                tomModeControlBuilder=TOMModeControl.newBuilder().setCardProcessMode(false).setCardProcessMode(((TOMOperationMode)this.sleCommandInfo.getOperationMode()).isCardProcessingModeEnabled());}
         });
 
 
         QRSaleOpen.setOnAction(event -> {
             if(QRSaleOpen.isSelected()){
                 this.command=CommandType.MODE_CONTROL;
-                tomModeControlBuilder=TOMModeControl.newBuilder().setQrSaleMode(true);}
+                tomModeControlBuilder=TOMModeControl.newBuilder().setQrSaleMode(true).setCardProcessMode(((TOMOperationMode)this.sleCommandInfo.getOperationMode()).isQRSaleModeEnabled());}
         });
 
         QRSaleClose.setOnAction(event -> {
             if(QRSaleClose.isSelected()){
                 this.command=CommandType.MODE_CONTROL;
-                tomModeControlBuilder=TOMModeControl.newBuilder().setQrSaleMode(false);}
+                tomModeControlBuilder=TOMModeControl.newBuilder().setQrSaleMode(false).setCardProcessMode(((TOMOperationMode)this.sleCommandInfo.getOperationMode()).isQRSaleModeEnabled());}
         });
 
         TestOpen.setOnAction(event -> {
@@ -268,15 +275,24 @@ public class TomCommandController {
         com.amay.scu.enums.OperationMode operationMode=this.sleCommandInfo.getOperationMode();
         if(operationMode instanceof TOMOperationMode){
             TOMOperationMode tomOperationMode=(TOMOperationMode) operationMode;
+            Platform.runLater(()->{
+
             if(tomOperationMode.equals(TOMOperationMode.IN_SERVICE)){
                 inService.setDisable(true);
                 if(tomOperationMode.isQRSaleModeEnabled())
-                    QRSaleOpen.setSelected(true);
+                    qrSaleMode.getStyleClass().add("mode-active");
+                else{
+                    qrSaleMode.getStyleClass().add("mode-inactive");
+                }
                 if(tomOperationMode.isCardProcessingModeEnabled())
-                    CardProcessingOpen.setSelected(true);
+                    cardProcessingMode.getStyleClass().add("mode-active");
+                else{
+                    cardProcessingMode.getStyleClass().add("mode-inactive");
+                }
             }else if(tomOperationMode.equals(TOMOperationMode.OUT_OF_SERVICE)){
                 outOfService.setDisable(true);
             }
+            });
         }
     }
 }

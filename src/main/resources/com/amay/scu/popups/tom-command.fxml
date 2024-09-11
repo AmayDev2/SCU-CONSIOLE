@@ -65,15 +65,15 @@
             <RowConstraints />
             </rowConstraints>
             <children>
-                <Label styleClass="label-text" text="Card Processing Mode" GridPane.rowIndex="0" />
+                <Label fx:id="cardProcessingMode" styleClass="label-text" text="Card Processing Mode" GridPane.rowIndex="0" />
                 <RadioButton fx:id="CardProcessingOpen" styleClass="radio-button" text="Open" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                 <RadioButton fx:id="CardProcessingClose" styleClass="radio-button" text="Close" GridPane.columnIndex="2" GridPane.rowIndex="0" />
 
-                <Label styleClass="label-text" text="QR Sale Mode" GridPane.rowIndex="1" />
+                <Label fx:id="qrSaleMode" styleClass="label-text" text="QR Sale Mode" GridPane.rowIndex="1" />
                 <RadioButton fx:id="QRSaleOpen" styleClass="radio-button" text="Open" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <RadioButton fx:id="QRSaleClose" styleClass="radio-button" text="Close" GridPane.columnIndex="2" GridPane.rowIndex="1" />
 
-                <Label styleClass="label-text" text="Test Mode" GridPane.rowIndex="2" />
+                <Label fx:id="testMode" styleClass="label-text" text="Test Mode" GridPane.rowIndex="2" />
                 <RadioButton fx:id="TestOpen" styleClass="radio-button" text="Open" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <RadioButton fx:id="TestClose" styleClass="radio-button" text="Close" GridPane.columnIndex="2" GridPane.rowIndex="2" />
 

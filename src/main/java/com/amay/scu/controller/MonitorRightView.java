@@ -160,28 +160,30 @@ public class MonitorRightView {
         highSecurityMode.setOnAction(event -> handleSelection(highSecurityMode));
 
         StationSpecialMode.StationSpecialModeListener listener = newMode -> {
-            if( newMode.equals(StationSpecialMode.EMERGENCY)) {
+            if( newMode.equals(StationSpecialMode.EMERGENCY ) || newMode.equals(StationSpecialMode.STATION_CLOSED)){
                 logger.debug("Entering emergency mode");
                 stationCloseButton.setDisable(true);
                 excessFareOverrideButton.setDisable(true);
                 fareBypassMode1Button.setDisable(true);
                 fareBypassMode2Button.setDisable(true);
                 highSecurityMode.setDisable(true);
-//                emergencyButton.setSelected(true);
+                emergencyButton.setDisable(true);
             }else{
                 stationCloseButton.setDisable(false);
                 excessFareOverrideButton.setDisable(false);
                 fareBypassMode1Button.setDisable(false);
                 fareBypassMode2Button.setDisable(false);
                 highSecurityMode.setDisable(false);
-                emergencyButton.setSelected(false);
+                emergencyButton.setDisable(false);
             }
             switch (newMode) {
                 case EMERGENCY:
                     emergencyButton.setSelected(true);
+                    emergencyButton.setDisable(false);
                     break;
                 case STATION_CLOSED:
                     stationCloseButton.setSelected(true);
+                    stationCloseButton.setDisable(false);
                     break;
                 case EXCESS_FARE_OVERRIDE:
                     excessFareOverrideButton.setSelected(true);
@@ -196,6 +198,7 @@ public class MonitorRightView {
                     highSecurityMode.setSelected(true);
                     break;
                 default:
+                    emergencyButton.setSelected(false);
                     break;
             }
 
@@ -223,10 +226,15 @@ public class MonitorRightView {
                 CommandTest.INSTANCE.sendStationCommand(StationSpecialMode.valueOf(selectedCommand.getText()));
             } else {
                 System.out.println("No command selected");
-                CommandTest.INSTANCE.sendStationCommand(StationSpecialMode.FARE_BYPASS_MODE_2);
+                CommandTest.INSTANCE.sendStationCommand(StationSpecialMode.STATION_NORMAL);
             }
         });
-        }
+//        qrSale.onMouseClickedProperty().addListener((observable, oldValue, newValue) -> {
+////            logger.info("qrSale clicked");
+//            updateRevenue();
+//        });
+        updateRevenueContinue();
+     }
 
     private void updateRevenueContinue() {
 //
