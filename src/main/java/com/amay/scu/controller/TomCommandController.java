@@ -199,26 +199,28 @@ public class TomCommandController {
         CardProcessingOpen.setOnAction(event -> {
             if(CardProcessingOpen.isSelected()){
             this.command=CommandType.MODE_CONTROL;
-            tomModeControlBuilder=TOMModeControl.newBuilder().setCardProcessMode(true).setQrSaleMode(((TOMOperationMode)this.sleCommandInfo.getOperationMode()).isCardProcessingModeEnabled());}
+            tomModeControlBuilder=TOMModeControl.newBuilder().setCardProcessMode(true).setQrSaleMode(((TOMOperationMode)this.sleCommandInfo.getOperationMode()).isQRSaleModeEnabled());}
+            logger.info("Card Processing Open");
         });
 
         CardProcessingClose.setOnAction(event -> {
             if(CardProcessingClose.isSelected()){
                 this.command=CommandType.MODE_CONTROL;
-                tomModeControlBuilder=TOMModeControl.newBuilder().setCardProcessMode(false).setCardProcessMode(((TOMOperationMode)this.sleCommandInfo.getOperationMode()).isCardProcessingModeEnabled());}
+                tomModeControlBuilder=TOMModeControl.newBuilder().setCardProcessMode(false).setQrSaleMode(((TOMOperationMode)this.sleCommandInfo.getOperationMode()).isQRSaleModeEnabled());}
+            logger.info("Card Processing Close");
         });
 
 
         QRSaleOpen.setOnAction(event -> {
             if(QRSaleOpen.isSelected()){
                 this.command=CommandType.MODE_CONTROL;
-                tomModeControlBuilder=TOMModeControl.newBuilder().setQrSaleMode(true).setCardProcessMode(((TOMOperationMode)this.sleCommandInfo.getOperationMode()).isQRSaleModeEnabled());}
+                tomModeControlBuilder=TOMModeControl.newBuilder().setQrSaleMode(true).setCardProcessMode(((TOMOperationMode)this.sleCommandInfo.getOperationMode()).isCardProcessingModeEnabled());}
         });
 
         QRSaleClose.setOnAction(event -> {
             if(QRSaleClose.isSelected()){
                 this.command=CommandType.MODE_CONTROL;
-                tomModeControlBuilder=TOMModeControl.newBuilder().setQrSaleMode(false).setCardProcessMode(((TOMOperationMode)this.sleCommandInfo.getOperationMode()).isQRSaleModeEnabled());}
+                tomModeControlBuilder=TOMModeControl.newBuilder().setQrSaleMode(false).setCardProcessMode(((TOMOperationMode)this.sleCommandInfo.getOperationMode()).isCardProcessingModeEnabled());}
         });
 
         TestOpen.setOnAction(event -> {
@@ -245,8 +247,9 @@ public class TomCommandController {
     }
 
     public void applyCommand(ActionEvent actionEvent) {
-        logger.debug("given command : {} {}",id,command);
+
         TOMModeControl tomModeControl=tomModeControlBuilder.build();
+        logger.debug("given command : {} {} {}",id,command,tomModeControl);
         saveIntoQueue(command,tomModeControl);
         popupContent.sendCommand(id,command,tomModeControl);
 
