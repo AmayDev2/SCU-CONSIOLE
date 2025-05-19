@@ -41,11 +41,16 @@ enum SpecialMode {
     SHUT_DOWN = 8; //TOM
     RESTART = 9; //TOM
     NORMAL=10;
-
 }
+
 
 enum DeviceType{
     TOM = 0;
     AG = 1;
+    EFO = 4;
+    TVM = 5;
+    TR = 6;
+    CCU = 7;
     SCU = 2;
+    ALL = 3;
 }

@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="315d97bc-7335-4bbd-a14f-28c409037fec" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TomCommandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TomCommandController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sleLocationList.json" beforeDir="false" afterPath="$PROJECT_DIR$/sleLocationList.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/command/CommandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/command/CommandTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/MonitorRightView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/MonitorRightView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/enums/StationSpecialMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/enums/StationSpecialMode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/popups/monitor-right-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/popups/monitor-right-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/proto/Enums.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/proto/Enums.proto" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +86,7 @@
     "Maven.scu [validate].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
@@ -88,7 +94,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/Amay Technosystems/SCU-UI/SCU-UI",
+    "last_opened_file_path": "E:/Amay Technosystems/SCU",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -406,6 +412,27 @@
       <workItem from="1725891803411" duration="10451000" />
       <workItem from="1725977363732" duration="7218000" />
       <workItem from="1726028631769" duration="2975000" />
+      <workItem from="1726045432763" duration="850000" />
+      <workItem from="1726118637011" duration="512000" />
+      <workItem from="1726119936365" duration="1195000" />
+      <workItem from="1727069252723" duration="603000" />
+      <workItem from="1727697787408" duration="387000" />
+      <workItem from="1727851303707" duration="501000" />
+      <workItem from="1729233007340" duration="1042000" />
+      <workItem from="1729310979266" duration="1208000" />
+      <workItem from="1729483181321" duration="594000" />
+      <workItem from="1729503073545" duration="521000" />
+      <workItem from="1729569852541" duration="598000" />
+      <workItem from="1729603163488" duration="594000" />
+      <workItem from="1729656035770" duration="598000" />
+      <workItem from="1729663287258" duration="597000" />
+      <workItem from="1729683995089" duration="584000" />
+      <workItem from="1729692197931" duration="2237000" />
+      <workItem from="1729915276878" duration="592000" />
+      <workItem from="1730693112856" duration="579000" />
+      <workItem from="1730781480008" duration="599000" />
+      <workItem from="1733427201162" duration="1219000" />
+      <workItem from="1733459738840" duration="594000" />
     </task>
     <servers />
   </component>
@@ -581,7 +608,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/enums/StationSpecialMode.java</url>
-          <line>91</line>
+          <line>92</line>
           <properties class="com.amay.scu.enums.StationSpecialMode" method="getStationSpecialMode">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

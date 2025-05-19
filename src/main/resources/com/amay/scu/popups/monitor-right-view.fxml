@@ -99,10 +99,10 @@
                     <VBox alignment="TOP_CENTER" spacing="10">
                         <ToggleButton fx:id="emergencyButton" minWidth="200" styleClass="select-button" text="Emergency" />
                         <ToggleButton fx:id="stationCloseButton" minWidth="200" styleClass="select-button" text="Station Close" />
-                        <ToggleButton fx:id="excessFareOverrideButton" minWidth="200" styleClass="select-button" text="Excess Fare Override" />
-                        <ToggleButton fx:id="fareBypassMode1Button" minWidth="200" styleClass="select-button" text="Fare Bypass Mode 1" />
-                        <ToggleButton fx:id="fareBypassMode2Button" minWidth="200" styleClass="select-button" text="Fare Bypass Mode 2" />
-                        <ToggleButton fx:id="highSecurityMode" minWidth="200" styleClass="select-button" text="High Security mode" />
+<!--                        <ToggleButton fx:id="excessFareOverrideButton" minWidth="200" styleClass="select-button" text="Excess Fare Override" />-->
+<!--                        <ToggleButton fx:id="fareBypassMode1Button" minWidth="200" styleClass="select-button" text="Fare Bypass Mode 1" />-->
+                        <ToggleButton fx:id="fareBypassMode2Button" minWidth="200" styleClass="select-button" text="INCIDENT MODE" />
+<!--                        <ToggleButton fx:id="highSecurityMode" minWidth="200" styleClass="select-button" text="High Security mode" />-->
                         <Button fx:id="applyCommandButton" minWidth="200" styleClass="apply-button" disable="true" text="Apply" />
                     </VBox>
                 </content>

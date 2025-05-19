@@ -15,6 +15,7 @@ public enum StationSpecialMode {
     FARE_BYPASS_MODE_2(7, "Fare Bypass Mode 2", "-fx-background-color: yellow;", SpecialMode.FARE_BYPASS_MODE_2), // 07
     STATION_CLOSED(0, "Station Closed", "-fx-background-color: yellow;", SpecialMode.STATION_CLOSED_MODE), // 00
     HIGH_SECURITY_MODE(8, "High Security Mode", "-fx-background-color: yellow;", SpecialMode.TIME_OVERRIDE); // 08
+
     ;
 
 

@@ -68,8 +68,8 @@ public class MonitorRightView {
     private VBox tomSection;
     @FXML
     private VBox agSection;
-    @FXML
-    private ToggleButton highSecurityMode;
+//    @FXML
+//    private ToggleButton highSecurityMode;
     @FXML
     private ListView<Parent> alertsListView; // Parent type allows you to add any FXML component
 
@@ -81,11 +81,11 @@ public class MonitorRightView {
     @FXML
     private ToggleButton stationCloseButton;
 
-    @FXML
-    private ToggleButton excessFareOverrideButton;
-
-    @FXML
-    private ToggleButton fareBypassMode1Button;
+//    @FXML
+//    private ToggleButton excessFareOverrideButton;
+//
+//    @FXML
+//    private ToggleButton fareBypassMode1Button;
 
     @FXML
     private ToggleButton fareBypassMode2Button;
@@ -142,38 +142,38 @@ public class MonitorRightView {
         emergencyButton.setText(StationSpecialMode.EMERGENCY.name());
         stationCloseButton.setToggleGroup(commandGroup);
         stationCloseButton.setText(StationSpecialMode.STATION_CLOSED.name());
-        excessFareOverrideButton.setToggleGroup(commandGroup);
-        excessFareOverrideButton.setText(StationSpecialMode.EXCESS_FARE_OVERRIDE.name());
-        fareBypassMode1Button.setToggleGroup(commandGroup);
-        fareBypassMode1Button.setText(StationSpecialMode.FARE_BYPASS_MODE_1.name());
+//        excessFareOverrideButton.setToggleGroup(commandGroup);
+//        excessFareOverrideButton.setText(StationSpecialMode.EXCESS_FARE_OVERRIDE.name());
+//        fareBypassMode1Button.setToggleGroup(commandGroup);
+//        fareBypassMode1Button.setText(StationSpecialMode.FARE_BYPASS_MODE_1.name());
         fareBypassMode2Button.setToggleGroup(commandGroup);
-        fareBypassMode2Button.setText(StationSpecialMode.FARE_BYPASS_MODE_2.name());
+//        fareBypassMode2Button.setText(StationSpecialMode.FARE_BYPASS_MODE_2.name());
 //        highSecurityMode.setToggleGroup(commandGroup);
 //        highSecurityMode.setText(StationSpecialMode.HIGH_SECURITY_MODE.name());
 
         // Add event handlers to each button
         emergencyButton.setOnAction(event -> handleSelection(emergencyButton));
         stationCloseButton.setOnAction(event -> handleSelection(stationCloseButton));
-        excessFareOverrideButton.setOnAction(event -> handleSelection(excessFareOverrideButton));
-        fareBypassMode1Button.setOnAction(event -> handleSelection(fareBypassMode1Button));
+//        excessFareOverrideButton.setOnAction(event -> handleSelection(excessFareOverrideButton));
+//        fareBypassMode1Button.setOnAction(event -> handleSelection(fareBypassMode1Button));
         fareBypassMode2Button.setOnAction(event -> handleSelection(fareBypassMode2Button));
-        highSecurityMode.setOnAction(event -> handleSelection(highSecurityMode));
+//        highSecurityMode.setOnAction(event -> handleSelection(highSecurityMode));
 
         StationSpecialMode.StationSpecialModeListener listener = newMode -> {
             if( newMode.equals(StationSpecialMode.EMERGENCY ) || newMode.equals(StationSpecialMode.STATION_CLOSED)){
                 logger.debug("Entering emergency mode");
                 stationCloseButton.setDisable(true);
-                excessFareOverrideButton.setDisable(true);
-                fareBypassMode1Button.setDisable(true);
+//                excessFareOverrideButton.setDisable(true);
+//                fareBypassMode1Button.setDisable(true);
                 fareBypassMode2Button.setDisable(true);
-                highSecurityMode.setDisable(true);
+//                highSecurityMode.setDisable(true);
                 emergencyButton.setDisable(true);
             }else{
                 stationCloseButton.setDisable(false);
-                excessFareOverrideButton.setDisable(false);
-                fareBypassMode1Button.setDisable(false);
+//                excessFareOverrideButton.setDisable(false);
+//                fareBypassMode1Button.setDisable(false);
                 fareBypassMode2Button.setDisable(false);
-                highSecurityMode.setDisable(false);
+//                highSecurityMode.setDisable(false);
                 emergencyButton.setDisable(false);
             }
             switch (newMode) {
@@ -186,16 +186,16 @@ public class MonitorRightView {
                     stationCloseButton.setDisable(false);
                     break;
                 case EXCESS_FARE_OVERRIDE:
-                    excessFareOverrideButton.setSelected(true);
+//                    excessFareOverrideButton.setSelected(true);
                     break;
                 case FARE_BYPASS_MODE_1:
-                    fareBypassMode1Button.setSelected(true);
+//                    fareBypassMode1Button.setSelected(true);
                     break;
                 case FARE_BYPASS_MODE_2:
                     fareBypassMode2Button.setSelected(true);
                     break;
                 case HIGH_SECURITY_MODE:
-                    highSecurityMode.setSelected(true);
+//                    highSecurityMode.setSelected(true);
                     break;
                 default:
                     emergencyButton.setSelected(false);

@@ -43,6 +43,7 @@ public enum CommandTest{
             try {
                 ConsoleProtocol consoleProtocol = ConsoleProtocol.newBuilder()
                         .setStreamData(StreamData.newBuilder()
+                                .setDeviceType(DeviceType.ALL)
                                 .setCommandType(CommandType.MODE_CONTROL)
                                 .setRequestData(Any.pack(tomModeControl))
                                 .build())
