@@ -74,40 +74,5 @@ public enum AGOperationMode implements OperationMode, AGInServiceProperties {
         return color;
     }
 
-//    public static void main(String[] args) {
-//        // Example usage
-//        AGOperationMode mode = AGOperationMode.IN_SERVICE;
-//        System.out.println("IN_SERVICE CardFareMode: " + mode.isCardFareModeEnabled());
-//        System.out.println("IN_SERVICE DirectionMode: " + mode.isDirectionModeEnabled());
-//        System.out.println("IN_SERVICE DoorMode: " + mode.isDoorModeEnabled());
-//        System.out.println("IN_SERVICE QRFareMode: " + mode.isQRFareModeEnabled());
-//        System.out.println("IN_SERVICE Color: " + mode.getColor());
-//
-//        try {
-//            mode = AGOperationMode.OUT_OF_SERVICE;
-//            System.out.println("OUT_OF_SERVICE CardFareMode: " + mode.isCardFareModeEnabled());
-//        } catch (UnsupportedOperationException e) {
-//            System.out.println(e.getMessage());
-//        }
-//
-//        try {
-//            System.out.println("OUT_OF_SERVICE DirectionMode: " + mode.isDirectionModeEnabled());
-//        } catch (UnsupportedOperationException e) {
-//            System.out.println(e.getMessage());
-//        }
-//
-//        try {
-//            System.out.println("OUT_OF_SERVICE DoorMode: " + mode.isDoorModeEnabled());
-//        } catch (UnsupportedOperationException e) {
-//            System.out.println(e.getMessage());
-//        }
-//
-//        try {
-//            System.out.println("OUT_OF_SERVICE QRFareMode: " + mode.isQRFareModeEnabled());
-//        } catch (UnsupportedOperationException e) {
-//            System.out.println(e.getMessage());
-//        }
-//
-//        System.out.println("OUT_OF_SERVICE Color: " + mode.getColor());
-//    }
+
 }

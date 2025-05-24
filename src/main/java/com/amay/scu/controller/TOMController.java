@@ -180,7 +180,7 @@ public class TOMController implements SLE {
 
         this.liveTOM.addPropertyChangeListener(event -> {
 
-                System.out.println("Property " + event.getPropertyName() + " changed from " + event.getOldValue() + " to " + event.getNewValue());
+                System.out.println("Property TOM  " + event.getPropertyName() + " changed from " + event.getOldValue() + " to " + event.getNewValue());
                 logger.info("property updated ");
                 if (event.getPropertyName().equals(PropertyUpdate.SLE_STATUS_UPDATED.name())) {
                     logger.debug("listener new value {}", event.getNewValue());

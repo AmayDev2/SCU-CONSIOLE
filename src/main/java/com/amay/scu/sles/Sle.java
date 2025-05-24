@@ -5,6 +5,6 @@ public interface Sle {
     final String Station="Station";
     final String TOM="TOM";
     final String EFO="EFO";
-    final String READER="READER";
+    final String TR="TR";
 
 }

@@ -40,7 +40,7 @@ enum SpecialMode {
     SHIFT_END = 7; //TOM
     SHUT_DOWN = 8; //TOM
     RESTART = 9; //TOM
-    NORMAL=10;
+    STATION_NORMAL = 10;
 }
 
 

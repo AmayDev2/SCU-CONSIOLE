@@ -45,10 +45,10 @@ public enum ScuGrpcService  {
         System.out.println("Sending message to server: "+request);
         SCURevenueReportResponseV1 response=this.blockingStub.getRevenue(request);
         System.out.println("Response from server: "+response);
-        return  response.getRevenueData().getRevenue().getQrRevenue()+"-"+response.getRevenueData().getRevenue().getCscRevenue()+"-"+response.getRevenueData().getRevenue().getTotalRevenue()+"-"+response.getLastTransactionTime();
+        return  response.getRevenueData().getRevenue().getQrRevenue()+"-"+response.getRevenueData().getRevenue().getCscRevenue()+"-"+response.getRevenueData().getRevenue().getTotalRevenue()+"-"+response.getLastTransactionTime()+"-"+response.getRevenueData().getRevenue().getAgEntry()+"-"+response.getRevenueData().getRevenue().getAgExit();
         }catch (Exception e){
             e.printStackTrace();
-            return "0-0-0-0";
+            return "0-0-0-0-0-0";
         }
     }
     public String getTotalRevenue(String deviceId, String fromDate) {
@@ -61,10 +61,10 @@ public enum ScuGrpcService  {
             System.out.println("Sending message to server: "+request);
             SCURevenueReportResponseV1 response=this.blockingStub.getRevenue(request);
             System.out.println("Response from server: "+response);
-            return  response.getRevenueData().getRevenue().getQrRevenue()+"-"+response.getRevenueData().getRevenue().getCscRevenue()+"-"+response.getRevenueData().getRevenue().getTotalRevenue()+"-"+response.getLastTransactionTime();
+            return  response.getRevenueData().getRevenue().getQrRevenue()+"-"+response.getRevenueData().getRevenue().getCscRevenue()+"-"+response.getRevenueData().getRevenue().getTotalRevenue()+"-"+response.getLastTransactionTime()+"-"+response.getRevenueData().getRevenue().getAgEntry()+"-"+response.getRevenueData().getRevenue().getAgExit();
         }catch (Exception e){
             e.printStackTrace();
-            return "0-0-0-0";
+            return "0-0-0-0-0-0";
         }
     }
     public String getStockReport(String equipmentId, String s) {

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.Double?>
+
+<HBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml"
+      spacing="200" alignment="CENTER"
+      style="-fx-background-color: #eeeeee; -fx-padding: 40;">
+
+     <!-- Left Arrow -->
+     <StackPane fx:id="leftArrowPane" prefWidth="150" prefHeight="80">
+          <Polygon fx:id="leftArrow" fill="#4CAF50">
+               <points>
+                    <Double fx:value="130.0"/> <Double fx:value="0.0"/>
+                    <Double fx:value="50.0"/> <Double fx:value="0.0"/>
+                    <Double fx:value="0.0"/> <Double fx:value="40.0"/>
+                    <Double fx:value="50.0"/> <Double fx:value="80.0"/>
+                    <Double fx:value="130.0"/> <Double fx:value="80.0"/>
+                    <Double fx:value="80.0"/> <Double fx:value="40.0"/>
+               </points>
+          </Polygon>
+     </StackPane>
+
+     <!-- Right Arrow -->
+     <StackPane fx:id="rightArrowPane" prefWidth="150" prefHeight="80">
+          <Polygon fx:id="rightArrow" fill="#4CAF50">
+               <points>
+                    <Double fx:value="0.0"/> <Double fx:value="0.0"/>
+                    <Double fx:value="80.0"/> <Double fx:value="40.0"/>
+                    <Double fx:value="0.0"/> <Double fx:value="80.0"/>
+                    <Double fx:value="100.0"/> <Double fx:value="80.0"/>
+                    <Double fx:value="150.0"/> <Double fx:value="40.0"/>
+                    <Double fx:value="100.0"/> <Double fx:value="0.0"/>
+               </points>
+          </Polygon>
+     </StackPane>
+
+</HBox>

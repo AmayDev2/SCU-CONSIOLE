@@ -166,6 +166,7 @@ public class TomCommandController {
             this.command=CommandType.GET_PERIPHERAL_STATUS;
             tomModeControlBuilder=TOMModeControl.newBuilder();
         });
+
         SoftwareVersionOn.setOnAction(event -> {
             this.command=CommandType.GET_DIVICE_VERSIONS;
             tomModeControlBuilder=TOMModeControl.newBuilder();
@@ -243,6 +244,7 @@ public class TomCommandController {
     void cancelCommand(ActionEvent event) {
         this.popupContent.Close();
         logger.debug("Popup closed");
+        event.consume();
 
     }
 
@@ -252,6 +254,7 @@ public class TomCommandController {
         logger.debug("given command : {} {} {}",id,command,tomModeControl);
         saveIntoQueue(command,tomModeControl);
         popupContent.sendCommand(id,command,tomModeControl);
+        actionEvent.consume();
 
     }
 

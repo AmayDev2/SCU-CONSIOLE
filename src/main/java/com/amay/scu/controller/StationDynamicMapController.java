@@ -26,7 +26,7 @@ import java.util.Map;
 public class StationDynamicMapController implements IStationDynamicMapViewListener {
 
     private int tomCount = 0;
-    private int efoCount = 0;
+    private int efoCount = 1;
     private int readerCount = 0;
     private int gateCount = 0;
     private int arraysCount = 0;
@@ -52,6 +52,7 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
 
         //initialize the listener
         StationDynamicMapViewListener.initialize(this);
+        boolean tom1 = false,ag1 = false,tvm1 = false,reader1 = false;
 
         try {
             StationDevicesRepository stationDevicesRepository = StationDevicesRepository.getInstance();
@@ -61,33 +62,47 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
             for (StationDevicesDTO stationDevice : stationDevices) {
                 switch (stationDevice.getEquipName()) {
                     case "TOM":
-                        tomCount++;
-                        tom.add(stationDevice );
+                        if(!tom1) {
+                            tomCount++;
+                            tom.add(stationDevice);
+                        }
+                        tom1=true;
                         break;
-                    case "EFO":
-                        efoCount++;
-                        break;
+//                    case "EFO":
+//                        efoCount++;
+//                        break;
                     case "AG":
-                        gateCount++;
-                        ag.add(stationDevice );
+                        if(!ag1) {
+                            gateCount++;
+                            ag.add(stationDevice);
+                        }
+                        ag1=true;
                         break;
                     case "READER":
-                        readerCount++;
-                        break;
-                    case "ARRAYS":
-                        arraysCount++;
-                        break;
+//                        if(!reader1) {
+//                            readerCount++;
+//                        }
+//                        reader1=true;
+//                        break;
+//                    case "ARRAYS":
+//                        arraysCount++;
+//                        break;
                     case "TVM":
-                        tvmCount++;
+                        if(!tvm1) {
+                            tvmCount++;
+                        }
+                        tvm1=true;
                         break;
                 }
             }
 
-            //create the SLE objects based on the count of the devices
+//            efoCount=1;
+
+//            //create the SLE objects based on the count of the devices
             sles.addAll(Arrays.stream(SLEFactory.getSLEFactory(new AGAbstractFactory(), anchorPane, gateCount,ag)).toList());
-            SLEFactory.getSLEFactory(new EFOAbstractFactory(), anchorPane, efoCount, ag);
+//            SLEFactory.getSLEFactory(new EFOAbstractFactory(), anchorPane, efoCount, ag);
             sles.addAll(Arrays.stream(SLEFactory.getSLEFactory(new TOMAbstractFactory(), anchorPane, tomCount, tom)).toList());
-            SLEFactory.getSLEFactory(new TVMAbstractFactory(), anchorPane, tvmCount, ag);
+//            SLEFactory.getSLEFactory(new TVMAbstractFactory(), anchorPane, tvmCount, ag);
 
 
             //update the status of the devices to  TODO: add logic

@@ -2,22 +2,30 @@ package com.amay.scu.controller;
 
 import com.amay.scu.enums.AGOperationMode;
 import com.amay.scu.enums.SLEStatus;
+import com.amay.scu.images.ImagePath;
 import com.amay.scu.model.SLELocationListObject;
 import com.amay.scu.popup.PopupContent;
 import com.amay.scu.sleobj.LiveAG;
 import com.amay.scu.sleobj.LiveSLE;
 import com.amay.scu.sleobj.propertyenums.PropertyUpdate;
 import com.amay.scu.sles.components.SLE;
+import com.amay.scu.util.ImageLoaderUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class AGController  implements SLE {
+import java.util.Objects;
+
+public class AGController implements SLE {
+    @FXML
+    private ImageView imageView;
     Logger logger = LoggerFactory.getLogger(getClass());
     @FXML
     private Button ag;
@@ -36,12 +44,13 @@ public class AGController  implements SLE {
 
     @FXML
     void initialize() {
+//        imageView.setImage(new Image("file:E:\\Amay Technosystems\\AFC\\SCU\\src\\main\\resources\\com\\amay\\scu\\images\\gates\\Bi_D_not_working.png"));
         ag.setOnMouseClicked(this::handleMouseClick);           //handles the mouse click event
 
     }
     @Override
     public boolean setScale(float x, float y, float z) {
-        logger.debug("Setting scale of EFO to x:{} y:{} z:{}",x,y,z);
+        logger.debug("Setting scale of AG to x:{} y:{} z:{}",x,y,z);
         ag.setScaleX(x);
         ag.setScaleY(y);
         ag.setScaleZ(z);
@@ -56,7 +65,7 @@ public class AGController  implements SLE {
     @Override
     public boolean setStatus(SLEStatus status) {
         logger.debug("Setting status of AG to {}",status.getStatus());
-        ag.setStyle(status.getStatus());
+            ag.setStyle(status.getStatus());
         return false;
     }
 
@@ -113,7 +122,7 @@ public class AGController  implements SLE {
 
     @Override
     public void updateStatus(SLEStatus status) {
-        setStatus(status);
+        this.setStatus(status);
 
     }
 
@@ -138,6 +147,7 @@ public class AGController  implements SLE {
 
     @Override
     public void updateOperationMode(LiveSLE liveAG) {
+        logger.info("Update AG Mode");
         LiveAG liveAG1;
         if (liveAG instanceof LiveAG) {
             liveAG1 = (LiveAG) liveAG;
@@ -151,7 +161,7 @@ public class AGController  implements SLE {
         this.liveAG= (LiveAG) liveAG;
 
         this.liveAG.addPropertyChangeListener(event -> {
-            System.out.println("Property " + event.getPropertyName() + " changed from " + event.getOldValue() + " to " + event.getNewValue());
+            System.out.println("Property AG " + event.getPropertyName() + " changed from " + event.getOldValue() + " to " + event.getNewValue());
             logger.info("property updated ");
             if (event.getPropertyName().equals(PropertyUpdate.SLE_STATUS_UPDATED.name())) {
                 logger.debug("listener new value {}", event.getNewValue());
@@ -171,8 +181,24 @@ public class AGController  implements SLE {
 
     // updating the operation mode
     private void updateOperationMode(AGOperationMode agOperationMode) {
-        ag.setStyle(agOperationMode.getColor());
         logger.info("Updating Operation Mode Of AG {}",ag);
+//        ag.setStyle(agOperationMode.getColor());
+        //TODO: Remove these logics pass the images path in enum itself instead of color
+        if(AGOperationMode.IN_SERVICE.equals(agOperationMode)){
+        imageView.setImage(ImageLoaderUtil.loadImage(ImagePath.BI_DIRECTIONAL_IN_SERVICE));
+        }
+        else if(AGOperationMode.DEFICIENT.equals(agOperationMode)){
+            imageView.setImage(ImageLoaderUtil.loadImage(ImagePath.BI_DIRECTIONAL_DEFICIENT));
+        }
+        else if(AGOperationMode.OUT_OF_SERVICE.equals(agOperationMode)){
+            imageView.setImage(ImageLoaderUtil.loadImage(ImagePath.BI_DIRECTIONAL_OUT_OF_SERVICE));
+        }
+        else if(AGOperationMode.MAINTENANCE.equals(agOperationMode)){
+            imageView.setImage(ImageLoaderUtil.loadImage(ImagePath.BI_DIRECTIONAL_MAINTENANCE));
+        }else {
+            imageView.setImage(ImageLoaderUtil.loadImage(ImagePath.BI_DIRECTIONAL_NOT_WORKING));
+        }
+
     }
 
     private void handleMouseClick(MouseEvent event) {

@@ -43,6 +43,7 @@ public class TOMAbstractFactory extends SLEAbstractFactory {
 
             logger.debug("name : {}",name);
             controller.setName(name);
+
             SLELocationListObject.list.putIfAbsent(name, new SLELocationListObject.SLELocation());
             logger.debug("TOM location set : {} {}",name,SLELocationListObject.list.get(name));
             controller.setLocation(SLELocationListObject.list.get(name));

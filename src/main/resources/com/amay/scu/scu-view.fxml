@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="scu" stylesheets="@css/application.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.SCUController">
+<AnchorPane fx:id="scu" style="-fx-background-color: white;" stylesheets="@css/application.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.SCUController">
 
-    <BorderPane fx:id="borderPane" stylesheets="@css/border-pane.css">
+    <BorderPane fx:id="borderPane" style="-fx-background-color: white;" stylesheets="@css/border-pane.css">
         <top>
             <fx:include fx:id="topHeaderInclude" source="header/top-header-view.fxml" />
         </top>

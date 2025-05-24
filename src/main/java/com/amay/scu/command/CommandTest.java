@@ -5,6 +5,7 @@ import com.amay.scu.service.GrpcService;
 import com.google.protobuf.Any;
 import org.network.monitorandcontrol.CommandType;
 import org.network.monitorandcontrol.DeviceType;
+import org.network.monitorandcontrol.SpecialMode;
 import org.network.monitorandcontrol.scu_console.ConsoleProtocol;
 import org.network.monitorandcontrol.scu_console.StreamData;
 import org.network.monitorandcontrol.tom.TOMModeControl;
@@ -35,21 +36,26 @@ public enum CommandTest{
     }
 
     //station level command
-    public void sendStationCommand(StationSpecialMode specialMode) {
+    public void sendStationCommand(StationSpecialMode stationSpecialMode) {
 
-        System.out.println("Selected command: " + specialMode.name());
+        System.out.println("Selected command: " + stationSpecialMode.name());
 
-        TOMModeControl tomModeControl=TOMModeControl.newBuilder().setSpecialMode(specialMode.getSpecialMode()).build();
+        TOMModeControl tomModeControl=TOMModeControl.newBuilder().setSpecialMode(stationSpecialMode.getSpecialMode()).build();
             try {
+                //CREATED Stream data object
+                StreamData streamData=StreamData.newBuilder()
+                        .setDeviceType(DeviceType.ALL)
+                        .clearEquipId()
+                        .setCommandType(CommandType.MODE_CONTROL)
+                        .setRequestData(Any.pack(tomModeControl))
+                        .build();
+
+                //Create console protocol
                 ConsoleProtocol consoleProtocol = ConsoleProtocol.newBuilder()
-                        .setStreamData(StreamData.newBuilder()
-                                .setDeviceType(DeviceType.ALL)
-                                .setCommandType(CommandType.MODE_CONTROL)
-                                .setRequestData(Any.pack(tomModeControl))
-                                .build())
+                        .setStreamData(streamData)
                         .build();
                 grpcService.sendMessage(consoleProtocol);
-                StationSpecialMode.setStationSpecialMode(specialMode);
+                StationSpecialMode.setStationSpecialMode(stationSpecialMode);
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input. Please enter numeric values.");
             }

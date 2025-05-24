@@ -7,6 +7,8 @@ import com.amay.scu.command.CommandTest;
 import com.amay.scu.contservice.HeaderListener;
 import com.amay.scu.enums.StationSpecialMode;
 import com.amay.scu.popup.PopupWindow;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,12 +17,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 
 public class HeaderController {
+
 
     @FXML
     private Button emergencyButton;
@@ -31,17 +38,42 @@ public class HeaderController {
 
     private Logger logger = LoggerFactory.getLogger(HeaderController.class);
     @FXML
-    private Text menuNavigator;
+    private Button menuNavigator;
 
     @FXML
-    private Text monitorNavigator;
+    private Button monitorNavigator;
 
     @FXML
-    private Text reportNavigator;
+    private Button reportNavigator;
 
     private HeaderListener scuHeaderListener= null;
 
     private AuthService authService;
+
+
+
+    @FXML private  Text localTime;
+    @FXML private Text localDate;
+
+        private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("hh:mm:ss a");
+        private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd MMMM, yyyy");
+
+        private void updateDateTime() {
+            Platform.runLater(() -> {
+                Timeline clock = new Timeline(
+                        new KeyFrame(Duration.ZERO, e -> {
+                            LocalDateTime now = LocalDateTime.now();
+                            localTime.setText(now.format(TIME_FORMATTER).toUpperCase(Locale.ROOT));
+                            localDate.setText(now.format(DATE_FORMATTER));
+                        }),
+                        new KeyFrame(Duration.seconds(1))
+                );
+                clock.setCycleCount(Timeline.INDEFINITE);
+                clock.play();
+            });
+        }
+
+
 
 
     @FXML
@@ -52,6 +84,7 @@ public class HeaderController {
         reportNavigator.setVisible(false);
         monitorNavigator.setVisible(false);
         emergencyButton.setDisable(true);
+        updateDateTime();
 
         StationSpecialMode.StationSpecialModeListener listener = newMode -> {
             logger.debug("New special mode: {}  {}", newMode, emergencyModeActive);
@@ -84,19 +117,19 @@ public class HeaderController {
     }
 
     @FXML
-    void onMenuClick(MouseEvent event) {
+    void onMenuClick(ActionEvent event) {
 
         scuHeaderListener.onMenuClick();
     }
 
     @FXML
-    void onMonitorClick(MouseEvent event) {
+    void onMonitorClick(ActionEvent event) {
         scuHeaderListener.onMonitorClick();
 
     }
 
     @FXML
-    void onReportClick(MouseEvent event) {
+    void onReportClick(ActionEvent event) {
         scuHeaderListener.onReportClick();
 
     }

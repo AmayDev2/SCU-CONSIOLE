@@ -15,8 +15,6 @@ class StationDevicesRepositoryTest {
         var data=stationDevicesRepository.getStationDevices();
         data.forEach(System.out::println);
         assertNotNull(data);
-
-
     }
 
     @Test
@@ -25,8 +23,6 @@ class StationDevicesRepositoryTest {
         var data=stationDevicesRepository.getTomDevices();
         data.forEach(System.out::println);
         assertNotNull(data);
-
-
     }
 
     @Test
@@ -35,7 +31,6 @@ class StationDevicesRepositoryTest {
         var data=stationDevicesRepository.getAGDevices();
         data.forEach(System.out::println);
         assertNotNull(data);
-
 
     }
 

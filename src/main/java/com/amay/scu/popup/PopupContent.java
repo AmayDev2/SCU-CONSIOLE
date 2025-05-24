@@ -5,7 +5,7 @@ import com.amay.scu.command.CommandTest;
 import com.amay.scu.controller.AGCommandController;
 import com.amay.scu.controller.TomCommandController;
 import com.amay.scu.controller.components.AGWidgetsView;
-import com.amay.scu.controller.components.TomWidgetsView;
+import com.amay.scu.controller.components.TomWidgetsViewV2;
 import com.amay.scu.sleobj.LiveAG;
 import com.amay.scu.sleobj.LiveTOM;
 import javafx.fxml.FXMLLoader;
@@ -48,23 +48,27 @@ public class PopupContent {
             deviceType=DeviceType.TOM;
         }
 
-        FXMLLoader loader;
+        FXMLLoader loader=null;
         if(left.equals("Right")) {
 
-            if(deviceType==DeviceType.TOM){
+        if(deviceType==DeviceType.TOM){
             loader = ViewFactory.getTomWidgets();
-            loader.setControllerFactory(c -> new TomWidgetsView(this, sleCommandInfo));}
-            else{
+            loader.setControllerFactory(c -> new TomWidgetsViewV2(this, sleCommandInfo));
+        }else{
                 loader = ViewFactory.getAGWidgets();
                 loader.setControllerFactory(c -> new AGWidgetsView(this, sleCommandInfo));
-            }
+        }
+
         }else {
             if(deviceType==DeviceType.AG){
                 loader = ViewFactory.getAGCommand();
                 loader.setControllerFactory(c -> new AGCommandController(this, sleCommandInfo));}
             else{
-            loader = ViewFactory.getTomCommand();
-            loader.setControllerFactory(c -> new TomCommandController(this, sleCommandInfo));}
+//            loader = ViewFactory.getTomCommand();
+//            loader.setControllerFactory(c -> new TomCommandController(this, sleCommandInfo));
+                loader = ViewFactory.getTomWidgets();
+                loader.setControllerFactory(c -> new TomWidgetsViewV2(this, sleCommandInfo));
+            }
         }
 
         try {
@@ -96,6 +100,7 @@ public class PopupContent {
     }
 
     public void sendCommand(String id, CommandType command, TOMModeControl tomModeControl) {
+        System.out.println("Command sent to SLE"+id+command.getValueDescriptor()+tomModeControl.getSpecialMode().getValueDescriptor());
         CommandTest.INSTANCE.sendCommand(command, deviceType, id,tomModeControl);
     }
 }

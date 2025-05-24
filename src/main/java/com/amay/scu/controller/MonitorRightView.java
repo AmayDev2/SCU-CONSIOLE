@@ -239,8 +239,9 @@ public class MonitorRightView {
     private void updateRevenueContinue() {
 //
         // Create a timeline that updates the revenue every 5 seconds
-        javafx.animation.Timeline timeline = new javafx.animation.Timeline(new javafx.animation.KeyFrame(javafx.util.Duration.minutes(5), event -> {
+        javafx.animation.Timeline timeline = new javafx.animation.Timeline(new javafx.animation.KeyFrame(javafx.util.Duration.seconds(5), event -> {
             updateRevenue();
+            updateEntryExitCount();
         }));
         timeline.setCycleCount(javafx.animation.Animation.INDEFINITE); // Run indefinitely
         timeline.play(); // Start the timeline
@@ -258,13 +259,16 @@ public class MonitorRightView {
     }
 
     private void updateEntryExitCount() {
+        String qrRevenue= ScuGrpcService.INSTANCE.getTotalRevenue(TimeUtil.getCurrentDateInEpoch());
+        String qrEntry=qrRevenue.split("-")[4];
+        String qrExit=qrRevenue.split("-")[5];
         Platform.runLater(() -> {
-            entryCountTotal.setText("100");
-            exitCountTotal.setText("100");
-            entryQRCount.setText("50");
-            exitQRCount.setText("50");
-            entryCSCCount.setText("50");
-            exitCSCCount.setText("50");
+            entryCountTotal.setText(qrEntry);
+            exitCountTotal.setText(qrExit);
+            entryQRCount.setText(qrEntry);
+            exitQRCount.setText(qrExit);
+            entryCSCCount.setText("0");
+            exitCSCCount.setText("0");
         });
     }
 

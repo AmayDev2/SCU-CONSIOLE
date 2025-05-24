@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<?import java.lang.String?>
-<?import java.net.URL?>
-<AnchorPane
-        fx:id="anchorPane"
-        xmlns="http://javafx.com/javafx"
-        xmlns:fx="http://javafx.com/fxml"
-        fx:controller="com.amay.scu.controller.StationDynamicMapController"
-        styleClass="background"
-        stylesheets="@../css/station-dynamic-map-view.css">
+<AnchorPane fx:id="anchorPane" layoutX="1.0" layoutY="1.0" styleClass="background"
+            stylesheets="@../css/station-dynamic-map-view.css"
+            xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.amay.scu.controller.StationDynamicMapController">
+    <ImageView fitHeight="700.0" nodeOrientation="INHERIT" preserveRatio="true" x="321.0" y="50.0">
+<!--        <Image url="@../images/mpmrc_background.png" />-->
+    </ImageView>
+    <fx:include source="../sles/tr.fxml" />
+    <fx:include layoutX="700.0" layoutY="320.0" source="../sles/efo.fxml" />
+    <fx:include layoutX="100.0" layoutY="350.0" source="../sles/tvm.fxml" />
 
 </AnchorPane>

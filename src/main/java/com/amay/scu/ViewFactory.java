@@ -72,6 +72,7 @@ public class ViewFactory {
         return fxmlLoader;
     }
 
+
     public static FXMLLoader getAGWidgets() {
         FXMLLoader fxmlLoader = new FXMLLoader(ViewFactory.class.getResource
                 (Path.AG_WIDGETS));
@@ -94,5 +95,11 @@ public class ViewFactory {
 
     public static FXMLLoader getPermission() {
         return new FXMLLoader(ViewFactory.class.getResource(Path.PERMISSION));
+    }
+
+    public static FXMLLoader getTRView() {
+        FXMLLoader fxmlLoader = new FXMLLoader(ViewFactory.class.getResource
+                (Path.TR_VIEW));
+        return fxmlLoader;
     }
 }

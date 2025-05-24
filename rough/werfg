@@ -1,0 +1,38 @@
+   if(status.name().equals(SLEStatus.OFFLINE.name())){
+            ag.setStyle(status.getStatus());
+        }else if(status.name().equals(SLEStatus.ONLINE.name())){
+            ag.setStyle(status.getStatus());
+            Platform.runLater(()->{
+                imageView.setImage(new Image("file:E:\\Amay Technosystems\\AFC\\SCU\\src\\main\\resources\\com\\amay\\scu\\images\\gates\\Bi_D_working.png"));
+            });
+
+        }
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<Button fx:id="ag"  styleClass="ag" stylesheets="@../css/sles.css"
+        xmlns="http://javafx.com/javafx"
+        xmlns:fx="http://javafx.com/fxml"
+        fx:controller="com.amay.scu.controller.AGController">
+
+    <graphic>
+        <VBox alignment="CENTER">
+            <ImageView fx:id="imageView" fitWidth="100.0" preserveRatio="true">
+                <image>
+                    <Image url="@../images/gates/Bi_D_not_working.png"/>
+                </image>
+            </ImageView>
+            <Label fx:id="name" text="AG" stylesheets="@../css/sle-name.css"/>
+        </VBox>
+    </graphic>
+
+</Button>
+

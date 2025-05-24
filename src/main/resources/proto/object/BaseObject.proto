@@ -136,6 +136,8 @@ message ARevenue{
   string qrRevenue=1;
   string cscRevenue=2;
   string totalRevenue=3;
+  string agEntry=4;
+  string agExit=5;
 }
 
 message AStock{

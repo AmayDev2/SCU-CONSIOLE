@@ -1,0 +1,32 @@
+/* Title Fonts */
+.label-title {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.titled-pane-title {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+/* Common Padding and Margin */
+.label-padding {
+    -fx-padding: 5 20 5 20;
+}
+
+.general-padding {
+    -fx-padding: 5 20 5 20;
+}
+
+.button-margin-bottom {
+    -fx-margin: 0 0 10 0;
+}
+
+.button-margin-left {
+    -fx-margin: 0 0 5 10;
+}
+
+/* Layout alignment (if needed via classes) */
+.center-align {
+    -fx-alignment: center;
+}

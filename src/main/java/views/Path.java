@@ -7,6 +7,7 @@ public interface Path {
      String SCU_VIEW="scu-view.fxml";
      String TOM_VIEW="sles/tom.fxml";
      String EFO_VIEW="sles/efo.fxml";
+     String TR_VIEW="sles/tr.fxml";
      String TVM_VIEW = "sles/tvm.fxml";
      String AG_VIEW = "sles/ag.fxml";
      String POPUP_CSS="css/popup.css";
@@ -14,7 +15,7 @@ public interface Path {
      String REPORT = "report/report.fxml";
      String MONITOR_RIGHT_VIEW = "popups/monitor-right-view.fxml";
      String ALERT = "components/alert.fxml";
-     String TOM_WIDGETS = "popups/tom-widgets-view.fxml";
+     String TOM_WIDGETS = "popups/tom-widgets-view-v2.fxml";
      String AG_WIDGETS = "popups/ag-widgets-view.fxml";
      String AG_COMMAND="popups/ag-command.fxml";
      String LOGIN="popups/login.fxml";

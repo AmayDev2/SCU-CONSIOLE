@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Button fx:id="tr" layoutX="100.0" layoutY="100.0" prefHeight="80" prefWidth="80" styleClass="tom"  stylesheets="@../css/sles.css"
+        xmlns="http://javafx.com/javafx"
+        xmlns:fx="http://javafx.com/fxml"
+        fx:controller="com.amay.scu.controller.TRController"
+>
+    <graphic>
+        <VBox alignment="CENTER">
+            <ImageView fitHeight="50" fitWidth="50">
+                <image>
+                    <Image url="@../images/tr.png"/>
+                </image>
+            </ImageView>
+            <Label fx:id="name" text="TR" stylesheets="@../css/sle-name.css" />
+        </VBox>
+    </graphic>
+</Button>
+

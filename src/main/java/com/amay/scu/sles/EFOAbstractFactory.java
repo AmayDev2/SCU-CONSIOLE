@@ -31,7 +31,7 @@ public class EFOAbstractFactory extends SLEAbstractFactory {
             anchorPane.getChildren().add(button);
             logger.debug("EFO created : {}",button.getId());
             SLE controller=fxmlLoader.getController();
-            controller.setStatus(SLEStatus.ONLINE);
+//            controller.setStatus(SLEStatus.ONLINE);
             controller.setName(button.getId());
             controller.setMovingProperties(button,anchorPane);
             return controller;

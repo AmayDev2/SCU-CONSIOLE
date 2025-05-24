@@ -53,10 +53,10 @@ public class GrpcService  {
             Thread.sleep(5000);
         }catch (InterruptedException e){
             e.printStackTrace();}
-
         requestObserver = scStreamObserver();
         initialConnectionRequest(null);
     }
+
     public void markComplete() {
         requestObserver.onCompleted();
     }

@@ -1,5 +1,7 @@
 package com.amay.scu.test_grpc_service;
 
+import com.amay.scu.enums.AGOperationMode;
+import com.amay.scu.enums.SLEStatus;
 import com.amay.scu.enums.StationSpecialMode;
 import com.amay.scu.enums.TOMOperationMode;
 import com.amay.scu.listenner.impl.MonitoringRightViewListener;
@@ -7,6 +9,8 @@ import com.amay.scu.listenner.impl.StationDynamicMapViewListener;
 import com.amay.scu.sleobj.LiveAG;
 import com.amay.scu.sleobj.LiveTOM;
 import org.network.monitorandcontrol.*;
+import org.network.monitorandcontrol.ag.AGDeviceInfo;
+import org.network.monitorandcontrol.ag.AGModeControl;
 import org.network.monitorandcontrol.ag.AGPeripheralStatus;
 import org.network.monitorandcontrol.scu_console.ConsoleProtocol;
 import org.network.monitorandcontrol.scu_console.StreamData;
@@ -57,11 +61,11 @@ public class SCUService {
         System.out.println("Device Type : "+deviceType);
         switch (deviceType){
             case TOM :{
-                decodeTOMResponse(value);
+                this.decodeTOMResponse(value);
                 break;
             }
             case AG :{
-                decodeAGResponse(value);
+                this.decodeAGResponse(value);
                 break;
             }
             case SCU :{
@@ -100,6 +104,7 @@ public class SCUService {
                 break;
             case DEVICE_INFO:
                 //AG Device Info decode and display
+                this.checkAGInfo(consoleProtocol,new LiveAG());
                 break;
             case PERIPHERAL_STATUS:
                 //AG Peripheral Status decode and display
@@ -108,10 +113,22 @@ public class SCUService {
             case PARAMETER_VERSION:
                 //AG Version Check decode and display
                 break;
+            case RESPONSE:
+                this.updateAGOperationMode(consoleProtocol);
+                break;
             case ALARMS:
                 //Last 10 alarms
             default:
                 break;
+        }
+    }
+
+    private void checkAGInfo(ConsoleProtocol consoleProtocol, LiveAG liveAG) {
+        try {
+            System.out.println("Equip Id in set : "+consoleProtocol.getStreamData().getEquipId());
+            System.out.println(consoleProtocol.getStreamData().getRequestData().unpack(AGDeviceInfo.class));
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
@@ -177,7 +194,7 @@ public class SCUService {
         switch (consoleProtocol.getStreamData().getRequestType()) {
             case DIVICE_DISCONNECT:
                 //device is disconnected
-                deviceDisconnected(consoleProtocol, new LiveTOM());
+                this.deviceDisconnected(consoleProtocol, new LiveTOM());
                 System.out.println("Equip Id disconnected : "+consoleProtocol.getStreamData().getEquipId());
                 break;
             case DEVICE_INFO:
@@ -276,6 +293,41 @@ public class SCUService {
             liveTOM.setOperationMode(tomOperationMode);
 //            stationDynamicMapViewListener.updateTOMPeripheralStatus(consoleProtocol.getStreamData().getEquipId(), liveTOM);
             stationDynamicMapViewListener.updateTOMOperationMode(consoleProtocol.getStreamData().getEquipId(), liveTOM);
+        }catch (Exception e){
+
+        }
+    }
+
+    private void updateAGOperationMode(ConsoleProtocol consoleProtocol) {
+        try{
+            System.out.println("AG Operation Mode console"+consoleProtocol);
+            AGModeControl agModeControl= consoleProtocol.getStreamData().getRequestData().unpack(AGModeControl.class);
+            System.out.println("AG Operation Mode "+agModeControl.getOperationMode());
+            LiveAG liveAG = new LiveAG();
+            AGOperationMode agOperationMode=null;
+            if(!agModeControl.toString().contains("special_mode"))switch(agModeControl.getOperationMode()){
+                case  IN_SERVICE -> {
+                    agOperationMode=AGOperationMode.IN_SERVICE;
+//                    agOperationMode.updateQRSaleMode(agModeControl.getQrSaleMode());
+//                    tomOperationMode.updateCardProcessingMode(tomModeControl.getCardProcessMode());
+                }
+                case OUT_OF_SERVICE ->{
+                    agOperationMode=AGOperationMode.OUT_OF_SERVICE;
+                }
+                case MAINTENANCE ->  {
+                    agOperationMode=AGOperationMode.MAINTENANCE;
+                }
+                case UNRECOGNIZED -> {
+                    agOperationMode=AGOperationMode.OTHER;
+                }
+                case TEST -> {
+                    agOperationMode=AGOperationMode.TEST;
+                }
+            }
+            liveAG.setOperationMode(agOperationMode);
+            liveAG.setCurrentStatus(SLEStatus.ONLINE);
+//            stationDynamicMapViewListener.updateTOMPeripheralStatus(consoleProtocol.getStreamData().getEquipId(), liveTOM);
+            stationDynamicMapViewListener.updateAGOperationMode(consoleProtocol.getStreamData().getEquipId(), liveAG);
         }catch (Exception e){
 
         }

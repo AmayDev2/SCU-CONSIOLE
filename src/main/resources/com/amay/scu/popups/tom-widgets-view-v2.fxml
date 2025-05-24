@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.components.TomWidgetsViewV2">
+   <children>
+      <GridPane hgap="10.0" styleClass="main-grid" stylesheets="@../css/widgets.css" vgap="2.0">
+
+          <!-- Header -->
+          <Label fx:id="headerTomId" styleClass="header-text" text="TOM - 1324" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+
+          <!-- Alarms Section -->
+          <VBox maxHeight="244.0" prefHeight="244.0" prefWidth="350.0" spacing="10" styleClass="section" GridPane.columnIndex="0" GridPane.rowIndex="3">
+              <Label styleClass="section-title" text="ALARMS" />
+              <ListView fx:id="alarmsListView" style="-fx-border-color: #d3d3d3; -fx-background-color: #f9f9f9;" styleClass="section">
+        </ListView>
+          </VBox>
+
+          <!-- Device Commands Section -->
+          <VBox maxHeight="267.0" prefHeight="209.0" prefWidth="350.0" styleClass="section" GridPane.columnIndex="0" GridPane.rowIndex="4">
+              <Label styleClass="section-title" text="DEVICE COMMANDS" />
+              <ListView fx:id="commandListView" style="-fx-border-color: #d3d3d3; -fx-background-color: #f9f9f9;" styleClass="section">
+
+                  <items>
+                      <FXCollections fx:factory="observableArrayList">
+                          <Label styleClass="command-button" text="In service Mode" />
+                          <Label styleClass="command-button" text="Screen Lock - ON" />
+                      </FXCollections>
+                  </items>
+              </ListView>
+          </VBox>
+          <columnConstraints>
+              <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" prefWidth="350.0" />
+          </columnConstraints>
+          <rowConstraints>
+              <RowConstraints />
+              <RowConstraints />
+              <RowConstraints />
+              <RowConstraints maxHeight="240.0" minHeight="200.0" prefHeight="240.0" />
+              <RowConstraints maxHeight="204.0" minHeight="164.0" prefHeight="164.0" />
+          </rowConstraints>
+
+      </GridPane>
+       <VBox fx:id="commands" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="500.0" prefWidth="400.0">
+           <children>
+               <Label VBox.vgrow="ALWAYS">
+                   <padding>
+                       <Insets right="20.0" top="5.0" />
+                   </padding>
+                   <font>
+                       <Font name="System Bold" size="12.0" />
+                   </font>
+               </Label>
+               <Label prefHeight="35.0" prefWidth="257.0" text="Device Command :">
+                   <font>
+                       <Font name="System Bold" size="12.0" />
+                   </font>
+                   <padding>
+                       <Insets bottom="5.0" left="70.0" right="10.0" top="5.0" />
+                   </padding>
+               </Label>
+               <HBox>
+                   <children>
+                       <Button fx:id="inService" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="InService">
+                           <HBox.margin>
+                               <Insets bottom="10.0" />
+                           </HBox.margin>
+                       </Button>
+                       <Button fx:id="outOfService" alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Out Of Service">
+                           <HBox.margin>
+                               <Insets bottom="5.0" left="10.0" />
+                           </HBox.margin>
+                       </Button>
+                   </children>
+               </HBox>
+               <Separator prefHeight="31.0" prefWidth="409.0" />
+               <HBox alignment="CENTER_LEFT" prefHeight="95.0" prefWidth="260.0">
+                   <children>
+                       <VBox prefHeight="95.0" prefWidth="266.0">
+                           <children>
+                               <Label text="Shift End">
+                                   <padding>
+                                       <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                                   </padding>
+                               </Label>
+                               <Label prefHeight="28.0" prefWidth="189.0" text="Restart">
+                                   <padding>
+                                       <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                                   </padding>
+                               </Label>
+                               <Label text="Shutdown">
+                                   <VBox.margin>
+                                       <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                                   </VBox.margin>
+                               </Label>
+                           </children>
+                       </VBox>
+                       <VBox prefHeight="95.0" prefWidth="58.0">
+                           <children>
+                               <RadioButton fx:id="radioButtonShiftEnd" mnemonicParsing="false" text="On">
+                                   <padding>
+                                       <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                                   </padding>
+                               </RadioButton>
+                               <RadioButton fx:id="radioButtonStart" mnemonicParsing="false" text="On">
+                                   <padding>
+                                       <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                                   </padding>
+                               </RadioButton>
+                               <RadioButton fx:id="radioButtonShutdown" mnemonicParsing="false" text="On">
+                                   <padding>
+                                       <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                                   </padding>
+                               </RadioButton>
+                           </children>
+                       </VBox>
+                   </children>
+               </HBox>
+               <HBox>
+                   <children>
+                       <Button fx:id="commandApplyButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Apply" />
+                       <Button fx:id="cancelButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Cancel">
+                           <HBox.margin>
+                               <Insets left="20.0" />
+                           </HBox.margin>
+                       </Button>
+                   </children>
+               </HBox>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                         <Label text="Config Version" />
+                         <Label fx:id="configversion" prefHeight="28.0" prefWidth="82.0" text="TM0001.1" GridPane.columnIndex="1">
+                             <padding>
+                                 <Insets left="10.0" />
+                             </padding>
+                         </Label>
+                         <Label text="Parameter version" GridPane.rowIndex="1" />
+                         <Label text="Software Version" GridPane.rowIndex="2" />
+                         <Label fx:id="paraversion" text="xxxxx" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                             <padding>
+                                 <Insets left="10.0" />
+                             </padding>
+                         </Label>
+                         <Label fx:id="swversion" text="xxxxx" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                             <padding>
+                                 <Insets left="10.0" />
+                             </padding>
+                         </Label>
+                         <Label text="User Version" GridPane.columnIndex="2" />
+                         <Label text="Product Version" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                         <Label fx:id="userversion" text="xxxxx" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                             <padding>
+                                 <Insets left="10.0" />
+                             </padding>
+                         </Label>
+                         <Label fx:id="productversion" text="xxxxx" GridPane.columnIndex="3">
+                             <padding>
+                                 <Insets left="10.0" />
+                             </padding>
+                         </Label>
+                   <Label text="Last Sync" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Label layoutX="215.0" layoutY="77.0" text=" 12 March 2022" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                   <Label fx:id="lastTransaction" text="Last Transaction" GridPane.rowIndex="3" />
+               </children>
+            </GridPane>
+           </children>
+       </VBox>
+
+
+   </children>
+</HBox>

@@ -4,6 +4,9 @@ import com.amay.scu.ViewFactory;
 import com.amay.scu.dto.StationDevicesDTO;
 import com.amay.scu.enums.SLEStatus;
 import com.amay.scu.exceptions.SLENotCreatedException;
+import com.amay.scu.model.SLELocationListObject;
+import com.amay.scu.sleobj.LiveTOM;
+import com.amay.scu.sleobj.LiveTVM;
 import com.amay.scu.sles.components.SLE;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,7 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class TVMAbstractFactory extends SLEAbstractFactory {
-    static int TOM_COUNT = 1;
+    static int TVM_COUNT = 1;
     private static final String NAME="TVM";
     Logger logger = LoggerFactory.getLogger(TVMAbstractFactory.class);
 
@@ -24,15 +27,26 @@ public class TVMAbstractFactory extends SLEAbstractFactory {
         try {
             logger.debug("TVM is about to be created");
             FXMLLoader fxmlLoader = ViewFactory.getTVMView();
+            String name= getTVMId();
+            LiveTVM liveTVM=new LiveTVM(stationDevicesDTO.getEquipId(),stationDevicesDTO.getEquipIp(),"01",name, stationDevicesDTO.getEquipType());
+            logger.debug("Live Tom  : {} ",liveTVM.hashCode());
 
             Parent root=fxmlLoader.load();
             Button button = (Button) root.lookup("#tvm");
-            button.setId(getTomId());
+            button.setId(getTVMId());
             anchorPane.getChildren().add(button);
             logger.debug("TVM created : {}",button.getId());
             SLE controller=fxmlLoader.getController();
-            controller.setStatus(SLEStatus.ONLINE);
+//            controller.setStatus(SLEStatus.ONLINE);
             controller.setName(button.getId());
+
+            SLELocationListObject.list.putIfAbsent(name, new SLELocationListObject.SLELocation());
+            logger.debug("TOM location set : {} {}",name,SLELocationListObject.list.get(name));
+            controller.setLocation(SLELocationListObject.list.get(name));
+
+            controller.setLiveSLE(liveTVM);
+            controller.setMovingProperties(button,anchorPane);
+
             controller.setMovingProperties(button,anchorPane);
             return controller;
         } catch (Exception e) {
@@ -40,8 +54,8 @@ public class TVMAbstractFactory extends SLEAbstractFactory {
         }
     }
 
-    private String getTomId() {
-        return NAME+TOM_COUNT++;
+    private String getTVMId() {
+        return NAME+TVM_COUNT++;
     }
 
 }
