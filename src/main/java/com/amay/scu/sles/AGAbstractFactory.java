@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory;
 * */
 
 public class AGAbstractFactory extends SLEAbstractFactory {
-    static int TOM_COUNT = 1;
+    static int AG_COUNT = 1;
     private static final String NAME="AG";
     Logger logger = LoggerFactory.getLogger(AGAbstractFactory.class);
 
@@ -40,7 +40,6 @@ public class AGAbstractFactory extends SLEAbstractFactory {
             FXMLLoader fxmlLoader = ViewFactory.getAGView();
             String name=getAGId();
             LiveAG liveAG=new LiveAG(stationDevicesDTO.getEquipId(),stationDevicesDTO.getEquipIp(),"01",name, stationDevicesDTO.getEquipType());
-
 
             Parent root=fxmlLoader.load();
             Button button = (Button) root.lookup("#ag");
@@ -67,7 +66,7 @@ public class AGAbstractFactory extends SLEAbstractFactory {
 
     // auto increment  the  name
     private String getAGId() {
-        return NAME+TOM_COUNT++;
+        return NAME+AG_COUNT++;
     }
 
 }

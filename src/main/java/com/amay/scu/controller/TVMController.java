@@ -27,6 +27,7 @@ public class TVMController implements SLE {
     // Initial button position
     private double initialLayoutX;
     private double initialLayoutY;
+    private SLELocationListObject.SLELocation location;
 
     @FXML
     void initialize() {
@@ -35,7 +36,7 @@ public class TVMController implements SLE {
     }
     @Override
     public boolean setScale(float x, float y, float z) {
-        logger.debug("Setting scale of EFO to x:{} y:{} z:{}",x,y,z);
+        logger.debug("Setting scale of TVM to x:{} y:{} z:{}",x,y,z);
         Platform.runLater(() -> {
             tvm.setLayoutX(x);
             tvm.setLayoutX(y);
@@ -51,7 +52,7 @@ public class TVMController implements SLE {
 
     @Override
     public boolean setStatus(SLEStatus status) {
-        logger.debug("Setting status of TOM to {}",status.getStatus());
+        logger.debug("Setting status of TVM to {}",status.getStatus());
         tvm.setStyle(status.getStatus());
 
         return false;
@@ -95,6 +96,9 @@ public class TVMController implements SLE {
 
     @Override
     public void setLocation(SLELocationListObject.SLELocation location) {
+        this.location=location;
+        tvm.setLayoutX(location.getXAxis());
+        tvm.setLayoutY(location.getYAxis());
 
     }
 
@@ -109,7 +113,8 @@ public class TVMController implements SLE {
     }
 
     @Override
-    public void updatePeripheralStatus(LiveSLE liveTOM) {
+    public void updatePeripheralStatus(LiveSLE liveTVM) {
+
 
     }
 

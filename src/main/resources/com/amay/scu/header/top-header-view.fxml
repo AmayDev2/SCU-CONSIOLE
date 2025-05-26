@@ -2,170 +2,114 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="topHeader" maxWidth="-Infinity" minHeight="150.0" minWidth="-Infinity" prefHeight="150.0" prefWidth="1920.0" style="-fx-background-color: rgb(251,157,8);" styleClass="topHeader" stylesheets="@../css/header.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.HeaderController">
+<AnchorPane fx:id="topHeader" minHeight="150.0" prefHeight="150.0" prefWidth="1920.0" styleClass="header" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.HeaderController">
    <children>
       <!-- Left Section: Logo and Station Information -->
-      <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" spacing="15.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="10.0">
+      <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" spacing="15.0">
          <children>
-            <ImageView fx:id="logoImageView" fitHeight="140.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="logoImageView" fitHeight="114.0" fitWidth="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <!-- Replace with the actual logo image -->
                   <Image url="@../images/indoor-bhopal-logo.png" />
                </image>
             </ImageView>
-            <VBox prefWidth="382.0">
-               <Text fx:id="stationName" styleClass="station-name" text="STATION NAME" textAlignment="CENTER">
-                  <font>
-                     <Font name="System Bold" size="36.0" />
-                  </font>
-               </Text>
-               <Text fx:id="stationId" styleClass="station-id" text="Station ID: 00">
-                  <font>
-                     <Font size="18.0" />
-                  </font>
-               </Text>
+            <VBox alignment="CENTER_LEFT">
+               <Text fx:id="stationName" styleClass="station-name" text="MP METRO" />
+               <Text fx:id="stationId" styleClass="station-id" text="Station ID: 00" />
             </VBox>
          </children>
       </HBox>
 
+      <!-- Center Section: Navigation -->
+      <HBox fx:id="navigatorHBox" alignment="CENTER" layoutX="710.0" layoutY="86.0" minHeight="0.0" minWidth="500.0" prefWidth="500.0" spacing="20.0">
+         <children>
+            <Button fx:id="menuNavigator" minHeight="30.0" minWidth="120.0" onMouseClicked="#onMenuClick" styleClass="navigator" text="Menu" textAlignment="CENTER" />
+            <Button fx:id="monitorNavigator" minHeight="30.0" minWidth="120.0" onMouseClicked="#onMonitorClick" styleClass="navigator" text="Monitor" />
+            <Button fx:id="reportNavigator" onMouseClicked="#onReportClick" prefHeight="25.0" prefWidth="120.0" styleClass="navigator" text="Report" />
+         </children>
+      </HBox>
+
       <!-- Right Section: Icons/Buttons -->
-      <HBox alignment="CENTER_RIGHT" layoutX="1600.0" layoutY="20.0" spacing="20.0" AnchorPane.rightAnchor="275.0" AnchorPane.topAnchor="15.0">
+      <!-- Right Section: Icons/Buttons -->
+      <HBox alignment="CENTER_RIGHT" layoutX="1600.0" layoutY="20.0" spacing="20.0">
          <children>
             <!-- Language Button -->
-            <VBox alignment="CENTER" spacing="10.0">
-            <Button fx:id="languageButton" styleClass="icon-button">
-               <graphic>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/ccu.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-                <Label text="CCU" />
+            <VBox alignment="CENTER">
+               <Button fx:id="languageButton" styleClass="icon-button">
+                  <graphic>
+                     <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../images/ccu.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+               </Button>
+               <Label text="CCU" />
             </VBox>
 
             <!-- Emergency Button -->
-            <VBox alignment="CENTER" spacing="10.0">
-            <Button fx:id="emergencyButton" onAction="#onEmergency" styleClass="icon-button">
-               <graphic>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/emergency-icon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
+            <VBox alignment="CENTER">
+               <Button fx:id="emergencyButton" onAction="#onEmergency" styleClass="icon-button">
+                  <graphic>
+                     <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../images/emergency-icon.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+               </Button>
                <Label styleClass="EMERGENCY" text="EMERGENCY" />
             </VBox>
 
             <!-- User Button -->
-            <VBox alignment="CENTER" spacing="10.0">
+            <VBox alignment="CENTER">
 
-            <Button fx:id="userButton" onAction="#onAuthClick" styleClass="icon-button">
-               <graphic>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/user-icon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Label fx:id="userName" styleClass="user-name" text="User" />
+               <Button fx:id="userButton" onAction="#onAuthClick" styleClass="icon-button">
+                  <graphic>
+                     <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../images/user-icon.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+               </Button>
+               <Label fx:id="userName" styleClass="user-name" text="User" />
             </VBox>
          </children>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
       </HBox>
-      <HBox fx:id="navigatorHBox" alignment="CENTER" layoutX="620.0" layoutY="45.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="815.0" spacing="50.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="600.0" AnchorPane.rightAnchor="600.0">
-         <children>
-            <Button fx:id="menuNavigator" mnemonicParsing="false" onAction="#onMenuClick" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: rgb(196, 97, 38); -fx-text-fill: #fff; -fx-font-size: 25; -fx-font-weight: 800;" text="Menu">
-               <effect>
-                  <DropShadow height="20.0" offsetX="1.0" offsetY="1.0" radius="4.625" width="0.5">
-                     <color>
-                        <Color red="0.6105263233184814" green="0.6014814972877502" blue="0.6014814972877502" />
-                     </color>
-                  </DropShadow>
-               </effect>
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="monitorNavigator" mnemonicParsing="false" onAction="#onMonitorClick" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: rgb(196, 97, 38); -fx-text-fill: #fff; -fx-font-size: 25; -fx-font-weight: 800;" text="Monitor">
-               <effect>
-                  <DropShadow height="20.0" offsetX="1.0" offsetY="1.0" radius="4.625" width="0.5">
-                     <color>
-                        <Color red="0.6105263233184814" green="0.6014814972877502" blue="0.6014814972877502" />
-                     </color>
-                  </DropShadow>
-               </effect>
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="reportNavigator" mnemonicParsing="false" onAction="#onReportClick" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: rgb(196, 97, 38); -fx-text-fill: #fff; -fx-font-size: 25; -fx-font-weight: 800;" text="Reports">
-               <effect>
-                  <DropShadow height="20.0" offsetX="1.0" offsetY="1.0" radius="4.625" width="0.5">
-                     <color>
-                        <Color red="0.6105263233184814" green="0.6014814972877502" blue="0.6014814972877502" />
-                     </color>
-                  </DropShadow>
-               </effect>
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Button>
-         </children>
-      </HBox>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1764.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="40.0">
-         <image>
-<!--            <Image url="@../images/SBILogoVertocal.png" />-->
-         </image>
-      </ImageView>
-      <GridPane layoutX="378.0" layoutY="95.0" prefHeight="30.0" prefWidth="400.0" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="750.0" AnchorPane.rightAnchor="770.0" AnchorPane.topAnchor="10.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="10.0" prefWidth="143.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" percentWidth="10.0" prefWidth="0.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="160.0" minWidth="10.0" percentWidth="30.0" prefWidth="160.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
+      <GridPane alignment="CENTER" layoutX="717.0" layoutY="20.0">
+         <columnConstraints>
+            <ColumnConstraints percentWidth="10.0" />
+            <ColumnConstraints percentWidth="2.0" />
+            <ColumnConstraints percentWidth="20.0" />
+            <ColumnConstraints minWidth="20.0" percentWidth="5.0" />
+            <ColumnConstraints percentWidth="10.0" />
+            <ColumnConstraints percentWidth="2.0" />
+            <ColumnConstraints fillWidth="false" halignment="CENTER" percentWidth="20.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+         </rowConstraints>
          <children>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER">
                <image>
                   <Image url="@../images/Calendar.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER">
                <image>
                   <Image url="@../images/Clock.png" />
                </image>
             </ImageView>
-            <Text fx:id="localDate" strokeType="OUTSIDE" strokeWidth="0.0" text="10 March 2025" GridPane.columnIndex="1">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Text>
-            <Text fx:id="localTime" strokeType="OUTSIDE" strokeWidth="0.0" text="12:12:12 AM" GridPane.columnIndex="3">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Text>
+            <Text fx:id="localDate" styleClass="text" text="10 March 2025" GridPane.columnIndex="2" />
+            <Text fx:id="localTime" styleClass="text" text="12:12:12 AM" GridPane.columnIndex="6" />
          </children>
       </GridPane>
 

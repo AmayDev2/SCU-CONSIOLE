@@ -27,6 +27,7 @@ public class TRController implements SLE {
     // Initial button position
     private double initialLayoutX;
     private double initialLayoutY;
+    private  SLELocationListObject.SLELocation location;
 
     @FXML
     void initialize() {
@@ -92,6 +93,9 @@ public class TRController implements SLE {
 
     @Override
     public void setLocation(SLELocationListObject.SLELocation location) {
+        this.location=location;
+        tr.setLayoutX(location.getXAxis());
+        tr.setLayoutY(location.getYAxis());
 
     }
 

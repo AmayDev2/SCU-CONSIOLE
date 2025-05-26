@@ -20,191 +20,142 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="monitorRightVBox" maxWidth="1.7976931348623157E308" spacing="12.0" style="-fx-background-color: #FFF;" stylesheets="@../css/station-dynamic-map-view.css" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.MonitorRightView">
-<GridPane alignment="CENTER" hgap="10.0" prefHeight="80.0" vgap="10.0">
-    <columnConstraints>
-        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="140.0" prefWidth="140.0" />
-        <ColumnConstraints halignment="CENTER" maxWidth="1.7976931348623157E308" prefWidth="140.0" />
-    </columnConstraints>
+<VBox fx:id="monitorRightVBox" minHeight="780" minWidth="350" prefHeight="780" prefWidth="350" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.MonitorRightView">
 
-    <!-- Total QR Sale and Total CSC Sale -->
-    <Label prefHeight="40.0" styleClass="header-label" text="Total QR Sale" GridPane.columnIndex="0" GridPane.rowIndex="0">
+    <GridPane alignment="CENTER" hgap="10.0" prefHeight="120.0">
+        <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" percentWidth="50.0" />
+            <ColumnConstraints halignment="CENTER" percentWidth="50.0" />
+        </columnConstraints>
+
+        <Label styleClass="h-label" text="Total QR Sale" GridPane.columnIndex="0" GridPane.rowIndex="0">
          <font>
-            <Font name="System Bold" size="16.0" />
+            <Font size="16.0" />
          </font></Label>
-    <Label styleClass="header-label" text="Total NCMC Sale" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="0">
+        <Label prefHeight="35.0" prefWidth="131.0" styleClass="h-label" text="Total NCMC Sale" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="0">
          <font>
-            <Font name="System Bold" size="16.0" />
+            <Font size="16.0" />
          </font></Label>
 
-    <Label fx:id="qrSale" styleClass="value-label" text="₹ 0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+        <Label fx:id="qrSale" prefHeight="35.0" prefWidth="76.0" styleClass="value-label" text="₹ 0" GridPane.columnIndex="0" GridPane.rowIndex="1">
          <font>
-            <Font size="14.0" />
+            <Font size="16.0" />
          </font></Label>
-    <Label styleClass="value-label" text="₹0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <Label prefHeight="33.0" prefWidth="68.0" styleClass="value-label" text="₹ 0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <font>
-            <Font size="14.0" />
+            <Font size="16.0" />
          </font></Label>
-      <rowConstraints>
-         <RowConstraints fillHeight="false" />
-         <RowConstraints percentHeight="50.0" />
-      </rowConstraints>
 
-</GridPane>
-   <VBox spacing="20.0" VBox.vgrow="ALWAYS">
-      <children>
-          <HBox alignment="CENTER" prefHeight="35.0" spacing="10.0" VBox.vgrow="ALWAYS">
-              <children>
-                  <!-- Label for "ENTRY" -->
-                  <Label prefHeight="35.0" styleClass="header-label" text="ENTRY">
-                  <font>
-                     <Font name="System Bold" size="12.0" />
-                  </font></Label>
-      
-                  <!-- ComboBox for Time Interval Selection -->
-                  <ComboBox fx:id="timeIntervalComboBox" prefHeight="35.0" style="-fx-background-color: rgb(251,157,8);">
-                      <items>
-                          <FXCollections fx:factory="observableArrayList">
-                              <HBox maxWidth="100">
-                                  <children>
-                                      <DatePicker fx:id="customDatePicker" />
-                                  </children>
-                              </HBox>
+        <rowConstraints>
+            <RowConstraints fillHeight="false" percentHeight="50.0" />
+            <RowConstraints percentHeight="50.0" />
+        </rowConstraints>
+    </GridPane>
 
-                              <String fx:value="1 hour" />
-                              <String fx:value="20 minutes" />
-                              <String fx:value="10 minutes" />
-                              <String fx:value="5 minutes" />
-                              <String fx:value="1 day" />
-                              <String fx:value="5 days" />
-                              <String fx:value="30 days" />
+    <VBox alignment="CENTER" minWidth="300.0" prefWidth="300.0" VBox.vgrow="ALWAYS">
+        <children>
+            <HBox alignment="CENTER" minHeight="50.0" prefHeight="50.0" spacing="30.0" VBox.vgrow="ALWAYS">
+                <children>
+                    <Label styleClass="header-label" text="ENTRY" />
+                    <ComboBox fx:id="timeIntervalComboBox" prefHeight="35.0">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <HBox maxWidth="100">
+                                    <children>
+                                        <DatePicker fx:id="customDatePicker" />
+                                    </children>
+                                </HBox>
+                                <String fx:value="1 hour" />
+                                <String fx:value="20 minutes" />
+                                <String fx:value="10 minutes" />
+                                <String fx:value="5 minutes" />
+                                <String fx:value="1 day" />
+                                <String fx:value="5 days" />
+                                <String fx:value="30 days" />
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                    <Label styleClass="header-label" text="EXIT" />
+                </children>
+            <VBox.margin>
+               <Insets />
+            </VBox.margin>
+            </HBox>
 
-                          </FXCollections>
-                      </items>
-                  </ComboBox>
-      
-                  <!-- Label for "EXIT" -->
-                  <Label prefHeight="35.0" styleClass="header-label" text="EXIT">
-                  <font>
-                     <Font name="System Bold" size="12.0" />
-                  </font></Label>
-              </children>
-          </HBox>
-      
-            
-                <GridPane alignment="CENTER" hgap="10" prefHeight="165.0" prefWidth="288.0" vgap="10">
-              <columnConstraints>
-                  <ColumnConstraints halignment="LEFT" />
-               <ColumnConstraints halignment="CENTER" maxWidth="42.0" minWidth="10.0" prefWidth="50.0" />
-                  <ColumnConstraints halignment="LEFT" maxWidth="93.0" minWidth="81.0" prefWidth="86.0" />
-               <ColumnConstraints halignment="CENTER" minWidth="10.0" prefWidth="50.0" />
-              </columnConstraints>
-              <Label styleClass="h-label" text="QR Count" GridPane.columnIndex="2" GridPane.rowIndex="0">
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font></Label>
-            <Label styleClass="h-label" text="NCMC Count" GridPane.rowIndex="1">
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font></Label>
-            <Label styleClass="h-label" text="NCMC Count" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font></Label>
-            <Label fx:id="entryCSCCount" styleClass="h-label" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label fx:id="exitCSCCount" styleClass="h-label" text="0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <Label fx:id="entryQRCount" styleClass="h-label" text="0" GridPane.columnIndex="1" />
-            <Label fx:id="exitQRCount" styleClass="h-label" text="0" GridPane.columnIndex="3" />
-            <Label styleClass="h-label" text="QR Count">
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font></Label>
-            <Label styleClass="header-label" text="Total" GridPane.rowIndex="2">
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font></Label>
-            <Label fx:id="entryCountTotal" styleClass="header-label" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label styleClass="header-label" text="Total" GridPane.columnIndex="2" GridPane.rowIndex="2">
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font></Label>
-            <Label fx:id="exitCountTotal" styleClass="header-label" text="0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Label prefHeight="35.0" prefWidth="92.0" styleClass="header-label" text="Total Sale :" GridPane.rowIndex="3">
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font></Label>
-            <Label fx:id="totalSale" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="87.0" styleClass="header-label" text="0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-              <rowConstraints>
-                  <RowConstraints />
-               <RowConstraints minHeight="10.0" prefHeight="30.0" />
-               <RowConstraints minHeight="10.0" prefHeight="30.0" />
-               <RowConstraints minHeight="10.0" prefHeight="30.0" />
-              </rowConstraints>
-      
-                </GridPane>
-      </children>
-   </VBox>
+            <GridPane alignment="CENTER" minHeight="120.0" prefHeight="120.0">
+                <columnConstraints>
+                    <ColumnConstraints halignment="CENTER" percentWidth="30.0" />
+                    <ColumnConstraints halignment="CENTER" percentWidth="40.0" />
+                    <ColumnConstraints halignment="CENTER" percentWidth="30.0" />
+                </columnConstraints>
 
-    <TabPane tabClosingPolicy="SELECTED_TAB">
-        <!-- Existing Special Command Tab -->
-        <Tab closable="false" text="Special Command">
-            <ScrollPane fitToWidth="true">
+                <Label styleClass="h-label" text="QR Count" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                <Label styleClass="h-label" text="NCMC Count" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label fx:id="entryCSCCount" styleClass="h-label" text="0" GridPane.rowIndex="1" />
+                <Label fx:id="exitCSCCount" styleClass="h-label" text="0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                <Label fx:id="entryQRCount" styleClass="h-label" text="0" />
+                <Label fx:id="exitQRCount" styleClass="h-label" text="0" GridPane.columnIndex="2" />
+                <Label fx:id="entryCountTotal" styleClass="header-label" text="0" GridPane.rowIndex="2" />
+                <Label styleClass="h-label"  text="Total" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Label fx:id="exitCountTotal" styleClass="header-label" text="0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+
+                <rowConstraints>
+                    <RowConstraints percentHeight="30.0" />
+                    <RowConstraints percentHeight="30.0" />
+                    <RowConstraints percentHeight="40.0" />
+                </rowConstraints>
+            </GridPane>
+         <GridPane alignment="CENTER" layoutX="10.0" layoutY="55.0" minHeight="50.0" prefHeight="50.0">
+            <columnConstraints>
+               <ColumnConstraints halignment="CENTER" percentWidth="50.0" />
+               <ColumnConstraints halignment="CENTER" percentWidth="50.0" />
+            </columnConstraints>
+            <rowConstraints>
+               <RowConstraints />
+               <RowConstraints />
+            </rowConstraints>
+            <children>
+                   <Label prefHeight="25.0" prefWidth="112.0" styleClass="h-label" text="Total Sale :" textAlignment="JUSTIFY" GridPane.rowIndex="1" />
+                   <Label fx:id="totalSale" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="87.0" styleClass="header-label" text="0" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            </children>
+         </GridPane>
+        </children>
+    </VBox>
+
+    <TabPane minHeight="260.0"  prefHeight="260.0" tabClosingPolicy="SELECTED_TAB">
+        <Tab closable="false" text="Special Modes">
+            <ScrollPane fitToWidth="true" prefHeight="251.0" prefWidth="350.0">
                 <content>
-                    <VBox alignment="TOP_CENTER" prefHeight="250.0" spacing="10" style="-fx-background-color: #fff;">
-                        <ToggleButton fx:id="emergencyButton" minHeight="40.0" minWidth="200" style="-fx-background-color: linear-gradient(from 0% 20% to 90% 100%,rgb(255,255,255),rgb(251,157,8));" styleClass="select-button" text="Emergency">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font></ToggleButton>
-                        <ToggleButton fx:id="stationCloseButton" minHeight="40.0" minWidth="200" style="-fx-background-color: linear-gradient(from 0% 20% to 90% 100%,rgb(255,255,255),rgb(251,157,8));" styleClass="select-button" text="Station Close">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font></ToggleButton>
-<!--                        <ToggleButton fx:id="excessFareOverrideButton" minWidth="200" styleClass="select-button" text="Excess Fare Override" />-->
-<!--                        <ToggleButton fx:id="fareBypassMode1Button" minWidth="200" styleClass="select-button" text="Fare Bypass Mode 1" />-->
-                        <ToggleButton fx:id="fareBypassMode2Button" minHeight="40.0" minWidth="200" style="-fx-background-color: linear-gradient(from 0% 20% to 90% 100%,rgb(255,255,255),rgb(251,157,8));" styleClass="select-button" text="INCIDENT MODE">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font></ToggleButton>
-<!--                        <ToggleButton fx:id="highSecurityMode" minWidth="200" styleClass="select-button" text="High Security mode" />-->
-                        <Button fx:id="applyCommandButton" disable="true" minHeight="40.0" minWidth="200" style="-fx-background-color: rgb(154, 47, 40)" styleClass="apply-button" text="Apply">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font></Button>
-                  <padding>
-                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                  </padding>
+                    <VBox alignment="TOP_CENTER" prefHeight="250.0" spacing="10">
+                        <ToggleButton fx:id="selectEmergencyButton" minHeight="40.0" minWidth="200" styleClass="select-button" text="Emergency" />
+                        <ToggleButton fx:id="stationCloseButton" minHeight="40.0" minWidth="200" styleClass="select-button" text="Station Close" />
+                        <ToggleButton fx:id="fareBypassMode2Button" minHeight="40.0" minWidth="200" styleClass="select-button" text="INCIDENT MODE" />
+                        <Button fx:id="applyCommandButton" disable="true" minHeight="40.0" minWidth="200" styleClass="apply-button" text="Apply" />
                     </VBox>
                 </content>
             </ScrollPane>
         </Tab>
 
-        <!-- New Tab with TOM and AG Sections -->
         <Tab closable="false" text="Commands">
             <ScrollPane fitToWidth="true" prefHeight="250.0">
                 <content>
                     <VBox alignment="TOP_CENTER" spacing="10">
-                        <!-- TOM Section -->
                         <TitledPane text="TOM">
-                     <ScrollPane>
-                        <content>
-                                  <VBox fx:id="tomSection" alignment="TOP_CENTER" prefHeight="70.0" spacing="10">
-                                <!-- ToggleButtons for TOM will be added dynamically -->
-                            </VBox>
-                        </content>
-                     </ScrollPane>
-                        </TitledPane>
-                        <!-- AG Section -->
-                        <TitledPane text="AG">
-                     <ScrollPane>
-                        <content>
-                                  <VBox fx:id="agSection" alignment="TOP_CENTER" prefHeight="70.0" spacing="10">
-                                <!-- ToggleButtons for AG will be added dynamically -->
-                            </VBox>
-                        </content>
-                     </ScrollPane>
+                            <ScrollPane>
+                                <content>
+                                    <VBox fx:id="tomSection" alignment="TOP_CENTER" prefHeight="70.0" spacing="10" />
+                                </content>
+                            </ScrollPane>
                         </TitledPane>
 
-                        <!-- Apply and Reset Buttons -->
+                        <TitledPane text="AG">
+                            <ScrollPane>
+                                <content>
+                                    <VBox fx:id="agSection" alignment="TOP_CENTER" prefHeight="70.0" spacing="10" />
+                                </content>
+                            </ScrollPane>
+                        </TitledPane>
+
                         <HBox alignment="CENTER" spacing="10">
                             <Button fx:id="applyButton" minWidth="100" text="Apply" />
                             <Button fx:id="resetButton" minWidth="100" text="Reset" />
@@ -215,24 +166,12 @@
         </Tab>
     </TabPane>
 
-
-
-
-
-    <!-- Alerts Section -->
-<VBox alignment="CENTER" spacing="10" style="-fx-background-color: rgb(251,157,8);">
-    <Label alignment="CENTER" contentDisplay="CENTER" styleClass="header-label" text="Alerts" textAlignment="CENTER">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-         <VBox.margin>
-            <Insets top="10.0" />
-         </VBox.margin></Label>
-    <ListView fx:id="alertsListView" prefWidth="308.0">
-        <items>
-            <FXCollections fx:factory="observableArrayList">
-            </FXCollections>
-        </items>
-    </ListView>
-</VBox>
+    <VBox fx:id="alertsVBox" alignment="CENTER" prefHeight="247.0" prefWidth="350.0" spacing="10">
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" styleClass="header-label" text="Alerts" textAlignment="CENTER" />
+        <ListView fx:id="alertsListView" prefWidth="308.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList" />
+            </items>
+        </ListView>
+    </VBox>
 </VBox>

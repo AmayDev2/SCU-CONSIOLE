@@ -5,6 +5,7 @@ import com.amay.scu.dto.StationDevicesDTO;
 import com.amay.scu.enums.SLEStatus;
 import com.amay.scu.exceptions.SLENotCreatedException;
 import com.amay.scu.model.SLELocationListObject;
+import com.amay.scu.sleobj.LiveEFO;
 import com.amay.scu.sleobj.LiveTOM;
 import com.amay.scu.sles.components.SLE;
 import javafx.fxml.FXMLLoader;
@@ -28,7 +29,7 @@ public class TOMAbstractFactory extends SLEAbstractFactory {
             logger.debug("TOM is about to be created");
             FXMLLoader fxmlLoader = ViewFactory.getTOMView();
             String name=getTomId();
-            LiveTOM liveTOM=new LiveTOM(stationDevicesDTO.getEquipId(),stationDevicesDTO.getEquipIp(),"01",name, stationDevicesDTO.getEquipType());
+            LiveEFO liveTOM=new LiveEFO(stationDevicesDTO.getEquipId(),stationDevicesDTO.getEquipIp(),"01",name, stationDevicesDTO.getEquipType());
             logger.debug("Live Tom  : {} ",liveTOM.hashCode());
 
             Parent root=fxmlLoader.load();

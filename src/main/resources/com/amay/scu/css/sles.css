@@ -13,8 +13,8 @@
 }
 
 .ag{
-    -fx-background-color:rgb(194, 189, 189);
-    -fx-border-color: #000000;
+    -fx-background-color:transparent;
+    -fx-border-color:transparent;
     -fx-border-width: 1;
     -fx-border-radius: 5;
     -fx-background-radius: 5;
@@ -26,6 +26,9 @@
     -fx-pref-width: 80;
 }
 
+.image-background{
+
+}
 
 .tr{
     -fx-background-color:rgb(194, 189, 189);

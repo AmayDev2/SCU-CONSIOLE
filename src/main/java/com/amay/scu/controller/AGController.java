@@ -18,6 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,8 +28,12 @@ public class AGController implements SLE {
     @FXML
     private ImageView imageView;
     Logger logger = LoggerFactory.getLogger(getClass());
+
     @FXML
     private Button ag;
+
+    @FXML
+    private VBox agBackground;
 
     @FXML
     private Label name;
@@ -44,7 +49,6 @@ public class AGController implements SLE {
 
     @FXML
     void initialize() {
-//        imageView.setImage(new Image("file:E:\\Amay Technosystems\\AFC\\SCU\\src\\main\\resources\\com\\amay\\scu\\images\\gates\\Bi_D_not_working.png"));
         ag.setOnMouseClicked(this::handleMouseClick);           //handles the mouse click event
 
     }
@@ -181,8 +185,9 @@ public class AGController implements SLE {
 
     // updating the operation mode
     private void updateOperationMode(AGOperationMode agOperationMode) {
-        logger.info("Updating Operation Mode Of AG {}",ag);
-//        ag.setStyle(agOperationMode.getColor());
+        logger.info("Updating Operation Mode Of AG {} {}",ag,agOperationMode.getColor());
+        agBackground.setStyle(agOperationMode.getColor());
+
         //TODO: Remove these logics pass the images path in enum itself instead of color
         if(AGOperationMode.IN_SERVICE.equals(agOperationMode)){
         imageView.setImage(ImageLoaderUtil.loadImage(ImagePath.BI_DIRECTIONAL_IN_SERVICE));

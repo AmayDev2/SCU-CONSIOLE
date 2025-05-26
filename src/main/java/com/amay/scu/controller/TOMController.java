@@ -46,7 +46,7 @@ public class TOMController implements SLE {
 
     @Override
     public boolean setScale(float x, float y, float z) {
-        logger.debug("Setting scale of EFO to x:{} y:{} z:{}", x, y, z);
+        logger.debug("Setting scale of TOM to x:{} y:{} z:{}", x, y, z);
         tom.setLayoutX(x);
         tom.setLayoutX(y);
 

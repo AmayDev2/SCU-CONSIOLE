@@ -76,7 +76,7 @@ public class MonitorRightView {
     private ObservableList<Parent> alerts;
 
     @FXML
-    private ToggleButton emergencyButton;
+    private ToggleButton  selectEmergencyButton;;
 
     @FXML
     private ToggleButton stationCloseButton;
@@ -138,8 +138,8 @@ public class MonitorRightView {
 
         ToggleGroup commandGroup = new ToggleGroup();
         // Add each button to the ToggleGroup
-        emergencyButton.setToggleGroup(commandGroup);
-        emergencyButton.setText(StationSpecialMode.EMERGENCY.name());
+        selectEmergencyButton.setToggleGroup(commandGroup);
+        selectEmergencyButton.setText(StationSpecialMode.EMERGENCY.name());
         stationCloseButton.setToggleGroup(commandGroup);
         stationCloseButton.setText(StationSpecialMode.STATION_CLOSED.name());
 //        excessFareOverrideButton.setToggleGroup(commandGroup);
@@ -152,7 +152,7 @@ public class MonitorRightView {
 //        highSecurityMode.setText(StationSpecialMode.HIGH_SECURITY_MODE.name());
 
         // Add event handlers to each button
-        emergencyButton.setOnAction(event -> handleSelection(emergencyButton));
+        selectEmergencyButton.setOnAction(event -> handleSelection(selectEmergencyButton));
         stationCloseButton.setOnAction(event -> handleSelection(stationCloseButton));
 //        excessFareOverrideButton.setOnAction(event -> handleSelection(excessFareOverrideButton));
 //        fareBypassMode1Button.setOnAction(event -> handleSelection(fareBypassMode1Button));
@@ -167,19 +167,19 @@ public class MonitorRightView {
 //                fareBypassMode1Button.setDisable(true);
                 fareBypassMode2Button.setDisable(true);
 //                highSecurityMode.setDisable(true);
-                emergencyButton.setDisable(true);
+                selectEmergencyButton.setDisable(true);
             }else{
                 stationCloseButton.setDisable(false);
 //                excessFareOverrideButton.setDisable(false);
 //                fareBypassMode1Button.setDisable(false);
                 fareBypassMode2Button.setDisable(false);
 //                highSecurityMode.setDisable(false);
-                emergencyButton.setDisable(false);
+                selectEmergencyButton.setDisable(false);
             }
             switch (newMode) {
                 case EMERGENCY:
-                    emergencyButton.setSelected(true);
-                    emergencyButton.setDisable(false);
+                    selectEmergencyButton.setSelected(true);
+                    selectEmergencyButton.setDisable(false);
                     break;
                 case STATION_CLOSED:
                     stationCloseButton.setSelected(true);
@@ -198,7 +198,7 @@ public class MonitorRightView {
 //                    highSecurityMode.setSelected(true);
                     break;
                 default:
-                    emergencyButton.setSelected(false);
+                    selectEmergencyButton.setSelected(false);
                     break;
             }
 
@@ -295,7 +295,7 @@ public class MonitorRightView {
 //
 //        switch (mode) {
 //            case EMERGENCY:
-//                emergencyButton.setSelected(true);
+//                selectEmergencyButton.setSelected(true);
 //                break;
 //            case STATION_CLOSED:
 //                stationCloseButton.setSelected(true);

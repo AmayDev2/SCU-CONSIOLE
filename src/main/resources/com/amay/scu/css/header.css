@@ -1,20 +1,7 @@
 .topHeader{
-    -fx-background-color: rgb(251,157,8);
+-fx-background-color: #E6F2FF;
 }
 
-.navigator {
-    -fx-background-color: #00ff0d;
-    -fx-font-size: 16px;
-    -fx-text-fill: #f85d5d;  /* Change this to the desired text color */
-
-
-}
-
-.navigator:pressed {
-    -fx-background-color: #8282ee;
-    -fx-font-size: 18px;
-    -fx-font-weight: bold;
-}
 
 
 .station-name {
@@ -26,6 +13,30 @@
     -fx-font-size: 16px;
 }
 
+.navigator{
+    -fx-min-width: 250px;
+    -fx-background-color: #e7e6ff;        /* Light purple */
+    -fx-text-fill: #1a1a1a;               /* Dark text for contrast */
+    -fx-pref-height: 50px;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+
+}
+
+.navigator:pressed {
+    -fx-background-color: #e7e6ff; /* Slightly darker purple on press */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, 0, 0, 4); /* Shadow effect on press */
+
+}
+
+.navigator:selected {
+    -fx-background-color: #e7e6ff; /* Even darker purple when selected */
+    -fx-text-fill: #ffffff; /* White text for better visibility */
+    -fx-border-color: #b3a6cc; /* Lighter border color */
+    -fx-border-width: 2px; /* Thicker border for emphasis */
+
+}
 
 .icon-button {
     -fx-background-color: transparent;
@@ -37,6 +48,12 @@
     -fx-padding: 5px;
     -fx-shape: "M 100 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0"; /* Makes the button circular */
     -fx-cursor: hand;
+}
+
+.text {
+    -fx-font-size: 16px;
+    -fx-text-weight: bold
+    -fx-text-fill: #000000; /* Change this to the desired text color */
 }
 
 /*#emergencyButton:hover {*/

@@ -29,11 +29,11 @@ public class TVMAbstractFactory extends SLEAbstractFactory {
             FXMLLoader fxmlLoader = ViewFactory.getTVMView();
             String name= getTVMId();
             LiveTVM liveTVM=new LiveTVM(stationDevicesDTO.getEquipId(),stationDevicesDTO.getEquipIp(),"01",name, stationDevicesDTO.getEquipType());
-            logger.debug("Live Tom  : {} ",liveTVM.hashCode());
+            logger.debug("Live TVM  : {} ",liveTVM.hashCode());
 
             Parent root=fxmlLoader.load();
             Button button = (Button) root.lookup("#tvm");
-            button.setId(getTVMId());
+            button.setId(name);
             anchorPane.getChildren().add(button);
             logger.debug("TVM created : {}",button.getId());
             SLE controller=fxmlLoader.getController();
@@ -41,7 +41,7 @@ public class TVMAbstractFactory extends SLEAbstractFactory {
             controller.setName(button.getId());
 
             SLELocationListObject.list.putIfAbsent(name, new SLELocationListObject.SLELocation());
-            logger.debug("TOM location set : {} {}",name,SLELocationListObject.list.get(name));
+            logger.debug("TVM location set : {} {}",name,SLELocationListObject.list.get(name));
             controller.setLocation(SLELocationListObject.list.get(name));
 
             controller.setLiveSLE(liveTVM);

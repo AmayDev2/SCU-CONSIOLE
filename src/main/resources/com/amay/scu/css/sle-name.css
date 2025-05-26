@@ -2,3 +2,7 @@
     -fx-font-size: 10px;
     -fx-text-fill: #000000;
 }
+.passengerCountLabel {
+    -fx-font-size: 14px;
+    -fx-text-fill: #000000;
+}

@@ -1,5 +1,4 @@
 #topHeader{
-    -fx-background-color: rgba(251, 157, 8, 0);
     -fx-min-height: 50;
     -fx-start-margin: 20px;
     -fx-end-margin: 20px
@@ -13,25 +12,23 @@
 
 /*center*/
 #anchorPane {
-    -fx-border-width: 2px;
-    -fx-border-color: #000000;  /* You can change this to any color */
-    -fx-border-style: solid;  /* Other options: dotted, dashed, etc. */
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-border-style: none;
 }
 #reportAnchorPane{
-    -fx-border-width: 2px;
-    -fx-border-color: #000000;  /* You can change this to any color */
-    -fx-border-style: solid;  /* Other options: dotted, dashed, etc. */
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-border-style: none;
 }
 
 #bottomVBox{
-    -fx-background-color: rgba(243, 243, 178, 0);
     -fx-min-height: 100;
     -fx-max-height: 100;
 
 }
 
 #borderPane{
-    -fx-background-color: #d4fff5;
     -fx-pref-height: 1060;
     -fx-pref-width: 1920;
     -fx-padding: 10px;

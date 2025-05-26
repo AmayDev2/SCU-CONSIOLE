@@ -26,7 +26,7 @@ import java.util.Map;
 public class StationDynamicMapController implements IStationDynamicMapViewListener {
 
     private int tomCount = 0;
-    private int efoCount = 1;
+    private int efoCount = 0;
     private int readerCount = 0;
     private int gateCount = 0;
     private int arraysCount = 0;
@@ -34,6 +34,9 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
     List<StationDevicesDTO> stationDevices = null;
     List<StationDevicesDTO>  ag=new ArrayList<>();
     List<StationDevicesDTO>  tom=new ArrayList<>();
+    List<StationDevicesDTO>  efo=new ArrayList<>();
+    List<StationDevicesDTO>  tvm=new ArrayList<>();
+    List<StationDevicesDTO>  tr=new ArrayList<>();
 
     Logger logger = LoggerFactory.getLogger(StationDynamicMapController.class);
 
@@ -52,7 +55,7 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
 
         //initialize the listener
         StationDynamicMapViewListener.initialize(this);
-        boolean tom1 = false,ag1 = false,tvm1 = false,reader1 = false;
+        boolean tom1 = false,ag1 = false,tvm1 = false,reader1 = false,efo1=false;
 
         try {
             StationDevicesRepository stationDevicesRepository = StationDevicesRepository.getInstance();
@@ -68,9 +71,14 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
                         }
                         tom1=true;
                         break;
-//                    case "EFO":
-//                        efoCount++;
-//                        break;
+                    case "EFO":
+                        efoCount++;
+                        if(!efo1) {
+                            efo.add(stationDevice);
+                            efo1 = true;
+                        }
+                        break;
+
                     case "AG":
                         if(!ag1) {
                             gateCount++;
@@ -78,18 +86,20 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
                         }
                         ag1=true;
                         break;
-                    case "READER":
-//                        if(!reader1) {
-//                            readerCount++;
-//                        }
-//                        reader1=true;
-//                        break;
-//                    case "ARRAYS":
-//                        arraysCount++;
-//                        break;
+                    case "TR":
+                        if(!reader1) {
+                            readerCount++;
+                        tr.add(stationDevice);
+                        }
+                        reader1=true;
+                        break;
+                    case "ARRAYS":
+                        arraysCount++;
+                        break;
                     case "TVM":
                         if(!tvm1) {
                             tvmCount++;
+                            tvm.add(stationDevice);
                         }
                         tvm1=true;
                         break;
@@ -99,9 +109,13 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
 //            efoCount=1;
 
 //            //create the SLE objects based on the count of the devices
-            sles.addAll(Arrays.stream(SLEFactory.getSLEFactory(new AGAbstractFactory(), anchorPane, gateCount,ag)).toList());
-//            SLEFactory.getSLEFactory(new EFOAbstractFactory(), anchorPane, efoCount, ag);
-            sles.addAll(Arrays.stream(SLEFactory.getSLEFactory(new TOMAbstractFactory(), anchorPane, tomCount, tom)).toList());
+//            sles.addAll(Arrays.stream(SLEFactory.getSLEFactory(new AGAbstractFactory(), anchorPane, gateCount,ag)).toList());
+              sles.add(SLEFactory.getSLEFactory(new AGAbstractFactory(), anchorPane,  ag.get(0)));
+              sles.add(SLEFactory.getSLEFactory(new TOMAbstractFactory(), anchorPane,  tom.get(0)));
+              sles.add(SLEFactory.getSLEFactory(new EFOAbstractFactory(), anchorPane,  efo.get(0)));
+              sles.add(SLEFactory.getSLEFactory(new TVMAbstractFactory(), anchorPane,  tvm.get(0)));
+              sles.add(SLEFactory.getSLEFactory(new TRAbstractFactory(), anchorPane,  tr.get(0)));
+//            sles.addAll(Arrays.stream(SLEFactory.getSLEFactory(new TOMAbstractFactory(), anchorPane, tomCount, tom)).toList());
 //            SLEFactory.getSLEFactory(new TVMAbstractFactory(), anchorPane, tvmCount, ag);
 
 
