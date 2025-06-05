@@ -14,6 +14,7 @@ public interface Path {
      String HEADER="header/top-header-view.fxml";
      String REPORT = "report/report.fxml";
      String MONITOR_RIGHT_VIEW = "popups/monitor-right-view.fxml";
+        String CENTER= "station_map/station-dynamic-map-view.fxml";
      String ALERT = "components/alert.fxml";
      String TOM_WIDGETS = "popups/tom-widgets-view-v2.fxml";
      String AG_WIDGETS = "popups/ag-widgets-view.fxml";

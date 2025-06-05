@@ -1,7 +1,5 @@
 #topHeader{
     -fx-min-height: 50;
-    -fx-start-margin: 20px;
-    -fx-end-margin: 20px
 }
 
 #rightVBox{
@@ -13,7 +11,8 @@
 /*center*/
 #anchorPane {
     -fx-background-color: transparent;
-    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-border-width: 1;
     -fx-border-style: none;
 }
 #reportAnchorPane{
@@ -31,5 +30,5 @@
 #borderPane{
     -fx-pref-height: 1060;
     -fx-pref-width: 1920;
-    -fx-padding: 10px;
+
 }

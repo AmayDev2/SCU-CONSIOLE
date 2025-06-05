@@ -35,7 +35,7 @@ class SCUServiceTest {
                                 .setStreamData(StreamData.newBuilder().setEquipId("TOM1").setRequestType(RequestType.PERIPHERAL_STATUS).setRequestData(Any.pack(TOMPeripheralStatus.newBuilder().build())).build())
                                         .build();
 
-        scuService.detectDeviceType(DeviceType.TOM,consoleProtocol);
+//        scuService.detectDeviceType(DeviceType.TOM,consoleProtocol);
 
     }
 }

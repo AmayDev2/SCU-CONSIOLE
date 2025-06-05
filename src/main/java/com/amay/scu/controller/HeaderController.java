@@ -10,6 +10,7 @@ import com.amay.scu.popup.PopupWindow;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.beans.property.BooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,12 +22,18 @@ import javafx.util.Duration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.awt.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 
 public class HeaderController {
+
+    public static BooleanProperty isCCUConnected;
+    @FXML
+    private  Button ccuConnection;
 
 
     @FXML
@@ -86,6 +93,8 @@ public class HeaderController {
         emergencyButton.setDisable(true);
         updateDateTime();
 
+
+
         StationSpecialMode.StationSpecialModeListener listener = newMode -> {
             logger.debug("New special mode: {}  {}", newMode, emergencyModeActive);
 
@@ -102,6 +111,18 @@ public class HeaderController {
                 emergencyModeActive = false;
                 Platform.runLater(() -> {
                     emergencyButton.getStyleClass().remove("emergencyButtonActive");
+                });
+            }else if (newMode.equals(StationSpecialMode.CCU_DISCONNECT)){
+                Platform.runLater(() -> {
+                        ccuConnection.setStyle("-fx-background-color: red;");
+                        System.out.println("❌ CCU Disconnected");
+                });
+
+            }else if (newMode.equals(StationSpecialMode.CCU_CONNECT)){
+                // Listener to change background
+                Platform.runLater(() -> {
+                    ccuConnection.setStyle("-fx-background-color: green;");
+                    System.out.println(" CCU Connected");
                 });
             }
         };
@@ -194,6 +215,7 @@ public class HeaderController {
                 StationSpecialMode.setStationSpecialMode(StationSpecialMode.EMERGENCY);},
                 popupWindow,"Do you really want to set Emergency Mode??"));
         popupWindow.show(fxmlLoader);
+        actionEvent.consume();
 
     }
 

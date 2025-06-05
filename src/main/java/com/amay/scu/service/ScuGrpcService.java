@@ -51,6 +51,8 @@ public enum ScuGrpcService  {
             return "0-0-0-0-0-0";
         }
     }
+
+
     public String getTotalRevenue(String deviceId, String fromDate) {
         try{
             SCURevenueReportRequestV1 request=SCURevenueReportRequestV1.newBuilder()
@@ -114,4 +116,26 @@ public enum ScuGrpcService  {
     }
 
 
+    public String isAuthenticated(String username, String password) {
+        try {
+            SCUAuthenticationRequest request = SCUAuthenticationRequest.newBuilder()
+                    .setUsername(username)
+                    .setPassword(password)
+                    .build();
+
+            System.out.println("Sending authentication request to server: " + request);
+            SCUAuthenticationResponse response = this.blockingStub.getAuthentication(request);
+            System.out.println("Response from server for Authentication: " + response);
+            if (response.hasResponseMetaData() && response.getResponseMetaData().getErrorCode().equals("200")) {
+                System.out.println("User authenticated successfully.");
+                return response.getToken();
+            } else {
+                System.out.println("Authentication failed.");
+                throw new RuntimeException(response.getResponseMetaData().getErrorMessage());
+            }
+        } catch (Exception exception){
+            throw  new RuntimeException(exception.getMessage());
+
+        }
+    }
 }

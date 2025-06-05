@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<ScrollPane vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+    <content>
+        <HBox alignment="CENTER">
+            <children>
+                <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="20.0">
+                    <children>
+                    <Circle fill="#28a745" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+                    <Label prefHeight="17.0" prefWidth="151.0" text="Connected &amp; All OK" />
+                </children>
+                    <padding>
+                        <Insets left="20.0" />
+                    </padding>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="20.0">
+                    <children>
+                        <Circle fill="#fd7e14" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Label prefHeight="17.0" prefWidth="134.0" text="SCU Disconnected" />
+                    </children>
+                    <padding>
+                        <Insets left="20.0" />
+                    </padding>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="20.0">
+                    <children>
+                        <Circle fill="#dc3545" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Label prefHeight="17.0" prefWidth="148.0" text="Emergency Mode" />
+                    </children>
+                    <padding>
+                        <Insets left="20.0" />
+                    </padding>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="20.0">
+                    <children>
+                        <Circle fill="#6c757d" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Label prefHeight="17.0" prefWidth="152.0" text="Station Disabled" />
+                    </children>
+                    <padding>
+                        <Insets left="20.0" />
+                    </padding>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="20.0">
+                    <children>
+                        <Circle fill="#21ff1f" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Label text="Legend 5" />
+                    </children>
+                    <padding>
+                        <Insets left="20.0" />
+                    </padding>
+                </HBox>
+            </children>
+        </HBox>
+    </content>
+</ScrollPane>

@@ -1,5 +1,6 @@
 package com.amay.scu.controller;
 
+import com.amay.scu.auth.AuthService;
 import com.amay.scu.dto.StationDevicesDTO;
 import com.amay.scu.enums.SLEStatus;
 import com.amay.scu.listenner.IStationDynamicMapViewListener;
@@ -45,8 +46,30 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
     @FXML
     private AnchorPane anchorPane;
 
+    private final AuthService authService;
+
+    public StationDynamicMapController(AuthService authService){
+
+        this.authService = authService;
+    }
+
     @FXML
     public void initialize() {
+        this.anchorPane.setDisable(true); // Initially disable the emergency button
+        authService.isAuthenticated().addListener((observable, oldValue, newValue) -> {
+        if (newValue) {
+            // User is authenticated
+            logger.info("User is authenticated");
+            // Enable the emergency button
+            anchorPane.setDisable(false);
+        } else {
+            // User is not authenticated
+            logger.info("User is not authenticated");
+            // Disable the emergency button
+            anchorPane.setDisable(true);
+        }
+    });
+
         sles = new ArrayList<>();
         //load the location list from the json file
         TypeReference<Map<String, SLELocationListObject.SLELocation>> typeRef = new TypeReference<>() {};
@@ -60,6 +83,7 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
         try {
             StationDevicesRepository stationDevicesRepository = StationDevicesRepository.getInstance();
             stationDevices = stationDevicesRepository.getStationDevices();
+
             logger.info("Station Devices: {} ", stationDevices.size());
             logger.info("Station Devices: {} ", stationDevices.get(0));
             for (StationDevicesDTO stationDevice : stationDevices) {
@@ -105,6 +129,8 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
                         break;
                 }
             }
+
+
 
 //            efoCount=1;
 

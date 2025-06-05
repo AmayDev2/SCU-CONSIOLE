@@ -1,5 +1,6 @@
 package com.amay.scu.test_grpc_service;
 
+import com.amay.scu.controller.HeaderController;
 import com.amay.scu.enums.AGOperationMode;
 import com.amay.scu.enums.SLEStatus;
 import com.amay.scu.enums.StationSpecialMode;
@@ -71,6 +72,27 @@ public class SCUService {
             case SCU :{
                 System.out.println("SCU Response");
                 decodeSCUResponse(value);
+                break;
+            }
+            case TR :{
+                System.out.println("TR Response");
+
+                break;
+            }
+            case TVM :{
+                System.out.println("TVM Response");
+                break;
+            }
+            case CCU:{
+                System.out.println("CCU Response");
+                if(value.getStreamData().getCommandType().equals(CommandType.GET_DIVICE_VERSIONS)){
+                    //disconnect
+                    StationSpecialMode.setStationSpecialMode(StationSpecialMode.CCU_DISCONNECT);
+
+                }else if(value.getStreamData().getCommandType().equals(CommandType.GET_DEVICE_INFO)) {
+                    //Connect
+                    StationSpecialMode.setStationSpecialMode(StationSpecialMode.CCU_CONNECT);
+                }
                 break;
             }
             default:{

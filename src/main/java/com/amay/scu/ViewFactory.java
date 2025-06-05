@@ -60,6 +60,12 @@ public class ViewFactory {
         return fxmlLoader;
     }
 
+    public static FXMLLoader getCenter() {
+        FXMLLoader fxmlLoader = new FXMLLoader(ViewFactory.class.getResource
+                (Path.CENTER));
+        return fxmlLoader;
+    }
+
     public static FXMLLoader getAlert() {
         FXMLLoader fxmlLoader = new FXMLLoader(ViewFactory.class.getResource
                 (Path.ALERT));

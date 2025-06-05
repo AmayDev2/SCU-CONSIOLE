@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="topHeader" minHeight="150.0" prefHeight="150.0" prefWidth="1920.0" styleClass="header" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.HeaderController">
+<AnchorPane fx:id="topHeader" minHeight="150.0" prefHeight="150.0" prefWidth="1920.0" style="-fx-background-color: #CCE4FF" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.HeaderController">
    <children>
       <!-- Left Section: Logo and Station Information -->
       <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" spacing="15.0">
@@ -35,13 +35,13 @@
 
       <!-- Right Section: Icons/Buttons -->
       <!-- Right Section: Icons/Buttons -->
-      <HBox alignment="CENTER_RIGHT" layoutX="1600.0" layoutY="20.0" spacing="20.0">
+      <HBox alignment="CENTER_RIGHT" layoutX="1434.0" layoutY="25.0" spacing="50.0">
          <children>
             <!-- Language Button -->
             <VBox alignment="CENTER">
-               <Button fx:id="languageButton" styleClass="icon-button">
+               <Button fx:id="ccuConnection" styleClass="icon-button">
                   <graphic>
-                     <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <ImageView fitHeight="40.0" fitWidth="40.0" styleClass="icon-image"  pickOnBounds="true" preserveRatio="true">
                         <image>
                            <Image url="@../images/ccu.png" />
                         </image>
@@ -55,7 +55,7 @@
             <VBox alignment="CENTER">
                <Button fx:id="emergencyButton" onAction="#onEmergency" styleClass="icon-button">
                   <graphic>
-                     <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <ImageView fitHeight="50.0" fitWidth="50.0"  styleClass="icon-image"  pickOnBounds="true" preserveRatio="true">
                         <image>
                            <Image url="@../images/emergency-icon.png" />
                         </image>
@@ -70,7 +70,7 @@
 
                <Button fx:id="userButton" onAction="#onAuthClick" styleClass="icon-button">
                   <graphic>
-                     <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <ImageView fitHeight="50.0" fitWidth="50.0" styleClass="icon-image"  pickOnBounds="true" preserveRatio="true">
                         <image>
                            <Image url="@../images/user-icon.png" />
                         </image>

@@ -9,7 +9,7 @@ package com.proto.scu.service;
 import "scu/SCUFareMedia.proto";
 import "scu/SCUStockData.proto";
 import "scu/Revenue.proto";
-//import "object/BaseObject.proto";
+import "scu/Authentication.proto";
 
 
 service SCUService {
@@ -17,4 +17,5 @@ service SCUService {
   rpc GetFareMedia(scu.object.SCUFareMediaRequestV1) returns (scu.object.SCUFareMediaResponseV1);
   rpc GetRevenue(scu.object.SCURevenueReportRequestV1) returns (scu.object.SCURevenueReportResponseV1);
   rpc GetStocks(scu.object.SCUStockRequestV1) returns (scu.object.SCUStockResponseV1);
+  rpc GetAuthentication(scu.object.SCUAuthenticationRequest) returns (scu.object.SCUAuthenticationResponse);
 }

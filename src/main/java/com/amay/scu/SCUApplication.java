@@ -62,6 +62,9 @@ try {
     Scene scene=new Scene(loader.load(), (double) 1920 /2, (double) 1080 /2);
 //    scene.getStylesheets().add(getClass().getResource("css/application.css").toExternalForm());
     primaryStage.setMaximized(true);
+    primaryStage.setTitle("SCU Application");
+//    primaryStage.setResizable(true);
+//    primaryStage.setFullScreen(true);
 
     primaryStage.setScene(scene);
     primaryStage.show();

@@ -1,6 +1,7 @@
 package com.amay.scu.auth;
 
 import com.amay.scu.controller.HeaderController;
+import com.amay.scu.service.ScuGrpcService;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import lombok.Getter;
@@ -18,15 +19,28 @@ public class AuthService {
     }
 
     public boolean login(String username, String password) {
-        if (username.equals("admin") && password.equals("admin")) {
+        try {
+            String token=ScuGrpcService.INSTANCE.isAuthenticated(username, password);
+
             this.username = username;
             isAuthenticated.setValue(true);
             authenticated.authenticated();
             return true;
-        }
-        else {
+
+        } catch (RuntimeException e) {
             return false;
         }
+
+
+//        if (username.equals("admin") && password.equals("admin")) {
+//            this.username = username;
+//            isAuthenticated.setValue(true);
+//            authenticated.authenticated();
+//            return true;
+//        }
+//        else {
+//            return false;
+//        }
     }
 
     public boolean logout() {

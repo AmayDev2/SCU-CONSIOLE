@@ -14,16 +14,17 @@
 
 .navigator{
     -fx-min-width: 250px;
-    -fx-background-color:#E6F2FF;        /* Light purple */
-    -fx-text-fill: #1f2f4d;               /* Dark text for contrast */
+    -fx-background-color:rgb(0, 56, 88);        /* Light purple */
+    -fx-text-fill: white;               /* Dark text for contrast */
     -fx-pref-height: 50px;
-    -fx-font-size: 16px;
+    -fx-background-radius: 10px;
+    -fx-font-size: 20px;
     -fx-font-weight: bold;
     -fx-cursor: hand;
 }
 
 .navigator:pressed {
-    -fx-background-color: #E6F2FF; /* Slightly darker purple on press */
+    -fx-background-color: rgb(0, 56, 88); /* Slightly darker purple on press */
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, 0, 0, 4); /* Shadow effect on press */
 }
 
@@ -32,6 +33,7 @@
     -fx-background-color: transparent;
     -fx-cursor: hand;
 }
+
 
 #emergencyButton {
     -fx-background-color: transparent;
@@ -81,7 +83,7 @@
 /* ================== General Background and Font ================== */
 
 .root{
-    -fx-font-family: "Arial",
+    -fx-font-family: "Arial"
 }
 
 /* ================== Header and Value Labels ================== */

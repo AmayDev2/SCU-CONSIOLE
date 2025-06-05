@@ -22,7 +22,7 @@ enum CommandType {
     GET_DIVICE_VERSIONS = 4;
 }
 
-enum OperationMode {
+enum  OperationMode {
     IN_SERVICE = 0;
     OUT_OF_SERVICE = 1;
     MAINTENANCE = 2;

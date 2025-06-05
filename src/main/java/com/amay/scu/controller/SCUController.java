@@ -52,6 +52,18 @@ public class SCUController implements Initializable{
             }
     }
 
+    private void setCenter() {
+        try{
+            FXMLLoader loader= ViewFactory.getCenter();
+            loader.setControllerFactory(c -> new StationDynamicMapController(authService));
+            borderPane.setCenter(loader.load());
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
     @FXML
     private HeaderController topHeaderIncludeController;
 
@@ -76,7 +88,10 @@ public class SCUController implements Initializable{
             logger.error("topHeaderIncludeController is not initialized");
         }
 //        initialize();
+
         this.setRight();
+        this.setCenter();
+
     }
 
     //Listener for SCUController

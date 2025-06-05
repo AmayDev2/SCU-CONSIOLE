@@ -192,7 +192,7 @@ public class AGController implements SLE {
         if(AGOperationMode.IN_SERVICE.equals(agOperationMode)){
         imageView.setImage(ImageLoaderUtil.loadImage(ImagePath.BI_DIRECTIONAL_IN_SERVICE));
         }
-        else if(AGOperationMode.DEFICIENT.equals(agOperationMode)){
+        /*else if(AGOperationMode.DEFICIENT.equals(agOperationMode)){
             imageView.setImage(ImageLoaderUtil.loadImage(ImagePath.BI_DIRECTIONAL_DEFICIENT));
         }
         else if(AGOperationMode.OUT_OF_SERVICE.equals(agOperationMode)){
@@ -202,7 +202,7 @@ public class AGController implements SLE {
             imageView.setImage(ImageLoaderUtil.loadImage(ImagePath.BI_DIRECTIONAL_MAINTENANCE));
         }else {
             imageView.setImage(ImageLoaderUtil.loadImage(ImagePath.BI_DIRECTIONAL_NOT_WORKING));
-        }
+        }*/
 
     }
 
