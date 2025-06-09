@@ -29,8 +29,7 @@ import org.slf4j.LoggerFactory;
 public class AGAbstractFactory extends SLEAbstractFactory {
     static int AG_COUNT = 1;
     private static final String NAME="AG";
-    Logger logger = LoggerFactory.getLogger(AGAbstractFactory.class);
-
+    private Logger logger = LoggerFactory.getLogger(AGAbstractFactory.class);
 
     @Override
     public SLE createSLE(AnchorPane anchorPane, StationDevicesDTO stationDevicesDTO) {
@@ -39,7 +38,8 @@ public class AGAbstractFactory extends SLEAbstractFactory {
             logger.debug("AG is about to be created");
             FXMLLoader fxmlLoader = ViewFactory.getAGView();
             String name=getAGId();
-            LiveAG liveAG=new LiveAG(stationDevicesDTO.getEquipId(),stationDevicesDTO.getEquipIp(),"01",name, stationDevicesDTO.getEquipType());
+            LiveAG liveAG=new LiveAG(stationDevicesDTO.getEquipId(),stationDevicesDTO.getEquipIp(),
+                    "01",name, stationDevicesDTO.getEquipType(),stationDevicesDTO);
 
             Parent root=fxmlLoader.load();
             Button button = (Button) root.lookup("#ag");
@@ -48,7 +48,6 @@ public class AGAbstractFactory extends SLEAbstractFactory {
             logger.debug("AG created : {}",stationDevicesDTO.getEquipId());
             SLE controller=fxmlLoader.getController();
 //            controller.setStatus(SLEStatus.);
-
 
             logger.debug("name : {}",name);
             controller.setName(name);

@@ -1,6 +1,7 @@
 package com.amay.scu.dto;
 
 
+import com.amay.scu.enums.Zone;
 import lombok.ToString;
 
 import java.io.Serializable;
@@ -24,6 +25,28 @@ public class StationDevicesDTO implements Serializable {
     private String ticketVer;
     private int operationMode;
     private String lastTxn;
+    private Zone zone;
+    private boolean isLast;
+
+    public boolean isLast() {
+        return isLast;
+    }
+
+    public void setLast(boolean last) {
+        isLast = last;
+    }
+
+
+
+    public Zone getZone() {
+        return zone;
+    }
+
+    public void setZone(Zone zone) {
+        this.zone = zone;
+    }
+
+
 
 
     // Getters and setters for all fields

@@ -15,10 +15,8 @@ public enum StationSpecialMode {
     FARE_BYPASS_MODE_2(7, "Fare Bypass Mode 2", "-fx-background-color: yellow;", SpecialMode.FARE_BYPASS_MODE_2), // 07
     STATION_CLOSED(0, "Station Closed", "-fx-background-color: yellow;", SpecialMode.STATION_CLOSED_MODE), // 00
     HIGH_SECURITY_MODE(8, "High Security Mode", "-fx-background-color: yellow;", SpecialMode.TIME_OVERRIDE),// 08
-    CCU_DISCONNECT(9, "CCU Disconnect", "-fx-background-color: red;", SpecialMode.TIME_OVERRIDE), // 08
-    CCU_CONNECT(9, "CCU Connect", "-fx-background-color: green;", SpecialMode.TIME_OVERRIDE); // 08
-
-    ;
+    CCU_DISCONNECT(9, "CCU Disconnect", "-fx-background-color: red;", SpecialMode.TIME_OVERRIDE), // 09
+    CCU_CONNECT(10, "CCU Connect", "-fx-background-color: green;", SpecialMode.TIME_OVERRIDE); // 10
 
 
     private final int modeId;

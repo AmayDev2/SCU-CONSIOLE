@@ -1,9 +1,15 @@
 package com.amay.scu.controller;
 
 import com.amay.scu.enums.SLEStatus;
+import com.amay.scu.enums.TROperationMode;
+import com.amay.scu.enums.TVMOperationMode;
 import com.amay.scu.model.SLELocationListObject;
 import com.amay.scu.sleobj.LiveSLE;
+import com.amay.scu.sleobj.LiveTR;
+import com.amay.scu.sleobj.LiveTVM;
+import com.amay.scu.sleobj.propertyenums.PropertyUpdate;
 import com.amay.scu.sles.components.SLE;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -28,6 +34,8 @@ public class TRController implements SLE {
     private double initialLayoutX;
     private double initialLayoutY;
     private  SLELocationListObject.SLELocation location;
+
+    private LiveTR liveTR;
 
     @FXML
     void initialize() {
@@ -101,7 +109,7 @@ public class TRController implements SLE {
 
     @Override
     public String getId() {
-        return null;
+        return tr.getId();
     }
 
     @Override
@@ -115,12 +123,61 @@ public class TRController implements SLE {
     }
 
     @Override
-    public void updateOperationMode(LiveSLE liveTOM) {
+    public void updateOperationMode(LiveSLE liveTR) {
+        logger.info("Setting in live object {}",liveTR.toString());
+        LiveTR liveTR1;
+        if (liveTR instanceof LiveTR) {
+            liveTR1 = (LiveTR) liveTR;
+            this.liveTR.setOperationMode(liveTR1.getOperationMode());
+        }
 
     }
 
+    public boolean setColor(TROperationMode status) {
+        logger.debug("Setting status of TOM to {}", status.getColor());
+        Platform.runLater(() -> tr.setStyle(status.getColor()));
+        return true;
+    }
+
+    void updateOperationMode(TROperationMode status) {
+        logger.info("Changing Operation Mode {}", status.getColor());
+        if(!this.setColor(status)){
+            throw new IllegalStateException("Operation Mode not set");
+        }
+    }
+
     @Override
-    public void setLiveSLE(LiveSLE liveTOM) {
+    public void setLiveSLE(LiveSLE liveTR) {
+
+        this.liveTR= (LiveTR) liveTR;
+
+        this.liveTR.addPropertyChangeListener(event -> {
+
+            System.out.println("Property TOM  " + event.getPropertyName() + " changed from " + event.getOldValue() + " to " + event.getNewValue());
+            logger.info("property updated ");
+            if (event.getPropertyName().equals(PropertyUpdate.SLE_STATUS_UPDATED.name())) {
+                logger.debug("listener new value {}", event.getNewValue());
+                this.updateStatus((SLEStatus) event.getNewValue());
+            } else if (event.getPropertyName().equals(PropertyUpdate.OPERATION_MODE.name())) {
+                logger.debug("listener new value {}", event.getNewValue());
+                this.updateOperationMode((TROperationMode) event.getNewValue());
+            }
+
+//            System.out.println("Property " + event.getPropertyName() + " changed from " + event.getOldValue() + " to " + event.getNewValue());
+//            logger.info("property updated ");
+//            if (event.getPropertyName().equals(PropertyUpdate.SLE_STATUS_UPDATED.name())) {
+//                logger.debug("listener new value {}", event.getNewValue());
+//                this.updateStatus((SLEStatus) event.getNewValue());
+//            } else if (event.getPropertyName().equals(PropertyUpdate.OPERATION_MODE.name())) {
+//                logger.debug("listener new value {}", event.getNewValue());
+//                this.updateOperationMode((TOMOperationMode) event.getNewValue());
+//            }
+        });
+
+        this.liveTR.addParameterVersionChangeListener(event -> {
+            System.out.println("Property " + event.getPropertyName() + " changed from " + event.getOldValue() + " to " + event.getNewValue());
+            logger.info("property updated ");
+        });
 
     }
 }

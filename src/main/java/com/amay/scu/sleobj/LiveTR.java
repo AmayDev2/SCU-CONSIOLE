@@ -2,6 +2,7 @@ package com.amay.scu.sleobj;
 
 import com.amay.scu.enums.SLEStatus;
 import com.amay.scu.enums.TOMOperationMode;
+import com.amay.scu.enums.TROperationMode;
 import com.amay.scu.popup.SleCommandInfo;
 import com.amay.scu.sleobj.propertyenums.PropertyUpdate;
 import lombok.Data;
@@ -69,7 +70,7 @@ public class LiveTR implements LiveSLE, SleCommandInfo {
 
 
     // current operation mode
-    private TOMOperationMode operationMode;
+    private TROperationMode operationMode;
 
     public void addCommand(String command) {
         if (commandQueue.size() >= 10) {
@@ -207,9 +208,9 @@ public class LiveTR implements LiveSLE, SleCommandInfo {
         parameterVersionListener.firePropertyChange("ticket", oldTicket, ticket);
     }
 
-    public void setOperationMode(TOMOperationMode operationMode) {
+    public void setOperationMode(TROperationMode operationMode) {
         logger.info("Changing Operation Mode {} {}", operationMode,this.hashCode());
-        TOMOperationMode oldOperationMode = this.operationMode;
+        TROperationMode oldOperationMode = this.operationMode;
         this.operationMode = operationMode;
         logger.info("Operation Mode changed {} to {}", oldOperationMode, operationMode);
         pcs.firePropertyChange(PropertyUpdate.OPERATION_MODE.name(), oldOperationMode, operationMode);
@@ -239,9 +240,9 @@ public class LiveTR implements LiveSLE, SleCommandInfo {
 
         logger.info("Is all Peripherals connected {}",isAllPeripheralConnected);
         if(!isAllPeripheralConnected ){
-            this.setOperationMode(TOMOperationMode.DEFICIENT);
+            this.setOperationMode(TROperationMode.DEFICIENT);
         }else{
-            this.setOperationMode(TOMOperationMode.IN_SERVICE);
+            this.setOperationMode(TROperationMode.IN_SERVICE);
         }
 
     }

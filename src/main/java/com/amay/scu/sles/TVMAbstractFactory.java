@@ -33,12 +33,13 @@ public class TVMAbstractFactory extends SLEAbstractFactory {
 
             Parent root=fxmlLoader.load();
             Button button = (Button) root.lookup("#tvm");
-            button.setId(name);
+            button.setId(stationDevicesDTO.getEquipId());
+
             anchorPane.getChildren().add(button);
             logger.debug("TVM created : {}",button.getId());
             SLE controller=fxmlLoader.getController();
 //            controller.setStatus(SLEStatus.ONLINE);
-            controller.setName(button.getId());
+            controller.setName(name);
 
             SLELocationListObject.list.putIfAbsent(name, new SLELocationListObject.SLELocation());
             logger.debug("TVM location set : {} {}",name,SLELocationListObject.list.get(name));

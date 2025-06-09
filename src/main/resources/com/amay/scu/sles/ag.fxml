@@ -1,32 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 
-<Button fx:id="ag" styleClass="ag" stylesheets="@../css/sles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.AGController">
+<Button fx:id="ag" styleClass="ag" stylesheets="@../css/sles.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.AGController">
 
     <graphic>
         <HBox alignment="CENTER" spacing="5.0">
-            <Label fx:id="inCount" styleClass="passengerCountLabel" stylesheets="@../css/sle-name.css" text="X" />
-        <VBox fx:id="agBackground" alignment="CENTER" >
-            <ImageView fitWidth="130.0" preserveRatio="true" visible="true">
-                <image>
-                    <Image url="@../images/gates/IDO.png" />
-                </image>
-            </ImageView>
-            <StackPane alignment="BOTTOM_CENTER">
+<!--            <Label fx:id="inCount" styleClass="passengerCountLabel" stylesheets="@../css/sle-name.css" text="X" />-->
+        <VBox fx:id="agBackground" alignment="CENTER">
+<!--            <fx:include fx:id="cabinetTop" source="../components/cabinet.fxml"  />-->
+            <GridPane alignment="CENTER" minWidth="130.0" prefWidth="130.0">
+              <columnConstraints>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="35.0" prefWidth="35.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="35.0" prefWidth="35.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints fx:id="middle" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints prefHeight="20.0" vgrow="SOMETIMES" />
+              </rowConstraints>
                <children>
-                  <ImageView fx:id="imageView" fitWidth="130.0" preserveRatio="true">
-                      <image>
-                          <Image url="@../images/gates/Bi_D_not_working.png" />
-                      </image>
-                  </ImageView>
-                  <Label fx:id="name" stylesheets="@../css/sle-name.css" text="AG" />
+                   <Button fx:id="arrowLeft" styleClass="arrow-left" visible="false"/>
+                   <Button fx:id="arrowRight" styleClass="arrow-right" GridPane.columnIndex="2" visible="false" />
+                  <Label fx:id="name" stylesheets="@../css/sle-name.css" text="AG" GridPane.columnIndex="1" />
+                   <Rectangle fx:id="cabinet" height="20" styleClass="cabinet" width="130" GridPane.columnSpan="2" GridPane.rowIndex="1" />
                </children>
-            </StackPane>
+            </GridPane>
         </VBox>
-            <Label fx:id="outCount" styleClass="passengerCountLabel" stylesheets="@../css/sle-name.css" text="Y" />
+<!--            <Label fx:id="outCount" styleClass="passengerCountLabel" stylesheets="@../css/sle-name.css" text="Y" />-->
         </HBox>
     </graphic>
 

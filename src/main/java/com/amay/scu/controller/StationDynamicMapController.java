@@ -3,22 +3,28 @@ package com.amay.scu.controller;
 import com.amay.scu.auth.AuthService;
 import com.amay.scu.dto.StationDevicesDTO;
 import com.amay.scu.enums.SLEStatus;
+import com.amay.scu.enums.StationSpecialMode;
+import com.amay.scu.enums.Zone;
 import com.amay.scu.listenner.IStationDynamicMapViewListener;
 import com.amay.scu.listenner.impl.StationDynamicMapViewListener;
 import com.amay.scu.model.SLELocationListObject;
 import com.amay.scu.repository.StationDevicesRepository;
 import com.amay.scu.sleobj.LiveAG;
 import com.amay.scu.sleobj.LiveTOM;
+import com.amay.scu.sleobj.LiveTR;
+import com.amay.scu.sleobj.LiveTVM;
 import com.amay.scu.sles.*;
 import com.amay.scu.sles.components.SLE;
 import com.amay.scu.util.ObjectSerialization;
 import com.fasterxml.jackson.core.type.TypeReference;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -33,7 +39,10 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
     private int arraysCount = 0;
     private int tvmCount = 0;
     List<StationDevicesDTO> stationDevices = null;
-    List<StationDevicesDTO>  ag=new ArrayList<>();
+    List<StationDevicesDTO>  ag1=new ArrayList<>();
+    List<StationDevicesDTO>  ag2=new ArrayList<>();
+    List<StationDevicesDTO>  ag3=new ArrayList<>();
+    List<StationDevicesDTO>  ag4=new ArrayList<>();
     List<StationDevicesDTO>  tom=new ArrayList<>();
     List<StationDevicesDTO>  efo=new ArrayList<>();
     List<StationDevicesDTO>  tvm=new ArrayList<>();
@@ -55,6 +64,7 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
 
     @FXML
     public void initialize() {
+        this.setSpecialModeListener();
         this.anchorPane.setDisable(true); // Initially disable the emergency button
         authService.isAuthenticated().addListener((observable, oldValue, newValue) -> {
         if (newValue) {
@@ -78,7 +88,7 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
 
         //initialize the listener
         StationDynamicMapViewListener.initialize(this);
-        boolean tom1 = false,ag1 = false,tvm1 = false,reader1 = false,efo1=false;
+//        boolean tom1 = false,ag1 = false,tvm1 = false,reader1 = false,efo1=false;
 
         try {
             StationDevicesRepository stationDevicesRepository = StationDevicesRepository.getInstance();
@@ -89,43 +99,57 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
             for (StationDevicesDTO stationDevice : stationDevices) {
                 switch (stationDevice.getEquipName()) {
                     case "TOM":
-                        if(!tom1) {
+//                        if(!tom1) {
                             tomCount++;
                             tom.add(stationDevice);
-                        }
-                        tom1=true;
+//                        }
+//                        tom1=true;
                         break;
                     case "EFO":
                         efoCount++;
-                        if(!efo1) {
+//                        if(!efo1) {
                             efo.add(stationDevice);
-                            efo1 = true;
-                        }
+//                            efo1 = true;
+//                        }
                         break;
 
                     case "AG":
-                        if(!ag1) {
+//                        if(!ag1) {
                             gateCount++;
-                            ag.add(stationDevice);
-                        }
-                        ag1=true;
+                            if(stationDevice.getZone().equals(Zone.ZONE_ONE)){
+                                ag1.add(stationDevice);
+
+                            }else if(stationDevice.getZone().equals(Zone.ZONE_TWO)){
+                                ag2.add(stationDevice);
+
+                            }if(stationDevice.getZone().equals(Zone.ZONE_THREE)){
+                                ag3.add(stationDevice);
+
+                            }if(stationDevice.getZone().equals(Zone.ZONE_FOUR)){
+                                ag4.add(stationDevice);
+
+                            }
+
+
+//                        }
+//                        ag1=true;
                         break;
                     case "TR":
-                        if(!reader1) {
-                            readerCount++;
+//                        if(!reader1) {
+//                            readerCount++;
                         tr.add(stationDevice);
-                        }
-                        reader1=true;
+//                        }
+//                        reader1=true;
                         break;
                     case "ARRAYS":
                         arraysCount++;
                         break;
                     case "TVM":
-                        if(!tvm1) {
+//                        if(!tvm1) {
                             tvmCount++;
                             tvm.add(stationDevice);
-                        }
-                        tvm1=true;
+//                        }
+//                        tvm1=true;
                         break;
                 }
             }
@@ -135,12 +159,24 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
 //            efoCount=1;
 
 //            //create the SLE objects based on the count of the devices
-//            sles.addAll(Arrays.stream(SLEFactory.getSLEFactory(new AGAbstractFactory(), anchorPane, gateCount,ag)).toList());
-              sles.add(SLEFactory.getSLEFactory(new AGAbstractFactory(), anchorPane,  ag.get(0)));
-              sles.add(SLEFactory.getSLEFactory(new TOMAbstractFactory(), anchorPane,  tom.get(0)));
-              sles.add(SLEFactory.getSLEFactory(new EFOAbstractFactory(), anchorPane,  efo.get(0)));
-              sles.add(SLEFactory.getSLEFactory(new TVMAbstractFactory(), anchorPane,  tvm.get(0)));
-              sles.add(SLEFactory.getSLEFactory(new TRAbstractFactory(), anchorPane,  tr.get(0)));
+
+            sles.addAll(List.of(SLEFactory.getSLEFactory(new TOMAbstractFactory(), anchorPane, tom.size(), tom.stream().toList())));
+            sles.addAll(List.of(SLEFactory.getSLEFactory(new EFOAbstractFactory(), anchorPane, efo.size(), efo.stream().toList())));
+            sles.addAll(List.of(SLEFactory.getSLEFactory(new TVMAbstractFactory(), anchorPane, tvm.size(), tvm.stream().toList())));
+            sles.addAll(List.of(SLEFactory.getSLEFactory(new TRAbstractFactory(), anchorPane, tr.size(), tr.stream().toList())));
+
+            sles.addAll(List.of(SLEFactory.getSLEFactory(new AGAbstractFactory(), anchorPane, ag1.size(), ag1.stream().toList())));
+            sles.addAll(List.of(SLEFactory.getSLEFactory(new AGAbstractFactory(), anchorPane, ag2.size(), ag2.stream().toList())));
+            sles.addAll(List.of(SLEFactory.getSLEFactory(new AGAbstractFactory(), anchorPane, ag3.size(), ag3.stream().toList())));
+            sles.addAll(List.of(SLEFactory.getSLEFactory(new AGAbstractFactory(), anchorPane, ag4.size(), ag4.stream().toList())));
+
+
+//              sles.add(SLEFactory.getSLEFactory(new AGAbstractFactory(), anchorPane,  ag.get(0)));
+//              sles.add(SLEFactory.getSLEFactory(new TOMAbstractFactory(), anchorPane,  tom.get(0)));
+//              sles.add(SLEFactory.getSLEFactory(new EFOAbstractFactory(), anchorPane,  efo.get(0)));
+//              sles.add(SLEFactory.getSLEFactory(new TVMAbstractFactory(), anchorPane,  tvm.get(0)));
+//              sles.add(SLEFactory.getSLEFactory(new TRAbstractFactory(), anchorPane,  tr.get(0)));
+
 //            sles.addAll(Arrays.stream(SLEFactory.getSLEFactory(new TOMAbstractFactory(), anchorPane, tomCount, tom)).toList());
 //            SLEFactory.getSLEFactory(new TVMAbstractFactory(), anchorPane, tvmCount, ag);
 
@@ -155,6 +191,34 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
             logger.error("Error in StationDynamicMapController initialize method: {}", e.getMessage());
         }
 
+    }
+
+    private void setSpecialModeListener() {
+        StationSpecialMode.StationSpecialModeListener listener = newMode -> {
+            logger.debug("New special mode: {}", newMode);
+
+            if (newMode.equals(StationSpecialMode.STATION_NORMAL) ) {
+                Platform.runLater(() -> {
+                    // Set red border
+                    anchorPane.setBorder(null);
+                });
+
+            }else{
+                Platform.runLater(() -> {
+                    // Set red border
+                    anchorPane.setBorder(new Border(new BorderStroke(
+                            Color.RED,                        // Border color
+                            BorderStrokeStyle.SOLID,         // Border style
+                            CornerRadii.EMPTY,               // No rounded corners
+                            BorderWidths.DEFAULT             // Default width (1px)
+                    )));
+                });
+
+
+            }
+        };
+
+        StationSpecialMode.addStationSpecialModeListener(listener);
     }
 
     //pass the sle id and status to update the status of the sle
@@ -196,4 +260,33 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
         });
     }
 
+    public void updateTVMPeripheralStatus(String equipId, LiveTVM liveTVM) {
+        System.out.println("TVM PERIPHERAL STATUS "+equipId+" "+liveTVM);
+        sles.stream().filter(tvm->null!=tvm.getId() && tvm.getId().equals(equipId)).forEach(filteredTvm->{
+            filteredTvm.updatePeripheralStatus(liveTVM);
+        });
+    }
+
+    public void updateTVMOperationMode(String equipId, LiveTVM liveTVM) {
+        System.out.println("TVM OPERATION MODE "+equipId+" "+liveTVM);
+        sles.stream()
+                .filter(tvm-> null!=tvm.getId() && tvm.getId().equals(equipId))
+                .forEach(filteredTvm->{
+            filteredTvm.updateOperationMode(liveTVM);
+        });
+    }
+
+    public void updateTRPeripheralStatus(String equipId, LiveTR liveTR) {
+        System.out.println("TR PERIPHERAL STATUS "+equipId+" "+liveTR);
+        sles.stream().filter(tr->tr.getId().equals(equipId)).forEach(filteredTom->{
+            filteredTom.updateOperationMode(liveTR);
+        });
+    }
+
+    public void updateTROperationMode(String equipId, LiveTR liveTR) {
+        System.out.println("TR PERIPHERAL STATUS "+equipId+" "+liveTR);
+        sles.stream().filter(tr->tr.getId().equals(equipId)).forEach(filteredTom->{
+            filteredTom.updateOperationMode(liveTR);
+        });
+    }
 }

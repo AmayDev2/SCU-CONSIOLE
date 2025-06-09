@@ -2,6 +2,7 @@ package com.amay.scu.repository;
 
 import com.amay.scu.database.DatabaseConnector;
 import com.amay.scu.dto.StationDevicesDTO;
+import com.amay.scu.enums.Zone;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -62,7 +63,8 @@ public class StationDevicesRepository {
 
 
     private ResultSet getAllStationDevices() {
-        String query = "SELECT * FROM station_devices";
+//        String query = "SELECT * FROM station_equipment";
+        String query = "SELECT * FROM station_equipment se LEFT JOIN device_location dl ON se.equipment_id = dl.device_name";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             return preparedStatement.executeQuery();
@@ -78,21 +80,23 @@ public class StationDevicesRepository {
             ResultSet resultSet = this.getAllStationDevices();
             while (resultSet.next()) {
                 StationDevicesDTO dto = new StationDevicesDTO();
-                dto.setEquipName(resultSet.getString("equip_name"));
-                dto.setEquipType(resultSet.getString("equip_type"));
-                dto.setEquipId(resultSet.getString("equip_id"));
-                dto.setEquipIp(resultSet.getString("equip_ip"));
-                dto.setScuConnected(resultSet.getInt("scu_connected"));
-                dto.setCcuConnected(resultSet.getInt("ccu_connected"));
-                dto.setFareTableVer(resultSet.getString("fare_table_ver"));
-                dto.setUsersVer(resultSet.getString("users_ver"));
-                dto.setSoftwareVer(resultSet.getString("software_ver"));
-                dto.setBlacklistVer(resultSet.getString("blacklist_ver"));
-                dto.setCalendarVer(resultSet.getString("calendar_ver"));
-                dto.setQrKeyVer(resultSet.getString("qr_key_ver"));
-                dto.setTicketVer(resultSet.getString("ticket_ver"));
-                dto.setOperationMode(resultSet.getInt("operation_mode"));
-                dto.setLastTxn(resultSet.getString("last_txn"));
+                dto.setEquipName(resultSet.getString("equipment_name"));
+                dto.setEquipType(resultSet.getString("equipment_type"));
+                dto.setEquipId(resultSet.getString("equipment_id"));
+                dto.setEquipIp(resultSet.getString("ip_address"));
+                dto.setZone(Zone.ZONE_ONE.getByNZoneNumber(resultSet.getInt("height")));
+
+//                dto.setScuConnected(resultSet.getInt("scu_connected"));
+//                dto.setCcuConnected(resultSet.getInt("ccu_connected"));
+//                dto.setFareTableVer(resultSet.getString("fare_table_ver"));
+//                dto.setUsersVer(resultSet.getString("users_ver"));
+//                dto.setSoftwareVer(resultSet.getString("software_ver"));
+//                dto.setBlacklistVer(resultSet.getString("blacklist_ver"));
+//                dto.setCalendarVer(resultSet.getString("calendar_ver"));
+//                dto.setQrKeyVer(resultSet.getString("qr_key_ver"));
+//                dto.setTicketVer(resultSet.getString("ticket_ver"));
+//                dto.setOperationMode(resultSet.getInt("operation_mode"));
+//                dto.setLastTxn(resultSet.getString("last_txn"));
                 stationDevices.add(dto);
             }
         } catch (SQLException e) {

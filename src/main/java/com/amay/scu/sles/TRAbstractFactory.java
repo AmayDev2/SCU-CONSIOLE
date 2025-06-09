@@ -29,7 +29,7 @@ public class TRAbstractFactory extends SLEAbstractFactory {
             FXMLLoader fxmlLoader = ViewFactory.getTRView();
             String name=getTRId();
             LiveTR liveTR=new LiveTR(stationDevicesDTO.getEquipId(),stationDevicesDTO.getEquipIp(),"01",name, stationDevicesDTO.getEquipType());
-            logger.debug("Live Tom  : {} ",liveTR.hashCode());
+            logger.debug("Live TR  : {} ",liveTR.hashCode());
 
             Parent root=fxmlLoader.load();
             Button button = (Button) root.lookup("#tr");

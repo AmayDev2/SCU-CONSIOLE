@@ -1,8 +1,8 @@
 package com.amay.scu.sleobj;
 
+import com.amay.scu.dto.StationDevicesDTO;
 import com.amay.scu.enums.AGOperationMode;
 import com.amay.scu.enums.SLEStatus;
-import com.amay.scu.enums.TOMOperationMode;
 import com.amay.scu.popup.SleCommandInfo;
 import com.amay.scu.sleobj.propertyenums.PropertyUpdate;
 import lombok.Data;
@@ -31,13 +31,15 @@ public class LiveAG implements LiveSLE, SleCommandInfo {
     private String equipIp;
     private String deviceType;
     private String stationId="01";
+    private StationDevicesDTO stationDevicesDTO;
 
-    public LiveAG(String equipId, String agIp, String stationId, String equipName, String deviceType){
+    public LiveAG(String equipId, String agIp, String stationId, String equipName, String deviceType, StationDevicesDTO stationDevicesDTO){
         this.equipId=equipId;
         this.equipIp=agIp;
 //        this.stationId=stationId;
         this.equipName=equipName;
         this.deviceType=deviceType;
+        this.stationDevicesDTO=stationDevicesDTO;
     }
 
     // peripherals
@@ -64,6 +66,7 @@ public class LiveAG implements LiveSLE, SleCommandInfo {
 
     // current operation mode
     private AGOperationMode operationMode;
+
 
     public void setCurrentStatus(SLEStatus currentStatus){
         SLEStatus oldValue=this.currentStatus;

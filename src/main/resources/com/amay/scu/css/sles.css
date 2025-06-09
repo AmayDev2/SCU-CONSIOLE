@@ -18,12 +18,8 @@
     -fx-border-width: 1;
     -fx-border-radius: 5;
     -fx-background-radius: 5;
-    -fx-padding: 5;
     -fx-spacing: 5;
-    -fx-min-width: 80;
-    -fx-min-height: 20;
-    -fx-pref-height: 20;
-    -fx-pref-width: 80;
+
 }
 
 .image-background{
@@ -56,4 +52,28 @@
     -fx-min-height: 20;
     -fx-pref-height: 20;
     -fx-pref-width: 80;
+}
+
+
+.arrow-left {
+    -fx-shape: "M0,0 L20,10 L0,20 L0,14 L-20,14 L-20,6 L0,6 Z";
+    -fx-min-width: 30;
+    -fx-min-height: 10;
+    -fx-background-color: red;
+
+}
+
+.arrow-right {
+    -fx-shape: "M0,0 L20,10 L0,20 L0,14 L-20,14 L-20,6 L0,6 Z";
+    -fx-min-width: 30;
+    -fx-min-height: 10;
+    -fx-rotate:180;
+    -fx-background-color: red;
+}
+
+.cabinet {
+    -fx-border-color: #000000;
+    -fx-fill: #808080;
+    -fx-width: 130;
+    -fx-height: 20;
 }

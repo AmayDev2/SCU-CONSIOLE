@@ -15,6 +15,7 @@ public class SLEFactory {
     public static SLE[] getSLEFactory(SLEAbstractFactory sleType, AnchorPane anchorPane, int count, List<StationDevicesDTO> stationDevicesDTO) throws Exception {
         SLE[] sles = new SLE[count];
             for(int i=0;i<count;i++){
+                if(sles.length-1==i){stationDevicesDTO.get(i).setLast(true);}
                 sles[i]=sleType.createSLE(anchorPane,stationDevicesDTO.get(i));
             }
         return sles;

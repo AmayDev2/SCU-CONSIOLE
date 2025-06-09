@@ -49,4 +49,6 @@ module com.amay.scu {
     opens com.amay.scu.controller.components to javafx.fxml;
     opens com.amay.scu.clients to javafx.fxml;
     opens com.amay.scu.enums to com.fasterxml.jackson.databind;
+    exports org.network.monitorandcontrol.tvm;
+    exports org.network.monitorandcontrol.tr;
 }
