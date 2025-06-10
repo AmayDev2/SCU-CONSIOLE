@@ -149,7 +149,7 @@ public class TOMController implements SLE {
             this.liveTOM.setCash_drawer_connected(liveTOM1.isCash_drawer_connected());
             this.liveTOM.setUps_connected(liveTOM1.isUps_connected());
             printStatus(tomPeripheralStatus);
-            this.liveTOM.setDeviceMode(liveTOM1.isScu_connected() || liveTOM1.isCcu_connected() || liveTOM1.isReader_connected() || liveTOM1.isScanner_connected() || liveTOM1.isPrinter_connected() || liveTOM1.isPdu_connected() || liveTOM1.isCash_drawer_connected() || liveTOM1.isUps_connected());
+            this.liveTOM.setDeviceMode(/*liveTOM1.isScu_connected() && liveTOM1.isCcu_connected() && liveTOM1.isReader_connected() &&*/ liveTOM1.isScanner_connected() && liveTOM1.isPrinter_connected() /*&& liveTOM1.isPdu_connected() && liveTOM1.isCash_drawer_connected() || liveTOM1.isUps_connected()*/);
         }
     }
 

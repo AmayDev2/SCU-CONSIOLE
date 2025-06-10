@@ -51,7 +51,7 @@ public class PopupContent {
         FXMLLoader loader=null;
         if(left.equals("Right")) {
 
-        if(deviceType==DeviceType.TOM){
+        if(deviceType==DeviceType.TOM || deviceType==DeviceType.EFO){
             loader = ViewFactory.getTomWidgets();
             loader.setControllerFactory(c -> new TomWidgetsViewV2(this, sleCommandInfo));
         }else{

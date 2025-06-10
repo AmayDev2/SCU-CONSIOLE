@@ -120,6 +120,7 @@ public class EFOController  implements SLE {
 
     @Override
     public void updatePeripheralStatus(LiveSLE liveEFO) {
+        System.out.println("EFO STATUS "+liveEFO);
 
     }
 

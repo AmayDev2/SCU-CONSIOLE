@@ -28,19 +28,16 @@ public class EFOAbstractFactory extends SLEAbstractFactory {
             logger.debug("EFO is about to be created");
             FXMLLoader fxmlLoader = ViewFactory.getEFOView();
             String name=getEFOId();
-            LiveEFO liveEFO=new LiveEFO(stationDevicesDTO.getEquipId(),stationDevicesDTO.getEquipIp(),"01",name, stationDevicesDTO.getEquipType());
-            logger.debug("Live Tom  : {} ",liveEFO.hashCode());
+            LiveTOM liveTOM=new LiveTOM(stationDevicesDTO.getEquipId(),stationDevicesDTO.getEquipIp(),"01",name, stationDevicesDTO.getEquipType());
+            logger.debug("Live Tom  : {} ",liveTOM.hashCode());
 
             Parent root=fxmlLoader.load();
-            Button button = (Button) root.lookup("#efo");
-            button.setId(name);
+            Button button = (Button) root.lookup("#tom");
+            button.setId(stationDevicesDTO.getEquipId());
             anchorPane.getChildren().add(button);
             logger.debug("EFO created : {}",button.getId());
             SLE controller=fxmlLoader.getController();
 //            controller.setStatus(SLEStatus.ONLINE);
-
-
-
             logger.debug("name : {}",name);
             controller.setName(name);
 
@@ -48,7 +45,7 @@ public class EFOAbstractFactory extends SLEAbstractFactory {
             logger.debug("TOM location set : {} {}",name,SLELocationListObject.list.get(name));
             controller.setLocation(SLELocationListObject.list.get(name));
 
-            controller.setName(button.getId());
+            controller.setLiveSLE(liveTOM);
             controller.setMovingProperties(button,anchorPane);
             return controller;
         } catch (Exception e) {

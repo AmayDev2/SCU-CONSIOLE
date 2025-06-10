@@ -236,13 +236,13 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
 
     //TOM
     public void updateTOMPeripheralStatus(String equipId, LiveTOM liveTOM) {
-        sles.stream().filter(tom->tom.getId().equals(equipId)).forEach(filteredTom->{
+        sles.stream().filter(tom->null!=tom.getId() && tom.getId().equals(equipId)).forEach(filteredTom->{
             filteredTom.updatePeripheralStatus(liveTOM);
         });
     }
 
     public void updateTOMOperationMode(String equipId, LiveTOM liveTOM) {
-        sles.stream().filter(tom->tom.getId().equals(equipId)).forEach(filteredTom->{
+        sles.stream().filter(tom->null!=tom.getId() && tom.getId().equals(equipId)).forEach(filteredTom->{
             filteredTom.updateOperationMode(liveTOM);
         });
     }
@@ -279,7 +279,7 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
     public void updateTRPeripheralStatus(String equipId, LiveTR liveTR) {
         System.out.println("TR PERIPHERAL STATUS "+equipId+" "+liveTR);
         sles.stream().filter(tr->tr.getId().equals(equipId)).forEach(filteredTom->{
-            filteredTom.updateOperationMode(liveTR);
+            filteredTom.updatePeripheralStatus(liveTR);
         });
     }
 

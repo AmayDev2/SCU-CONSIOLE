@@ -29,7 +29,7 @@ public class TOMAbstractFactory extends SLEAbstractFactory {
             logger.debug("TOM is about to be created");
             FXMLLoader fxmlLoader = ViewFactory.getTOMView();
             String name=getTomId();
-            LiveEFO liveTOM=new LiveEFO(stationDevicesDTO.getEquipId(),stationDevicesDTO.getEquipIp(),"01",name, stationDevicesDTO.getEquipType());
+            LiveTOM liveTOM=new LiveTOM(stationDevicesDTO.getEquipId(),stationDevicesDTO.getEquipIp(),"01",name, stationDevicesDTO.getEquipType());
             logger.debug("Live Tom  : {} ",liveTOM.hashCode());
 
             Parent root=fxmlLoader.load();

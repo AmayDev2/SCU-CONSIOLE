@@ -6,7 +6,7 @@ public enum TVMOperationMode implements OperationMode, TOMServiceProperties {
     DEFICIENT("-fx-background-color: #FFA500"),              // Orange 300
     MAINTENANCE("-fx-background-color: #FFFF00"),            // Yellow 400
     TEST("-fx-background-color: #0000FF"),                   // Blue 500
-    PAUSE("-fx-background-color:rgb(194, 189, 189)"),                  // Grey 600
+    PAUSE("-fx-background-color:rgb(194, 189, 189)"),        // Grey 600
     DISCONNECTED("-fx-background-color: #FF0000"),           //   Red => Purple 700   #800080
     OTHER("-fx-background-color: #FBA500");                  // Another Orange 800
 
