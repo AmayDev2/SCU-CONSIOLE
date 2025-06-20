@@ -45,7 +45,10 @@ public class TRAbstractFactory extends SLEAbstractFactory {
             controller.setName(name);
             SLELocationListObject.list.putIfAbsent(name, new SLELocationListObject.SLELocation());
             logger.debug("TR location set : {} {}",name,SLELocationListObject.list.get(name));
-            controller.setLocation(SLELocationListObject.list.get(name));
+            SLELocationListObject.SLELocation location=new SLELocationListObject.SLELocation();
+            location.setXAxis(stationDevicesDTO.getxAxis());
+            location.setYAxis(stationDevicesDTO.getyAxis());
+            controller.setLocation(location);
 
             controller.setLiveSLE(liveTR);
             controller.setMovingProperties(button,anchorPane);

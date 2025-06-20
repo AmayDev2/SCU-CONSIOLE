@@ -50,10 +50,15 @@ public class AGAbstractFactory extends SLEAbstractFactory {
 //            controller.setStatus(SLEStatus.);
 
             logger.debug("name : {}",name);
-            controller.setName(name);
+            controller.setName(stationDevicesDTO.getEquipName());
             SLELocationListObject.list.putIfAbsent(name, new SLELocationListObject.SLELocation());
             logger.debug("AG location set : {} {}",name,SLELocationListObject.list.get(name));
-            controller.setLocation(SLELocationListObject.list.get(name));
+//            SLELocationListObject.list.get(name).setXAxis(stationDevicesDTO.getxAxis());
+//            SLELocationListObject.list.get(name).setYAxis(stationDevicesDTO.getyAxis());
+            SLELocationListObject.SLELocation location=new SLELocationListObject.SLELocation();
+            location.setXAxis(stationDevicesDTO.getxAxis());
+            location.setYAxis(stationDevicesDTO.getyAxis());
+            controller.setLocation(location);
 
             controller.setLiveSLE(liveAG);
             controller.setMovingProperties(button,anchorPane);

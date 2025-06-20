@@ -19,7 +19,7 @@
             </ImageView>
             <VBox alignment="CENTER_LEFT">
                <Text fx:id="stationName" styleClass="station-name" text="MP METRO" />
-               <Text fx:id="stationId" styleClass="station-id" text="Station ID: 00" />
+               <Text fx:id="stationId" styleClass="station-id" text="Station ID: 01" />
             </VBox>
          </children>
       </HBox>

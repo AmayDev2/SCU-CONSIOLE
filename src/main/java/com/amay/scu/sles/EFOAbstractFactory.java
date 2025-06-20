@@ -43,7 +43,10 @@ public class EFOAbstractFactory extends SLEAbstractFactory {
 
             SLELocationListObject.list.putIfAbsent(name, new SLELocationListObject.SLELocation());
             logger.debug("TOM location set : {} {}",name,SLELocationListObject.list.get(name));
-            controller.setLocation(SLELocationListObject.list.get(name));
+            SLELocationListObject.SLELocation location=new SLELocationListObject.SLELocation();
+            location.setXAxis(stationDevicesDTO.getxAxis());
+            location.setYAxis(stationDevicesDTO.getyAxis());
+            controller.setLocation(location);
 
             controller.setLiveSLE(liveTOM);
             controller.setMovingProperties(button,anchorPane);

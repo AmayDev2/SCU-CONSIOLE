@@ -63,8 +63,8 @@ public class StationDevicesRepository {
 
 
     private ResultSet getAllStationDevices() {
-//        String query = "SELECT * FROM station_equipment";
-        String query = "SELECT * FROM station_equipment se LEFT JOIN device_location dl ON se.equipment_id = dl.device_name";
+        String query = "SELECT * FROM station_equipment";
+//        String query = "SELECT * FROM station_equipment se LEFT JOIN device_location dl ON se.equipment_id = dl.device_name";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             return preparedStatement.executeQuery();
@@ -80,11 +80,12 @@ public class StationDevicesRepository {
             ResultSet resultSet = this.getAllStationDevices();
             while (resultSet.next()) {
                 StationDevicesDTO dto = new StationDevicesDTO();
-                dto.setEquipName(resultSet.getString("equipment_name"));
+                dto.setEquipName(resultSet.getString("equipment_name").contains("TR") || resultSet.getString("equipment_name")
+                        .contains("AG")?resultSet.getString("equipment_name").substring(0,2):resultSet.getString("equipment_name").substring(0,3));
                 dto.setEquipType(resultSet.getString("equipment_type"));
                 dto.setEquipId(resultSet.getString("equipment_id"));
                 dto.setEquipIp(resultSet.getString("ip_address"));
-                dto.setZone(Zone.ZONE_ONE.getByNZoneNumber(resultSet.getInt("height")));
+                dto.setZone(Zone.TOM_ZONE_ONE.getByZone(resultSet.getString("layout_zone")));
 
 //                dto.setScuConnected(resultSet.getInt("scu_connected"));
 //                dto.setCcuConnected(resultSet.getInt("ccu_connected"));

@@ -254,7 +254,6 @@ public class AGController implements SLE {
     private void updateOperationMode(AGOperationMode agOperationMode) {
         logger.info("Updating Operation Mode Of AG {} {}",ag,agOperationMode.getColor());
         agBackground.setStyle(agOperationMode.getColor());
-
         //TODO: Remove these logics pass the images path in enum itself instead of color
 //        if(AGOperationMode.IN_SERVICE.equals(agOperationMode)){
 //        imageView.setImage(ImageLoaderUtil.loadImage(ImagePath.BI_DIRECTIONAL_IN_SERVICE));

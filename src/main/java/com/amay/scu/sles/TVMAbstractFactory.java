@@ -43,7 +43,10 @@ public class TVMAbstractFactory extends SLEAbstractFactory {
 
             SLELocationListObject.list.putIfAbsent(name, new SLELocationListObject.SLELocation());
             logger.debug("TVM location set : {} {}",name,SLELocationListObject.list.get(name));
-            controller.setLocation(SLELocationListObject.list.get(name));
+            SLELocationListObject.SLELocation location=new SLELocationListObject.SLELocation();
+            location.setXAxis(stationDevicesDTO.getxAxis());
+            location.setYAxis(stationDevicesDTO.getyAxis());
+            controller.setLocation(location);
 
             controller.setLiveSLE(liveTVM);
             controller.setMovingProperties(button,anchorPane);

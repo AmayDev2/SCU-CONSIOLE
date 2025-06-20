@@ -26,6 +26,25 @@ public class StationDevicesDTO implements Serializable {
     private int operationMode;
     private String lastTxn;
     private Zone zone;
+
+    public double getxAxis() {
+        return xAxis;
+    }
+
+    public void setxAxis(double xAxis) {
+        this.xAxis = xAxis;
+    }
+
+    public double getyAxis() {
+        return yAxis;
+    }
+
+    public void setyAxis(double yAxis) {
+        this.yAxis = yAxis;
+    }
+
+    private double xAxis;
+    private double yAxis;
     private boolean isLast;
 
     public boolean isLast() {

@@ -582,9 +582,9 @@ public class SCUService {
 
     private void updateTROperationMode(ConsoleProtocol consoleProtocol) {
         try{
-            System.out.println("TVM Operation Mode console"+consoleProtocol);
+            System.out.println("TR Operation Mode console"+consoleProtocol);
             TRModeControl trModeControl= consoleProtocol.getStreamData().getRequestData().unpack(TRModeControl.class);
-            System.out.println("TVM Operation Mode "+trModeControl.getOperationMode());
+            System.out.println("TR Operation Mode "+trModeControl.getOperationMode());
             LiveTR liveTR = new LiveTR();
             TROperationMode trOperationMode=null;
             if(!trModeControl.toString().contains("special_mode"))switch(trModeControl.getOperationMode()){

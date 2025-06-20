@@ -25,10 +25,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javafx.scene.paint.Color;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class StationDynamicMapController implements IStationDynamicMapViewListener {
 
@@ -83,7 +82,7 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
         sles = new ArrayList<>();
         //load the location list from the json file
         TypeReference<Map<String, SLELocationListObject.SLELocation>> typeRef = new TypeReference<>() {};
-        SLELocationListObject.list= ObjectSerialization.jsonFromFile("sleLocationList.json",typeRef );
+//        SLELocationListObject.list= ObjectSerialization.jsonFromFile("C:/sleLocationList.json",typeRef );
 
 
         //initialize the listener
@@ -99,61 +98,96 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
             for (StationDevicesDTO stationDevice : stationDevices) {
                 switch (stationDevice.getEquipName()) {
                     case "TOM":
-//                        if(!tom1) {
-                            tomCount++;
-                            tom.add(stationDevice);
-//                        }
-//                        tom1=true;
+                        tomCount++;
+                        if (stationDevice.getZone().equals(Zone.TOM_ZONE_ONE)) {
+                            stationDevice.setxAxis(stationDevice.getZone().getX() + (((int) stationDevice.getZone().getCount() / 4) * 100));
+                            stationDevice.setyAxis(stationDevice.getZone().getY() + stationDevice.getZone().getCount() % 4);
+                        } else if (stationDevice.getZone().equals(Zone.TOM_ZONE_TWO)) {
+                            stationDevice.setxAxis(stationDevice.getZone().getX() - (((int) stationDevice.getZone().getCount() / 4) * 100));
+                            stationDevice.setyAxis(stationDevice.getZone().getY() + stationDevice.getZone().getCount() % 4);
+
+                        } else if (stationDevice.getZone().equals(Zone.TOM_ZONE_THREE)) {
+                            stationDevice.setxAxis(stationDevice.getZone().getX() + (((int) stationDevice.getZone().getCount() / 4) * 100));
+                            stationDevice.setyAxis(stationDevice.getZone().getY() + stationDevice.getZone().getCount() % 4);
+
+                        } else if (stationDevice.getZone().equals(Zone.TOM_ZONE_FOUR)) {
+                            stationDevice.setxAxis(stationDevice.getZone().getX() - (((int) stationDevice.getZone().getCount() / 4) * 100));
+                            stationDevice.setyAxis(stationDevice.getZone().getY() + stationDevice.getZone().getCount() % 4);
+
+                        }
+                        stationDevice.getZone().setCount();
+                        tom.add(stationDevice);
+
                         break;
                     case "EFO":
                         efoCount++;
+                        stationDevice.setxAxis(stationDevice.getZone().getX());
+                        stationDevice.setyAxis(stationDevice.getZone().getY() - (stationDevice.getZone().getCount() * (stationDevice.getEquipType().equals("07") ? 70 : 60)));
+                        stationDevice.getZone().setCount();
 //                        if(!efo1) {
-                            efo.add(stationDevice);
+                        efo.add(stationDevice);
 //                            efo1 = true;
 //                        }
                         break;
 
                     case "AG":
 //                        if(!ag1) {
-                            gateCount++;
-                            if(stationDevice.getZone().equals(Zone.ZONE_ONE)){
-                                ag1.add(stationDevice);
+                        gateCount++;
+                        if (stationDevice.getZone().equals(Zone.AG_ZONE_ONE)) {
+                            stationDevice.setxAxis(stationDevice.getZone().getX());
+                            stationDevice.setyAxis(stationDevice.getZone().getY() - (stationDevice.getZone().getCount() * (stationDevice.getEquipType().equals("07") ? 70 : 60)));
+                            stationDevice.getZone().setCount();
+                            ag1.add(stationDevice);
 
-                            }else if(stationDevice.getZone().equals(Zone.ZONE_TWO)){
-                                ag2.add(stationDevice);
+                        } else if (stationDevice.getZone().equals(Zone.AG_ZONE_TWO)) {
+                            stationDevice.setxAxis(stationDevice.getZone().getX());
+                            stationDevice.setyAxis(stationDevice.getZone().getY() - (stationDevice.getZone().getCount() * (stationDevice.getEquipType().equals("07") ? 70 : 60)));
+                            stationDevice.getZone().setCount();
+                            ag2.add(stationDevice);
 
-                            }if(stationDevice.getZone().equals(Zone.ZONE_THREE)){
-                                ag3.add(stationDevice);
+                        }
+                        if (stationDevice.getZone().equals(Zone.AG_ZONE_THREE)) {
+                            stationDevice.setxAxis(stationDevice.getZone().getX());
+                            stationDevice.setyAxis(stationDevice.getZone().getY() + (stationDevice.getZone().getCount() * (stationDevice.getEquipType().equals("07") ? 70 : 60)));
+                            stationDevice.getZone().setCount();
+                            ag3.add(stationDevice);
 
-                            }if(stationDevice.getZone().equals(Zone.ZONE_FOUR)){
-                                ag4.add(stationDevice);
+                        }
+                        if (stationDevice.getZone().equals(Zone.AG_ZONE_FOUR)) {
+                            stationDevice.setxAxis(stationDevice.getZone().getX());
+                            stationDevice.setyAxis(stationDevice.getZone().getY() + (stationDevice.getZone().getCount() * (stationDevice.getEquipType().equals("07") ? 70 : 60)));
+                            stationDevice.getZone().setCount();
+                            ag4.add(stationDevice);
 
-                            }
-
+                        }
 
 //                        }
 //                        ag1=true;
                         break;
                     case "TR":
-//                        if(!reader1) {
-//                            readerCount++;
+                        stationDevice.setxAxis(stationDevice.getZone().getX());
+                        stationDevice.setyAxis(stationDevice.getZone().getY() - (stationDevice.getZone().getCount() * (stationDevice.getEquipType().equals("07") ? 70 : 60)));
+                        stationDevice.getZone().setCount();
                         tr.add(stationDevice);
-//                        }
-//                        reader1=true;
+
                         break;
                     case "ARRAYS":
                         arraysCount++;
                         break;
                     case "TVM":
-//                        if(!tvm1) {
-                            tvmCount++;
+                        tvmCount++;
+                        if(stationDevice.getZone().equals(Zone.UNPAID_ZONE_ONE)){
+                        stationDevice.setxAxis(stationDevice.getZone().getX());
+                        stationDevice.setyAxis(stationDevice.getZone().getY() - (stationDevice.getZone().getCount() * (stationDevice.getEquipType().equals("07") ? 70 : 60)));
+                        } else if(stationDevice.getZone().equals(Zone.UNPAID_ZONE_TWO)){
+
+                        }
+                        stationDevice.getZone().setCount();
                             tvm.add(stationDevice);
-//                        }
-//                        tvm1=true;
+
                         break;
                 }
             }
-
 
 
 //            efoCount=1;
@@ -166,9 +200,19 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
             sles.addAll(List.of(SLEFactory.getSLEFactory(new TRAbstractFactory(), anchorPane, tr.size(), tr.stream().toList())));
 
             sles.addAll(List.of(SLEFactory.getSLEFactory(new AGAbstractFactory(), anchorPane, ag1.size(), ag1.stream().toList())));
-            sles.addAll(List.of(SLEFactory.getSLEFactory(new AGAbstractFactory(), anchorPane, ag2.size(), ag2.stream().toList())));
-            sles.addAll(List.of(SLEFactory.getSLEFactory(new AGAbstractFactory(), anchorPane, ag3.size(), ag3.stream().toList())));
-            sles.addAll(List.of(SLEFactory.getSLEFactory(new AGAbstractFactory(), anchorPane, ag4.size(), ag4.stream().toList())));
+            List<StationDevicesDTO> reversedAg2 = new ArrayList<>(ag2.stream().toList());
+//            Collections.reverse(reversedAg2);
+            sles.addAll(List.of(SLEFactory.getSLEFactory(new AGAbstractFactory(), anchorPane, reversedAg2.size(), reversedAg2)));
+
+            List<StationDevicesDTO> reversedAg3 = new ArrayList<>(ag3.stream().toList());
+            Collections.reverse(reversedAg3);
+            sles.addAll(List.of(
+                    SLEFactory.getSLEFactory(new AGAbstractFactory(), anchorPane, reversedAg3.size(), reversedAg3)
+            ));
+
+            List<StationDevicesDTO> reversedAg4 = new ArrayList<>(ag4.stream().toList());
+            Collections.reverse(reversedAg4);
+            sles.addAll(List.of(SLEFactory.getSLEFactory(new AGAbstractFactory(), anchorPane, ag4.size(), reversedAg4)));
 
 
 //              sles.add(SLEFactory.getSLEFactory(new AGAbstractFactory(), anchorPane,  ag.get(0)));
@@ -203,7 +247,7 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
                     anchorPane.setBorder(null);
                 });
 
-            }else{
+            }else if(newMode.equals(StationSpecialMode.EMERGENCY) ){
                 Platform.runLater(() -> {
                     // Set red border
                     anchorPane.setBorder(new Border(new BorderStroke(

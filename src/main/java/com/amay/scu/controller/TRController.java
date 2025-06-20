@@ -141,9 +141,8 @@ public class TRController implements SLE {
 
     void updateOperationMode(TROperationMode status) {
         logger.info("Changing Operation Mode {}", status.getColor());
-        if(!this.setColor(status)){
-            throw new IllegalStateException("Operation Mode not set");
-        }
+        tr.setStyle(status.getColor());
+
     }
 
     @Override
