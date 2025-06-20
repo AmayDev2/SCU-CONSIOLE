@@ -8,6 +8,8 @@ import com.amay.scu.contservice.InnerListener;
 import com.amay.scu.contservice.OuterListener;
 import com.amay.scu.contservice.SCUControllerService;
 import com.amay.scu.enums.StationSpecialMode;
+import com.amay.scu.report.controller.ReportsMenuController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -61,7 +63,17 @@ public class SCUController implements Initializable{
             e.printStackTrace();
         }
     }
-
+//
+//    private void setCenter() {
+//        try{
+//            FXMLLoader loader= ViewFactory.getRevenueReport();
+////            loader.setControllerFactory(c -> new ReportsMenuController(authService));
+////            loader.setControllerFactory(c -> new ReportsMenuController(authService));
+//            borderPane.setCenter(loader.load());
+//        }catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 
     @FXML
@@ -79,7 +91,7 @@ public class SCUController implements Initializable{
 
         // Initialization logic
         if (topHeaderIncludeController != null) {
-            topHeaderIncludeController.onMenuClick(); // Example usage
+//            topHeaderIncludeController.onMenuClick(new ActionEvent());
             topHeaderIncludeController.setListener(scuControllerListener);
             authService= topHeaderIncludeController.getAuthService();
 
@@ -87,7 +99,6 @@ public class SCUController implements Initializable{
         } else {
             logger.error("topHeaderIncludeController is not initialized");
         }
-//        initialize();
 
         this.setRight();
         this.setCenter();
@@ -126,7 +137,7 @@ public class SCUController implements Initializable{
                 return;
             }
             i=2;
-            scuControllerService.onReportClick(borderPane, ViewFactory.getReport());
+            scuControllerService.onReportClick(borderPane, ViewFactory.getReport(),ViewFactory.getReportNavigationView());
 
         }
 

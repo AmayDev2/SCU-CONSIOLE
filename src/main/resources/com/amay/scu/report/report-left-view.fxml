@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+<VBox fx:id="reportLeftVBox" minHeight="780" minWidth="350" prefHeight="780" prefWidth="350"
+      xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" spacing="50" alignment="CENTER"
+      fx:controller="com.amay.scu.report.controller.ReportLeftView">
+
+    <padding>
+        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0"/>
+    </padding>
+    <StackPane>
+        <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" spacing="20.0">
+            <styleClass>
+                <String fx:value="bg-surface"/>
+                <String fx:value="rounded-button"/>
+            </styleClass>
+            <ImageView fitHeight="40.0" fitWidth="40.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../images/revenue-report.png"/>
+            </ImageView>
+            <Label prefWidth="200.0" styleClass="title-4" text="Revenue Report"/>
+            <ImageView fitHeight="20.0" fitWidth="20.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../images/right-arrow.png"/>
+            </ImageView>
+        </HBox>
+        <Button fx:id="btnRevenueReport" mnemonicParsing="false" onAction="#onMainMenuBtnClicked" prefHeight="60.0"
+                prefWidth="324.0" style="-fx-background-color: transparent;"/>
+    </StackPane>
+    <StackPane>
+        <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" spacing="20.0">
+                <styleClass>
+                    <String fx:value="bg-surface"/>
+                    <String fx:value="rounded-button"/>
+                </styleClass>
+                <ImageView fitHeight="40.0" fitWidth="40.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../images/shift-icon.png"/>
+                </ImageView>
+                <Label prefWidth="200.0" styleClass="title-4" text="Shift Report"/>
+                <ImageView fitHeight="20.0" fitWidth="20.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../images/right-arrow.png"/>
+                </ImageView>
+            </HBox>
+            <Button fx:id="btnShiftReport" mnemonicParsing="false" onAction="#onMainMenuBtnClicked" prefHeight="60.0"
+                    prefWidth="324.0" style="-fx-background-color: transparent;"/>
+        </children>
+    </StackPane>
+    <StackPane>
+        <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" spacing="20.0">
+            <styleClass>
+                <String fx:value="bg-surface"/>
+                <String fx:value="rounded-button"/>
+            </styleClass>
+            <ImageView fitHeight="40.0" fitWidth="40.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../images/ridership.png"/>
+            </ImageView>
+            <Label prefWidth="200.0" styleClass="title-4" text="Ridership Report"/>
+            <ImageView fitHeight="20.0" fitWidth="20.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../images/right-arrow.png"/>
+            </ImageView>
+        </HBox>
+        <Button fx:id="btnRidershipReport" mnemonicParsing="false" onAction="#onMainMenuBtnClicked"
+                prefHeight="60.0" prefWidth="324.0" style="-fx-background-color: transparent;"/>
+    </StackPane>
+</VBox>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="868.0" prefWidth="1920.0" style="-fx-background-color: rgb(251,157,8)\;" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ats.ccudashboard.controllers.fxml.ReportsMenuController">
+   <children>
+      <GridPane StackPane.alignment="CENTER">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="50.0" styleClass="bg-accent-blue-dark">
+               <padding>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+               </padding>
+               <children>
+                  <StackPane>
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" spacing="20.0">
+                           <children>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/revenue-report.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefWidth="200.0" styleClass="title-4" text="Revenue Report" />
+                              <ImageView fitHeight="20.0" fitWidth="20.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/right-arrow.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <styleClass>
+                              <String fx:value="bg-surface" />
+                              <String fx:value="rounded-button" />
+                           </styleClass>
+                        </HBox>
+                        <Button fx:id="btnRevenueReport" mnemonicParsing="false" onAction="#onMainMenuBtnClicked" prefHeight="60.0" prefWidth="324.0" style="-fx-background-color: transparent;" />
+                     </children>
+                  </StackPane>
+                  <StackPane>
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" spacing="20.0">
+                           <children>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/shift-icon.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefWidth="200.0" styleClass="title-4" text="Shift Report" />
+                              <ImageView fitHeight="20.0" fitWidth="20.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/right-arrow.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <styleClass>
+                              <String fx:value="bg-surface" />
+                              <String fx:value="rounded-button" />
+                           </styleClass>
+                        </HBox>
+                        <Button fx:id="btnShiftReport" mnemonicParsing="false" onAction="#onMainMenuBtnClicked" prefHeight="60.0" prefWidth="324.0" style="-fx-background-color: transparent;" />
+                     </children>
+                  </StackPane>
+                  <StackPane>
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" spacing="20.0">
+                           <children>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/ridership.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefWidth="200.0" styleClass="title-4" text="Ridership Report" />
+                              <ImageView fitHeight="20.0" fitWidth="20.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/right-arrow.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <styleClass>
+                              <String fx:value="bg-surface" />
+                              <String fx:value="rounded-button" />
+                           </styleClass>
+                        </HBox>
+                        <Button fx:id="btnRidershipReport" mnemonicParsing="false" onAction="#onMainMenuBtnClicked" prefHeight="60.0" prefWidth="324.0" style="-fx-background-color: transparent;" />
+                     </children>
+                  </StackPane>
+               </children>
+            </VBox>
+            <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #fff;" GridPane.columnIndex="1">
+               <children>
+                  <ImageView fitHeight="800.0" fitWidth="1200.0" opacity="0.3" pickOnBounds="true" StackPane.alignment="CENTER">
+                     <image>
+                        <Image url="@../images/indoor-bhopal-logo.png" />
+                     </image>
+                  </ImageView>
+                  <TabPane fx:id="reportsTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" />
+               </children>
+            </StackPane>
+         </children>
+      </GridPane>
+   </children>
+   <stylesheets>
+      <URL value="@../css/application.css" />
+<!--      <URL value="@../../styles/themes.css" />-->
+   </stylesheets>
+</StackPane>

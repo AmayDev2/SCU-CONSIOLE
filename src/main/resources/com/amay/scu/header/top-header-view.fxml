@@ -25,12 +25,14 @@
       </HBox>
 
       <!-- Center Section: Navigation -->
-      <HBox fx:id="navigatorHBox" alignment="CENTER" layoutX="710.0" layoutY="86.0" minHeight="0.0" minWidth="500.0" prefWidth="500.0" spacing="20.0">
-         <children>
-            <Button fx:id="menuNavigator" minHeight="30.0" minWidth="120.0" onMouseClicked="#onMenuClick" styleClass="navigator" text="Menu" textAlignment="CENTER" />
-            <Button fx:id="monitorNavigator" minHeight="30.0" minWidth="120.0" onMouseClicked="#onMonitorClick" styleClass="navigator" text="Monitor" />
-            <Button fx:id="reportNavigator" onMouseClicked="#onReportClick" prefHeight="25.0" prefWidth="120.0" styleClass="navigator" text="Report" />
-         </children>
+      <HBox fx:id="navigatorHBox" alignment="CENTER" layoutX="710.0" layoutY="86.0" minHeight="0.0" minWidth="500.0"
+            prefWidth="500.0" spacing="20.0">
+         <Button fx:id="menuNavigator" minHeight="30.0" minWidth="120.0" onAction="#onMenuClick" styleClass="navigator"
+                 text="Menu" textAlignment="CENTER"/>
+         <Button fx:id="monitorNavigator" minHeight="30.0" minWidth="120.0" onAction="#onMonitorClick"
+                 styleClass="navigator" text="Monitor"/>
+         <Button fx:id="reportNavigator" onAction="#onReportClick" prefHeight="25.0" prefWidth="120.0"
+                 styleClass="navigator" text="Report"/>
       </HBox>
 
       <!-- Right Section: Icons/Buttons -->

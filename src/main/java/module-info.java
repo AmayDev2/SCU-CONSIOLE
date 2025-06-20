@@ -25,6 +25,7 @@ module com.amay.scu {
     requires java.desktop;
     requires com.fasterxml.jackson.databind;
     requires com.google.common;
+    requires spring.web;
 
     opens com.amay.scu to javafx.fxml;
     exports com.amay.scu;
@@ -44,6 +45,7 @@ module com.amay.scu {
     opens com.amay.scu.grpc to com.fasterxml.jackson.databind;
 
 
+    opens com.amay.scu.report.controller;
     opens com.amay.scu.model to com.fasterxml.jackson.databind;
     opens com.amay.scu.controller to javafx.fxml;
     opens com.amay.scu.controller.components to javafx.fxml;
@@ -51,4 +53,5 @@ module com.amay.scu {
     opens com.amay.scu.enums to com.fasterxml.jackson.databind;
     exports org.network.monitorandcontrol.tvm;
     exports org.network.monitorandcontrol.tr;
+    exports com.amay.scu.report.controller;
 }

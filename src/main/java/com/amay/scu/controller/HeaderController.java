@@ -139,26 +139,24 @@ public class HeaderController {
 
     @FXML
     void onMenuClick(ActionEvent event) {
-
         scuHeaderListener.onMenuClick();
+        event.consume();
     }
 
     @FXML
     void onMonitorClick(ActionEvent event) {
         scuHeaderListener.onMonitorClick();
+        event.consume();
 
     }
 
     @FXML
     void onReportClick(ActionEvent event) {
         scuHeaderListener.onReportClick();
+        event.consume();
 
     }
 
-    // For testing without a MouseEvent
-    public void onMenuClick() {
-        System.out.println("Menu clicked (no event)");
-    }
 
     @FXML
     private void onAuthClick(ActionEvent actionEvent) {

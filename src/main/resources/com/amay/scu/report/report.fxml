@@ -12,24 +12,16 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
 
-<AnchorPane
-        fx:id="reportAnchorPane"
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<StackPane
         xmlns="http://javafx.com/javafx"
         xmlns:fx="http://javafx.com/fxml"
-        fx:controller="com.amay.scu.controller.ReportController"
+        fx:controller="com.amay.scu.report.controller.ReportsMenuController"
         styleClass="report"
         stylesheets="@../css/report.css">
-
-    <children>
-        <VBox alignment="CENTER" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-            <padding>
-                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-            </padding>
-            <children>
-
-                <!-- Pie Chart for Summary Visualization -->
-                <PieChart fx:id="summaryPieChart" title="Status Distribution" />
-            </children>
-        </VBox>
-    </children>
-</AnchorPane>
+    <ImageView fitHeight="800.0" fitWidth="1200.0" opacity="0.1" pickOnBounds="true" StackPane.alignment="CENTER">
+        <Image url="@../images/indoor-bhopal-logo.png"/>
+    </ImageView>
+    <TabPane fx:id="reportsTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE"/>
+</StackPane>

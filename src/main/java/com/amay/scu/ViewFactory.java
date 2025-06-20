@@ -108,4 +108,16 @@ public class ViewFactory {
                 (Path.TR_VIEW));
         return fxmlLoader;
     }
+
+    public static FXMLLoader  getReportNavigationView() {
+        FXMLLoader fxmlLoader = new FXMLLoader(ViewFactory.class.getResource
+                (Path.REPORT_LEFT_VIEW));
+        return fxmlLoader;
+    }
+
+    public static FXMLLoader  getRevenueReport() {
+        FXMLLoader fxmlLoader = new FXMLLoader(ViewFactory.class.getResource
+                (Path.REVENUE_REPORT));
+        return fxmlLoader;
+    }
 }

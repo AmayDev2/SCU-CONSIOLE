@@ -14,12 +14,14 @@ public interface Path {
      String HEADER="header/top-header-view.fxml";
      String REPORT = "report/report.fxml";
      String MONITOR_RIGHT_VIEW = "popups/monitor-right-view.fxml";
-        String CENTER= "station_map/station-dynamic-map-view.fxml";
+     String CENTER= "station_map/station-dynamic-map-view.fxml";
      String ALERT = "components/alert.fxml";
      String TOM_WIDGETS = "popups/tom-widgets-view-v2.fxml";
      String AG_WIDGETS = "popups/ag-widgets-view.fxml";
      String AG_COMMAND="popups/ag-command.fxml";
      String LOGIN="popups/login.fxml";
      String LOGOUT = "popups/logout.fxml";
-    String PERMISSION = "popups/permission.fxml";
+     String PERMISSION = "popups/permission.fxml";
+     String REPORT_LEFT_VIEW="report/report-left-view.fxml";
+     String REVENUE_REPORT = "report/revenue_report.fxml";
 }
