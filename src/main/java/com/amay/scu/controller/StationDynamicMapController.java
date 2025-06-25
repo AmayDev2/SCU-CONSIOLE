@@ -100,18 +100,18 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
                     case "TOM":
                         tomCount++;
                         if (stationDevice.getZone().equals(Zone.TOM_ZONE_ONE)) {
-                            stationDevice.setxAxis(stationDevice.getZone().getX() + (((int) stationDevice.getZone().getCount() / 4) * 100));
+                            stationDevice.setxAxis(stationDevice.getZone().getX() + (((double) (int) stationDevice.getZone().getCount() / 4) * 100));
                             stationDevice.setyAxis(stationDevice.getZone().getY() + stationDevice.getZone().getCount() % 4);
                         } else if (stationDevice.getZone().equals(Zone.TOM_ZONE_TWO)) {
-                            stationDevice.setxAxis(stationDevice.getZone().getX() - (((int) stationDevice.getZone().getCount() / 4) * 100));
+                            stationDevice.setxAxis(stationDevice.getZone().getX() - (((double) (int) stationDevice.getZone().getCount() / 4) * 100));
                             stationDevice.setyAxis(stationDevice.getZone().getY() + stationDevice.getZone().getCount() % 4);
 
                         } else if (stationDevice.getZone().equals(Zone.TOM_ZONE_THREE)) {
-                            stationDevice.setxAxis(stationDevice.getZone().getX() + (((int) stationDevice.getZone().getCount() / 4) * 100));
+                            stationDevice.setxAxis(stationDevice.getZone().getX() + (((double) (int) stationDevice.getZone().getCount() / 4) * 100));
                             stationDevice.setyAxis(stationDevice.getZone().getY() + stationDevice.getZone().getCount() % 4);
 
                         } else if (stationDevice.getZone().equals(Zone.TOM_ZONE_FOUR)) {
-                            stationDevice.setxAxis(stationDevice.getZone().getX() - (((int) stationDevice.getZone().getCount() / 4) * 100));
+                            stationDevice.setxAxis(stationDevice.getZone().getX() - (((double) (int) stationDevice.getZone().getCount() / 4) * 100));
                             stationDevice.setyAxis(stationDevice.getZone().getY() + stationDevice.getZone().getCount() % 4);
 
                         }

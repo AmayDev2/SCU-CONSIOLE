@@ -13,7 +13,7 @@
          <children>
             <ImageView fx:id="logoImageView" fitHeight="114.0" fitWidth="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <!-- Replace with the actual logo image -->
+                  <!-- Replace it with the actual logo image -->
                   <Image url="@../images/indoor-bhopal-logo.png" />
                </image>
             </ImageView>

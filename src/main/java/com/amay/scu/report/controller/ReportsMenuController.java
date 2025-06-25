@@ -2,6 +2,7 @@ package com.amay.scu.report.controller;
 
 import com.amay.scu.ViewFactory;
 import com.amay.scu.report.controller.enums.ReportsListener;
+import com.amay.scu.service.ScuGrpcService;
 import com.amay.scu.util.ColumnDefinition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -42,10 +43,8 @@ public class ReportsMenuController implements ReportsListener {
 
     @FXML
     private void initialize()  {
-
-//        reportsTabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.SELECTED_TAB);
-//        this.onClickRevenueReport();
-
+        reportsTabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.SELECTED_TAB);
+        this.onClickRevenueReport();
     }
 
 
@@ -66,7 +65,7 @@ public class ReportsMenuController implements ReportsListener {
 
         try {
             FXMLLoader loader=ViewFactory.getRevenueReport();
-            loader.setControllerFactory(x-> new RevenueReportsController(columns,"Revenue Report") );
+            loader.setControllerFactory(x-> new RevenueReportsController<>(columns,"Revenue Report", ScuGrpcService.INSTANCE::getRevenueReport) );
             Node node=loader.load();
             addTabToPane("Revenue Report",node);
         } catch (IOException e) {
@@ -79,7 +78,7 @@ public class ReportsMenuController implements ReportsListener {
     public void onClickRidershipReport() {
         List<ColumnDefinition< RidershipReport, ?>> columns = List.of(
                 new ColumnDefinition<>("Time", RidershipReport::getTime),
-                new ColumnDefinition<>("Station Id", RidershipReport::getStationId),
+                new ColumnDefinition<>("Ticket Id", RidershipReport::getTicketId),
                 new ColumnDefinition<>("Equipment Type",RidershipReport::getEquipmentType),
                 new ColumnDefinition<>("Equipment Id", RidershipReport::getEquipmentId),
                 new ColumnDefinition<>("Status", RidershipReport::getStatus)
@@ -87,7 +86,7 @@ public class ReportsMenuController implements ReportsListener {
 
         try {
             FXMLLoader loader=ViewFactory.getRevenueReport();
-            loader.setControllerFactory(x-> new RevenueReportsController(columns, "Ridership Report") );
+            loader.setControllerFactory(x-> new RevenueReportsController(columns, "Ridership Report",ScuGrpcService.INSTANCE::getRidershipReport) );
             Node node=loader.load();
             addTabToPane("Ridership Report",node);
         } catch (IOException e) {
@@ -113,7 +112,7 @@ public class ReportsMenuController implements ReportsListener {
 
         try {
             FXMLLoader loader=ViewFactory.getRevenueReport();
-            loader.setControllerFactory(x-> new RevenueReportsController(columns, "Shift Report") );
+            loader.setControllerFactory(x-> new RevenueReportsController<>(columns, "Shift Report",ScuGrpcService.INSTANCE::getRevenueReport) );
             Node node=loader.load();
             addTabToPane("ShiftReport Report",node);
         } catch (IOException e) {

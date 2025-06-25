@@ -10,6 +10,7 @@ option java_outer_classname = "SCURevenueProto";
 import "meta/RequestMetaData.proto";
 import "meta/ResponseMetaData.proto";
 import "object/BaseObject.proto";
+import "google/protobuf/struct.proto";
 
 
 message RevenueData {
@@ -28,3 +29,15 @@ message SCURevenueReportResponseV1 {
   RevenueData revenueData = 2;
   meta.respmetadata.ResponseMetaData responseMetaData = 1;
 }
+
+message RevenueReportListRequest {
+  google.protobuf.ListValue reports = 1;
+  meta.reqmetadata.RequestMetaData requestMetaData = 2;
+
+}
+
+message RevenueReportListResponse {
+  google.protobuf.ListValue reports = 1;
+  meta.respmetadata.ResponseMetaData responseMetaData = 2;
+}
+

@@ -14,14 +14,17 @@
 
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
+<?import java.net.URL?>
 <StackPane
         xmlns="http://javafx.com/javafx"
         xmlns:fx="http://javafx.com/fxml"
         fx:controller="com.amay.scu.report.controller.ReportsMenuController"
         styleClass="report"
         stylesheets="@../css/report.css">
-    <ImageView fitHeight="800.0" fitWidth="1200.0" opacity="0.1" pickOnBounds="true" StackPane.alignment="CENTER">
-        <Image url="@../images/indoor-bhopal-logo.png"/>
-    </ImageView>
-    <TabPane fx:id="reportsTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE"/>
+    <TabPane fx:id="reportsTabPane" prefHeight="200.0"  prefWidth="200.0" tabClosingPolicy="UNAVAILABLE"/>
+<!--    <stylesheets>-->
+<!--&lt;!&ndash;        <URL value="@../css/styles.css" />&ndash;&gt;-->
+<!--&lt;!&ndash;        <URL value="@../css/themes.css" />&ndash;&gt;-->
+<!--        <URL value="@../css/primer-light.css" />-->
+<!--    </stylesheets>-->
 </StackPane>

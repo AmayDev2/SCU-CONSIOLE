@@ -1,5 +1,6 @@
 package com.amay.scu.report.controller;
 
+import com.amay.scu.service.ScuGrpcService;
 import com.amay.scu.util.ColumnDefinition;
 import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -7,12 +8,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class RevenueReportsController<T> {
 
@@ -35,10 +37,12 @@ public class RevenueReportsController<T> {
 
     private final ObservableList<T> observableList = FXCollections.observableArrayList();
     private final List<ColumnDefinition<T, ?>> columns;
+    private final Callable<List<T>> task;
 
-    public RevenueReportsController(List<ColumnDefinition<T, ?>> columns, String reportName) {
+    public RevenueReportsController(List<ColumnDefinition<T, ?>> columns, String reportName,Callable<List<T>> task) {
         this.columns = columns;
         this.reportsName=reportName;
+        this.task= task;
 
     }
 
@@ -50,32 +54,37 @@ public class RevenueReportsController<T> {
 //            setTable();
             setupDynamicTable(reportsTable, columns, observableList);
             if (observableList.isEmpty()) {
-                fetchData();
+                    fetchData(task);
             }
         });
 
         this.tableHelper= new TableHelper();
     }
 
-    private void fetchData() {
-//        try {
-//            loadingPane.showLoadingPane();
-//            ResponseEntity<RevenueReport[]> entity = helper.get(ApiUrl.REVENUE_REPORT, null, RevenueReport[].class);
-//            if (entity.getStatusCode().is2xxSuccessful()) {
-//                if (entity.getBody() == null) {
-//                    showAlert(Alert.AlertType.INFORMATION, "No Records", "No Revenue Data Available !");
-//                } else {
-//                    observableList.clear();
-//                    observableList.addAll(entity.getBody());
-//                }
-//            } else {
-//                showAlert(Alert.AlertType.INFORMATION, "Server Error", "Oops !!! Something went wrong");
-//            }
-//            loadingPane.removeLoadingPane();
-//        } catch (Exception e) {
-//            loadingPane.removeLoadingPane();
-//            showAlert(Alert.AlertType.INFORMATION, "Server Error", "Oops !!! Something went wrong");
-//        }
+    private void fetchData(Callable<List<T>> task) {
+
+        try {
+
+            ExecutorService executor = Executors.newSingleThreadExecutor();
+            Future<List<T>> future = executor.submit(task);
+            List<T> list = future.get(); // this will block until result is ready
+            executor.shutdown();
+                if (list.isEmpty()) {
+                    showAlert(Alert.AlertType.INFORMATION, "No Records", "No Revenue Data Available !");
+                } else {
+                    observableList.clear();
+                    observableList.addAll( list);
+                }
+        } catch (Exception e) {
+            showAlert(Alert.AlertType.INFORMATION, "Server Error", "Oops !!! Something went wrong");
+        }
+    }
+
+    private void showAlert(Alert.AlertType alertType, String noRecords, String s) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(noRecords);
+        alert.setContentText(s);
+        alert.showAndWait();
     }
 //
 //    private void setTable() {
@@ -112,8 +121,8 @@ public class RevenueReportsController<T> {
         TableColumn<T, R> column = new TableColumn<>(def.header());
         column.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(def.getter().apply(cellData.getValue())));
         tableView.getColumns().add(column);
-        column.setPrefWidth(150);
-        column.setMinWidth(50);
+        column.setPrefWidth(200);
+        column.setMinWidth(170);
         column.setEditable(false);
     }
 
@@ -130,7 +139,4 @@ public class RevenueReportsController<T> {
 //        }
     }
 
-    public void onRefreshDrafts(ActionEvent actionEvent) {
-        fetchData();
-    }
 }

@@ -63,17 +63,7 @@ public class SCUController implements Initializable{
             e.printStackTrace();
         }
     }
-//
-//    private void setCenter() {
-//        try{
-//            FXMLLoader loader= ViewFactory.getRevenueReport();
-////            loader.setControllerFactory(c -> new ReportsMenuController(authService));
-////            loader.setControllerFactory(c -> new ReportsMenuController(authService));
-//            borderPane.setCenter(loader.load());
-//        }catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+
 
 
     @FXML

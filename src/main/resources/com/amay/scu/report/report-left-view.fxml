@@ -69,4 +69,5 @@
         <Button fx:id="btnRidershipReport" mnemonicParsing="false" onAction="#onMainMenuBtnClicked"
                 prefHeight="60.0" prefWidth="324.0" style="-fx-background-color: transparent;"/>
     </StackPane>
+
 </VBox>

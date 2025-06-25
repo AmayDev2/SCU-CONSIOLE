@@ -2,6 +2,7 @@
 
 <?import javafx.scene.layout.*?>
 
+<?import java.net.URL?>
 <AnchorPane fx:id="scu" stylesheets="@css/application.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.SCUController">
 
     <BorderPane fx:id="borderPane" stylesheets="@css/border-pane.css">
@@ -26,4 +27,9 @@
         </bottom>
 
     </BorderPane>
+    <stylesheets>
+<!--        <URL value="@css/styles.css" />-->
+<!--        <URL value="@css/themes.css" />-->
+<!--        <URL value="@./css/primer-light.css" />-->
+    </stylesheets>
 </AnchorPane>

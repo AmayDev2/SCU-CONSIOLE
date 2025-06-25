@@ -18,4 +18,6 @@ service SCUService {
   rpc GetRevenue(scu.object.SCURevenueReportRequestV1) returns (scu.object.SCURevenueReportResponseV1);
   rpc GetStocks(scu.object.SCUStockRequestV1) returns (scu.object.SCUStockResponseV1);
   rpc GetAuthentication(scu.object.SCUAuthenticationRequest) returns (scu.object.SCUAuthenticationResponse);
+  rpc GetRevenueReports (scu.object.RevenueReportListRequest) returns (scu.object.RevenueReportListResponse);
+
 }

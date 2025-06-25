@@ -4,11 +4,18 @@ package com.amay.scu.service;
 import com.amay.scu.enums.StationSpecialMode;
 import com.amay.scu.grpc.GrpcConfig;
 import com.amay.scu.grpc.ScuGrpcConfig;
+import com.amay.scu.report.controller.RevenueReport;
+import com.amay.scu.report.controller.RidershipReport;
 import com.amay.scu.test_grpc_service.SCUService;
 //import org.amaytechnosystems.SCUServiceGrpc;
+import com.google.protobuf.ListValue;
+import com.google.protobuf.Value;
 import org.amaytechnosystems.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public enum ScuGrpcService  {
@@ -114,6 +121,114 @@ public enum ScuGrpcService  {
     public void shutdown() {
         GrpcConfig.shutdown();
     }
+
+    public List<RidershipReport> getRidershipReport(){
+        try {
+            RevenueReportListRequest request = RevenueReportListRequest.newBuilder()
+                    .setRequestMetaData(RequestMetaData.newBuilder()
+                            .setRequestId("ridership-report-request")
+                            .setRequestTime(String.valueOf(System.currentTimeMillis()))
+                            .build())
+                    .build();
+
+
+            System.out.println("Sending ridership report request to server: " + request);
+            RevenueReportListResponse response = this.blockingStub.getRevenueReports(request);
+            System.out.println("Response from server for ridership Report: " + response);
+            if (!response.getResponseMetaData().getErrorCode().equals("200")) {
+                throw new RuntimeException("Error fetching ridership report: " + response.getResponseMetaData().getErrorMessage());
+            }
+            System.out.println("ridership report fetched successfully.");
+            // Assuming response.getRevenueData().getReportsList() returns a list of RevenueReport objects
+            if (response.getReports().getValuesList().isEmpty()) {
+                System.out.println("No ridership reports available.");
+                return List.of(); // Return an empty list if no reports are available
+            }
+            System.out.println("Number of ridership reports fetched: " + response.getReports().getValuesList().size());
+            // Return the list of RevenueReport objects
+            // Assuming RevenueReportListResponse has a method getReports() that returns a list of RevenueReport objects
+            return convertFromListValueRidership(response.getReports());
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to fetch revenue report: " + e.getMessage());
+        }
+
+    }
+
+
+    public List<RevenueReport> getRevenueReport(){
+        try {
+
+            RevenueReportListRequest request = RevenueReportListRequest.newBuilder().build();
+
+
+            System.out.println("Sending revenue report request to server: " + request);
+            RevenueReportListResponse response = this.blockingStub.getRevenueReports(request);
+            System.out.println("Response from server for Revenue Report: " + response);
+            if (!response.getResponseMetaData().getErrorCode().equals("200")) {
+                throw new RuntimeException("Error fetching revenue report: " + response.getResponseMetaData().getErrorMessage());
+            }
+            System.out.println("Revenue report fetched successfully.");
+            // Assuming response.getRevenueData().getReportsList() returns a list of RevenueReport objects
+            if (response.getReports().getValuesList().isEmpty()) {
+                System.out.println("No revenue reports available.");
+                return List.of(); // Return an empty list if no reports are available
+            }
+            System.out.println("Number of revenue reports fetched: " + response.getReports().getValuesList().size());
+            // Return the list of RevenueReport objects
+            // Assuming RevenueReportListResponse has a method getReports() that returns a list of RevenueReport objects
+            return convertFromListValue(response.getReports());
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to fetch revenue report: " + e.getMessage());
+        }
+
+    }
+
+    public List<RidershipReport> convertFromListValueRidership(ListValue listValue) {
+        List<RidershipReport> dtoList = new ArrayList<>();
+
+        for (Value rowValue : listValue.getValuesList()) {
+            ListValue row = rowValue.getListValue();
+            List<Value> values = row.getValuesList();
+
+            RidershipReport dto = new RidershipReport();
+            dto.setEquipmentId(values.get(0).getStringValue());
+            dto.setStatus(values.get(1).getStringValue());
+            dto.setEquipmentType(values.get(2).getStringValue());
+            dto.setTime(values.get(3).getStringValue());
+            dto.setTicketId(values.get(4).getStringValue());
+            dtoList.add(dto);
+        }
+
+        return dtoList;
+    }
+
+    public List<RevenueReport> convertFromListValue(ListValue listValue) {
+        List<RevenueReport> dtoList = new ArrayList<>();
+
+        for (Value rowValue : listValue.getValuesList()) {
+            ListValue row = rowValue.getListValue();
+            List<Value> values = row.getValuesList();
+
+            RevenueReport dto = new RevenueReport();
+            dto.setTicketId(values.get(0).getStringValue());
+            dto.setStation(values.get(1).getStringValue());
+            dto.setEquipmentType(values.get(2).getStringValue());
+            dto.setEquipmentId(values.get(3).getStringValue());
+            dto.setTripType(values.get(4).getStringValue());
+            dto.setFareMedia(values.get(5).getStringValue());
+            dto.setPaymentMode(values.get(6).getStringValue());
+            dto.setAmount(Double.parseDouble(values.get(7).getStringValue()));
+            // For ticketTime: parse the formatted string back to a timestamp (optional)
+            // If original time is not available, you may skip or convert it back using SimpleDateFormat
+            dto.setTicketTime(0); // Optional: you may ignore setting this if unneeded
+            dto.setTransactionType(values.get(9).getStringValue());
+
+            dtoList.add(dto);
+        }
+
+        return dtoList;
+    }
+
 
 
     public String isAuthenticated(String username, String password) {
