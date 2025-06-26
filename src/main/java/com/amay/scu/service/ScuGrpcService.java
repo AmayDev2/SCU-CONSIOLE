@@ -6,6 +6,8 @@ import com.amay.scu.grpc.GrpcConfig;
 import com.amay.scu.grpc.ScuGrpcConfig;
 import com.amay.scu.report.controller.RevenueReport;
 import com.amay.scu.report.controller.RidershipReport;
+import com.amay.scu.report.controller.RidershipReportPerDay;
+import com.amay.scu.report.controller.RidershipReportPerHour;
 import com.amay.scu.test_grpc_service.SCUService;
 //import org.amaytechnosystems.SCUServiceGrpc;
 import com.google.protobuf.ListValue;
@@ -14,6 +16,7 @@ import org.amaytechnosystems.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.swing.text.html.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -117,21 +120,20 @@ public enum ScuGrpcService  {
 
 
 
-    //  response observer
+    //response observer
     public void shutdown() {
         GrpcConfig.shutdown();
     }
 
-    public List<RidershipReport> getRidershipReport(){
+    public List<RidershipReport> getRidershipReport(ListValue filters ) {
         try {
             RevenueReportListRequest request = RevenueReportListRequest.newBuilder()
+                    .setReports(filters)
                     .setRequestMetaData(RequestMetaData.newBuilder()
                             .setRequestId("ridership-report-request")
                             .setRequestTime(String.valueOf(System.currentTimeMillis()))
                             .build())
                     .build();
-
-
             System.out.println("Sending ridership report request to server: " + request);
             RevenueReportListResponse response = this.blockingStub.getRevenueReports(request);
             System.out.println("Response from server for ridership Report: " + response);
@@ -155,10 +157,11 @@ public enum ScuGrpcService  {
     }
 
 
-    public List<RevenueReport> getRevenueReport(){
+    public List<RevenueReport> getRevenueReport(ListValue filters){
+
         try {
 
-            RevenueReportListRequest request = RevenueReportListRequest.newBuilder().build();
+            RevenueReportListRequest request = RevenueReportListRequest.newBuilder().setReports(filters).build();
 
 
             System.out.println("Sending revenue report request to server: " + request);
@@ -202,6 +205,70 @@ public enum ScuGrpcService  {
         return dtoList;
     }
 
+    public List<RidershipReportPerDay> convertFromListValueRidershipPerDay(ListValue listValue) {
+        List<RidershipReportPerDay> dtoList = new ArrayList<>();
+
+        for (Value rowValue : listValue.getValuesList()) {
+            ListValue row = rowValue.getListValue();
+            List<Value> values = row.getValuesList();
+
+            RidershipReportPerDay dto = new RidershipReportPerDay();
+
+            dto.setDate(values.get(0).getStringValue());
+            dto.setStation(values.get(1).getStringValue());
+
+            dto.setEntryQR((int) values.get(2).getNumberValue());
+            dto.setExitQR((int) values.get(3).getNumberValue());
+
+            dto.setEntryNCMC((int) values.get(4).getNumberValue());
+            dto.setExitNCMC((int) values.get(5).getNumberValue());
+
+            dto.setEntryMQR((int) values.get(6).getNumberValue());
+            dto.setExitMQR((int) values.get(7).getNumberValue());
+
+            dto.setTotalEntry((int) values.get(8).getNumberValue());
+            dto.setTotalExit((int) values.get(9).getNumberValue());
+
+            dto.setTotalRidership((int) values.get(10).getNumberValue());
+
+            dtoList.add(dto);
+        }
+
+        return dtoList;
+    }
+
+    public List<RidershipReportPerHour> convertFromListValueRidershipPerHour(ListValue listValue) {
+        List<RidershipReportPerHour> dtoList = new ArrayList<>();
+
+        for (Value rowValue : listValue.getValuesList()) {
+            ListValue row = rowValue.getListValue();
+            List<Value> values = row.getValuesList();
+
+            RidershipReportPerHour dto = new RidershipReportPerHour();
+
+            dto.setDate(values.get(0).getStringValue());
+//            dto.setStation(values.get(1).getStringValue());
+//
+//            dto.setEntryQR((int) values.get(2).getNumberValue());
+//            dto.setExitQR((int) values.get(3).getNumberValue());
+//
+//            dto.setEntryNCMC((int) values.get(4).getNumberValue());
+//            dto.setExitNCMC((int) values.get(5).getNumberValue());
+//
+//            dto.setEntryMQR((int) values.get(6).getNumberValue());
+//            dto.setExitMQR((int) values.get(7).getNumberValue());
+//
+//            dto.setTotalEntry((int) values.get(8).getNumberValue());
+//            dto.setTotalExit((int) values.get(9).getNumberValue());
+//
+//            dto.setTotalRidership((int) values.get(10).getNumberValue());
+
+            dtoList.add(dto);
+        }
+
+        return dtoList;
+    }
+
     public List<RevenueReport> convertFromListValue(ListValue listValue) {
         List<RevenueReport> dtoList = new ArrayList<>();
 
@@ -220,7 +287,7 @@ public enum ScuGrpcService  {
             dto.setAmount(Double.parseDouble(values.get(7).getStringValue()));
             // For ticketTime: parse the formatted string back to a timestamp (optional)
             // If original time is not available, you may skip or convert it back using SimpleDateFormat
-            dto.setTicketTime(0); // Optional: you may ignore setting this if unneeded
+            dto.setTicketTime((long) values.get(8).getNumberValue()); // Optional: you may ignore setting this if unneeded
             dto.setTransactionType(values.get(9).getStringValue());
 
             dtoList.add(dto);
@@ -252,5 +319,71 @@ public enum ScuGrpcService  {
             throw  new RuntimeException(exception.getMessage());
 
         }
+    }
+
+    public List<RidershipReportPerHour> getRidershipParHourReport(ListValue filters) {
+        try {
+            RevenueReportListRequest request = RevenueReportListRequest.newBuilder()
+                    .setReports(filters)
+                    .setRequestMetaData(RequestMetaData.newBuilder()
+                            .setRequestId("per-day-ridership-report-request")
+                            .setRequestTime(String.valueOf(System.currentTimeMillis()))
+                            .build())
+                    .build();
+
+            System.out.println("Sending ridership report request to server: " + request);
+            RevenueReportListResponse response = this.blockingStub.getRevenueReports(request);
+            System.out.println("Response from server for ridership Report: " + response);
+            if (!response.getResponseMetaData().getErrorCode().equals("200")) {
+                throw new RuntimeException("Error fetching ridership report: " + response.getResponseMetaData().getErrorMessage());
+            }
+            System.out.println("per-day-ridership report fetched successfully.");
+            // Assuming response.getRevenueData().getReportsList() returns a list of RevenueReport objects
+            if (response.getReports().getValuesList().isEmpty()) {
+                System.out.println("No ridership reports available.");
+                return List.of(); // Return an empty list if no reports are available
+            }
+            System.out.println("Number of ridership reports fetched: " + response.getReports().getValuesList().size());
+            // Return the list of RevenueReport objects
+            // Assuming RevenueReportListResponse has a method getReports() that returns a list of RevenueReport objects
+            return convertFromListValueRidershipPerHour(response.getReports());
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to fetch revenue report: " + e.getMessage());
+        }
+
+
+    }
+
+    public List<RidershipReportPerDay> getRidershipParDayReport(ListValue filters) {
+        try {
+            RevenueReportListRequest request = RevenueReportListRequest.newBuilder()
+                    .setReports(filters)
+                    .setRequestMetaData(RequestMetaData.newBuilder()
+                            .setRequestId("per-day-ridership-report-request")
+                            .setRequestTime(String.valueOf(System.currentTimeMillis()))
+                            .build())
+                    .build();
+
+            System.out.println("Sending ridership report request to server: " + request);
+            RevenueReportListResponse response = this.blockingStub.getRevenueReports(request);
+            System.out.println("Response from server for ridership Report: " + response);
+            if (!response.getResponseMetaData().getErrorCode().equals("200")) {
+                throw new RuntimeException("Error fetching ridership report: " + response.getResponseMetaData().getErrorMessage());
+            }
+            System.out.println("per-day-ridership report fetched successfully.");
+            // Assuming response.getRevenueData().getReportsList() returns a list of RevenueReport objects
+            if (response.getReports().getValuesList().isEmpty()) {
+                System.out.println("No ridership reports available.");
+                return List.of(); // Return an empty list if no reports are available
+            }
+            System.out.println("Number of ridership reports fetched: " + response.getReports().getValuesList().size());
+            // Return the list of RevenueReport objects
+            // Assuming RevenueReportListResponse has a method getReports() that returns a list of RevenueReport objects
+            return convertFromListValueRidershipPerDay(response.getReports());
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to fetch revenue report: " + e.getMessage());
+        }
+
+
     }
 }

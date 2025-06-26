@@ -34,24 +34,39 @@
                 prefWidth="324.0" style="-fx-background-color: transparent;"/>
     </StackPane>
     <StackPane>
-        <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" spacing="20.0">
-                <styleClass>
-                    <String fx:value="bg-surface"/>
-                    <String fx:value="rounded-button"/>
-                </styleClass>
-                <ImageView fitHeight="40.0" fitWidth="40.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@../images/shift-icon.png"/>
-                </ImageView>
-                <Label prefWidth="200.0" styleClass="title-4" text="Shift Report"/>
-                <ImageView fitHeight="20.0" fitWidth="20.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@../images/right-arrow.png"/>
-                </ImageView>
-            </HBox>
-            <Button fx:id="btnShiftReport" mnemonicParsing="false" onAction="#onMainMenuBtnClicked" prefHeight="60.0"
-                    prefWidth="324.0" style="-fx-background-color: transparent;"/>
-        </children>
+        <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" spacing="20.0">
+            <styleClass>
+                <String fx:value="bg-surface"/>
+                <String fx:value="rounded-button"/>
+            </styleClass>
+            <ImageView fitHeight="40.0" fitWidth="40.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../images/shift-icon.png"/>
+            </ImageView>
+            <Label prefWidth="200.0" styleClass="title-4" text="Shift Report"/>
+            <ImageView fitHeight="20.0" fitWidth="20.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../images/right-arrow.png"/>
+            </ImageView>
+        </HBox>
+        <Button fx:id="btnShiftReport" mnemonicParsing="false" onAction="#onMainMenuBtnClicked" prefHeight="60.0"
+                prefWidth="324.0" style="-fx-background-color: transparent;"/>
     </StackPane>
+<!--    <StackPane>-->
+<!--        <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" spacing="20.0">-->
+<!--            <styleClass>-->
+<!--                <String fx:value="bg-surface"/>-->
+<!--                <String fx:value="rounded-button"/>-->
+<!--            </styleClass>-->
+<!--            <ImageView fitHeight="40.0" fitWidth="40.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">-->
+<!--                <Image url="@../images/ridership.png"/>-->
+<!--            </ImageView>-->
+<!--            <Label prefWidth="200.0" styleClass="title-4" text="Ridership Report"/>-->
+<!--            <ImageView fitHeight="20.0" fitWidth="20.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">-->
+<!--                <Image url="@../images/right-arrow.png"/>-->
+<!--            </ImageView>-->
+<!--        </HBox>-->
+<!--        <Button fx:id="btnRidershipReport" mnemonicParsing="false" onAction="#onMainMenuBtnClicked"-->
+<!--                prefHeight="60.0" prefWidth="324.0" style="-fx-background-color: transparent;"/>-->
+<!--    </StackPane>-->
     <StackPane>
         <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" spacing="20.0">
             <styleClass>
@@ -61,12 +76,30 @@
             <ImageView fitHeight="40.0" fitWidth="40.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
                 <Image url="@../images/ridership.png"/>
             </ImageView>
-            <Label prefWidth="200.0" styleClass="title-4" text="Ridership Report"/>
+            <Label prefWidth="200.0" styleClass="title-4" text="Ridership Daily Report"/>
             <ImageView fitHeight="20.0" fitWidth="20.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
                 <Image url="@../images/right-arrow.png"/>
             </ImageView>
         </HBox>
-        <Button fx:id="btnRidershipReport" mnemonicParsing="false" onAction="#onMainMenuBtnClicked"
+        <Button fx:id="btnPerDayReport" mnemonicParsing="false" onAction="#onMainMenuBtnClicked"
+                prefHeight="60.0" prefWidth="324.0" style="-fx-background-color: transparent;"/>
+    </StackPane>
+
+    <StackPane>
+        <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" spacing="20.0">
+            <styleClass>
+                <String fx:value="bg-surface"/>
+                <String fx:value="rounded-button"/>
+            </styleClass>
+            <ImageView fitHeight="40.0" fitWidth="40.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../images/ridership.png"/>
+            </ImageView>
+            <Label prefWidth="200.0" styleClass="title-4" text="Ridership Hourly Report"/>
+            <ImageView fitHeight="20.0" fitWidth="20.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../images/right-arrow.png"/>
+            </ImageView>
+        </HBox>
+        <Button fx:id="btnPerHourReport" mnemonicParsing="false" onAction="#onMainMenuBtnClicked"
                 prefHeight="60.0" prefWidth="324.0" style="-fx-background-color: transparent;"/>
     </StackPane>
 

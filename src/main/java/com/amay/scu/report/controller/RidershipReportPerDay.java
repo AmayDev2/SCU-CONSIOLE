@@ -5,21 +5,27 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class RidershipReport {
+public class RidershipReportPerDay {
 
-    private String time;
-    private String stationId;
-    private String equipmentType;
-    private String equipmentId;
-    private String status;
-    private String ticketId;
+    private String date;
+    private String station;
+
+    private int entryQR;
+    private int exitQR;
+    private int entryNCMC;
+    private int exitNCMC;
+    private int entryMQR;
+    private int exitMQR;
+
+    private int totalEntry;
+    private int totalExit;
+
+    private int totalRidership;
+
 
 
 //    public String getTime(){

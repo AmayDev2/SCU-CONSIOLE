@@ -10,10 +10,14 @@ import javafx.scene.control.TabPane;
 public class ReportLeftView {
 
     @FXML
+    private Button btnPerHourReport;
+    @FXML
+    private Button btnPerDayReport;
+    @FXML
     private Button btnRevenueReport;
 
-    @FXML
-    private Button btnRidershipReport;
+//    @FXML
+//    private Button btnRidershipReport;
 
     @FXML
     private Button btnShiftReport;
@@ -41,13 +45,21 @@ public class ReportLeftView {
             this.reportsListener.onClickRevenueReport();
 //            addTabToPane("Revenue Report", initializer.loadContent(FileConstants.Reports.REVENUE_REPORT));
         }
-        if (clickedBtn == btnRidershipReport){
-            this.reportsListener.onClickRidershipReport();
-//            addTabToPane("Ridership Report", initializer.loadContent(FileConstants.Reports.REVENUE_REPORT));
-        }
+//        if (clickedBtn == btnRidershipReport){
+//            this.reportsListener.onClickRidershipReport();
+////            addTabToPane("Ridership Report", initializer.loadContent(FileConstants.Reports.REVENUE_REPORT));
+//        }
         if (clickedBtn == btnShiftReport){
             this.reportsListener.onClickShiftReport();
 //            addTabToPane("Shift Report", initializer.loadContent(FileConstants.Reports.REVENUE_REPORT));
+        }
+        if (clickedBtn == btnPerDayReport) {
+            this.reportsListener.onClickRidershipPerDayReport();
+//            addTabToPane("Per Day Report", initializer.loadContent(FileConstants.Reports.REVENUE_REPORT));
+        }
+        if (clickedBtn == btnPerHourReport) {
+            this.reportsListener.onClickRidershipPerHourReport();
+//            addTabToPane("Per Hour Report", initializer.loadContent(FileConstants.Reports.REVENUE_REPORT));
         }
     }
 }
