@@ -131,7 +131,6 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
                         break;
 
                     case "AG":
-//                        if(!ag1) {
                         gateCount++;
                         if (stationDevice.getZone().equals(Zone.AG_ZONE_ONE)) {
                             stationDevice.setxAxis(stationDevice.getZone().getX());
@@ -160,16 +159,20 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
                             ag4.add(stationDevice);
 
                         }
-
-//                        }
-//                        ag1=true;
                         break;
                     case "TR":
-                        stationDevice.setxAxis(stationDevice.getZone().getX());
-                        stationDevice.setyAxis(stationDevice.getZone().getY() - (stationDevice.getZone().getCount() * (stationDevice.getEquipType().equals("07") ? 70 : 60)));
+//                        stationDevice.setxAxis(stationDevice.getZone().getX());
+//                        stationDevice.setyAxis(stationDevice.getZone().getY() - (stationDevice.getZone().getCount() * (stationDevice.getEquipType().equals("07") ? 70 : 60)));
+//                        stationDevice.getZone().setCount();
+                        if(stationDevice.getZone().equals(Zone.UNPAID_ZONE_ONE)){
+                            stationDevice.setxAxis(stationDevice.getZone().getX()+(stationDevice.getZone().getCount() * 100));
+                            stationDevice.setyAxis(stationDevice.getZone().getY());
+                        } else if(stationDevice.getZone().equals(Zone.UNPAID_ZONE_TWO)){
+                            stationDevice.setxAxis(stationDevice.getZone().getX()-(stationDevice.getZone().getCount() * 100));
+                            stationDevice.setyAxis(stationDevice.getZone().getY());
+                        }
                         stationDevice.getZone().setCount();
                         tr.add(stationDevice);
-
                         break;
                     case "ARRAYS":
                         arraysCount++;
@@ -177,14 +180,14 @@ public class StationDynamicMapController implements IStationDynamicMapViewListen
                     case "TVM":
                         tvmCount++;
                         if(stationDevice.getZone().equals(Zone.UNPAID_ZONE_ONE)){
-                        stationDevice.setxAxis(stationDevice.getZone().getX());
-                        stationDevice.setyAxis(stationDevice.getZone().getY() - (stationDevice.getZone().getCount() * (stationDevice.getEquipType().equals("07") ? 70 : 60)));
+                        stationDevice.setxAxis(stationDevice.getZone().getX()+(stationDevice.getZone().getCount() * 100));
+                        stationDevice.setyAxis(stationDevice.getZone().getY());
                         } else if(stationDevice.getZone().equals(Zone.UNPAID_ZONE_TWO)){
-
+                            stationDevice.setxAxis(stationDevice.getZone().getX()-(stationDevice.getZone().getCount() * 100));
+                            stationDevice.setyAxis(stationDevice.getZone().getY());
                         }
                         stationDevice.getZone().setCount();
-                            tvm.add(stationDevice);
-
+                        tvm.add(stationDevice);
                         break;
                 }
             }

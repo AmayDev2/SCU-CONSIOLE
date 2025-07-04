@@ -10,6 +10,7 @@ public enum TOMOperationMode implements OperationMode, TOMServiceProperties {
     DISCONNECTED("-fx-background-color: #FF0000"),           //   Red => Purple 700   #800080
     OTHER("-fx-background-color: #FBA500");                  // Another Orange 800
 
+
     private final String color;
     private boolean qrSaleModeEnabled;
     private boolean cardProcessingModeEnabled;

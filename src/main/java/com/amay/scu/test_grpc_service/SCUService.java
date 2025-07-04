@@ -478,29 +478,30 @@ public class SCUService {
             TOMModeControl tomModeControl= consoleProtocol.getStreamData().getRequestData().unpack(TOMModeControl.class);
             LiveTOM liveTOM = new LiveTOM();
             TOMOperationMode tomOperationMode=null;
-            if(!tomModeControl.toString().contains("special_mode"))
-                switch(tomModeControl.getOperationMode()){
-                case  IN_SERVICE -> {
-                    tomOperationMode=TOMOperationMode.IN_SERVICE;
-                    tomOperationMode.updateQRSaleMode(tomModeControl.getQrSaleMode());
-                    tomOperationMode.updateCardProcessingMode(tomModeControl.getCardProcessMode());
+            if(!tomModeControl.toString().contains("special_mode")) {
+                switch (tomModeControl.getOperationMode()) {
+                    case IN_SERVICE -> {
+                        tomOperationMode = TOMOperationMode.IN_SERVICE;
+                        tomOperationMode.updateQRSaleMode(tomModeControl.getQrSaleMode());
+                        tomOperationMode.updateCardProcessingMode(tomModeControl.getCardProcessMode());
+                    }
+                    case OUT_OF_SERVICE -> {
+                        tomOperationMode = TOMOperationMode.OUT_OF_SERVICE;
+                    }
+                    case MAINTENANCE -> {
+                        tomOperationMode = TOMOperationMode.MAINTENANCE;
+                    }
+                    case UNRECOGNIZED -> {
+                        tomOperationMode = TOMOperationMode.OTHER;
+                    }
+                    case TEST -> {
+                        tomOperationMode = TOMOperationMode.TEST;
+                    }
                 }
-                case OUT_OF_SERVICE ->{
-                    tomOperationMode=TOMOperationMode.OUT_OF_SERVICE;
-                }
-                case MAINTENANCE ->  {
-                    tomOperationMode=TOMOperationMode.MAINTENANCE;
-                }
-                case UNRECOGNIZED -> {
-                    tomOperationMode=TOMOperationMode.OTHER;
-                }
-                case TEST -> {
-                    tomOperationMode=TOMOperationMode.TEST;
-                }
-            }
-            liveTOM.setOperationMode(tomOperationMode);
+                liveTOM.setOperationMode(tomOperationMode);
 //            stationDynamicMapViewListener.updateTOMPeripheralStatus(consoleProtocol.getStreamData().getEquipId(), liveTOM);
-            stationDynamicMapViewListener.updateTOMOperationMode(consoleProtocol.getStreamData().getEquipId(), liveTOM);
+                stationDynamicMapViewListener.updateTOMOperationMode(consoleProtocol.getStreamData().getEquipId(), liveTOM);
+            }
         }catch (Exception e){
             e.printStackTrace();
 

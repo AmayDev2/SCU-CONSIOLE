@@ -239,7 +239,7 @@ public class MonitorRightView {
     private void updateRevenueContinue() {
 //
         // Create a timeline that updates the revenue every 5 seconds
-        javafx.animation.Timeline timeline = new javafx.animation.Timeline(new javafx.animation.KeyFrame(javafx.util.Duration.seconds(5), event -> {
+        javafx.animation.Timeline timeline = new javafx.animation.Timeline(new javafx.animation.KeyFrame(javafx.util.Duration.minutes(5), event -> {
             updateRevenue();
             updateEntryExitCount();
         }));

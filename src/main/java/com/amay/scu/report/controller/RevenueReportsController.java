@@ -149,22 +149,6 @@ public class RevenueReportsController<T> {
         alert.showAndWait();
     }
 
-    /// /        reportsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
-//
-//        TableColumn<RevenueReport, String> revTicketId = tableHelper.createNonEditableColumn("Ticket Id", RevenueReport::getTicketId);
-//        TableColumn<RevenueReport, String> revEquipId = tableHelper.createNonEditableColumn("Equipment Id", RevenueReport::getEquipmentId);
-//        TableColumn<RevenueReport, String> revStation = tableHelper.createNonEditableColumn("Station", RevenueReport::getStation);
-//        TableColumn<RevenueReport, String> revEquipType = tableHelper.createNonEditableColumn("Equipment Type", RevenueReport::getEquipmentType);
-//        TableColumn<RevenueReport, String> revTripType = tableHelper.createNonEditableColumn("Trip Type", RevenueReport::getTripType);
-//        TableColumn<RevenueReport, String> revFareMedia = tableHelper.createNonEditableColumn("Fare Media", RevenueReport::getFareMedia);
-//        TableColumn<RevenueReport, String> revPaymentMode = tableHelper.createNonEditableColumn("Payment Mode", RevenueReport::getPaymentMode);
-//        TableColumn<RevenueReport, Double> revAmount = tableHelper.createNonEditableColumn("Payment Mode", RevenueReport::getAmount);
-//        TableColumn<RevenueReport, String> revTicketType = tableHelper.createNonEditableColumn("Ticket Time", RevenueReport::getTicketTime);
-//        TableColumn<RevenueReport, String> revTransType = tableHelper.createNonEditableColumn("Transaction Type", RevenueReport::getTransactionType);
-//
-//        reportsTable.getColumns().addAll(revTicketId, revEquipId, revStation, revEquipType, revTripType, revFareMedia, revPaymentMode, revAmount, revTicketType, revTransType);
-//        reportsTable.setItems(observableList);
-//    }
     public <T> void setupDynamicTable(TableView<T> tableView, List<ColumnDefinition<T, ?>> columns, ObservableList<T> data) {
         tableView.getColumns().clear();
         tableView.setEditable(false);
@@ -183,8 +167,9 @@ public class RevenueReportsController<T> {
         if (def.subColumns().isEmpty()) {
             column.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(def.getter().apply(cellData.getValue())));
             column.setPrefWidth(200);
-            column.setMinWidth(170);
+            column.setMinWidth(150);
             column.setEditable(false);
+            column.setResizable(true);
         } else {
             // If there are children, add them recursively
             for (ColumnDefinition<T, ?> child : def.subColumns()) {
@@ -204,6 +189,7 @@ public class RevenueReportsController<T> {
             column.setPrefWidth(150);
             column.setMinWidth(130);
             column.setEditable(false);
+            column.setResizable(true);
         } else {
             for (ColumnDefinition<T, ?> child : def.subColumns()) {
                 addChildColumn(column, child);
