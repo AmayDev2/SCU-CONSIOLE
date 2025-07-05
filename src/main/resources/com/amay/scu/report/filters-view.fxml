@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            xmlns="http://javafx.com/javafx/17.0.12"
+            fx:controller="com.amay.scu.report.controller.FiltersController"
+            stylesheets="@../css/application.css"
+>
+<!--    <top >-->
+<!--            <Label text="Filters" />-->
+<!--    </top>-->
+
+    <center>
+        <TableView fx:id="tableView">
+            <columns>
+                <TableColumn fx:id="selectColumn" text="Select" prefWidth="70"/>
+                <TableColumn fx:id="titleColumn" text="Filter Name" prefWidth="150"/>
+                <TableColumn fx:id="inputColumn" text="Filter Value" prefWidth="180"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER"  styleClass="button-bar">
+            <Button fx:id="applyButton" styleClass="green-button"  text="Apply" />
+            <Button fx:id="resetButton" styleClass="grey-button"  text="Reset" />
+            <Button fx:id="closeButton" styleClass="red-button"  text="Close" />
+        </HBox>
+    </bottom>
+</BorderPane>

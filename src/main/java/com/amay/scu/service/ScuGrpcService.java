@@ -4,10 +4,7 @@ package com.amay.scu.service;
 import com.amay.scu.enums.StationSpecialMode;
 import com.amay.scu.grpc.GrpcConfig;
 import com.amay.scu.grpc.ScuGrpcConfig;
-import com.amay.scu.report.controller.RevenueReport;
-import com.amay.scu.report.controller.RidershipReport;
-import com.amay.scu.report.controller.RidershipReportPerDay;
-import com.amay.scu.report.controller.RidershipReportPerHour;
+import com.amay.scu.report.controller.*;
 import com.amay.scu.test_grpc_service.SCUService;
 //import org.amaytechnosystems.SCUServiceGrpc;
 import com.google.protobuf.ListValue;
@@ -385,5 +382,60 @@ public enum ScuGrpcService  {
         }
 
 
+    }
+
+    public List<ShiftReport> getShiftReport(ListValue filters) {
+        try {
+            RevenueReportListRequest request = RevenueReportListRequest.newBuilder()
+                    .setReports(filters)
+                    .setRequestMetaData(RequestMetaData.newBuilder()
+                            .setRequestId("shift-report-request")
+                            .setRequestTime(String.valueOf(System.currentTimeMillis()))
+                            .build())
+                    .build();
+
+            System.out.println("Sending shift report request to server: " + request);
+            RevenueReportListResponse response = this.blockingStub.getRevenueReports(request);
+            System.out.println("Response from server for shift Report: " + response);
+            if (!response.getResponseMetaData().getErrorCode().equals("200")) {
+                throw new RuntimeException("Error fetching shift report: " + response.getResponseMetaData().getErrorMessage());
+            }
+            System.out.println("shift report fetched successfully.");
+            // Assuming response.getRevenueData().getReportsList() returns a list of RevenueReport objects
+            if (response.getReports().getValuesList().isEmpty()) {
+                System.out.println("No ridership reports available.");
+                return List.of(); // Return an empty list if no reports are available
+            }
+            System.out.println("Number of ridership reports fetched: " + response.getReports().getValuesList().size());
+            // Return the list of RevenueReport objects
+            // Assuming RevenueReportListResponse has a method getReports() that returns a list of RevenueReport objects
+            return convertFromListValueShiftReport(response.getReports());
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to fetch revenue report: " + e.getMessage());
+        }
+    }
+
+    private List<ShiftReport> convertFromListValueShiftReport(ListValue reports) {
+    List<ShiftReport> dtoList = new ArrayList<>();
+
+        for (Value rowValue : reports.getValuesList()) {
+            ListValue row = rowValue.getListValue();
+            List<Value> values = row.getValuesList();
+
+            ShiftReport dto = new ShiftReport();
+            dto.setShiftId(values.get(0).getStringValue());
+            dto.setShiftId(values.get(1).getStringValue());
+            dto.setLoginTime(values.get(2).getStringValue());
+            dto.setLogoutTime(values.get(3).getStringValue());
+            dto.setQR(Integer.parseInt(values.get(4).getStringValue()));
+            dto.setCASH(Integer.parseInt(values.get(5).getStringValue()));
+            dto.setUPI(Integer.parseInt(values.get(6).getStringValue()));
+            dto.setPOS(Integer.parseInt(values.get(8).getStringValue()));
+            dto.setNCMC(Integer.parseInt(values.get(9).getStringValue()));
+            dto.setRevenue(Integer.parseInt(values.get(10).getStringValue()));
+            dtoList.add(dto);
+        }
+
+        return dtoList;
     }
 }

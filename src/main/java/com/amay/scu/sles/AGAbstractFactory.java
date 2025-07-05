@@ -61,7 +61,7 @@ public class AGAbstractFactory extends SLEAbstractFactory {
             controller.setLocation(location);
 
             controller.setLiveSLE(liveAG);
-            controller.setMovingProperties(button,anchorPane);
+//            controller.setMovingProperties(button,anchorPane);
             return controller;
         } catch (Exception e) {
             throw new SLENotCreatedException("AG not created", e);

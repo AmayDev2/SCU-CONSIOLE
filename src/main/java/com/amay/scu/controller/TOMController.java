@@ -213,11 +213,12 @@ public class TOMController implements SLE {
             PopupContent popupContent = new PopupContent(liveTOM,"Left");
             popupContent.show();
             logger.debug("Left click detected on button");
-        } else if (event.getButton() == MouseButton.SECONDARY) {
-            // Handle right click
-            PopupContent popupContent = new PopupContent(liveTOM,"Right");
-            popupContent.show();
-            logger.debug("Right click detected on button");
         }
+//        else if (event.getButton() == MouseButton.SECONDARY) {
+//            // Handle right click
+//            PopupContent popupContent = new PopupContent(liveTOM,"Right");
+//            popupContent.show();
+//            logger.debug("Right click detected on button");
+//        }
     }
 }

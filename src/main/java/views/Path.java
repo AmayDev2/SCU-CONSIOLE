@@ -17,11 +17,15 @@ public interface Path {
      String CENTER= "station_map/station-dynamic-map-view.fxml";
      String ALERT = "components/alert.fxml";
      String TOM_WIDGETS = "popups/tom-widgets-view-v2.fxml";
-     String AG_WIDGETS = "popups/ag-widgets-view.fxml";
+     String AG_WIDGETS = "popups/ag-widgets-view-v2.fxml";
+     String EFO_WIDGETS = "popups/efo-widgets-view.fxml";
+     String TR_WIDGETS = "popups/tr-widgets-view.fxml";
+     String TVM_WIDGETS = "popups/tvm-widgets-view.fxml";
      String AG_COMMAND="popups/ag-command.fxml";
      String LOGIN="popups/login.fxml";
      String LOGOUT = "popups/logout.fxml";
      String PERMISSION = "popups/permission.fxml";
      String REPORT_LEFT_VIEW="report/report-left-view.fxml";
      String REVENUE_REPORT = "report/revenue_report.fxml";
+     String FILTER_VIEW = "report/filters-view-in.fxml";
 }

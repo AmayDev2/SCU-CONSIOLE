@@ -155,13 +155,15 @@ public class AGCommandController {
     void cancelCommand(ActionEvent event) {
         this.popupContent.Close();
         logger.debug("Popup closed");
+        event.consume();
 
     }
 
     public void applyCommand(ActionEvent actionEvent) {
         logger.debug("given command : {} {}",id,command);
 
-        popupContent.sendCommand(id,command,null);
+//        popupContent.sendCommand(id,command,null);
+        actionEvent.consume();
 
     }
 }

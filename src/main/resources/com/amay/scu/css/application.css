@@ -214,6 +214,105 @@
     -fx-rotate:180;
 }
 
+.underline-textfield {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #808080 transparent;
+    -fx-border-width: 0 0 2 0;
+    -fx-text-fill: #000000;
+    -fx-prompt-text-fill: #9e9e9e;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 4 0 4 0; /* optional, tighter spacing */
+}
+
+.underline-textfield:focused {
+    -fx-border-color: transparent transparent #4CAF50 transparent; /* Purple underline when focused */
+    -fx-border-width: 0 0 2 0;
+}
+
+
+
+.button-bar{
+    -fx-background-color: transparent;
+    -fx-padding: 10;
+    -fx-spacing: 30;
+    -fx-alignment: center;
+}
+/* Style the login button */
+.green-button {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-padding: 10 20 10 20;
+    -fx-cursor: hand;
+}
+
+.red-button {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-color: #f44336;
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-padding: 10 20 10 20;
+    -fx-cursor: hand;
+}
+
+.blue-button {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-color: #f44336;
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-padding: 10 20 10 20;
+    -fx-cursor: hand;
+}
+
+.grey-button {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-color: #808080;
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-padding: 10 20 10 20;
+    -fx-cursor: hand;
+}
+
+
+/* Remove grid lines and outer borders */
+#tableView {
+    -fx-background-color: transparent;
+    -fx-table-cell-border-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+    -fx-background-insets: 0;
+}
+
+#tableView .table-row-cell {
+
+/*    -fx-cell-size: 18px;    *//* row height *//*
+    -fx-font-size: 12px;    *//* smaller text */
+}
+
+
+
+#tableView .column-header-background {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-max-height: 0;
+    -fx-pref-height: 0;
+    -fx-min-height: 0;
+    visibility: hidden;
+}
+
+
+
 
 
 

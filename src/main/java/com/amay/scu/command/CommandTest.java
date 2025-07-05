@@ -6,9 +6,12 @@ import com.google.protobuf.Any;
 import org.network.monitorandcontrol.CommandType;
 import org.network.monitorandcontrol.DeviceType;
 import org.network.monitorandcontrol.SpecialMode;
+import org.network.monitorandcontrol.ag.AGModeControl;
 import org.network.monitorandcontrol.scu_console.ConsoleProtocol;
 import org.network.monitorandcontrol.scu_console.StreamData;
 import org.network.monitorandcontrol.tom.TOMModeControl;
+import org.network.monitorandcontrol.tr.TRModeControl;
+import org.network.monitorandcontrol.tvm.TVMModeControl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,6 +36,33 @@ public enum CommandTest{
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input. Please enter numeric values.");
             }
+    }
+    public void sendCommand(CommandType command, DeviceType deviceType, String equipId, TVMModeControl tomModeControl) {
+
+        try{
+            ConsoleProtocol consoleProtocol = createCommandRequest(command, deviceType, equipId, tomModeControl);
+            grpcService.sendMessage(consoleProtocol);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter numeric values.");
+        }
+    }
+    public void sendCommand(CommandType command, DeviceType deviceType, String equipId, AGModeControl tomModeControl) {
+
+        try{
+            ConsoleProtocol consoleProtocol = createCommandRequest(command, deviceType, equipId, tomModeControl);
+            grpcService.sendMessage(consoleProtocol);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter numeric values.");
+        }
+    }
+    public void sendCommand(CommandType command, DeviceType deviceType, String equipId, TRModeControl tomModeControl) {
+
+        try{
+            ConsoleProtocol consoleProtocol = createCommandRequest(command, deviceType, equipId, tomModeControl);
+            grpcService.sendMessage(consoleProtocol);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter numeric values.");
+        }
     }
 
     //station level command
@@ -65,6 +95,37 @@ public enum CommandTest{
 
 
     private ConsoleProtocol createCommandRequest(CommandType command, DeviceType deviceType, String equipId, TOMModeControl tOMModeControl) {
+        return ConsoleProtocol.newBuilder()
+                .setDeviceType(deviceType)
+                .setStreamData(StreamData.newBuilder()
+                        .setEquipId(equipId)
+                        .setCommandType(command)
+                        .setRequestData(Any.pack(tOMModeControl))
+                        .build())
+                .build();
+    }
+    private ConsoleProtocol createCommandRequest(CommandType command, DeviceType deviceType, String equipId, TVMModeControl tOMModeControl) {
+        return ConsoleProtocol.newBuilder()
+                .setDeviceType(deviceType)
+                .setStreamData(StreamData.newBuilder()
+                        .setEquipId(equipId)
+                        .setCommandType(command)
+                        .setRequestData(Any.pack(tOMModeControl))
+                        .build())
+                .build();
+    }
+
+    private ConsoleProtocol createCommandRequest(CommandType command, DeviceType deviceType, String equipId, TRModeControl tOMModeControl) {
+        return ConsoleProtocol.newBuilder()
+                .setDeviceType(deviceType)
+                .setStreamData(StreamData.newBuilder()
+                        .setEquipId(equipId)
+                        .setCommandType(command)
+                        .setRequestData(Any.pack(tOMModeControl))
+                        .build())
+                .build();
+    }
+    private ConsoleProtocol createCommandRequest(CommandType command, DeviceType deviceType, String equipId, AGModeControl tOMModeControl) {
         return ConsoleProtocol.newBuilder()
                 .setDeviceType(deviceType)
                 .setStreamData(StreamData.newBuilder()

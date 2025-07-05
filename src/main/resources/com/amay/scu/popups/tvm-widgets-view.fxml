@@ -6,12 +6,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.components.TomWidgetsViewV2">
+<HBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.components.TVMWidgetsView">
    <children>
       <GridPane hgap="10.0" styleClass="main-grid" stylesheets="@../css/widgets.css" vgap="2.0">
 
           <!-- Header -->
-          <Label fx:id="headerTomId" styleClass="header-text" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+          <Label fx:id="headerEquipmentId" styleClass="header-text" GridPane.columnIndex="0" GridPane.rowIndex="0" />
 
           <!-- Alarms Section -->
           <VBox maxHeight="244.0" prefHeight="244.0" prefWidth="350.0" spacing="10" styleClass="section" GridPane.columnIndex="0" GridPane.rowIndex="3">
@@ -66,11 +66,6 @@
                <Separator prefHeight="31.0" prefWidth="409.0" />
                <HBox alignment="CENTER_LEFT" prefHeight="95.0" prefWidth="260.0">
                    <VBox prefHeight="95.0" prefWidth="266.0">
-                       <Label text="Shift End">
-                           <padding>
-                               <Insets bottom="5.0" left="20.0" right="20.0" top="5.0"/>
-                           </padding>
-                       </Label>
                        <Label prefHeight="28.0" prefWidth="189.0" text="Restart">
                            <padding>
                                <Insets bottom="5.0" left="20.0" right="20.0" top="5.0"/>
@@ -93,11 +88,7 @@
                        </Label>
                    </VBox>
                    <VBox prefHeight="95.0" prefWidth="58.0">
-                       <RadioButton fx:id="radioButtonShiftEnd" mnemonicParsing="false" >
-                           <padding>
-                               <Insets bottom="5.0" left="20.0" right="20.0" top="5.0"/>
-                           </padding>
-                       </RadioButton>
+
                        <RadioButton fx:id="radioButtonStart" mnemonicParsing="false" >
                            <padding>
                                <Insets bottom="5.0" left="20.0" right="20.0" top="5.0"/>

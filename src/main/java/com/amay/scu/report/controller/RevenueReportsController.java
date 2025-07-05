@@ -1,5 +1,7 @@
 package com.amay.scu.report.controller;
 
+import com.amay.scu.ViewFactory;
+import com.amay.scu.popup.PopupWindow;
 import com.amay.scu.util.ColumnDefinition;
 import com.google.protobuf.ListValue;
 import com.google.protobuf.Value;
@@ -11,7 +13,14 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -29,6 +38,12 @@ public class RevenueReportsController<T> {
     private final List<ColumnDefinition<T, ?>> columns;
     private final Callable<List<T>> task;
     @FXML
+    private GridPane filtersGridView;
+    @FXML
+    private FlowPane chipperBucket;
+    @FXML
+    private Button filter;
+    @FXML
     private Button refresh;
     @FXML
     private DatePicker fromDatePicker;
@@ -36,8 +51,8 @@ public class RevenueReportsController<T> {
     private DatePicker toDatePicker;
     @FXML
     private TextField filterField;
-    @FXML
-    private Label reportName;
+//    @FXML
+//    private Label reportName;
     private TableHelper tableHelper;
     private final String reportsName;
     @FXML
@@ -50,22 +65,43 @@ public class RevenueReportsController<T> {
     private SortedList<T> sortedList;
     private final Function<ListValue.Builder, List<T>> grpcFunction;
     private ListValue.Builder filters;
+    private final List<FilterItem> filterItems;
 
 
-    public RevenueReportsController(List<ColumnDefinition<T, ?>> columns, String reportName, Callable<List<T>> task, Function<ListValue.Builder, List<T>> grpcFunction) {
+
+    /**
+     * Constructor for RevenueReportsController.
+     *
+     * @param columns      List of column definitions for the table.
+     * @param reportName   Name of the report to be displayed.
+     * @param task         Callable task to fetch data for the report.
+     * @param grpcFunction Function to convert ListValue.Builder to List<T> for gRPC calls.
+     */
+    public RevenueReportsController(List<ColumnDefinition<T, ?>> columns,
+                                    String reportName,
+                                    Callable<List<T>> task,
+                                    Function<ListValue.Builder,
+                                    List<T>> grpcFunction,
+                                    List<FilterItem> filterItems
+    ) {
         this.columns = columns;
         this.reportsName = reportName;
         this.task = task;
         filters = ListValue.newBuilder();
         this.grpcFunction = grpcFunction;
+        this.filterItems = filterItems;
+        for(int i = 0; i < 10; i++) {
+            filters.addValues(Value.newBuilder().build());
+        }
     }
 
     @FXML
     private void initialize() {
         this.fromDatePicker.setValue(LocalDate.now().minusDays(30));
         this.toDatePicker.setValue(LocalDate.now());
+        this.setFilters();
+        this.updateFilters(filterItems);
 
-        this.reportName.setText(reportsName);
         Platform.runLater(() -> {
             setupDynamicTable(reportsTable, columns, observableList);
             if (observableList.isEmpty()) {
@@ -76,6 +112,19 @@ public class RevenueReportsController<T> {
         this.tableHelper = new TableHelper();
     }
 
+    private void setFilters() {
+        try {
+            FXMLLoader fxmlLoader;
+            fxmlLoader = ViewFactory.getFilterView();
+            fxmlLoader.setControllerFactory(c -> new FiltersControllerIn((filters -> {
+                this.updateFilters(filterItems);
+            }), this.filterItems));
+            filtersGridView.add(fxmlLoader.load(), 1, 0);
+        } catch (Exception e) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Failed to load filters view.");
+        }
+    }
+
     private void addFilters() {
         LocalDate from = fromDatePicker.getValue();
         LocalDate to = toDatePicker.getValue();
@@ -84,8 +133,8 @@ public class RevenueReportsController<T> {
         long toEpoch = to.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli();
 
         if (from != null && to != null) {
-            filters.addValues(Value.newBuilder().setNumberValue(fromEpoch).build());
-            filters.addValues(Value.newBuilder().setNumberValue(toEpoch).build());
+            filters.setValues(0,Value.newBuilder().setNumberValue(fromEpoch).build());
+            filters.setValues(1,Value.newBuilder().setNumberValue(toEpoch).build());
         }
     }
 
@@ -226,10 +275,102 @@ public class RevenueReportsController<T> {
             this.setupFilter(list);
         } catch (Exception e) {
             showAlert(Alert.AlertType.INFORMATION, "Server Error", "Oops !!! Something went wrong");
-        } finally {
-            filters = ListValue.newBuilder(); // Reset filters after fetching
         }
-
         actionEvent.consume();
     }
+
+  void onClickFilterDep(ActionEvent actionEvent) {
+        PopupWindow popupWindow = new PopupWindow();
+        FXMLLoader fxmlLoader;
+
+        fxmlLoader = ViewFactory.getFilterView();
+        fxmlLoader.setControllerFactory(c -> new FiltersController((filters->{this.updateFilters(filterItems);popupWindow.Close();}),popupWindow, this.filterItems));
+
+        popupWindow.show(fxmlLoader);
+        actionEvent.consume();
+    }
+
+    private void updateFilters(List<FilterItem> filterItems) {
+        chipperBucket.getChildren().clear();
+        filters.addValues(Value.newBuilder().setStringValue("from").build());
+        for (FilterItem item : filterItems) {
+            if(item.inputProperty().get().isBlank()){
+                item.selectedProperty().set(false);
+                continue;
+            }
+
+            if(item.selectedProperty().get()) {
+                System.out.println("✔ " + item.titleProperty().get() + " " + item.titleValueProperty().get() + " Input: " + item.inputProperty().get());
+                HBox chip = createChip(item);
+                chipperBucket.getChildren().add(chip);
+                filters.setValues(item.indexProperty().get(),Value.newBuilder().setStringValue( item.inputProperty().get()).build());
+            }
+
+        }
+        refresh.fire();
+
+    }
+
+
+
+    private HBox createChip(FilterItem filter) {
+        Label title = new Label(filter.titleProperty().get()); // or filter.getInput()
+        Button close = new Button("×");
+
+        close.setOnAction(e -> {
+            // Remove chip visually
+            chipperBucket.getChildren().remove(close.getParent());
+            // Deselect the filter in the table
+            filter.selectedProperty().set(false);
+        });
+
+        HBox chip = new HBox(title, close);
+        chip.setAlignment(Pos.CENTER);
+        chip.setSpacing(5);
+        chip.setPadding(new Insets(5, 10, 5, 10));
+        chip.setStyle("-fx-background-color: #e0e0e0; -fx-background-radius: 15;");
+        title.setStyle("-fx-font-size: 12px;");
+        close.setStyle("-fx-background-color: transparent; -fx-font-size: 12px;");
+
+        return chip;
+    }
+
+
+/*    PopupWindow popupWindow = new PopupWindow();
+    FXMLLoader fxmlLoader;
+
+    List<String> columnHeaders = new ArrayList<>();
+        for (TableColumn<?, ?> column : reportsTable.getColumns()) {
+        collectColumnHeaders(column, columnHeaders);
+    }
+
+    fxmlLoader = ViewFactory.getFilterView();
+        fxmlLoader.setControllerFactory(c -> new FiltersController(popupWindow, columnHeaders));
+
+        popupWindow.show(fxmlLoader);
+        actionEvent.consume();*/
+
+
+    private void collectColumnHeaders(TableColumn<?, ?> column, List<String> list, String... parentHeaders) {
+        String headerPrefix = String.join(" > ", parentHeaders);
+
+        if (column.getColumns().isEmpty()) {
+            String fullHeader = headerPrefix.isEmpty() ? column.getText() : headerPrefix + " > " + column.getText();
+            list.add(fullHeader);
+        } else {
+            for (TableColumn<?, ?> child : column.getColumns()) {
+                collectColumnHeaders(child, list, append(parentHeaders, column.getText()));
+            }
+        }
+    }
+
+    // Utility method to append to varargs
+    private String[] append(String[] arr, String newItem) {
+        String[] result = new String[arr.length + 1];
+        System.arraycopy(arr, 0, result, 0, arr.length);
+        result[arr.length] = newItem;
+        return result;
+    }
+
+
 }

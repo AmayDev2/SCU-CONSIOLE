@@ -44,8 +44,8 @@ public class HeaderController {
     private Button userButton;
 
     private Logger logger = LoggerFactory.getLogger(HeaderController.class);
-    @FXML
-    private Button menuNavigator;
+//    @FXML
+//    private Button menuNavigator;
 
     @FXML
     private Button monitorNavigator;
@@ -87,7 +87,7 @@ public class HeaderController {
     void initialize() {
         // initialize logic'
         authService = new AuthService(this);
-        menuNavigator.setVisible(false);
+//        menuNavigator.setVisible(false);
         reportNavigator.setVisible(false);
         monitorNavigator.setVisible(false);
         emergencyButton.setDisable(true);
@@ -172,12 +172,13 @@ public class HeaderController {
         }
 
         popupWindow.show(fxmlLoader);
+        actionEvent.consume();
 
     }
 
 
     public void authenticated(){
-        menuNavigator.setVisible(true);
+//        menuNavigator.setVisible(true);
         reportNavigator.setVisible(true);
         monitorNavigator.setVisible(true);
         userName.setText(authService.getUsername());
@@ -187,7 +188,7 @@ public class HeaderController {
 
     public void logout(){
         onMonitorClick(null);
-        menuNavigator.setVisible(false);
+//        menuNavigator.setVisible(false);
         reportNavigator.setVisible(false);
         monitorNavigator.setVisible(false);
         userName.setText("user");

@@ -4,6 +4,7 @@ import com.amay.scu.enums.SLEStatus;
 import com.amay.scu.enums.TROperationMode;
 import com.amay.scu.enums.TVMOperationMode;
 import com.amay.scu.model.SLELocationListObject;
+import com.amay.scu.popup.PopupContent;
 import com.amay.scu.sleobj.LiveSLE;
 import com.amay.scu.sleobj.LiveTR;
 import com.amay.scu.sleobj.LiveTVM;
@@ -13,6 +14,8 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,8 +42,7 @@ public class TRController implements SLE {
 
     @FXML
     void initialize() {
-
-
+        tr.setOnMouseClicked(this::handleMouseClick);           //handles the mouse click event
     }
     @Override
     public boolean setScale(float x, float y, float z) {
@@ -178,5 +180,20 @@ public class TRController implements SLE {
             logger.info("property updated ");
         });
 
+    }
+
+    private void handleMouseClick(MouseEvent event) {
+        if (event.getButton() == MouseButton.PRIMARY) {
+            // Handle left click
+            PopupContent popupContent = new PopupContent(liveTR,"Left");
+            popupContent.show();
+            logger.debug("Left click detected on button");
+        }
+//        else if (event.getButton() == MouseButton.SECONDARY) {
+//            // Handle right click
+//            PopupContent popupContent = new PopupContent(liveTOM,"Right");
+//            popupContent.show();
+//            logger.debug("Right click detected on button");
+//        }
     }
 }

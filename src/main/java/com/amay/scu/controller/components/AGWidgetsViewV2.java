@@ -11,14 +11,17 @@ import javafx.scene.control.*;
 import org.network.monitorandcontrol.CommandType;
 import org.network.monitorandcontrol.OperationMode;
 import org.network.monitorandcontrol.SpecialMode;
-import org.network.monitorandcontrol.tom.TOMModeControl;
+import org.network.monitorandcontrol.ag.AGModeControl;
 
-public class TomWidgetsViewV2 {
+public class AGWidgetsViewV2 {
 
-    @FXML private RadioButton radioButtonInService;
+
+    @FXML private RadioButton radioButtonNormalClose;
+    @FXML private RadioButton radioButtonNormalOpen;
+    @FXML
+    private RadioButton radioButtonInService;
     @FXML private RadioButton radioButtonOutOfService;
     @FXML private Button commandApplyButton;
-    @FXML private RadioButton radioButtonShiftEnd;
     @FXML private RadioButton radioButtonStart;
     @FXML private RadioButton radioButtonShutdown;
 
@@ -35,7 +38,7 @@ public class TomWidgetsViewV2 {
     @FXML private Label deviceip;
     @FXML private DatePicker datePicker;
 
-    @FXML private Label headerTomId;
+    @FXML private Label headerEquipmentId;
     @FXML private Label lastTransaction;
     @FXML private ListView<String> alarmsListView;
     @FXML private ListView<String> commandListView;
@@ -47,9 +50,9 @@ public class TomWidgetsViewV2 {
     private final String equipmentId;
     private final ToggleGroup globeGroup;
     private CommandType command;
-    private TOMModeControl.Builder tomModeControlBuilder;
+    private AGModeControl.Builder agModeControlBuilder;
 
-    public TomWidgetsViewV2(PopupContent popupContent,
+    public AGWidgetsViewV2(PopupContent popupContent,
                             SleCommandInfo sleCommandInfo) {
         this.popupContent = popupContent;
         this.sleCommandInfo = sleCommandInfo;
@@ -57,17 +60,18 @@ public class TomWidgetsViewV2 {
         this.globeGroup = new ToggleGroup();
     }
 
-    private void applyCommand(CommandType command, TOMModeControl.Builder tomModeControlBuilder) {
-        TOMModeControl tomModeControl=tomModeControlBuilder.build();
-        this.saveIntoQueue(command,tomModeControl); // to show in widget
-        popupContent.sendCommand(this.equipmentId,command,tomModeControl);
+    private void applyCommand(CommandType command, AGModeControl.Builder agModeControlBuilder) {
+
+        AGModeControl agModeControl=agModeControlBuilder.build();
+        this.saveIntoQueue(command,agModeControl); // to show in widget
+        popupContent.sendCommand(this.equipmentId,command,agModeControl);
 
     }
 
-    private void saveIntoQueue(CommandType command, TOMModeControl tomModeControl) {
+    private void saveIntoQueue(CommandType command, AGModeControl agModeControl) {
         switch (command){
             case MODE_CONTROL:
-                this.sleCommandInfo.addCommand(tomModeControl.getOperationMode().name());
+                this.sleCommandInfo.addCommand(agModeControl.getOperationMode().name());
                 break;
             case GET_DEVICE_INFO:
                 this.sleCommandInfo.addCommand(command.name());
@@ -77,15 +81,20 @@ public class TomWidgetsViewV2 {
 
     @FXML
     void initialize() {
-        headerTomId.setText(headerTomId.getText().split("-")[0] + " - " + equipmentId);
+        headerEquipmentId.setText(equipmentId);
         cancelButton.setOnAction(event -> popupContent.Close());
         commandApplyButton.setOnAction(event -> {
-            applyCommand(this.command,this.tomModeControlBuilder);
+            if (this.command == null) {
+                return;
+            }
+            applyCommand(this.command,this.agModeControlBuilder);
             event.consume();
         });
 
 
-        radioButtonShiftEnd.setToggleGroup(globeGroup);
+        radioButtonNormalOpen.setToggleGroup(globeGroup);
+        radioButtonNormalClose.setToggleGroup(globeGroup);
+
         radioButtonShutdown.setToggleGroup(globeGroup);
         radioButtonStart.setToggleGroup(globeGroup);
         radioButtonInService.setToggleGroup(globeGroup);
@@ -93,36 +102,36 @@ public class TomWidgetsViewV2 {
 
         radioButtonInService.setOnAction(event -> {
             this.command= CommandType.MODE_CONTROL;
-            tomModeControlBuilder= TOMModeControl.newBuilder()
-                    .setQrSaleMode(true)
-                    .setCardProcessMode(true)
+            agModeControlBuilder= AGModeControl.newBuilder()
                     .setOperationMode(OperationMode.IN_SERVICE);
         });
 
         radioButtonOutOfService.setOnAction(event -> {
             this.command=CommandType.MODE_CONTROL;
-            tomModeControlBuilder=TOMModeControl.newBuilder()
+            agModeControlBuilder=AGModeControl.newBuilder()
                     .setOperationMode(OperationMode.OUT_OF_SERVICE);
         });
 
-        radioButtonShiftEnd.setOnAction(event -> {
+        radioButtonNormalOpen.setOnAction(event -> {
             this.command=CommandType.MODE_CONTROL;
-            this.tomModeControlBuilder=TOMModeControl.newBuilder().setSpecialMode(SpecialMode.SHIFT_END);
+        });
+        radioButtonNormalOpen.setOnAction(event -> {
+            this.command=CommandType.MODE_CONTROL;
         });
 
         radioButtonStart.setOnAction(event -> {
             this.command=CommandType.MODE_CONTROL;
-            this.tomModeControlBuilder=TOMModeControl.newBuilder().setSpecialMode(SpecialMode.RESTART);
+            this.agModeControlBuilder=AGModeControl.newBuilder().setSpecialMode(SpecialMode.RESTART);
         });
 
         radioButtonShutdown.setOnAction(event -> {
             this.command=CommandType.MODE_CONTROL;
-            this.tomModeControlBuilder=TOMModeControl.newBuilder().setSpecialMode(SpecialMode.SHUT_DOWN);
+            this.agModeControlBuilder=AGModeControl.newBuilder().setSpecialMode(SpecialMode.SHUT_DOWN);
         });
 
 
         commandListView.getItems().clear();
-        commandListView.getItems().addAll(sleCommandInfo.getAllCommands().split("\n"));
+//        commandListView.getItems().addAll(sleCommandInfo.getAllCommands().split("\n"));
 
         alarmsListView.getItems().clear();
         alarmsListView.getItems().addAll(Alerts.getAlertsByDeviceId(equipmentId));
@@ -155,7 +164,5 @@ public class TomWidgetsViewV2 {
     private void updateVersion() {
         Platform.runLater(() -> ipAddress.setText("IP Address : " + sleCommandInfo.getEquipIp()));
     }
-
-
 
 }

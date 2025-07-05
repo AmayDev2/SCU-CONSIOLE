@@ -120,4 +120,17 @@ public class ViewFactory {
                 (Path.REVENUE_REPORT));
         return fxmlLoader;
     }
+
+    public static FXMLLoader getTRWidgets() {
+        return new FXMLLoader((ViewFactory.class.getResource(Path.TR_WIDGETS)));
+    }
+    public static FXMLLoader getTVMWidgets() {
+        return new FXMLLoader((ViewFactory.class.getResource(Path.TVM_WIDGETS)));
+    }
+
+    public static FXMLLoader getFilterView() {
+        FXMLLoader fxmlLoader = new FXMLLoader(ViewFactory.class.getResource
+                (Path.FILTER_VIEW));
+        return fxmlLoader;
+    }
 }

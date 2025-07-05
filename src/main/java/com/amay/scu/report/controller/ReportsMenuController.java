@@ -67,6 +67,13 @@ public class ReportsMenuController implements ReportsListener {
             new ColumnDefinition<>("Transaction Type", RevenueReport::getTransactionType,List.of())
             );
 
+        //start from 2
+        List<FilterItem> filterItems=List.of(
+            new FilterItem("Payment Mode","payment_mode",2),
+            new FilterItem("Transaction Type","transaction_type",3),
+            new FilterItem("Fare Media","fare_media",4)
+        );
+
 
         try {
             FXMLLoader loader=ViewFactory.getRevenueReport();
@@ -76,7 +83,7 @@ public class ReportsMenuController implements ReportsListener {
                     .addValues(Value.newBuilder().setNumberValue(EpochRangeUtil.getLast30DaysRange()[1]).build())
                     .build());
 
-            loader.setControllerFactory(x-> new RevenueReportsController<>(columns,"Revenue Report", task,builder -> (List<RevenueReport>) ScuGrpcService.INSTANCE.getRevenueReport(builder.build())) );
+            loader.setControllerFactory(x-> new RevenueReportsController<>(columns,"Revenue Report", task,builder -> (List<RevenueReport>) ScuGrpcService.INSTANCE.getRevenueReport(builder.build()),filterItems) );
             Node node=loader.load();
             addTabToPane("Revenue Report",node);
         } catch (IOException e) {
@@ -94,10 +101,21 @@ public class ReportsMenuController implements ReportsListener {
                 new ColumnDefinition<>("Equipment Id", RidershipReport::getEquipmentId,List.of()),
                 new ColumnDefinition<>("Status", RidershipReport::getStatus,List.of())
                 );
+
+
+        List<FilterItem> filterItems=List.of(
+                new FilterItem("Entry > QR","entry_qr",2),
+                new FilterItem("Entry > NCMC","entry_ncmc",3),
+                new FilterItem("Entry > MQR","entry_mqr",4),
+                new FilterItem("Exit > QR","exit_qr",5),
+                new FilterItem("Exit > NCMC","exit_ncmc",6),
+                new FilterItem("Exit > MQR","exit_mqr",7)
+        );
+
         try {
             FXMLLoader loader=ViewFactory.getRevenueReport();
             Callable<List<RidershipReport>> task = () -> (List<RidershipReport>) ScuGrpcService.INSTANCE.getRidershipReport(ListValue.newBuilder().build());
-            loader.setControllerFactory(x-> new RevenueReportsController<>(columns, "Ridership Report",task, builder -> (List<RidershipReport>) ScuGrpcService.INSTANCE.getRidershipReport(builder.build())) );
+            loader.setControllerFactory(x-> new RevenueReportsController<>(columns, "Ridership Report",task, builder -> (List<RidershipReport>) ScuGrpcService.INSTANCE.getRidershipReport(builder.build()),filterItems) );
             Node node=loader.load();
             addTabToPane("Ridership Report",node);
         } catch (IOException e) {
@@ -132,6 +150,15 @@ public class ReportsMenuController implements ReportsListener {
                         new ColumnDefinition<>("Exit", RidershipReportPerDay::getTotalExit, List.of())
                 )));
 
+        List<FilterItem> filterItems=List.of(
+                new FilterItem("Entry > QR","entry_qr",2),
+                new FilterItem("Entry > NCMC","entry_ncmc",3),
+                new FilterItem("Entry > MQR","entry_mqr",4),
+                new FilterItem("Exit > QR","exit_qr",5),
+                new FilterItem("Exit > NCMC","exit_ncmc",6),
+                new FilterItem("Exit > MQR","exit_mqr",7)
+        );
+
         try {
             FXMLLoader loader=ViewFactory.getRevenueReport();
             Callable<List<RidershipReportPerDay>> task = () -> (List<RidershipReportPerDay>) ScuGrpcService.INSTANCE.getRidershipParDayReport(ListValue.newBuilder().build());
@@ -141,6 +168,7 @@ public class ReportsMenuController implements ReportsListener {
                     "Ridership Daily Report",
                     task,
                     builder -> (List<RidershipReportPerDay>) ScuGrpcService.INSTANCE.getRidershipParDayReport(builder.build())
+                    ,filterItems
             ));
             Node node=loader.load();
             addTabToPane("Ridership Daily Report",node);
@@ -170,10 +198,15 @@ public class ReportsMenuController implements ReportsListener {
             ));
         }
 
+
+        List<FilterItem> filterItems=List.of(
+
+        );
+
         try {
             FXMLLoader loader=ViewFactory.getRevenueReport();
             Callable<List<RidershipReportPerHour>> task = () -> (List<RidershipReportPerHour>) ScuGrpcService.INSTANCE.getRidershipParHourReport(ListValue.newBuilder().build());
-            loader.setControllerFactory(x-> new RevenueReportsController<>(columns, "Ridership Hourly Report",task,builder -> (List<RidershipReportPerHour>) ScuGrpcService.INSTANCE.getRidershipParHourReport(builder.build())) );
+            loader.setControllerFactory(x-> new RevenueReportsController<>(columns, "Ridership Hourly Report",task,builder -> (List<RidershipReportPerHour>) ScuGrpcService.INSTANCE.getRidershipParHourReport(builder.build()),filterItems) );
             Node node=loader.load();
             addTabToPane("Ridership Hourly Report",node);
         } catch (IOException e) {
@@ -182,24 +215,42 @@ public class ReportsMenuController implements ReportsListener {
 
     }
 
+    private String date;
+    private String operatorId;
+    private String loginTime;
+    private String logoutTime;
+    private int QR;
+    private int UPI,CASH,POS;
+    private int NCMC;
+    private int revenue;
+
     @Override
     public void onClickShiftReport() {
-        List<ColumnDefinition<RevenueReport, ?>> columns = List.of(
-                new ColumnDefinition<>("Ticket Id", RevenueReport::getTicketId,List.of()),
-                new ColumnDefinition<>("Equipment Id", RevenueReport::getEquipmentId,List.of()),
-                new ColumnDefinition<>("Station", RevenueReport::getStation,List.of()),
-                new ColumnDefinition<>("Equipment Type", RevenueReport::getEquipmentType,List.of()),
-                new ColumnDefinition<>("Trip Type", RevenueReport::getTripType,List.of()),
-                new ColumnDefinition<>("Fare Media", RevenueReport::getFareMedia,List.of()),
-                new ColumnDefinition<>("Payment Mode", RevenueReport::getPaymentMode,List.of()),
-                new ColumnDefinition<>("Amount", RevenueReport::getAmount,List.of()),
-                new ColumnDefinition<>("Ticket Time", RevenueReport::getTicketTime,List.of()),
-                new ColumnDefinition<>("Transaction Type", RevenueReport::getTransactionType,List.of())
+        List<ColumnDefinition<ShiftReport, ?>> columns = List.of(
+                new ColumnDefinition<>("Date", ShiftReport::getDate,List.of()),
+                new ColumnDefinition<>("Shift Id", ShiftReport::getShiftId,List.of()),
+                new ColumnDefinition<>("Login Time", ShiftReport::getLoginTime,List.of()),
+                new ColumnDefinition<>("Logout Time", ShiftReport::getLogoutTime,List.of()),
+                new ColumnDefinition<>("QR", ShiftReport::getQR,List.of(
+                        new ColumnDefinition<>("UPI", ShiftReport::getUPI,List.of()),
+                        new ColumnDefinition<>("POS", ShiftReport::getPOS,List.of()),
+                        new ColumnDefinition<>("CASH", ShiftReport::getCASH,List.of())
+                )),
+                new ColumnDefinition<>("NCMC", ShiftReport::getNCMC,List.of()),
+                new ColumnDefinition<>("Revenue", ShiftReport::getRevenue,List.of())
+        );
+
+        List<FilterItem> filterItems=List.of(
+                new FilterItem("Login Time","login_time",2),
+                new FilterItem("Logout Time","logout_time",3),
+                new FilterItem("Shift Id","shift_id",4),
+                new FilterItem("Equipment Type","equipment_type",5)
         );
 
         try {
             FXMLLoader loader=ViewFactory.getRevenueReport();
-//            loader.setControllerFactory(x-> new RevenueReportsController<>(columns, "Shift Report",ScuGrpcService.INSTANCE::getRevenueReport) );
+            Callable<List<ShiftReport>> task = () -> (List<ShiftReport>) ScuGrpcService.INSTANCE.getShiftReport(ListValue.newBuilder().build());
+            loader.setControllerFactory(x-> new RevenueReportsController<>(columns, "Shift Report",task,builder -> (List<ShiftReport>) ScuGrpcService.INSTANCE.getShiftReport(builder.build()),filterItems) );
             Node node=loader.load();
             addTabToPane("ShiftReport Report",node);
         } catch (IOException e) {

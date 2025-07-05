@@ -4,6 +4,7 @@ import com.amay.scu.enums.SLEStatus;
 import com.amay.scu.enums.TOMOperationMode;
 import com.amay.scu.enums.TVMOperationMode;
 import com.amay.scu.model.SLELocationListObject;
+import com.amay.scu.popup.PopupContent;
 import com.amay.scu.sleobj.LiveSLE;
 import com.amay.scu.sleobj.LiveTOM;
 import com.amay.scu.sleobj.LiveTVM;
@@ -13,6 +14,8 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,6 +41,9 @@ public class TVMController implements SLE {
 
     @FXML
     void initialize() {
+        logger.info("Initializing TVMController");
+        tvm.setOnMouseClicked(this::handleMouseClick);
+
 
 
     }
@@ -183,6 +189,16 @@ public class TVMController implements SLE {
                 System.out.println("Property " + event.getPropertyName() + " changed from " + event.getOldValue() + " to " + event.getNewValue());
                 logger.info("property updated ");
             });
+
+    }
+
+    private void handleMouseClick(MouseEvent event) {
+        if (event.getButton() == MouseButton.PRIMARY) {
+            // Handle left click
+            PopupContent popupContent = new PopupContent(liveTVM,"Left");
+            popupContent.show();
+            logger.debug("Left click detected on button");
+        }
 
     }
 }

@@ -49,9 +49,8 @@ public class TVMAbstractFactory extends SLEAbstractFactory {
             controller.setLocation(location);
 
             controller.setLiveSLE(liveTVM);
-            controller.setMovingProperties(button,anchorPane);
+//            controller.setMovingProperties(button,anchorPane);
 
-            controller.setMovingProperties(button,anchorPane);
             return controller;
         } catch (Exception e) {
             throw new SLENotCreatedException("TVM not created", e);

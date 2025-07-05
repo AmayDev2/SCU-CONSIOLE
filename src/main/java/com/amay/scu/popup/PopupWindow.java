@@ -63,6 +63,6 @@ public class PopupWindow {
     }
 
     public void sendCommand(String id, CommandType command) {
-        CommandTest.INSTANCE.sendCommand(command, deviceType, id,null);
+//        CommandTest.INSTANCE.sendCommand(command, deviceType, id,null);
     }
 }

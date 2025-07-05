@@ -53,7 +53,7 @@ public class TOMAbstractFactory extends SLEAbstractFactory {
             controller.setLocation(location);
 
             controller.setLiveSLE(liveTOM);
-            controller.setMovingProperties(button,anchorPane);
+//            controller.setMovingProperties(button,anchorPane);
             return controller;
         } catch (Exception e) {
             throw new SLENotCreatedException("TOM not created", e);

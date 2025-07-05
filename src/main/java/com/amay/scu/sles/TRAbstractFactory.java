@@ -51,7 +51,7 @@ public class TRAbstractFactory extends SLEAbstractFactory {
             controller.setLocation(location);
 
             controller.setLiveSLE(liveTR);
-            controller.setMovingProperties(button,anchorPane);
+//            controller.setMovingProperties(button,anchorPane);
             return controller;
         } catch (Exception e) {
             throw new SLENotCreatedException("TR not created", e);
