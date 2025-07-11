@@ -3,6 +3,9 @@ package com.amay.scu;
 import javafx.fxml.FXMLLoader;
 import views.Path;
 
+import java.io.InputStream;
+import java.util.Objects;
+
 public class ViewFactory {
 
     public static FXMLLoader getStationMapView() {
@@ -132,5 +135,37 @@ public class ViewFactory {
         FXMLLoader fxmlLoader = new FXMLLoader(ViewFactory.class.getResource
                 (Path.FILTER_VIEW));
         return fxmlLoader;
+    }
+
+    public static InputStream loadRevenueReport() {
+        // Usage in JasperHelper
+        InputStream reportStream = Objects.requireNonNull(
+                ViewFactory.class.getResourceAsStream(Path.REVENUE_REPORT_JRXML),
+                "JRXML file not found: " + Path.REVENUE_REPORT_JRXML
+        );
+        return reportStream;
+    }
+
+    public static InputStream loadShiftReport() {
+        // Usage in JasperHelper
+        return Objects.requireNonNull(
+                ViewFactory.class.getResourceAsStream(Path.SHIFT_REPORT_JRXML),
+                "JRXML file not found: " + Path.SHIFT_REPORT_JRXML
+        );
+    }
+
+    public static InputStream loadRidershipDayReport() {
+        // Usage in JasperHelper
+        return Objects.requireNonNull(
+                ViewFactory.class.getResourceAsStream(Path.RIDERSHIP_DAY_REPORT_JRXML),
+                "JRXML file not found: " + Path.RIDERSHIP_DAY_REPORT_JRXML
+        );
+    }
+    public static InputStream loadRidershipHOURReport() {
+        // Usage in JasperHelper
+        return Objects.requireNonNull(
+                ViewFactory.class.getResourceAsStream(Path.RIDERSHIP_HOUR_REPORT_JRXML),
+                "JRXML file not found: " + Path.RIDERSHIP_HOUR_REPORT_JRXML
+        );
     }
 }

@@ -26,6 +26,7 @@ module com.amay.scu {
     requires com.fasterxml.jackson.databind;
     requires com.google.common;
     requires spring.web;
+    requires jasperreports;
 
     opens com.amay.scu to javafx.fxml;
     exports com.amay.scu;

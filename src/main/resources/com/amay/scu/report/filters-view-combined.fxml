@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+
+        <TableView fx:id="tableView"
+                   xmlns:fx="http://javafx.com/fxml"
+                   xmlns="http://javafx.com/javafx/17.0.12"
+                   fx:controller="com.amay.scu.report.controller.FiltersControllerChoiceBox">
+            <columns>
+                <TableColumn fx:id="titleColumn" prefWidth="-NaN"/>
+                <TableColumn fx:id="inputColumn"  prefWidth="-NaN" />
+            </columns>
+        </TableView>

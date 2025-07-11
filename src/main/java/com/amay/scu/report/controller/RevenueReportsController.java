@@ -1,6 +1,7 @@
 package com.amay.scu.report.controller;
 
 import com.amay.scu.ViewFactory;
+import com.amay.scu.enums.filters.FilterEnums;
 import com.amay.scu.popup.PopupWindow;
 import com.amay.scu.util.ColumnDefinition;
 import com.google.protobuf.ListValue;
@@ -23,7 +24,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
@@ -90,36 +93,47 @@ public class RevenueReportsController<T> {
         filters = ListValue.newBuilder();
         this.grpcFunction = grpcFunction;
         this.filterItems = filterItems;
-        for(int i = 0; i < 10; i++) {
-            filters.addValues(Value.newBuilder().build());
-        }
+
     }
 
     @FXML
     private void initialize() {
         this.fromDatePicker.setValue(LocalDate.now().minusDays(30));
         this.toDatePicker.setValue(LocalDate.now());
-        this.setFilters();
-        this.updateFilters(filterItems);
+        this.tableHelper = new TableHelper();
+        for(int i = 0; i < 10; i++) {
+            filters.addValues(Value.newBuilder().build());
+        }
+        if(!filterItems.isEmpty()) {
+            this.setFilters(1, filterItems.size() > 4 ? filterItems.subList(0, filterItems.size() / 2) : this.filterItems);
+            if (filterItems.size() > 4)
+                this.setFilters(2, filterItems.subList(filterItems.size() / 2, filterItems.size()));
+        }
 
+//        this.filtersControllerChoiceBoxList.forEach(FiltersControllerChoiceBox::applyFilters);
         Platform.runLater(() -> {
             setupDynamicTable(reportsTable, columns, observableList);
             if (observableList.isEmpty()) {
                 fetchData(task);
             }
         });
+        this.refresh.fire();
 
-        this.tableHelper = new TableHelper();
+
     }
 
-    private void setFilters() {
+    List<FiltersControllerChoiceBox> filtersControllerChoiceBoxList= new ArrayList<>();
+
+    private void setFilters(int colInd,List<FilterItem> filterItems) {
         try {
             FXMLLoader fxmlLoader;
             fxmlLoader = ViewFactory.getFilterView();
-            fxmlLoader.setControllerFactory(c -> new FiltersControllerIn((filters -> {
-                this.updateFilters(filterItems);
-            }), this.filterItems));
-            filtersGridView.add(fxmlLoader.load(), 1, 0);
+            FiltersControllerChoiceBox filtersControllerChoiceBox = new FiltersControllerChoiceBox((filters -> {
+                this.updateFilters(this.filterItems);
+            }), filterItems);
+            fxmlLoader.setControllerFactory(c -> filtersControllerChoiceBox);
+            filtersControllerChoiceBoxList.add(filtersControllerChoiceBox);
+            filtersGridView.add(fxmlLoader.load(), colInd, 0);
         } catch (Exception e) {
             showAlert(Alert.AlertType.ERROR, "Error", "Failed to load filters view.");
         }
@@ -130,7 +144,7 @@ public class RevenueReportsController<T> {
         LocalDate to = toDatePicker.getValue();
 
         long fromEpoch = from.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli();
-        long toEpoch = to.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli();
+        long toEpoch = to.atTime(LocalTime.MAX).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
 
         if (from != null && to != null) {
             filters.setValues(0,Value.newBuilder().setNumberValue(fromEpoch).build());
@@ -156,22 +170,48 @@ public class RevenueReportsController<T> {
                     if (newVal == null || newVal.isBlank()) return true;
 
                     String filter = newVal.toLowerCase();
+                    String[] filterParts = filter.split(":");
 
-                    for (ColumnDefinition<T, ?> column : columns) {
-                        Object value = column.getter().apply(item);
-                        if (value != null && value.toString().toLowerCase().contains(filter)) {
-                            return true;
+                    if( filterParts.length == 2) {
+                        String columnName = filterParts[0].trim();
+                        String value = filterParts[1].trim();
+
+                        // Find the column definition by name
+                        for (ColumnDefinition<T, ?> column : columns) {
+                            if (column.header().equalsIgnoreCase(columnName)) {
+                                Object columnValue = column.getter().apply(item);
+                                if (columnValue != null && columnValue.toString().toLowerCase().contains(value)) {
+                                    System.out.println("Matched " + columnValue.toString() + " with value: " + value);
+                                    // print column name
+                                    System.out.println("Column: " + column.header());
+                                    return true;
+                                }
+                            }
+                        }
+                        return false;
+                    } else {
+                        for (ColumnDefinition<T, ?> column : columns) {
+                            Object value = column.getter().apply(item);
+                            if (value != null && value.toString().toLowerCase().contains(filter)) {
+                                System.out.println("Matched  " + value.toString() + " with value: " + filter);
+                                // print column name
+                                System.out.println("Column: " + column.header());
+                                return true;
+                            }
                         }
                     }
                     return false;
                     // Optionally use reflection or better toString()
                 });
-            });
+
+
+            System.out.println("Filtered List Size: " + filteredList.size());
 
             // Step 3: wrap in sorted list and bind to table
             sortedList = new SortedList<>(filteredList);
             sortedList.comparatorProperty().bind(reportsTable.comparatorProperty());
             reportsTable.setItems(sortedList);
+            });
         }
     }
 
@@ -187,9 +227,7 @@ public class RevenueReportsController<T> {
             showAlert(Alert.AlertType.INFORMATION, "Server Error", "Oops !!! Something went wrong");
         }
     }
-//
-//    private void setTable() {
-//        reportsTable.setEditable(false);
+
 
     private void showAlert(Alert.AlertType alertType, String noRecords, String s) {
         Alert alert = new Alert(alertType);
@@ -215,7 +253,7 @@ public class RevenueReportsController<T> {
         // If no children, it's a leaf column — bind value
         if (def.subColumns().isEmpty()) {
             column.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(def.getter().apply(cellData.getValue())));
-            column.setPrefWidth(200);
+            column.setPrefWidth(220);
             column.setMinWidth(150);
             column.setEditable(false);
             column.setResizable(true);
@@ -249,16 +287,25 @@ public class RevenueReportsController<T> {
     }
 
     @FXML
-    void onExport(ActionEvent event) {
-//        Button clickedBtn = (Button) event.getSource();
-//        JasperHelper<RevenueReport> jasperHelper = new JasperHelper<>("/revenue_report.jrxml", reportsTable.getItems());
-//
-//        if (clickedBtn == btnPdf) {
-//            jasperHelper.exportPdfReport();
-//        }
-//        if (clickedBtn == btnExcel) {
-//            jasperHelper.exportExcelReport();
-//        }
+    private void onExport(ActionEvent event) {
+        Button clickedBtn = (Button) event.getSource();
+        List <T> items = reportsTable.getItems();
+        JasperHelper<T> jasperHelper = new JasperHelper<>(
+                switch (this.reportsName){
+                    case "Ridership Daily Report"-> ViewFactory.loadRidershipDayReport();
+                    case "Ridership Hourly Report"-> ViewFactory.loadRidershipHOURReport();
+                    case "Shift Report"-> ViewFactory.loadShiftReport();
+                    case  "Revenue Report"->  ViewFactory.loadRevenueReport();
+                    default -> throw new IllegalStateException("Unexpected value: " + this.reportsName);
+                },
+                 reportsTable.getItems());
+
+        if (clickedBtn == btnPdf) {
+            jasperHelper.exportPdfReport();
+        }
+        if (clickedBtn == btnExcel) {
+            jasperHelper.exportExcelReport();
+        }
         event.consume();
     }
 
@@ -266,6 +313,7 @@ public class RevenueReportsController<T> {
     private void onClickRefresh(ActionEvent actionEvent) {
         try {
             this.addFilters();
+            this.filtersControllerChoiceBoxList.forEach(FiltersControllerChoiceBox::applyFilters);
             ExecutorService executor = Executors.newSingleThreadExecutor();
             filters.build();
             Callable<List<T>> task = () -> grpcFunction.apply(filters);
@@ -291,23 +339,25 @@ public class RevenueReportsController<T> {
     }
 
     private void updateFilters(List<FilterItem> filterItems) {
-        chipperBucket.getChildren().clear();
-        filters.addValues(Value.newBuilder().setStringValue("from").build());
+//        chipperBucket.getChildren().clear();
+//        filters.addValues(Value.newBuilder().setStringValue("from").build());
         for (FilterItem item : filterItems) {
             if(item.inputProperty().get().isBlank()){
-                item.selectedProperty().set(false);
+                filters.setValues(item.indexProperty().get(),Value.newBuilder().setStringValue(item.inputProperty().get()).build());
                 continue;
             }
+            String x=item.inputProperty().get();
 
-            if(item.selectedProperty().get()) {
-                System.out.println("✔ " + item.titleProperty().get() + " " + item.titleValueProperty().get() + " Input: " + item.inputProperty().get());
-                HBox chip = createChip(item);
-                chipperBucket.getChildren().add(chip);
-                filters.setValues(item.indexProperty().get(),Value.newBuilder().setStringValue( item.inputProperty().get()).build());
-            }
+                filters.setValues(item.indexProperty().get(),Value.newBuilder().setStringValue(
+                        !item.getChoices().isEmpty() ?
+            FilterEnums.valueOf(x).getValue()
+            :
+                        item.inputProperty().get()).build());
+
+//            }
 
         }
-        refresh.fire();
+//        refresh.fire();
 
     }
 
@@ -373,4 +423,17 @@ public class RevenueReportsController<T> {
     }
 
 
+    public void onResetFilters(ActionEvent actionEvent) {
+        this.fromDatePicker.setValue(LocalDate.now().minusDays(30));
+        this.toDatePicker.setValue(LocalDate.now());
+        filtersControllerChoiceBoxList.forEach(FiltersControllerChoiceBox::resetTable);
+        this.filterField.clear();
+        this.filters = ListValue.newBuilder();
+        for(int i = 0; i < 10; i++) {
+            filters.addValues(Value.newBuilder().build());
+        }
+        this.updateFilters(filterItems);
+
+        actionEvent.consume();
+    }
 }

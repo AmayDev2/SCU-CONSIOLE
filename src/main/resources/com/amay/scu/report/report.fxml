@@ -21,10 +21,6 @@
         fx:controller="com.amay.scu.report.controller.ReportsMenuController"
         styleClass="report"
         stylesheets="@../css/report.css">
-    <TabPane fx:id="reportsTabPane" prefHeight="200.0"  prefWidth="200.0" tabClosingPolicy="UNAVAILABLE"/>
-<!--    <stylesheets>-->
-<!--&lt;!&ndash;        <URL value="@../css/styles.css" />&ndash;&gt;-->
-<!--&lt;!&ndash;        <URL value="@../css/themes.css" />&ndash;&gt;-->
-<!--        <URL value="@../css/primer-light.css" />-->
-<!--    </stylesheets>-->
+    <TabPane fx:id="reportsTabPane" styleClass="custom-tab-pane" prefHeight="200.0"  prefWidth="180.0"  tabClosingPolicy="UNAVAILABLE"/>
+
 </StackPane>

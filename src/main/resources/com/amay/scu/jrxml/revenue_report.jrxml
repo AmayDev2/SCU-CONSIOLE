@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+			  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			  xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+			  name="revenue_report" pageWidth="620" pageHeight="842" columnWidth="580"
+			  leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20"
+			  uuid="f47ac10b-58cc-4372-a567-0e02b2c3d479">
+
+	<!-- Fields -->
+	<field name="ticketId" class="java.lang.String"/>
+	<field name="equipmentId" class="java.lang.String"/>
+	<field name="equipmentType" class="java.lang.String"/>
+	<field name="tripType" class="java.lang.String"/>
+	<field name="fareMedia" class="java.lang.String"/>
+	<field name="paymentMode" class="java.lang.String"/>
+	<field name="amount" class="java.lang.Double"/>
+	<field name="ticketTime" class="java.lang.String"/>
+	<field name="transactionType" class="java.lang.String"/>
+
+	<!-- Variables -->
+	<variable name="TotalAmount" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{amount}]]></variableExpression>
+	</variable>
+	<variable name="TotalTickets" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{ticketId}]]></variableExpression>
+	</variable>
+
+	<!-- Title -->
+	<title>
+		<band height="35">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Revenue Report]]></text>
+			</staticText>
+			<!-- Horizontal line at bottom of title -->
+			<line>
+				<reportElement x="0" y="32" width="555" height="1"/>
+			</line>
+
+		</band>
+	</title>
+
+
+
+
+
+	<!-- Column Headers -->
+	<!-- Column Headers -->
+	<columnHeader>
+		<band height="22">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Ticket Id"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="60" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font  isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Equipment Id"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="0" width="65" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font  isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Equipment Type"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="225" y="0" width="45" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Trip Type"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="0" width="45" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font  isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Fare Media"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="315" y="0" width="55" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font  isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Payment Mode"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="0" width="35" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font  isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Amount"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="405" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font  isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Ticket Time"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="505" y="0" width="80" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font  isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Transaction Type"]]></textFieldExpression>
+			</textField>
+
+			<!-- Horizontal line at bottom of header -->
+			<line>
+				<reportElement x="0" y="20" width="585" height="1"/>
+			</line>
+		</band>
+	</columnHeader>
+
+
+	<!-- Detail Rows -->
+	<detail>
+		<band height="20">
+			<textField><reportElement x="0" y="0" width="100" height="20"/>
+				<textElement textAlignment="Left"/><textFieldExpression><![CDATA[$F{ticketId}]]></textFieldExpression>
+			</textField>
+			<textField><reportElement x="100" y="0" width="60" height="20"/>
+				<textElement textAlignment="Center"/><textFieldExpression><![CDATA[$F{equipmentId}]]></textFieldExpression>
+			</textField>
+			<textField><reportElement x="160" y="0" width="65" height="20"/>
+				<textElement textAlignment="Center"/><textFieldExpression><![CDATA[$F{equipmentType}]]></textFieldExpression>
+			</textField>
+			<textField><reportElement x="215" y="0" width="45" height="20"/>
+				<textElement textAlignment="Center"/><textFieldExpression><![CDATA[$F{tripType}]]></textFieldExpression>
+			</textField>
+			<textField><reportElement x="260" y="0" width="45" height="20"/>
+				<textElement textAlignment="Center"/><textFieldExpression><![CDATA[$F{fareMedia}]]></textFieldExpression>
+			</textField>
+			<textField><reportElement x="305" y="0" width="55" height="20"/>
+				<textElement textAlignment="Center"/><textFieldExpression><![CDATA[$F{paymentMode}]]></textFieldExpression>
+			</textField>
+			<textField><reportElement x="360" y="0" width="35" height="20"/>
+				<textElement textAlignment="Center"/><textFieldExpression><![CDATA["₹ " + $F{amount}]]></textFieldExpression>
+			</textField>
+			<textField><reportElement x="395" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center"/><textFieldExpression><![CDATA[$F{ticketTime}]]></textFieldExpression>
+			</textField>
+			<textField><reportElement x="495" y="0" width="80" height="20"/>
+				<textElement textAlignment="Center"/><textFieldExpression><![CDATA[$F{transactionType}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+
+	<!-- Summary -->
+	<summary>
+		<band height="32" splitType="Stretch">
+			<!-- Horizontal line at top of summary -->
+			<line>
+				<reportElement x="0" y="0" width="555" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="3" width="100" height="20"/>
+				<textElement><font isBold="true"/></textElement>
+				<text><![CDATA[Total Tickets:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="3" width="60" height="20"/>
+				<textElement textAlignment="Left"><font isBold="true"/></textElement>
+				<textFieldExpression><![CDATA[$V{TotalTickets}]]></textFieldExpression>
+			</textField>
+
+			<staticText>
+				<reportElement x="375" y="3" width="100" height="20"/>
+				<textElement textAlignment="Right"><font isBold="true"/></textElement>
+				<text><![CDATA[Total Amount:]]></text>
+			</staticText>
+			<textField pattern="₹ #,##0.00">
+				<reportElement x="475" y="3" width="80" height="20"/>
+				<textElement textAlignment="Left"><font isBold="true"/></textElement>
+				<textFieldExpression><![CDATA[$V{TotalAmount}]]></textFieldExpression>
+			</textField>
+			<!-- Horizontal line at bottom of title -->
+			<line>
+				<reportElement x="0" y="18" width="555" height="1"/>
+			</line>
+
+		</band>
+	</summary>
+
+</jasperReport>

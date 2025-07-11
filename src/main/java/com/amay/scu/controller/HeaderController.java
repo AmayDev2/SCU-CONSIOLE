@@ -32,6 +32,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class HeaderController {
 
     public static BooleanProperty isCCUConnected;
+    public Text stationName;
+    public Text stationId;
     @FXML
     private  Button ccuConnection;
 

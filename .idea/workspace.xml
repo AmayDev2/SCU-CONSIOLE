@@ -6,29 +6,27 @@
   <component name="ChangeListManager">
     <list default="true" id="315d97bc-7335-4bbd-a14f-28c409037fec" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sleLocationList.json" beforeDir="false" afterPath="$PROJECT_DIR$/sleLocationList.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/SCUApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/SCUApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/ViewFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/command/CommandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/command/CommandTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/AGCommandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/AGCommandController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/AGController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/AGController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/HeaderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/HeaderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TOMController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TOMController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TRController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TRController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TVMController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TVMController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/components/TomWidgetsViewV2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/components/TomWidgetsViewV2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/popup/PopupContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/popup/PopupContent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/popup/PopupWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/popup/PopupWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/database/DatabaseConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/database/DatabaseConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/enums/AGOperationMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/enums/AGOperationMode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/report/controller/FilterItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/report/controller/FilterItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/report/controller/ReportsMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/report/controller/ReportsMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/report/controller/RevenueReportsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/report/controller/RevenueReportsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/report/controller/RidershipReportHour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/report/controller/RidershipReportHour.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/report/controller/RidershipReportPerHour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/report/controller/RidershipReportPerHour.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/report/controller/ShiftReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/report/controller/ShiftReport.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/service/ScuGrpcService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/service/ScuGrpcService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/sles/AGAbstractFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/sles/AGAbstractFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/sles/TOMAbstractFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/sles/TOMAbstractFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/sles/TRAbstractFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/sles/TRAbstractFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/sles/TVMAbstractFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/sles/TVMAbstractFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/views/Path.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/Path.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/css/application.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/css/application.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/header/top-header-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/header/top-header-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/popups/tom-widgets-view-v2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/popups/tom-widgets-view-v2.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/report/report.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/report/report.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/report/revenue_report.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/report/revenue_report.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/station_map/station-dynamic-map-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/station_map/station-dynamic-map-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,9 +41,9 @@
         <option value="JUnit5 Test Class" />
         <option value="CSS File" />
         <option value="Interface" />
-        <option value="Enum" />
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -112,7 +110,7 @@
     "git-widget-placeholder": "indoor__bhopal",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/Amay Technosystems/AFC/SCU/src/main/resources/com/amay/scu/report",
+    "last_opened_file_path": "E:/Amay Technosystems/AFC/SCU/src/main/resources/com/amay/scu/images",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -134,18 +132,18 @@
       <recent name="com.amay.scu.sleobj" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Amay Technosystems\AFC\SCU\src\main\resources\com\amay\scu\images" />
       <recent name="E:\Amay Technosystems\AFC\SCU\src\main\resources\com\amay\scu\report" />
       <recent name="E:\Amay Technosystems\AFC\SCU\src\main\resources\com\amay\scu\popups" />
-      <recent name="E:\Amay Technosystems\AFC\SCU\src\main\resources\com\amay\scu\images" />
       <recent name="E:\Amay Technosystems\AFC\SCU\src\main\java\views" />
       <recent name="E:\Amay Technosystems\AFC\SCU\target" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Amay Technosystems\AFC\SCU\src\main\resources\com\amay\scu\jrxml" />
       <recent name="E:\Amay Technosystems\SCU\src\main\resources\com\amay\scu\popups" />
       <recent name="E:\Amay Technosystems\SCU\src\main\resources\com\amay\scu\images" />
       <recent name="E:\Amay Technosystems\SCU\src\main\resources\com\amay\scu\emergency-icon" />
       <recent name="E:\Amay Technosystems\SCU\src\main\resources\com\amay\scu\emergency-icon.png" />
-      <recent name="E:\Amay Technosystems\SCU\src\main\resources\com\amay\scu" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -509,7 +507,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/SCUApplication.java</url>
-          <line>91</line>
+          <line>87</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -524,7 +522,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/SCUApplication.java</url>
-          <line>99</line>
+          <line>95</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -655,33 +653,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/service/ScuGrpcService.java</url>
-          <line>192</line>
+          <line>196</line>
           <option name="timeStamp" value="111" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/service/ScuGrpcService.java</url>
-          <line>126</line>
+          <line>130</line>
           <option name="timeStamp" value="113" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/report/controller/RevenueReportsController.java</url>
-          <line>268</line>
-          <option name="timeStamp" value="116" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/report/controller/RevenueReportsController.java</url>
-          <line>128</line>
-          <option name="timeStamp" value="117" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/service/ScuGrpcService.java</url>
-          <line>207</line>
+          <line>211</line>
           <option name="timeStamp" value="118" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/service/ScuGrpcService.java</url>
-          <line>345</line>
-          <option name="timeStamp" value="119" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/popup/PopupContent.java</url>
@@ -705,17 +688,29 @@
           <option name="timeStamp" value="123" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/report/controller/RevenueReportsController.java</url>
-          <line>118</line>
-          <properties>
-            <option name="lambda-ordinal" value="-1" />
-          </properties>
-          <option name="timeStamp" value="124" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/report/controller/FiltersControllerIn.java</url>
           <line>27</line>
           <option name="timeStamp" value="125" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/report/controller/RevenueReportsController.java</url>
+          <line>352</line>
+          <option name="timeStamp" value="131" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/report/controller/RevenueReportsController.java</url>
+          <line>292</line>
+          <option name="timeStamp" value="136" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/report/controller/FiltersControllerChoiceBox.java</url>
+          <line>69</line>
+          <option name="timeStamp" value="137" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/report/controller/FiltersControllerChoiceBox.java</url>
+          <line>66</line>
+          <option name="timeStamp" value="139" />
         </line-breakpoint>
         <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/controller/StationDynamicMapController.java</url>

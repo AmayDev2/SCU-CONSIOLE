@@ -1,7 +1,9 @@
 package com.amay.scu.service;
 
 
+import com.amay.scu.enums.EquipmentType;
 import com.amay.scu.enums.StationSpecialMode;
+import com.amay.scu.enums.TripType;
 import com.amay.scu.grpc.GrpcConfig;
 import com.amay.scu.grpc.ScuGrpcConfig;
 import com.amay.scu.report.controller.*;
@@ -15,7 +17,9 @@ import org.slf4j.LoggerFactory;
 
 import javax.swing.text.html.ListView;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 
 public enum ScuGrpcService  {
@@ -235,35 +239,33 @@ public enum ScuGrpcService  {
     }
 
     public List<RidershipReportPerHour> convertFromListValueRidershipPerHour(ListValue listValue) {
-        List<RidershipReportPerHour> dtoList = new ArrayList<>();
+        HashMap<String, RidershipReportPerHour> dtoMap = new HashMap<>();
 
         for (Value rowValue : listValue.getValuesList()) {
             ListValue row = rowValue.getListValue();
             List<Value> values = row.getValuesList();
 
-            RidershipReportPerHour dto = new RidershipReportPerHour();
-
-            dto.setDate(values.get(0).getStringValue());
-//            dto.setStation(values.get(1).getStringValue());
-//
-//            dto.setEntryQR((int) values.get(2).getNumberValue());
-//            dto.setExitQR((int) values.get(3).getNumberValue());
-//
-//            dto.setEntryNCMC((int) values.get(4).getNumberValue());
-//            dto.setExitNCMC((int) values.get(5).getNumberValue());
-//
-//            dto.setEntryMQR((int) values.get(6).getNumberValue());
-//            dto.setExitMQR((int) values.get(7).getNumberValue());
-//
-//            dto.setTotalEntry((int) values.get(8).getNumberValue());
-//            dto.setTotalExit((int) values.get(9).getNumberValue());
-//
-//            dto.setTotalRidership((int) values.get(10).getNumberValue());
-
-            dtoList.add(dto);
+            this.setTimeFrame(Objects.requireNonNull(dtoMap.computeIfAbsent(values.get(0).getStringValue(),
+                    key->new RidershipReportPerHour(values.get(0).getStringValue()))), values);
         }
+        List<RidershipReportPerHour> ridershipReportHours = new ArrayList<>(dtoMap.values());
 
-        return dtoList;
+        ridershipReportHours.forEach(x-> {
+            x.setTotalEntry(x.getRidershipReportHours().stream().mapToInt(RidershipReportHour::getEntryCount).sum());
+            x.setTotalExit(x.getRidershipReportHours().stream().mapToInt(RidershipReportHour::getExitCount).sum());
+        });
+
+        return ridershipReportHours;
+    }
+
+    private void setTimeFrame(RidershipReportPerHour dto, List<Value> values) {
+
+        for (RidershipReportHour ridershipReportHour:dto.getRidershipReportHours()) {
+            if( ridershipReportHour.getTimeSlot().equals(values.get(1).getStringValue())) {
+                ridershipReportHour.setEntryCount((int) values.get(2).getNumberValue());
+                ridershipReportHour.setExitCount((int) values.get(3).getNumberValue());
+            }
+        }
     }
 
     public List<RevenueReport> convertFromListValue(ListValue listValue) {
@@ -276,9 +278,9 @@ public enum ScuGrpcService  {
             RevenueReport dto = new RevenueReport();
             dto.setTicketId(values.get(0).getStringValue());
             dto.setStation(values.get(1).getStringValue());
-            dto.setEquipmentType(values.get(2).getStringValue());
+            dto.setEquipmentType(EquipmentType.EFO.getType(values.get(2).getStringValue()));
             dto.setEquipmentId(values.get(3).getStringValue());
-            dto.setTripType(values.get(4).getStringValue());
+            dto.setTripType(TripType.SJT.getType(values.get(4).getStringValue()));
             dto.setFareMedia(values.get(5).getStringValue());
             dto.setPaymentMode(values.get(6).getStringValue());
             dto.setAmount(Double.parseDouble(values.get(7).getStringValue()));
@@ -323,7 +325,7 @@ public enum ScuGrpcService  {
             RevenueReportListRequest request = RevenueReportListRequest.newBuilder()
                     .setReports(filters)
                     .setRequestMetaData(RequestMetaData.newBuilder()
-                            .setRequestId("per-day-ridership-report-request")
+                            .setRequestId("per-hour-ridership-report-request")
                             .setRequestTime(String.valueOf(System.currentTimeMillis()))
                             .build())
                     .build();
@@ -334,7 +336,7 @@ public enum ScuGrpcService  {
             if (!response.getResponseMetaData().getErrorCode().equals("200")) {
                 throw new RuntimeException("Error fetching ridership report: " + response.getResponseMetaData().getErrorMessage());
             }
-            System.out.println("per-day-ridership report fetched successfully.");
+            System.out.println("per-hour-ridership report fetched successfully.");
             // Assuming response.getRevenueData().getReportsList() returns a list of RevenueReport objects
             if (response.getReports().getValuesList().isEmpty()) {
                 System.out.println("No ridership reports available.");
@@ -416,26 +418,45 @@ public enum ScuGrpcService  {
     }
 
     private List<ShiftReport> convertFromListValueShiftReport(ListValue reports) {
-    List<ShiftReport> dtoList = new ArrayList<>();
+        List<ShiftReport> dtoList = new ArrayList<>();
 
         for (Value rowValue : reports.getValuesList()) {
             ListValue row = rowValue.getListValue();
             List<Value> values = row.getValuesList();
 
             ShiftReport dto = new ShiftReport();
+
             dto.setShiftId(values.get(0).getStringValue());
-            dto.setShiftId(values.get(1).getStringValue());
-            dto.setLoginTime(values.get(2).getStringValue());
-            dto.setLogoutTime(values.get(3).getStringValue());
-            dto.setQR(Integer.parseInt(values.get(4).getStringValue()));
-            dto.setCASH(Integer.parseInt(values.get(5).getStringValue()));
-            dto.setUPI(Integer.parseInt(values.get(6).getStringValue()));
-            dto.setPOS(Integer.parseInt(values.get(8).getStringValue()));
-            dto.setNCMC(Integer.parseInt(values.get(9).getStringValue()));
-            dto.setRevenue(Integer.parseInt(values.get(10).getStringValue()));
+            dto.setOperatorId(values.get(1).getStringValue());
+            dto.setDate(values.get(2).getStringValue());
+            dto.setLoginTime(values.get(3).getStringValue());
+            dto.setLogoutTime(values.get(4).getStringValue());
+
+//            dto.setRefundedCount((int) values.get(5).getNumberValue());
+//            dto.setRefundedAmount(values.get(6).getNumberValue());
+//
+//            dto.setCanceledCount((int) values.get(7).getNumberValue());
+//            dto.setCanceledAmount(values.get(8).getNumberValue());
+//
+//            dto.setReplacedCount((int) values.get(9).getNumberValue());
+//            dto.setReplacedAmount(values.get(10).getNumberValue());
+//
+//            dto.setAdjustedCount((int) values.get(11).getNumberValue());
+//            dto.setAdjustedAmount(values.get(12).getNumberValue());
+
+            dto.setQR((int) values.get(13).getNumberValue());
+            dto.setCASH((int) values.get(14).getNumberValue());
+            dto.setUPI((int) values.get(15).getNumberValue());
+            dto.setPOS((int) values.get(16).getNumberValue());
+            dto.setRevenue((int) values.get(17).getNumberValue());
+
+            dto.setEquipmentId(values.get(18).getStringValue());
+            dto.setEquipmentType(EquipmentType.EFO.getType(values.get(19).getStringValue()));
+
             dtoList.add(dto);
         }
 
         return dtoList;
     }
+
 }

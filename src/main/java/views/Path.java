@@ -28,4 +28,8 @@ public interface Path {
      String REPORT_LEFT_VIEW="report/report-left-view.fxml";
      String REVENUE_REPORT = "report/revenue_report.fxml";
      String FILTER_VIEW = "report/filters-view-in.fxml";
+     String REVENUE_REPORT_JRXML = "jrxml/revenue_report.jrxml";
+     String SHIFT_REPORT_JRXML = "jrxml/shift_report.jrxml";
+     String RIDERSHIP_DAY_REPORT_JRXML = "jrxml/ridership_day_report.jrxml";
+     String RIDERSHIP_HOUR_REPORT_JRXML = "jrxml/ridership_hour_report.jrxml";
 }

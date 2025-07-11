@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="shift_report"
+              pageWidth="1050"
+              pageHeight="1000"
+              columnWidth="990"
+              leftMargin="20"
+              rightMargin="20"
+              topMargin="20"
+              bottomMargin="20"
+              uuid="c6cc6b2a-5f52-4e79-8ec6-2f6b9e1df735">
+
+  <!-- Fields -->
+  <field name="date" class="java.lang.String"/>
+  <field name="shiftId" class="java.lang.String"/>
+  <field name="loginTime" class="java.lang.String"/>
+  <field name="logoutTime" class="java.lang.String"/>
+  <field name="operatorId" class="java.lang.String"/>
+  <field name="equipmentId" class="java.lang.String"/>
+  <field name="equipmentType" class="java.lang.String"/>
+  <field name="QR" class="java.lang.Integer"/>
+  <field name="UPI" class="java.lang.Integer"/>
+  <field name="CASH" class="java.lang.Integer"/>
+  <field name="POS" class="java.lang.Integer"/>
+  <field name="NCMC" class="java.lang.Integer"/>
+  <field name="revenue" class="java.lang.Integer"/>
+
+  <!-- Variable for total revenue -->
+  <variable name="TotalRevenue" class="java.lang.Integer" calculation="Sum">
+    <variableExpression><![CDATA[$F{revenue}]]></variableExpression>
+  </variable>
+
+  <title>
+    <band height="40">
+      <staticText>
+        <reportElement x="0" y="0" width="832" height="30"/>
+        <textElement textAlignment="Center">
+          <font size="16" isBold="true"/>
+        </textElement>
+        <text>Shift Report</text>
+      </staticText>
+    </band>
+  </title>
+
+  <columnHeader>
+    <band height="22">
+      <!-- Define one textField per column -->
+      <textField><reportElement x="0" y="0" width="90" height="20"/><textElement textAlignment="Center"><font isBold="true"/></textElement><textFieldExpression><![CDATA["Date"]]></textFieldExpression></textField>
+      <textField><reportElement x="90" y="0" width="90" height="20"/><textElement textAlignment="Center"><font isBold="true"/></textElement><textFieldExpression><![CDATA["Shift ID"]]></textFieldExpression></textField>
+      <textField><reportElement x="180" y="0" width="90" height="20"/><textElement textAlignment="Center"><font isBold="true"/></textElement><textFieldExpression><![CDATA["Login Time"]]></textFieldExpression></textField>
+      <textField><reportElement x="270" y="0" width="90" height="20"/><textElement textAlignment="Center"><font isBold="true"/></textElement><textFieldExpression><![CDATA["Logout Time"]]></textFieldExpression></textField>
+      <textField><reportElement x="360" y="0" width="90" height="20"/><textElement textAlignment="Center"><font isBold="true"/></textElement><textFieldExpression><![CDATA["Operator ID"]]></textFieldExpression></textField>
+      <textField><reportElement x="450" y="0" width="90" height="20"/><textElement textAlignment="Center"><font isBold="true"/></textElement><textFieldExpression><![CDATA["Equipment ID"]]></textFieldExpression></textField>
+      <textField><reportElement x="540" y="0" width="90" height="20"/><textElement textAlignment="Center"><font isBold="true"/></textElement><textFieldExpression><![CDATA["Equipment Type"]]></textFieldExpression></textField>
+      <textField><reportElement x="630" y="0" width="60" height="20"/><textElement textAlignment="Center"><font isBold="true"/></textElement><textFieldExpression><![CDATA["QR"]]></textFieldExpression></textField>
+      <textField><reportElement x="690" y="0" width="60" height="20"/><textElement textAlignment="Center"><font isBold="true"/></textElement><textFieldExpression><![CDATA["UPI"]]></textFieldExpression></textField>
+      <textField><reportElement x="750" y="0" width="60" height="20"/><textElement textAlignment="Center"><font isBold="true"/></textElement><textFieldExpression><![CDATA["CASH"]]></textFieldExpression></textField>
+      <textField><reportElement x="810" y="0" width="60" height="20"/><textElement textAlignment="Center"><font isBold="true"/></textElement><textFieldExpression><![CDATA["POS"]]></textFieldExpression></textField>
+      <textField><reportElement x="870" y="0" width="60" height="20"/><textElement textAlignment="Center"><font isBold="true"/></textElement><textFieldExpression><![CDATA["NCMC"]]></textFieldExpression></textField>
+      <textField><reportElement x="930" y="0" width="60" height="20"/><textElement textAlignment="Center"><font isBold="true"/></textElement><textFieldExpression><![CDATA["Revenue"]]></textFieldExpression></textField>
+
+    </band>
+  </columnHeader>
+
+  <detail>
+    <band height="20">
+      <textField><reportElement x="0" y="0" width="90" height="20"/><textElement textAlignment="Center"/><textFieldExpression><![CDATA[$F{date}]]></textFieldExpression></textField>
+      <textField><reportElement x="90" y="0" width="90" height="20"/><textElement textAlignment="Center"/><textFieldExpression><![CDATA[$F{shiftId}]]></textFieldExpression></textField>
+      <textField><reportElement x="180" y="0" width="90" height="20"/><textElement textAlignment="Center"/><textFieldExpression><![CDATA[$F{loginTime}]]></textFieldExpression></textField>
+      <textField><reportElement x="270" y="0" width="90" height="20"/><textElement textAlignment="Center"/><textFieldExpression><![CDATA[$F{logoutTime}]]></textFieldExpression></textField>
+      <textField><reportElement x="360" y="0" width="90" height="20"/><textElement textAlignment="Center"/><textFieldExpression><![CDATA[$F{operatorId}]]></textFieldExpression></textField>
+      <textField><reportElement x="450" y="0" width="90" height="20"/><textElement textAlignment="Center"/><textFieldExpression><![CDATA[$F{equipmentId}]]></textFieldExpression></textField>
+      <textField><reportElement x="540" y="0" width="90" height="20"/><textElement textAlignment="Center"/><textFieldExpression><![CDATA[$F{equipmentType}]]></textFieldExpression></textField>
+      <textField><reportElement x="630" y="0" width="60" height="20"/><textElement textAlignment="Center"/><textFieldExpression><![CDATA[$F{QR}]]></textFieldExpression></textField>
+      <textField><reportElement x="690" y="0" width="60" height="20"/><textElement textAlignment="Center"/><textFieldExpression><![CDATA[$F{UPI}]]></textFieldExpression></textField>
+      <textField><reportElement x="750" y="0" width="60" height="20"/><textElement textAlignment="Center"/><textFieldExpression><![CDATA[$F{CASH}]]></textFieldExpression></textField>
+      <textField><reportElement x="810" y="0" width="60" height="20"/><textElement textAlignment="Center"/><textFieldExpression><![CDATA[$F{POS}]]></textFieldExpression></textField>
+      <textField><reportElement x="870" y="0" width="60" height="20"/><textElement textAlignment="Center"/><textFieldExpression><![CDATA[$F{NCMC}]]></textFieldExpression></textField>
+      <textField><reportElement x="930" y="0" width="60" height="20"/><textElement textAlignment="Center"/><textFieldExpression><![CDATA[$F{revenue}]]></textFieldExpression></textField>
+    </band>
+  </detail>
+
+  <summary>
+    <band height="30">
+      <staticText>
+        <reportElement x="650" y="3" width="120" height="20"/>
+        <textElement textAlignment="Right"><font isBold="true"/></textElement>
+        <text>Total Revenue:</text>
+      </staticText>
+      <textField>
+        <reportElement x="770" y="3" width="62" height="20"/>
+        <textElement textAlignment="Left"/>
+        <textFieldExpression><![CDATA[$V{TotalRevenue}]]></textFieldExpression>
+      </textField>
+    </band>
+  </summary>
+</jasperReport>

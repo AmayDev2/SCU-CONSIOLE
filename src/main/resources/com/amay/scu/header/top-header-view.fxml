@@ -6,66 +6,56 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="topHeader" minHeight="150.0" prefHeight="150.0" prefWidth="1920.0"
-            style="-fx-background-color: #CCE4FF" xmlns="http://javafx.com/javafx/17.0.12"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.HeaderController">
+<AnchorPane fx:id="topHeader" minHeight="150.0" prefHeight="150.0" prefWidth="1920.0" style="-fx-background-color: #CCE4FF" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.HeaderController">
    <!-- Left Section: Logo and Station Information -->
-   <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" spacing="15.0">
-      <ImageView fx:id="logoImageView" fitHeight="114.0" fitWidth="185.0" pickOnBounds="true" preserveRatio="true">
+   <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" prefHeight="115.0" prefWidth="330.0" spacing="15.0">
+      <ImageView fx:id="logoImageView" fitHeight="93.0" fitWidth="243.0" pickOnBounds="true" preserveRatio="true">
          <!-- Replace it with the actual logo image -->
-         <Image url="@../images/indoor-bhopal-logo.png"/>
+         <Image url="@../images/MUMBAI_MONORAIL_LOGO-Name.png" />
       </ImageView>
-      <VBox alignment="CENTER_LEFT">
-         <Text fx:id="stationName" styleClass="station-name" text="MP METRO"/>
-         <Text fx:id="stationId" styleClass="station-id" text="Station ID: 04"/>
+      <VBox alignment="CENTER_LEFT" prefWidth="132.0">
+         <Text fx:id="stationName" styleClass="station-name" text="MONORAIL STATION" />
+         <Text fx:id="stationId" styleClass="station-id" text="Station ID: --" />
       </VBox>
    </HBox>
 
    <!-- Center Section: Navigation -->
-   <HBox fx:id="navigatorHBox" alignment="CENTER" layoutX="710.0" layoutY="86.0" minHeight="0.0" minWidth="500.0"
-         prefWidth="500.0" spacing="20.0">
-<!--      <Button fx:id="menuNavigator" minHeight="30.0" minWidth="120.0" onAction="#onMenuClick" styleClass="navigator"-->
-<!--              text="Menu" textAlignment="CENTER"/>-->
-      <Button fx:id="monitorNavigator" minHeight="30.0" minWidth="120.0" onAction="#onMonitorClick"
-              styleClass="navigator" text="Monitor"/>
-      <Button fx:id="reportNavigator" onAction="#onReportClick" prefHeight="25.0" prefWidth="120.0"
-              styleClass="navigator" text="Report"/>
+   <HBox fx:id="navigatorHBox" alignment="CENTER" layoutX="710.0" layoutY="86.0" minHeight="0.0" minWidth="500.0" prefWidth="500.0" spacing="20.0">
+
+      <Button fx:id="monitorNavigator" minHeight="30.0" minWidth="120.0" onAction="#onMonitorClick" styleClass="navigator" text="Monitor" />
+      <Button fx:id="reportNavigator" onAction="#onReportClick" prefHeight="25.0" prefWidth="120.0" styleClass="navigator" text="Report" />
    </HBox>
 
-   <!-- Right Section: Icons/Buttons -->
-   <!-- Right Section: Icons/Buttons -->
    <HBox alignment="CENTER_RIGHT" layoutX="1434.0" layoutY="25.0" spacing="50.0">
       <padding>
-         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
       </padding>
       <!-- Language Button -->
       <VBox alignment="CENTER">
          <Button fx:id="ccuConnection" styleClass="icon-button">
             <graphic>
-               <ImageView fitHeight="40.0" fitWidth="40.0" styleClass="icon-image" pickOnBounds="true"
-                          preserveRatio="true">
+               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="icon-image">
                   <image>
-                     <Image url="@../images/ccu.png"/>
+                     <Image url="@../images/ccu.png" />
                   </image>
                </ImageView>
             </graphic>
          </Button>
-         <Label text="CCU"/>
+         <Label text="CCU" />
       </VBox>
 
       <!-- Emergency Button -->
       <VBox alignment="CENTER">
          <Button fx:id="emergencyButton" onAction="#onEmergency" styleClass="icon-button">
             <graphic>
-               <ImageView fitHeight="50.0" fitWidth="50.0" styleClass="icon-image" pickOnBounds="true"
-                          preserveRatio="true">
+               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="icon-image">
                   <image>
-                     <Image url="@../images/emergency-icon.png"/>
+                     <Image url="@../images/emergency-icon.png" />
                   </image>
                </ImageView>
             </graphic>
          </Button>
-         <Label styleClass="EMERGENCY" text="EMERGENCY"/>
+         <Label styleClass="EMERGENCY" text="EMERGENCY" />
       </VBox>
 
       <!-- User Button -->
@@ -73,38 +63,35 @@
 
          <Button fx:id="userButton" onAction="#onAuthClick" styleClass="icon-button">
             <graphic>
-               <ImageView fitHeight="50.0" fitWidth="50.0" styleClass="icon-image" pickOnBounds="true"
-                          preserveRatio="true">
-                  <Image url="@../images/user-icon.png"/>
+               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="icon-image">
+                  <Image url="@../images/user-icon.png" />
                </ImageView>
             </graphic>
          </Button>
-         <Label fx:id="userName" styleClass="user-name" text="User"/>
+         <Label fx:id="userName" styleClass="user-name" text="User" />
       </VBox>
    </HBox>
    <GridPane alignment="CENTER" layoutX="717.0" layoutY="20.0">
       <columnConstraints>
-         <ColumnConstraints percentWidth="10.0"/>
-         <ColumnConstraints percentWidth="2.0"/>
-         <ColumnConstraints percentWidth="20.0"/>
-         <ColumnConstraints minWidth="20.0" percentWidth="5.0"/>
-         <ColumnConstraints percentWidth="10.0"/>
-         <ColumnConstraints percentWidth="2.0"/>
-         <ColumnConstraints fillWidth="false" halignment="CENTER" percentWidth="20.0"/>
+         <ColumnConstraints percentWidth="10.0" />
+         <ColumnConstraints percentWidth="2.0" />
+         <ColumnConstraints percentWidth="20.0" />
+         <ColumnConstraints minWidth="20.0" percentWidth="5.0" />
+         <ColumnConstraints percentWidth="10.0" />
+         <ColumnConstraints percentWidth="2.0" />
+         <ColumnConstraints fillWidth="false" halignment="CENTER" percentWidth="20.0" />
       </columnConstraints>
       <rowConstraints>
-         <RowConstraints/>
+         <RowConstraints />
       </rowConstraints>
-      <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true"
-                 GridPane.halignment="CENTER">
-         <Image url="@../images/Calendar.png"/>
+      <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER">
+         <Image url="@../images/Calendar.png" />
       </ImageView>
-      <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4"
-                 GridPane.halignment="CENTER">
-         <Image url="@../images/Clock.png"/>
+      <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+         <Image url="@../images/Clock.png" />
       </ImageView>
-      <Text fx:id="localDate" styleClass="text" text="10 March 2025" GridPane.columnIndex="2"/>
-      <Text fx:id="localTime" styleClass="text" text="12:12:12 AM" GridPane.columnIndex="6"/>
+      <Text fx:id="localDate" styleClass="text" text="10 March 2025" GridPane.columnIndex="2" />
+      <Text fx:id="localTime" styleClass="text" text="12:12:12 AM" GridPane.columnIndex="6" />
    </GridPane>
 
 </AnchorPane>

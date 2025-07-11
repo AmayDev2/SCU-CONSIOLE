@@ -8,7 +8,7 @@ public enum AGOperationMode implements OperationMode, AGInServiceProperties {
     MAINTENANCE("-fx-background-color: #FFFF00"),                         // Yellow
     TEST("-fx-background-color: #0000FF"),                                // Blue
     PAUSE("-fx-background-color: #808080"),                               // Grey
-    DISCONNECTED("-fx-background-color: #800080"),                        // Purple
+    DISCONNECTED("-fx-background-color: #FF0000"),                        // Purple #800080
     OTHER("-fx-background-color: #FBA500");                               // Another Orange
 
     private final boolean cardFareModeEnabled;

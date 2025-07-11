@@ -1,6 +1,7 @@
 package com.amay.scu.report.controller;
 
 import com.amay.scu.ViewFactory;
+import com.amay.scu.enums.filters.FilterEnums;
 import com.amay.scu.report.controller.enums.ReportsListener;
 import com.amay.scu.service.ScuGrpcService;
 import com.amay.scu.util.ColumnDefinition;
@@ -56,8 +57,8 @@ public class ReportsMenuController implements ReportsListener {
     public void onClickRevenueReport() {
         List<ColumnDefinition<RevenueReport, ?>> columns = List.of(
             new ColumnDefinition<>("Ticket Id", RevenueReport::getTicketId,List.of()),
+//            new ColumnDefinition<>("Station", RevenueReport::getStation,List.of()),
             new ColumnDefinition<>("Equipment Id", RevenueReport::getEquipmentId,List.of()),
-            new ColumnDefinition<>("Station", RevenueReport::getStation,List.of()),
             new ColumnDefinition<>("Equipment Type", RevenueReport::getEquipmentType,List.of()),
             new ColumnDefinition<>("Trip Type", RevenueReport::getTripType,List.of()),
             new ColumnDefinition<>("Fare Media", RevenueReport::getFareMedia,List.of()),
@@ -69,9 +70,37 @@ public class ReportsMenuController implements ReportsListener {
 
         //start from 2
         List<FilterItem> filterItems=List.of(
-            new FilterItem("Payment Mode","payment_mode",2),
-            new FilterItem("Transaction Type","transaction_type",3),
-            new FilterItem("Fare Media","fare_media",4)
+            new FilterItem("Payment Mode","payment_mode",2,List.of(
+                    FilterEnums.UPI.getTitle(),
+                    FilterEnums.CASH.getTitle(),
+                    FilterEnums.POS.getTitle()
+            )),
+            new FilterItem("Transaction Type","transaction_type",3,List.of(
+                    FilterEnums.Issuance.getTitle(),
+                    FilterEnums.Penalty.getTitle(),
+                    FilterEnums.Refund.getTitle(),
+                    FilterEnums.Cancel.getTitle()
+            )),
+            new FilterItem("Fare Media","fare_media",4,List.of(
+                    FilterEnums.QR.getTitle(),
+                    FilterEnums.NCMC.getTitle(),
+                    FilterEnums.MQR.getTitle()
+            )),
+            new FilterItem("Trip Type","trip_type",7,List.of(
+                    FilterEnums.SJT.getTitle(),
+                    FilterEnums.RJT.getTitle(),
+                    FilterEnums.GROUP.getTitle(),
+                    FilterEnums.PAID.getTitle(),
+                    FilterEnums.FREE.getTitle()
+                )),
+            new FilterItem("Equipment Id","equipment_id",5,List.of(
+                )),
+            new FilterItem("Equipment Type","equipment_type",6,List.of(
+                FilterEnums.TOM.getTitle(),
+                FilterEnums.EFO.getTitle(),
+                FilterEnums.TVM.getTitle()
+            ))
+
         );
 
 
@@ -104,12 +133,16 @@ public class ReportsMenuController implements ReportsListener {
 
 
         List<FilterItem> filterItems=List.of(
-                new FilterItem("Entry > QR","entry_qr",2),
-                new FilterItem("Entry > NCMC","entry_ncmc",3),
-                new FilterItem("Entry > MQR","entry_mqr",4),
-                new FilterItem("Exit > QR","exit_qr",5),
-                new FilterItem("Exit > NCMC","exit_ncmc",6),
-                new FilterItem("Exit > MQR","exit_mqr",7)
+//                new FilterItem("Entry > QR","entry_qr",2,List.of(
+//
+//                )),
+//                new FilterItem("Entry > NCMC","entry_ncmc",3,List.of(
+//
+//                )),
+//                new FilterItem("Entry > MQR","entry_mqr",4,List.of()),
+//                new FilterItem("Exit > QR","exit_qr",5,List.of()),
+//                new FilterItem("Exit > NCMC","exit_ncmc",6,List.of()),
+//                new FilterItem("Exit > MQR","exit_mqr",7,List.of())
         );
 
         try {
@@ -151,12 +184,12 @@ public class ReportsMenuController implements ReportsListener {
                 )));
 
         List<FilterItem> filterItems=List.of(
-                new FilterItem("Entry > QR","entry_qr",2),
-                new FilterItem("Entry > NCMC","entry_ncmc",3),
-                new FilterItem("Entry > MQR","entry_mqr",4),
-                new FilterItem("Exit > QR","exit_qr",5),
-                new FilterItem("Exit > NCMC","exit_ncmc",6),
-                new FilterItem("Exit > MQR","exit_mqr",7)
+//                new FilterItem("Entry > QR","entry_qr",2,List.of()),
+//                new FilterItem("Entry > NCMC","entry_ncmc",3,List.of()),
+//                new FilterItem("Entry > MQR","entry_mqr",4,List.of()),
+//                new FilterItem("Exit > QR","exit_qr",5,List.of()),
+//                new FilterItem("Exit > NCMC","exit_ncmc",6,List.of()),
+//                new FilterItem("Exit > MQR","exit_mqr",7,List.of())
         );
 
         try {
@@ -182,7 +215,13 @@ public class ReportsMenuController implements ReportsListener {
     public void onClickRidershipPerHourReport() {
         List<ColumnDefinition< RidershipReportPerHour, ?>> columns = new java.util.ArrayList<>(List.of(
                 new ColumnDefinition<>("Date", RidershipReportPerHour::getDate,
-                        List.of())));
+                        List.of()),
+            new ColumnDefinition<>("Total", RidershipReportPerHour::getDate,
+                List.of(
+                        new ColumnDefinition<>("Entry", RidershipReportPerHour::getTotalEntry, List.of()),
+                        new ColumnDefinition<>("Exit", RidershipReportPerHour::getTotalExit, List.of(
+                ))))));
+
         // Generate 24 hourly columns
         for (int i = 0; i < 24; i++) {
             final int hourIndex = i;
@@ -229,9 +268,12 @@ public class ReportsMenuController implements ReportsListener {
         List<ColumnDefinition<ShiftReport, ?>> columns = List.of(
                 new ColumnDefinition<>("Date", ShiftReport::getDate,List.of()),
                 new ColumnDefinition<>("Shift Id", ShiftReport::getShiftId,List.of()),
-                new ColumnDefinition<>("Login Time", ShiftReport::getLoginTime,List.of()),
-                new ColumnDefinition<>("Logout Time", ShiftReport::getLogoutTime,List.of()),
-                new ColumnDefinition<>("QR", ShiftReport::getQR,List.of(
+                new ColumnDefinition<>("Start Time", ShiftReport::getLoginTime,List.of()),
+                new ColumnDefinition<>("End Time", ShiftReport::getLogoutTime,List.of()),
+                new ColumnDefinition<>("Operator Id", ShiftReport::getOperatorId,List.of()),
+                new ColumnDefinition<>("Equipment Id", ShiftReport::getEquipmentId,List.of()),
+                new ColumnDefinition<>("Equipment Type", ShiftReport::getEquipmentType,List.of()),
+                new ColumnDefinition<>("QR Tickets Transactions", ShiftReport::getQR,List.of(
                         new ColumnDefinition<>("UPI", ShiftReport::getUPI,List.of()),
                         new ColumnDefinition<>("POS", ShiftReport::getPOS,List.of()),
                         new ColumnDefinition<>("CASH", ShiftReport::getCASH,List.of())
@@ -241,10 +283,16 @@ public class ReportsMenuController implements ReportsListener {
         );
 
         List<FilterItem> filterItems=List.of(
-                new FilterItem("Login Time","login_time",2),
-                new FilterItem("Logout Time","logout_time",3),
-                new FilterItem("Shift Id","shift_id",4),
-                new FilterItem("Equipment Type","equipment_type",5)
+                new FilterItem("Operator Id","operator_id",2,List.of()),
+                new FilterItem("Equipment Type","equipment_type",3,List.of(
+                FilterEnums.TOM.getTitle(),
+                FilterEnums.EFO.getTitle(),
+                FilterEnums.TVM.getTitle()
+        )),
+                new FilterItem("Equipment Id","equipment_id",4,List.of()),
+                new FilterItem("Shift Id","shift_id",5,List.of()),
+                new FilterItem("Station Id","station_id",6,List.of())
+
         );
 
         try {

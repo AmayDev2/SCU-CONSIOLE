@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jasperReport name="ShiftReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns_xsi="http://www.w3.org/2001/XMLSchema-instance" xsi_schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd">
+  <field name="date"/>
+  <field name="shiftId"/>
+  <field name="loginTime" />
+  <field name="logoutTime"/>
+  <field name="operatorId" />
+  <field name="equipmentId" />
+  <field name="equipmentType" />
+  <field name="QR" />
+  <field name="UPI" />
+  <field name="POS" />
+  <field name="CASH" />
+  <field name="NCMC"/>
+  <field name="revenue" />
+  <title>
+    <band height="50">
+      <staticText>
+        <reportElement x="0" y="0" width="200" height="30"/>
+      </staticText>
+    </band>
+  </title>
+  <columnHeader>
+    <band height="30">
+      <staticText>
+        <reportElement x="0" y="0" width="100" height="20"/>
+        <textElement/>
+        <text>Date</text>
+      </staticText>
+      <staticText>
+        <reportElement x="100" y="0" width="100" height="20"/>
+        <textElement/>
+        <text>Shift Id</text>
+      </staticText>
+      <staticText>
+        <reportElement x="200" y="0" width="100" height="20"/>
+        <textElement/>
+        <text>Start Time</text>
+      </staticText>
+      <staticText>
+        <reportElement x="300" y="0" width="100" height="20"/>
+        <textElement/>
+        <text>End Time</text>
+      </staticText>
+      <staticText>
+        <reportElement x="400" y="0" width="100" height="20"/>
+        <textElement/>
+        <text>Operator Id</text>
+      </staticText>
+      <staticText>
+        <reportElement x="500" y="0" width="100" height="20"/>
+        <textElement/>
+        <text>Equipment Id</text>
+      </staticText>
+      <staticText>
+        <reportElement x="600" y="0" width="100" height="20"/>
+        <textElement/>
+        <text>Equipment Type</text>
+      </staticText>
+      <staticText>
+        <reportElement x="700" y="0" width="100" height="20"/>
+        <textElement/>
+        <text>QR Tickets Transactions</text>
+      </staticText>
+      <staticText>
+        <reportElement x="800" y="0" width="100" height="20"/>
+        <textElement/>
+        <text>UPI</text>
+      </staticText>
+      <staticText>
+        <reportElement x="900" y="0" width="100" height="20"/>
+        <textElement/>
+        <text>POS</text>
+      </staticText>
+      <staticText>
+        <reportElement x="1000" y="0" width="100" height="20"/>
+        <textElement/>
+        <text>CASH</text>
+      </staticText>
+      <staticText>
+        <reportElement x="1100" y="0" width="100" height="20"/>
+        <textElement/>
+        <text>NCMC</text>
+      </staticText>
+      <staticText>
+        <reportElement x="1200" y="0" width="100" height="20"/>
+        <textElement/>
+        <text>Revenue</text>
+      </staticText>
+    </band>
+  </columnHeader>
+  <detail>
+    <band height="20">
+      <textField>
+        <reportElement x="0" y="0" width="100" height="20"/>
+        <textFieldExpression class="java.lang.String">$F{date}</textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="100" y="0" width="100" height="20"/>
+        <textFieldExpression class="java.lang.String">$F{shiftId}</textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="200" y="0" width="100" height="20"/>
+        <textFieldExpression class="java.lang.String">$F{loginTime}</textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="300" y="0" width="100" height="20"/>
+        <textFieldExpression class="java.lang.String">$F{logoutTime}</textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="400" y="0" width="100" height="20"/>
+        <textFieldExpression class="java.lang.String">$F{operatorId}</textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="500" y="0" width="100" height="20"/>
+        <textFieldExpression class="java.lang.String">$F{equipmentId}</textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="600" y="0" width="100" height="20"/>
+        <textFieldExpression class="java.lang.String">$F{equipmentType}</textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="700" y="0" width="100" height="20"/>
+        <textFieldExpression class="java.lang.String">$F{QR}</textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="800" y="0" width="100" height="20"/>
+        <textFieldExpression class="java.lang.String">$F{UPI}</textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="900" y="0" width="100" height="20"/>
+        <textFieldExpression class="java.lang.String">$F{POS}</textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="1000" y="0" width="100" height="20"/>
+        <textFieldExpression class="java.lang.String">$F{CASH}</textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="1100" y="0" width="100" height="20"/>
+        <textFieldExpression class="java.lang.String">$F{NCMC}</textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="1200" y="0" width="100" height="20"/>
+        <textFieldExpression class="java.lang.String">$F{revenue}</textFieldExpression>
+      </textField>
+    </band>
+  </detail>
+</jasperReport>

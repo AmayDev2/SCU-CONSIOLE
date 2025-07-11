@@ -13,11 +13,16 @@ import java.util.List;
 public class RidershipReportPerHour {
     private String date;
     private List<RidershipReportHour> ridershipReportHours;
+    private int totalEntry;
+    private int totalExit;
 
-    public RidershipReportPerHour() {
+    public RidershipReportPerHour(String date) {
+
+        this.date = date;
         ridershipReportHours= new java.util.ArrayList<>();
         for( int i = 0; i < 24; i++) {
-            ridershipReportHours.add(new RidershipReportHour(0, 0));
+            String x=(i<9?("0"+i):String.valueOf(i));
+            ridershipReportHours.add(new RidershipReportHour(x+":00 - "+x+":59",0, 0));
         }
     }
 

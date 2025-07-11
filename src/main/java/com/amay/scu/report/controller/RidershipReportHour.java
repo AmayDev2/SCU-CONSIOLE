@@ -10,6 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RidershipReportHour {
+    private String timeSlot; // e.g., "00:00 - 01:00"
     private int entryCount;
     private int exitCount;
 }

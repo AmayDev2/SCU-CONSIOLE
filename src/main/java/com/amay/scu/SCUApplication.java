@@ -51,11 +51,7 @@ public class SCUApplication  extends Application {
     @Override
     public void start(Stage primaryStage) {
 try {
-//
-//    GrpcService grpcService = new GrpcService(GrpcConfig.getAsyncStub());
-//    grpcService.initialConnectionRequest(null);
-//    grpcService.initialConnectionRequest(null);
-//    grpcService.initialConnectionRequest(null);
+
 
 
     FXMLLoader loader = new FXMLLoader(getClass().getResource(Path.SCU_VIEW));
@@ -63,8 +59,8 @@ try {
 //    scene.getStylesheets().add(getClass().getResource("css/application.css").toExternalForm());
     primaryStage.setMaximized(true);
     primaryStage.setTitle("SCU Application");
-//    primaryStage.setResizable(true);
-//    primaryStage.setFullScreen(true);
+    primaryStage.setResizable(true);
+    primaryStage.setFullScreen(true);
 
     primaryStage.setScene(scene);
     primaryStage.show();

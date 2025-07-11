@@ -1,0 +1,589 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="hourly_ridership_report" pageWidth="2000" pageHeight="842" columnWidth="1960" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f47ac10b-58cc-4372-a567-0e02b2c3d479" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd">
+  <field name="date" class="java.lang.String"/>
+  <field name="totalEntry" class="java.lang.Integer"/>
+  <field name="totalExit" class="java.lang.Integer"/>
+  <field name="Entry" class="java.lang.Integer"/>
+  <field name="h00Exit" class="java.lang.Integer"/>
+  <field name="h01Entry" class="java.lang.Integer"/>
+  <field name="h01Exit" class="java.lang.Integer"/>
+  <field name="h02Entry" class="java.lang.Integer"/>
+  <field name="h02Exit" class="java.lang.Integer"/>
+  <field name="h03Entry" class="java.lang.Integer"/>
+  <field name="h03Exit" class="java.lang.Integer"/>
+  <field name="h04Entry" class="java.lang.Integer"/>
+  <field name="h04Exit" class="java.lang.Integer"/>
+  <field name="h05Entry" class="java.lang.Integer"/>
+  <field name="h05Exit" class="java.lang.Integer"/>
+  <field name="h06Entry" class="java.lang.Integer"/>
+  <field name="h06Exit" class="java.lang.Integer"/>
+  <field name="h07Entry" class="java.lang.Integer"/>
+  <field name="h07Exit" class="java.lang.Integer"/>
+  <field name="h08Entry" class="java.lang.Integer"/>
+  <field name="h08Exit" class="java.lang.Integer"/>
+  <field name="h09Entry" class="java.lang.Integer"/>
+  <field name="h09Exit" class="java.lang.Integer"/>
+  <field name="h10Entry" class="java.lang.Integer"/>
+  <field name="h10Exit" class="java.lang.Integer"/>
+  <field name="h11Entry" class="java.lang.Integer"/>
+  <field name="h11Exit" class="java.lang.Integer"/>
+  <field name="h12Entry" class="java.lang.Integer"/>
+  <field name="h12Exit" class="java.lang.Integer"/>
+  <field name="h13Entry" class="java.lang.Integer"/>
+  <field name="h13Exit" class="java.lang.Integer"/>
+  <field name="h14Entry" class="java.lang.Integer"/>
+  <field name="h14Exit" class="java.lang.Integer"/>
+  <field name="h15Entry" class="java.lang.Integer"/>
+  <field name="h15Exit" class="java.lang.Integer"/>
+  <field name="h16Entry" class="java.lang.Integer"/>
+  <field name="h16Exit" class="java.lang.Integer"/>
+  <field name="h17Entry" class="java.lang.Integer"/>
+  <field name="h17Exit" class="java.lang.Integer"/>
+  <field name="h18Entry" class="java.lang.Integer"/>
+  <field name="h18Exit" class="java.lang.Integer"/>
+  <field name="h19Entry" class="java.lang.Integer"/>
+  <field name="h19Exit" class="java.lang.Integer"/>
+  <field name="h20Entry" class="java.lang.Integer"/>
+  <field name="h20Exit" class="java.lang.Integer"/>
+  <field name="h21Entry" class="java.lang.Integer"/>
+  <field name="h21Exit" class="java.lang.Integer"/>
+  <field name="h22Entry" class="java.lang.Integer"/>
+  <field name="h22Exit" class="java.lang.Integer"/>
+  <field name="h23Entry" class="java.lang.Integer"/>
+  <field name="h23Exit" class="java.lang.Integer"/>
+  <title>
+    <band height="40">
+      <staticText>
+        <reportElement x="0" y="0" width="1960" height="30"/>
+        <textElement textAlignment="Center">
+          <font size="16" isBold="true"/>
+        </textElement>
+        <text>Ridership Per Hour Report</text>
+      </staticText>
+    </band>
+  </title>
+  <columnHeader>
+    <band height="40">
+      <staticText>
+        <reportElement x="0" y="0" width="80" height="20"/>
+        <textElement textAlignment="Center">
+          <font isBold="true"/>
+        </textElement>
+        <text>Date</text>
+      </staticText>
+      <staticText>
+        <reportElement x="80" y="0" width="80" height="20"/>
+        <textElement textAlignment="Center">
+          <font isBold="true"/>
+        </textElement>
+        <text>Total Entry</text>
+      </staticText>
+      <staticText>
+        <reportElement x="160" y="0" width="80" height="20"/>
+        <textElement textAlignment="Center">
+          <font isBold="true"/>
+        </textElement>
+        <text>Total Exit</text>
+      </staticText>
+      <staticText>
+        <reportElement x="240" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>00:00 Entry</text>
+      </staticText>
+      <staticText>
+        <reportElement x="300" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>00:00 Exit</text>
+      </staticText>
+      <staticText>
+        <reportElement x="360" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>01:00 Entry</text>
+      </staticText>
+      <staticText>
+        <reportElement x="420" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>01:00 Exit</text>
+      </staticText>
+      <staticText>
+        <reportElement x="480" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>02:00 Entry</text>
+      </staticText>
+      <staticText>
+        <reportElement x="540" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>02:00 Exit</text>
+      </staticText>
+      <staticText>
+        <reportElement x="600" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>03:00 Entry</text>
+      </staticText>
+      <staticText>
+        <reportElement x="660" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>03:00 Exit</text>
+      </staticText>
+      <staticText>
+        <reportElement x="720" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>04:00 Entry</text>
+      </staticText>
+      <staticText>
+        <reportElement x="780" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>04:00 Exit</text>
+      </staticText>
+      <staticText>
+        <reportElement x="840" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>05:00 Entry</text>
+      </staticText>
+      <staticText>
+        <reportElement x="900" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>05:00 Exit</text>
+      </staticText>
+      <staticText>
+        <reportElement x="960" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>06:00 Entry</text>
+      </staticText>
+      <staticText>
+        <reportElement x="1020" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>06:00 Exit</text>
+      </staticText>
+      <staticText>
+        <reportElement x="1080" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>07:00 Entry</text>
+      </staticText>
+      <staticText>
+        <reportElement x="1140" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>07:00 Exit</text>
+      </staticText>
+      <staticText>
+        <reportElement x="1200" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>08:00 Entry</text>
+      </staticText>
+      <staticText>
+        <reportElement x="1260" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>08:00 Exit</text>
+      </staticText>
+      <staticText>
+        <reportElement x="1320" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>09:00 Entry</text>
+      </staticText>
+      <staticText>
+        <reportElement x="1380" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>09:00 Exit</text>
+      </staticText>
+      <staticText>
+        <reportElement x="1440" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>10:00 Entry</text>
+      </staticText>
+      <staticText>
+        <reportElement x="1500" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>10:00 Exit</text>
+      </staticText>
+      <staticText>
+        <reportElement x="1560" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>11:00 Entry</text>
+      </staticText>
+      <staticText>
+        <reportElement x="1620" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>11:00 Exit</text>
+      </staticText>
+      <staticText>
+        <reportElement x="1680" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>12:00 Entry</text>
+      </staticText>
+      <staticText>
+        <reportElement x="1740" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>12:00 Exit</text>
+      </staticText>
+      <staticText>
+        <reportElement x="1800" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>13:00 Entry</text>
+      </staticText>
+      <staticText>
+        <reportElement x="1860" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>13:00 Exit</text>
+      </staticText>
+      <staticText>
+        <reportElement x="1920" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>14:00 Entry</text>
+      </staticText>
+      <staticText>
+        <reportElement x="1980" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>14:00 Exit</text>
+      </staticText>
+      <staticText>
+        <reportElement x="2040" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>15:00 Entry</text>
+      </staticText>
+      <staticText>
+        <reportElement x="2100" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>15:00 Exit</text>
+      </staticText>
+      <staticText>
+        <reportElement x="2160" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>16:00 Entry</text>
+      </staticText>
+      <staticText>
+        <reportElement x="2220" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>16:00 Exit</text>
+      </staticText>
+      <staticText>
+        <reportElement x="2280" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>17:00 Entry</text>
+      </staticText>
+      <staticText>
+        <reportElement x="2340" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>17:00 Exit</text>
+      </staticText>
+      <staticText>
+        <reportElement x="2400" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>18:00 Entry</text>
+      </staticText>
+      <staticText>
+        <reportElement x="2460" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>18:00 Exit</text>
+      </staticText>
+      <staticText>
+        <reportElement x="2520" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>19:00 Entry</text>
+      </staticText>
+      <staticText>
+        <reportElement x="2580" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>19:00 Exit</text>
+      </staticText>
+      <staticText>
+        <reportElement x="2640" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>20:00 Entry</text>
+      </staticText>
+      <staticText>
+        <reportElement x="2700" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>20:00 Exit</text>
+      </staticText>
+      <staticText>
+        <reportElement x="2760" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>21:00 Entry</text>
+      </staticText>
+      <staticText>
+        <reportElement x="2820" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>21:00 Exit</text>
+      </staticText>
+      <staticText>
+        <reportElement x="2880" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>22:00 Entry</text>
+      </staticText>
+      <staticText>
+        <reportElement x="2940" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>22:00 Exit</text>
+      </staticText>
+      <staticText>
+        <reportElement x="3000" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>23:00 Entry</text>
+      </staticText>
+      <staticText>
+        <reportElement x="3060" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <text>23:00 Exit</text>
+      </staticText>
+    </band>
+  </columnHeader>
+  <detail>
+    <band height="20">
+      <textField>
+        <reportElement x="0" y="0" width="80" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.String"><![CDATA[$F{date}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="80" y="0" width="80" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{totalEntry}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="160" y="0" width="80" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{totalExit}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="240" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h00Entry}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="300" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h00Exit}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="360" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h01Entry}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="420" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h01Exit}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="480" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h02Entry}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="540" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h02Exit}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="600" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h03Entry}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="660" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h03Exit}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="720" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h04Entry}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="780" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h04Exit}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="840" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h05Entry}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="900" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h05Exit}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="960" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h06Entry}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="1020" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h06Exit}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="1080" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h07Entry}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="1140" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h07Exit}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="1200" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h08Entry}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="1260" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h08Exit}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="1320" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h09Entry}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="1380" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h09Exit}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="1440" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h10Entry}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="1500" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h10Exit}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="1560" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h11Entry}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="1620" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h11Exit}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="1680" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h12Entry}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="1740" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h12Exit}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="1800" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h13Entry}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="1860" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h13Exit}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="1920" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h14Entry}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="1980" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h14Exit}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="2040" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h15Entry}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="2100" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h15Exit}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="2160" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h16Entry}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="2220" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h16Exit}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="2280" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h17Entry}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="2340" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h17Exit}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="2400" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h18Entry}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="2460" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h18Exit}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="2520" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h19Entry}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="2580" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h19Exit}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="2640" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h20Entry}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="2700" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h20Exit}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="2760" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h21Entry}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="2820" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h21Exit}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="2880" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h22Entry}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="2940" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h22Exit}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="3000" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h23Entry}]]></textFieldExpression>
+      </textField>
+      <textField>
+        <reportElement x="3060" y="0" width="60" height="20"/>
+        <textElement textAlignment="Center"/>
+        <textFieldExpression class="java.lang.Integer"><![CDATA[$F{h23Exit}]]></textFieldExpression>
+      </textField>
+    </band>
+  </detail>
+</jasperReport>

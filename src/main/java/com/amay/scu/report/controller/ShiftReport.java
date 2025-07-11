@@ -16,6 +16,9 @@ public class ShiftReport {
     private String shiftId;
     private String loginTime;
     private String logoutTime;
+    private String operatorId;
+    private String equipmentId;
+    private String equipmentType;
     private int QR;
     private int UPI,CASH,POS;
     private int NCMC;
