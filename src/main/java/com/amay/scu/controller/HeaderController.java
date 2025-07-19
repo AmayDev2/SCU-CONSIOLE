@@ -7,6 +7,7 @@ import com.amay.scu.command.CommandTest;
 import com.amay.scu.contservice.HeaderListener;
 import com.amay.scu.enums.StationSpecialMode;
 import com.amay.scu.popup.PopupWindow;
+import com.amay.scu.repository.StationDevicesRepository;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
@@ -23,20 +24,22 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.awt.*;
+import java.io.FileInputStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import java.util.Properties;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 
 public class HeaderController {
 
     public static BooleanProperty isCCUConnected;
-    public Text stationName;
-    public Text stationId;
+    @FXML
+    private Text stationName;
+
     @FXML
     private  Button ccuConnection;
-
 
     @FXML
     private Button emergencyButton;
@@ -94,6 +97,7 @@ public class HeaderController {
         monitorNavigator.setVisible(false);
         emergencyButton.setDisable(true);
         updateDateTime();
+        setStationConfig();
 
 
 
@@ -131,8 +135,19 @@ public class HeaderController {
 
         StationSpecialMode.addStationSpecialModeListener(listener);
 
+    }
 
+    private void setStationConfig() {
+                Properties properties = new Properties();
+                try (FileInputStream fis = new FileInputStream("C:/Users/Admin/Downloads/scu/server/application.properties")) {
+                    properties.load(fis);
+                    Platform.runLater(()->stationName.setText(properties.getProperty("sc.name")));
+            } catch (Exception e) {
+                    Platform.runLater(()->stationName.setText("----"));
+               System.out.println("ERROR LOADING NAME "+e.getMessage());
+               e.printStackTrace();
 
+            }
     }
 
     public void setListener(HeaderListener scuHeaderListener){

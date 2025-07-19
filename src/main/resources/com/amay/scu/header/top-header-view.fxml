@@ -15,7 +15,7 @@
       </ImageView>
       <VBox alignment="CENTER_LEFT" prefWidth="132.0">
          <Text fx:id="stationName" styleClass="station-name" text="MONORAIL STATION" />
-         <Text fx:id="stationId" styleClass="station-id" text="Station ID: --" />
+<!--         <Text fx:id="stationId" styleClass="station-id" text="Station ID: &#45;&#45;" />-->
       </VBox>
    </HBox>
 
