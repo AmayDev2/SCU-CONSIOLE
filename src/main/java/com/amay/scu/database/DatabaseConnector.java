@@ -11,7 +11,7 @@ public class DatabaseConnector {
 
     private static final String USERNAME ="postgres";
     private static final String PASSWORD ="Admin@123";
-    private static final String URL = "jdbc:postgresql://localhost:5432/scu_dev_db";
+    private static final String URL = "jdbc:postgresql://192.168.1.103:5432/scu_dev_db";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DatabaseConnector.class);
 

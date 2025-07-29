@@ -11,11 +11,11 @@
    <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" prefHeight="115.0" prefWidth="330.0" spacing="15.0">
       <ImageView fx:id="logoImageView" fitHeight="93.0" fitWidth="243.0" pickOnBounds="true" preserveRatio="true">
          <!-- Replace it with the actual logo image -->
-         <Image url="@../images/MUMBAI_MONORAIL_LOGO-Name.png" />
+         <Image url="@../images/indoor-bhopal-logo.png" />
       </ImageView>
       <VBox alignment="CENTER_LEFT" prefWidth="132.0">
-         <Text fx:id="stationName" styleClass="station-name" text="MONORAIL STATION" />
-         <Text fx:id="stationId" styleClass="station-id" text="Station ID: --" />
+         <Text fx:id="stationName" styleClass="station-name" text=" STATION" />
+<!--         <Text fx:id="stationId" styleClass="station-id" text="Station ID: &#45;&#45;" />-->
       </VBox>
    </HBox>
 

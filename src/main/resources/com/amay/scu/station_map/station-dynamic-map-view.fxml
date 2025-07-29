@@ -6,7 +6,7 @@
 
 <AnchorPane fx:id="anchorPane" layoutX="1.0" layoutY="1.0" minHeight="780" minWidth="1550" prefHeight="780" prefWidth="1550" styleClass="background" stylesheets="@../css/station-dynamic-map-view.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amay.scu.controller.StationDynamicMapController">
     <ImageView fitHeight="658.0" fitWidth="1142.0" layoutX="5.0" layoutY="-33.0" nodeOrientation="INHERIT" opacity="0.1" preserveRatio="true" x="300.0" y="80.0">
-        <Image url="@../images/MONO.png" />
+<!--        <Image url="" />-->
     </ImageView>
 
 </AnchorPane>

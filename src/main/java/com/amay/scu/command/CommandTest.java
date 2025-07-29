@@ -46,10 +46,10 @@ public enum CommandTest{
             System.out.println("Invalid input. Please enter numeric values.");
         }
     }
-    public void sendCommand(CommandType command, DeviceType deviceType, String equipId, AGModeControl tomModeControl) {
+    public void sendCommand(CommandType command, DeviceType deviceType, String equipId, AGModeControl agModeControl) {
 
         try{
-            ConsoleProtocol consoleProtocol = createCommandRequest(command, deviceType, equipId, tomModeControl);
+            ConsoleProtocol consoleProtocol = createCommandRequest(command, deviceType, equipId, agModeControl);
             grpcService.sendMessage(consoleProtocol);
         } catch (NumberFormatException e) {
             System.out.println("Invalid input. Please enter numeric values.");
@@ -110,6 +110,7 @@ public enum CommandTest{
                 .setStreamData(StreamData.newBuilder()
                         .setEquipId(equipId)
                         .setCommandType(command)
+                        .setDeviceType(deviceType)
                         .setRequestData(Any.pack(tOMModeControl))
                         .build())
                 .build();
@@ -121,17 +122,19 @@ public enum CommandTest{
                 .setStreamData(StreamData.newBuilder()
                         .setEquipId(equipId)
                         .setCommandType(command)
+                        .setDeviceType(deviceType)
                         .setRequestData(Any.pack(tOMModeControl))
                         .build())
                 .build();
     }
-    private ConsoleProtocol createCommandRequest(CommandType command, DeviceType deviceType, String equipId, AGModeControl tOMModeControl) {
+    private ConsoleProtocol createCommandRequest(CommandType command, DeviceType deviceType, String equipId, AGModeControl agModeControl) {
         return ConsoleProtocol.newBuilder()
                 .setDeviceType(deviceType)
                 .setStreamData(StreamData.newBuilder()
                         .setEquipId(equipId)
                         .setCommandType(command)
-                        .setRequestData(Any.pack(tOMModeControl))
+                        .setDeviceType(deviceType)
+                        .setRequestData(Any.pack(agModeControl))
                         .build())
                 .build();
     }

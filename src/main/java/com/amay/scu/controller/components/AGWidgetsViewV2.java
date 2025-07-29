@@ -12,14 +12,17 @@ import org.network.monitorandcontrol.CommandType;
 import org.network.monitorandcontrol.OperationMode;
 import org.network.monitorandcontrol.SpecialMode;
 import org.network.monitorandcontrol.ag.AGModeControl;
+import org.network.monitorandcontrol.ag.AisleMode;
 
 public class AGWidgetsViewV2 {
 
 
+    @FXML private RadioButton radioButtonExitOnly;
+    @FXML private RadioButton radioButtonEntryOnly;
+    @FXML private RadioButton radioButtonBiDirectional;
     @FXML private RadioButton radioButtonNormalClose;
     @FXML private RadioButton radioButtonNormalOpen;
-    @FXML
-    private RadioButton radioButtonInService;
+    @FXML private RadioButton radioButtonInService;
     @FXML private RadioButton radioButtonOutOfService;
     @FXML private Button commandApplyButton;
     @FXML private RadioButton radioButtonStart;
@@ -95,6 +98,10 @@ public class AGWidgetsViewV2 {
         radioButtonNormalOpen.setToggleGroup(globeGroup);
         radioButtonNormalClose.setToggleGroup(globeGroup);
 
+        radioButtonBiDirectional.setToggleGroup(globeGroup);
+        radioButtonEntryOnly.setToggleGroup(globeGroup);
+        radioButtonExitOnly.setToggleGroup(globeGroup);
+
         radioButtonShutdown.setToggleGroup(globeGroup);
         radioButtonStart.setToggleGroup(globeGroup);
         radioButtonInService.setToggleGroup(globeGroup);
@@ -110,6 +117,24 @@ public class AGWidgetsViewV2 {
             this.command=CommandType.MODE_CONTROL;
             agModeControlBuilder=AGModeControl.newBuilder()
                     .setOperationMode(OperationMode.OUT_OF_SERVICE);
+        });
+        radioButtonBiDirectional.setOnAction(event -> {
+            this.command=CommandType.MODE_CONTROL;
+            this.agModeControlBuilder=AGModeControl.newBuilder().
+                    setAisleMode(AisleMode.BI_DIRECTIONAL);
+        });
+
+        radioButtonEntryOnly.setOnAction(event -> {
+            this.command=CommandType.MODE_CONTROL;
+            this.agModeControlBuilder=AGModeControl.newBuilder().
+                    setAisleMode(AisleMode.ENTRY);
+
+        });
+
+        radioButtonExitOnly.setOnAction(event -> {
+            this.command=CommandType.MODE_CONTROL;
+            this.agModeControlBuilder=AGModeControl.newBuilder().
+                    setAisleMode(AisleMode.EXIT);
         });
 
         radioButtonNormalOpen.setOnAction(event -> {

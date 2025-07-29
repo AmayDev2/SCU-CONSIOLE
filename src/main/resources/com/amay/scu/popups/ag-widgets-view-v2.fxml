@@ -66,6 +66,22 @@
                <Separator prefHeight="31.0" prefWidth="409.0" />
                <HBox alignment="CENTER_LEFT" prefHeight="95.0" prefWidth="260.0">
                    <VBox prefHeight="95.0" prefWidth="266.0">
+
+                       <Label prefHeight="28.0" prefWidth="189.0" text="Entry Only">
+                           <padding>
+                               <Insets bottom="5.0" left="20.0" right="20.0" top="5.0"/>
+                           </padding>
+                       </Label>
+                       <Label prefHeight="28.0" prefWidth="189.0" text="Exit Only">
+                           <padding>
+                               <Insets bottom="5.0" left="20.0" right="20.0" top="5.0"/>
+                           </padding>
+                       </Label>
+                       <Label prefHeight="28.0" prefWidth="189.0" text="Bi-Directional">
+                           <padding>
+                               <Insets bottom="5.0" left="20.0" right="20.0" top="5.0"/>
+                           </padding>
+                       </Label>
                        <Label prefHeight="28.0" prefWidth="189.0" text="Gate Normal Open">
                            <padding>
                                <Insets bottom="5.0" left="20.0" right="20.0" top="5.0"/>
@@ -98,6 +114,21 @@
                        </Label>
                    </VBox>
                    <VBox prefHeight="95.0" prefWidth="58.0">
+                       <RadioButton fx:id="radioButtonEntryOnly" mnemonicParsing="false" >
+                           <padding>
+                               <Insets bottom="5.0" left="20.0" right="20.0" top="5.0"/>
+                           </padding>
+                       </RadioButton>
+                       <RadioButton fx:id="radioButtonExitOnly" mnemonicParsing="false" >
+                           <padding>
+                               <Insets bottom="5.0" left="20.0" right="20.0" top="5.0"/>
+                           </padding>
+                       </RadioButton>
+                       <RadioButton fx:id="radioButtonBiDirectional" mnemonicParsing="false" >
+                           <padding>
+                               <Insets bottom="5.0" left="20.0" right="20.0" top="5.0"/>
+                           </padding>
+                       </RadioButton>
                        <RadioButton fx:id="radioButtonNormalOpen" mnemonicParsing="false" >
                            <padding>
                                <Insets bottom="5.0" left="20.0" right="20.0" top="5.0"/>

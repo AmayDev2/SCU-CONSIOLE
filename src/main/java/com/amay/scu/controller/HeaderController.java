@@ -23,9 +23,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.awt.*;
+import java.io.FileInputStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import java.util.Properties;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 
@@ -90,6 +92,7 @@ public class HeaderController {
         // initialize logic'
         authService = new AuthService(this);
 //        menuNavigator.setVisible(false);
+        setStationConfig();
         reportNavigator.setVisible(false);
         monitorNavigator.setVisible(false);
         emergencyButton.setDisable(true);
@@ -107,7 +110,7 @@ public class HeaderController {
                 Platform.runLater(() -> {
                     emergencyButton.getStyleClass().add("emergencyButtonActive");
                 });
-            } else if (!newMode.equals(StationSpecialMode.EMERGENCY) && emergencyModeActive) {
+            } else if (!newMode.equals(StationSpecialMode.EMERGENCY) && !newMode.equals(StationSpecialMode.CCU_DISCONNECT) && !newMode.equals(StationSpecialMode.CCU_CONNECT) && emergencyModeActive) {
                 // Exiting Emergency Mode
                 logger.debug("Exiting emergency mode");
                 emergencyModeActive = false;
@@ -133,6 +136,20 @@ public class HeaderController {
 
 
 
+    }
+
+
+    private void setStationConfig() {
+        Properties properties = new Properties();
+        try (FileInputStream fis = new FileInputStream("C:/Users/Admin/Downloads/scu/server/application.properties")) {
+            properties.load(fis);
+            Platform.runLater(() -> stationName.setText(properties.getProperty("sc.name")));
+        } catch (Exception e) {
+            Platform.runLater(() -> stationName.setText("----"));
+            System.out.println("ERROR LOADING NAME " + e.getMessage());
+            e.printStackTrace();
+
+        }
     }
 
     public void setListener(HeaderListener scuHeaderListener){
