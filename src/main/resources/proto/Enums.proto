@@ -5,21 +5,25 @@ option java_package = "org.network.monitorandcontrol";
 option java_multiple_files = true;
 
 enum RequestType {
-    DIVICE_DISCONNECT = 0;
+    NOTIFY_DEVICE_DISCONNECT = 0;
     DEVICE_INFO = 1;
     PERIPHERAL_STATUS = 2;
     PARAMETER_VERSION = 3;
     ALARMS = 4;
     RESPONSE = 5;
     OPERATION_MODE=6;
+    NOTIFY_NEW_CONNECTION = 7;
 }
 
 enum CommandType {
-    UNKNOWN_COMMAND = 0; // for special commands
+    UNKNOWN_COMMAND = 0;
     MODE_CONTROL = 1;
     GET_DEVICE_INFO = 2;
     GET_PERIPHERAL_STATUS = 3;
-    GET_DIVICE_VERSIONS = 4;
+    GET_DEVICE_VERSIONS = 4;
+    HANDSHAKE = 5;
+    GET_ALL_CONNECTIONS = 6;
+    NOTIFY_VERSION_SYNC=7;
 }
 
 enum  OperationMode {

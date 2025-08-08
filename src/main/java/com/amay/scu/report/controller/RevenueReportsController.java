@@ -239,7 +239,7 @@ public class RevenueReportsController<T> {
     public <T> void setupDynamicTable(TableView<T> tableView, List<ColumnDefinition<T, ?>> columns, ObservableList<T> data) {
         tableView.getColumns().clear();
         tableView.setEditable(false);
-        tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+//        tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         for (ColumnDefinition<T, ?> def : columns) {
             addColumn(tableView, def);

@@ -45,11 +45,11 @@ public class GateClientMain {
 				case GET_PERIPHERAL_STATUS:
 					//send peripheral status
 					break;
-				case GET_DIVICE_VERSIONS:
+				case GET_DEVICE_VERSIONS:
 					//send parameter versions
 					break;
 				case MODE_CONTROL:
-					System.out.println("Recieved Control Command From Server...");
+					System.out.println("Received Control Command From Server...");
 					try {
 						AGModeControl mode = value.getRequestData().unpack(AGModeControl.class);
 						System.out.println("Operation Mode : "+mode.getOperationMode().toString());

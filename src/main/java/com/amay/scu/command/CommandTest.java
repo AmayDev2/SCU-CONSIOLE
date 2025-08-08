@@ -5,8 +5,11 @@ import com.amay.scu.service.GrpcService;
 import com.google.protobuf.Any;
 import org.network.monitorandcontrol.CommandType;
 import org.network.monitorandcontrol.DeviceType;
+import org.network.monitorandcontrol.OperationMode;
 import org.network.monitorandcontrol.SpecialMode;
 import org.network.monitorandcontrol.ag.AGModeControl;
+import org.network.monitorandcontrol.ag.AisleMode;
+import org.network.monitorandcontrol.ag.FlapMode;
 import org.network.monitorandcontrol.scu_console.ConsoleProtocol;
 import org.network.monitorandcontrol.scu_console.StreamData;
 import org.network.monitorandcontrol.tom.TOMModeControl;
@@ -46,10 +49,29 @@ public enum CommandTest{
             System.out.println("Invalid input. Please enter numeric values.");
         }
     }
+
+    private String  unpack(Any any) {
+        try{
+            AGModeControl agModeControl = any.unpack(AGModeControl.class);
+            SpecialMode specialMode = agModeControl.getSpecialMode();
+            AisleMode aisleMode = agModeControl.getAisleMode();
+            FlapMode flapMode= agModeControl.getFlapMode();
+            OperationMode operationMode = agModeControl.getOperationMode();
+
+            final String o = specialMode.name() + ":" + operationMode.name() + ":" + aisleMode.name() + ":" + flapMode.name();
+            logger.info("AG Mode control command: {}", o);
+            return specialMode.name()+":"+operationMode.name()+":" + aisleMode.name() + ":" + flapMode.name();
+        } catch (Exception e) {
+            logger.error("Error unpacking request data", e);
+        }
+        return null;
+
+    }
     public void sendCommand(CommandType command, DeviceType deviceType, String equipId, AGModeControl agModeControl) {
 
         try{
             ConsoleProtocol consoleProtocol = createCommandRequest(command, deviceType, equipId, agModeControl);
+            unpack(consoleProtocol.getStreamData().getRequestData());
             grpcService.sendMessage(consoleProtocol);
         } catch (NumberFormatException e) {
             System.out.println("Invalid input. Please enter numeric values.");

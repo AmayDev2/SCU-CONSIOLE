@@ -113,8 +113,8 @@ public class PopupContent {
         System.out.println("Command sent to SLE"+id+command.getValueDescriptor()+tomModeControl.getSpecialMode().getValueDescriptor());
         CommandTest.INSTANCE.sendCommand(command, deviceType, id,tomModeControl);
     }
-    public void sendCommand(String id, CommandType command, AGModeControl tomModeControl) {
-        System.out.println("Command sent to SLE"+id+command.getValueDescriptor()+tomModeControl.getSpecialMode().getValueDescriptor());
-        CommandTest.INSTANCE.sendCommand(command, deviceType, id,tomModeControl);
+    public void sendCommand(String id, CommandType command, AGModeControl agModeControl) {
+        System.out.println("Command sent to SLE"+id+command.getValueDescriptor()+agModeControl.getSpecialMode().getValueDescriptor());
+        CommandTest.INSTANCE.sendCommand(command, deviceType, id,agModeControl);
     }
 }

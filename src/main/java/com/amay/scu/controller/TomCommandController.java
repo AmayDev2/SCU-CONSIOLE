@@ -168,7 +168,7 @@ public class TomCommandController {
         });
 
         SoftwareVersionOn.setOnAction(event -> {
-            this.command=CommandType.GET_DIVICE_VERSIONS;
+            this.command=CommandType.GET_DEVICE_VERSIONS;
             tomModeControlBuilder=TOMModeControl.newBuilder();
         });
 
@@ -268,7 +268,7 @@ public class TomCommandController {
                 logger.info("Command : {} {}",command);
                 this.sleCommandInfo.addCommand(command.name());
                 break;
-            case GET_DIVICE_VERSIONS:
+            case GET_DEVICE_VERSIONS:
                 logger.info("Command : {} {}",command);
                 break;
             case GET_PERIPHERAL_STATUS:

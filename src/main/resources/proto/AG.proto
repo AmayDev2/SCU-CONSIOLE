@@ -92,5 +92,7 @@ message AGModeControl {
     OperationMode operation_mode = 1;
     AisleMode aisle_mode = 2;
     FlapMode flap_mode = 3;
-    SpecialMode special_mode = 4;
+    bool card_fare_mode = 4;
+    bool qr_fare_mode = 5;
+    SpecialMode special_mode = 6;
 }

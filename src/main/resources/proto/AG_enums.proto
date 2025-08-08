@@ -7,9 +7,10 @@ option java_multiple_files = true;
 
 
 enum AisleMode {
-    ENTRY = 0;
-    EXIT = 1;
-    BI_DIRECTIONAL = 2;
+    UNKNOWN = 0;
+    ENTRY = 1;
+    EXIT = 2;
+    BI_DIRECTIONAL=3;
 }
 
 enum FlapMode {

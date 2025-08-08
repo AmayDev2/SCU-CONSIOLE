@@ -7,6 +7,7 @@ import com.amay.scu.command.CommandTest;
 import com.amay.scu.contservice.HeaderListener;
 import com.amay.scu.enums.StationSpecialMode;
 import com.amay.scu.popup.PopupWindow;
+import com.amay.scu.repository.StationDevicesRepository;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
@@ -27,6 +28,7 @@ import java.io.FileInputStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.Properties;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -134,22 +136,19 @@ public class HeaderController {
 
         StationSpecialMode.addStationSpecialModeListener(listener);
 
-
-
     }
 
 
     private void setStationConfig() {
-        Properties properties = new Properties();
-        try (FileInputStream fis = new FileInputStream("C:/Users/Admin/Downloads/scu/server/application.properties")) {
-            properties.load(fis);
-            Platform.runLater(() -> stationName.setText(properties.getProperty("sc.name")));
-        } catch (Exception e) {
-            Platform.runLater(() -> stationName.setText("----"));
-            System.out.println("ERROR LOADING NAME " + e.getMessage());
-            e.printStackTrace();
+        StationDevicesRepository stationDevicesRepository = StationDevicesRepository.getInstance();
+        Optional<String> currentStationName = stationDevicesRepository.getCurrentStationName();
 
+        if( currentStationName.isPresent() && !currentStationName.get().isBlank()) {
+            Platform.runLater(() -> stationName.setText(currentStationName.get()));
+        } else {
+            Platform.runLater(() -> stationName.setText("Station Name"));
         }
+
     }
 
     public void setListener(HeaderListener scuHeaderListener){

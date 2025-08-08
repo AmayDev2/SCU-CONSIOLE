@@ -37,7 +37,7 @@ public class SCUService {
 
     public void updateSLEs(StreamData streamData) {
         switch (streamData.getRequestType()) {
-            case DIVICE_DISCONNECT:
+            case NOTIFY_DEVICE_DISCONNECT:
                 //device is disconnected
                 break;
             case DEVICE_INFO:
@@ -87,7 +87,7 @@ public class SCUService {
             }
             case CCU:{
                 System.out.println("CCU Response");
-                if(value.getStreamData().getCommandType().equals(CommandType.GET_DIVICE_VERSIONS)){
+                if(value.getStreamData().getCommandType().equals(CommandType.GET_DEVICE_VERSIONS)){
                     //disconnect
                     StationSpecialMode.setStationSpecialMode(StationSpecialMode.CCU_DISCONNECT);
 
@@ -123,7 +123,7 @@ public class SCUService {
         }
 
         switch (consoleProtocol.getStreamData().getRequestType()) {
-            case DIVICE_DISCONNECT:
+            case NOTIFY_DEVICE_DISCONNECT:
                 //device is disconnected
                 this.deviceDisconnected(consoleProtocol, new LiveAG());
                 System.out.println("Equip Id disconnected : "+consoleProtocol.getStreamData().getEquipId());
@@ -272,7 +272,7 @@ public class SCUService {
             e.printStackTrace();
         }
         switch (consoleProtocol.getStreamData().getRequestType()) {
-            case DIVICE_DISCONNECT:
+            case NOTIFY_DEVICE_DISCONNECT:
                 //device is disconnected
                 this.deviceDisconnected(consoleProtocol, new LiveTOM());
                 System.out.println("Equip Id disconnected : "+consoleProtocol.getStreamData().getEquipId());
@@ -310,7 +310,7 @@ public class SCUService {
             e.printStackTrace();
         }
         switch (consoleProtocol.getStreamData().getRequestType()) {
-            case DIVICE_DISCONNECT:
+            case NOTIFY_DEVICE_DISCONNECT:
                 //device is disconnected
                 this.deviceDisconnected(consoleProtocol, new LiveTVM());
                 System.out.println("Equip Id disconnected : "+consoleProtocol.getStreamData().getEquipId());
@@ -348,7 +348,7 @@ public class SCUService {
             e.printStackTrace();
         }
         switch (consoleProtocol.getStreamData().getRequestType()) {
-            case DIVICE_DISCONNECT:
+            case NOTIFY_DEVICE_DISCONNECT:
                 //device is disconnected
                 this.deviceDisconnected(consoleProtocol, new LiveTR());
                 System.out.println("Equip Id disconnected : "+consoleProtocol.getStreamData().getEquipId());

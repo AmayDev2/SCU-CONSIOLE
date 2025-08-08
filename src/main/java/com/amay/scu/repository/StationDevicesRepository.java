@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class StationDevicesRepository {
     private static StationDevicesRepository Instance;
@@ -60,6 +61,22 @@ public class StationDevicesRepository {
         }
         return null;
     }
+
+
+    public Optional<String> getCurrentStationName() {
+        String query = "SELECT station_name FROM station LIMIT 1";
+        try (PreparedStatement ps = connection.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                return Optional.ofNullable(rs.getString("station_name"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
+    }
+
+
 
 
     private ResultSet getAllStationDevices() {

@@ -133,7 +133,7 @@ public class AGCommandController {
         });
 
         SoftwareVersionOn.setOnAction(event -> {
-            this.command= CommandType.GET_DIVICE_VERSIONS;
+            this.command= CommandType.GET_DEVICE_VERSIONS;
         });
 
         DeviceStatusOn.setOnAction(event -> {

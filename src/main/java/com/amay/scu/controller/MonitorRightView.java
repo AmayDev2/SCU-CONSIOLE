@@ -160,7 +160,10 @@ public class MonitorRightView {
 //        highSecurityMode.setOnAction(event -> handleSelection(highSecurityMode));
 
         StationSpecialMode.StationSpecialModeListener listener = newMode -> {
-            if( newMode.equals(StationSpecialMode.EMERGENCY ) || newMode.equals(StationSpecialMode.STATION_CLOSED)){
+            if( newMode.equals(StationSpecialMode.EMERGENCY )
+                    || newMode.equals(StationSpecialMode.STATION_CLOSED)
+                    || newMode.equals(StationSpecialMode.FARE_BYPASS_MODE_2)
+            ){
                 logger.debug("Entering emergency mode");
                 stationCloseButton.setDisable(true);
 //                excessFareOverrideButton.setDisable(true);

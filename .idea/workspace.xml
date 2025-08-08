@@ -6,14 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="315d97bc-7335-4bbd-a14f-28c409037fec" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rough/werfg" beforeDir="false" afterPath="$PROJECT_DIR$/rough/werfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/clients/EFIClientContentiousPhe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/clients/EFIClientContentiousPhe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/clients/GateClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/clients/GateClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/clients/GateClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/clients/GateClientMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/command/CommandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/command/CommandTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/AGCommandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/AGCommandController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/HeaderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/HeaderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/MonitorRightView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/MonitorRightView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TomCommandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TomCommandController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/components/AGWidgetsViewV2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/controller/components/AGWidgetsViewV2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/database/DatabaseConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/database/DatabaseConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/header/top-header-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/header/top-header-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/popups/ag-widgets-view-v2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/popups/ag-widgets-view-v2.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/amay/scu/station_map/station-dynamic-map-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/amay/scu/station_map/station-dynamic-map-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/popup/PopupContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/popup/PopupContent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/report/controller/RevenueReportsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/report/controller/RevenueReportsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/repository/StationDevicesRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/repository/StationDevicesRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/amay/scu/test_grpc_service/SCUService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amay/scu/test_grpc_service/SCUService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/proto/AG.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/proto/AG.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/proto/AG_enums.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/proto/AG_enums.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/proto/Enums.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/proto/Enums.proto" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +47,12 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-websocket/5.3.15/spring-websocket-5.3.15-sources.jar!/org/springframework/web/socket/client/standard/StandardWebSocketClient.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/17.0.6/javafx-controls-17.0.6-win.jar!/javafx/scene/control/ToggleButton.class" root0="SKIP_INSPECTION" />
   </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -58,60 +71,60 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.EFIClientContentiousPhe.executor": "Run",
-    "Application.EFOClient.executor": "Run",
-    "Application.GateClient.executor": "Run",
-    "Application.GateClientMain.executor": "Run",
-    "Application.GateClientManager.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.ObjectSerialization.executor": "Run",
-    "Application.SCUApplication.executor": "Run",
-    "Application.TOMOperationMode.executor": "Run",
-    "Application.com.amay.scu.GateClientManager.executor": "Run",
-    "Application.myCode.executor": "Run",
-    "JAR Application.scu-1.0-SNAPSHOT.jar.executor": "Run",
-    "JUnit.CommandTest.testCommand.executor": "Run",
-    "JUnit.GrpcServiceTest.sendCommandTest.executor": "Run",
-    "JUnit.LiveTOMTest.liveTomPropChange.executor": "Run",
-    "JUnit.SCUServiceTest.updateSLE.executor": "Run",
-    "JUnit.SLEFactoryTest.createSLE.executor": "Run",
-    "JUnit.StationDevicesRepositoryTest.testGetAllAGDevices.executor": "Run",
-    "JUnit.StationDevicesRepositoryTest.testGetAllStationDevices.executor": "Run",
-    "JUnit.StationDevicesRepositoryTest.testGetAllTOMDevices.executor": "Run",
-    "JUnit.TOMOperationModeTest.test.executor": "Run",
-    "Maven.scu [clean].executor": "Run",
-    "Maven.scu [compile].executor": "Run",
-    "Maven.scu [install].executor": "Run",
-    "Maven.scu [package].executor": "Run",
-    "Maven.scu [test].executor": "Run",
-    "Maven.scu [validate].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers": "true",
-    "git-widget-placeholder": "indoor__bhopal",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/Amay Technosystems/AFC/SCU",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.28735632",
-    "settings.editor.selected.configurable": "preferences.JavaFX",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.EFIClientContentiousPhe.executor&quot;: &quot;Run&quot;,
+    &quot;Application.EFOClient.executor&quot;: &quot;Run&quot;,
+    &quot;Application.GateClient.executor&quot;: &quot;Run&quot;,
+    &quot;Application.GateClientMain.executor&quot;: &quot;Run&quot;,
+    &quot;Application.GateClientManager.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ObjectSerialization.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SCUApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TOMOperationMode.executor&quot;: &quot;Run&quot;,
+    &quot;Application.com.amay.scu.GateClientManager.executor&quot;: &quot;Run&quot;,
+    &quot;Application.myCode.executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.scu-1.0-SNAPSHOT.jar.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CommandTest.testCommand.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GrpcServiceTest.sendCommandTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LiveTOMTest.liveTomPropChange.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SCUServiceTest.updateSLE.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SLEFactoryTest.createSLE.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StationDevicesRepositoryTest.testGetAllAGDevices.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StationDevicesRepositoryTest.testGetAllStationDevices.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StationDevicesRepositoryTest.testGetAllTOMDevices.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TOMOperationModeTest.test.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.scu [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.scu [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.scu [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.scu [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.scu [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.scu [validate].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;indoor__bhopal&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Amay Technosystems/AFC/SCU&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.28735632&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -147,11 +160,11 @@
       <recent name="com.amay.scu.repository" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.amay.scu.repository" />
       <recent name="com.amay.scu.report.controller" />
       <recent name="com.amay.scu.auth.functional" />
       <recent name="com.amay.scu.enums" />
       <recent name="com.amay.scu.dto" />
-      <recent name="com.amay.scu.sleobj" />
     </key>
   </component>
   <component name="RunManager" selected="Application.SCUApplication">
@@ -264,8 +277,8 @@
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.SCUApplication" />
       <item itemvalue="JAR Application.scu-1.0-SNAPSHOT.jar" />
-      <item itemvalue="JUnit.StationDevicesRepositoryTest.testGetAllStationDevices" />
       <item itemvalue="JUnit.CommandTest.testCommand" />
+      <item itemvalue="JUnit.StationDevicesRepositoryTest.testGetAllStationDevices" />
     </list>
     <recent_temporary>
       <list>
@@ -431,6 +444,7 @@
       <workItem from="1730781480008" duration="599000" />
       <workItem from="1733427201162" duration="1219000" />
       <workItem from="1733459738840" duration="594000" />
+      <workItem from="1754426476078" duration="590000" />
     </task>
     <servers />
   </component>
@@ -655,27 +669,6 @@
           <option name="timeStamp" value="118" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/popup/PopupContent.java</url>
-          <line>64</line>
-          <properties>
-            <option name="lambda-ordinal" value="-1" />
-          </properties>
-          <option name="timeStamp" value="121" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/popup/PopupContent.java</url>
-          <line>64</line>
-          <properties>
-            <option name="lambda-ordinal" value="0" />
-          </properties>
-          <option name="timeStamp" value="122" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/controller/components/AGWidgetsViewV2.java</url>
-          <line>86</line>
-          <option name="timeStamp" value="123" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/report/controller/FiltersControllerIn.java</url>
           <line>27</line>
           <option name="timeStamp" value="125" />
@@ -701,19 +694,34 @@
           <option name="timeStamp" value="139" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/controller/components/AGWidgetsViewV2.java</url>
-          <line>67</line>
-          <option name="timeStamp" value="140" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/popup/PopupContent.java</url>
           <line>117</line>
           <option name="timeStamp" value="141" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/command/CommandTest.java</url>
+          <line>71</line>
+          <option name="timeStamp" value="142" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/command/CommandTest.java</url>
+          <line>152</line>
+          <option name="timeStamp" value="143" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/command/CommandTest.java</url>
+          <line>74</line>
+          <option name="timeStamp" value="144" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/command/CommandTest.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="145" />
+        </line-breakpoint>
         <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/controller/StationDynamicMapController.java</url>
           <line>284</line>
-          <properties class="com.amay.scu.controller.StationDynamicMapController" method="updateTOMPeripheralStatus">
+          <properties class="com.amay.scu.controller.StationDynamicMapController">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
@@ -731,7 +739,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/controller/TOMController.java</url>
           <line>130</line>
-          <properties class="com.amay.scu.controller.TOMController" method="updateOperationMode">
+          <properties class="com.amay.scu.controller.TOMController">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
@@ -740,7 +748,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/sleobj/LiveTOM.java</url>
           <line>210</line>
-          <properties class="com.amay.scu.sleobj.LiveTOM" method="setOperationMode">
+          <properties class="com.amay.scu.sleobj.LiveTOM">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
@@ -749,7 +757,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/enums/StationSpecialMode.java</url>
           <line>92</line>
-          <properties class="com.amay.scu.enums.StationSpecialMode" method="getStationSpecialMode">
+          <properties class="com.amay.scu.enums.StationSpecialMode">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
@@ -758,7 +766,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/amay/scu/controller/StationDynamicMapController.java</url>
           <line>316</line>
-          <properties class="com.amay.scu.controller.StationDynamicMapController" method="updateTVMOperationMode">
+          <properties class="com.amay.scu.controller.StationDynamicMapController">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
